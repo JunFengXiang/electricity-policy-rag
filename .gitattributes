@@ -1,0 +1,13 @@
+*.py text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.htm text eol=lf
+*.txt text eol=lf
+*.xlsx binary
+*.xls binary
+*.docx binary
+*.doc binary
+*.pdf binary
+*.png binary

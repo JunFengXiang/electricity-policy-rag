@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>广州电力交易中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../../images/swiper.min.css">
+  <link rel="stylesheet" href="../../../images/main.css">
+  <style id="resetStyle"></style>
+  <script>
+    var resizeTimer;
+
+    // 创建一个函数来获取并处理可见区域的大小
+    function updateViewportSize() {
+      var viewportWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+      console.log("可见区域宽度：" + viewportWidth);
+      console.log("可见区域高度：" + viewportHeight);
+
+      // 在这里执行您希望在窗口大小变化时执行的其他操作
+    }
+
+    // 添加窗口大小变化事件监听器
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateViewportSize, 1000); // 1秒钟后执行
+    });
+
+    // 页面加载时也执行一次以获取初始窗口大小
+    window.addEventListener('load', updateViewportSize);
+
+    ! function () {
+      function calcRem() {
+        var rStyle = document.getElementById("resetStyle");
+
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var defaultWidth = 1200
+        if (clientWidth > defaultWidth) {
+          clientWidth = defaultWidth;
+        }
+
+        var rateWidth = clientWidth / defaultWidth;
+
+        var fSize = 100 * rateWidth;
+
+        rStyle.innerHTML = "html{font-size:" + fSize + "px;}";
+
+      }
+
+      calcRem();
+
+      window.addEventListener("resize", calcRem);
+    }();
+  </script>
+</head>
+<body>
+<div class="header">
+    <div class="one">
+      <ul class="top">
+        <li>交易服务热线: 400-15-95598</li>
+        <li>能源监管热线: 12398</li>
+        <li class="last chat">微 信
+          <div class="items chat-item">
+            <img src="../../../images/chatimg.jpg" alt="" width="100%" />
+          </div>
+        </li>
+        <li class="last app">平台系统
+          <ul class="items app-item">
+            
+              <li>
+                <a href="https://sso.poweremarket.com/supt/sr/pt/#/SecureUnisignon" target="_blank">
+                  南方区域统一电力交易平台
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://spot.poweremarket.com/uptspot" target="_blank">
+                  南方区域现货电能量交易系统
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://gp.poweremarket.com" target="_blank">
+                  南方区域绿色电力交易系统
+                </a>
+              </li>
+            
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+<div class="two">
+      <p class="logo"><img src="../../../images/logo.png" style="height:.45rem" /> </p>
+      <div class="menuIcon"></div>
+      <nav class="menu">
+        <ul class="first-menu">
+          <li class="active"><a href="../../../home/">首页</a></li>
+          <li>
+            <a href="../../../news/">新闻资讯</a>
+            <ul class="sub-menu">
+
+                
+                  <li>
+                    <a href="../../../news/ddsy/">
+                      党的声音
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/gsdt/">
+                      公司动态
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/mtgz/">
+                      媒体关注
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/scyj/">
+                      市场研究
+                    </a>
+                  </li>
+               
+          
+            </ul>
+          </li>
+          <li>
+            <a href="../../../information/">信息发布</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../information/zxtz/">
+                      最新通知
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../information/gsgg/">
+                      公示公告
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../service/">市场服务</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../service/scpx/">
+                      市场培训
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/ffcn/">
+                      服务承诺
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/cjwtjd/">
+                      常见问题解答
+                    </a>
+                  </li>
+               
+
+
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../">政策法规</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../flfg/">
+                      法律法规
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../zcwj/">
+                      政策文件
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../">
+                      交易规则
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../ywzy/">
+                      业务指引
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../sfbz/">
+                      收费标准
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../aboutus/">关于我们</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../aboutus/gsjj/">
+                      公司简介
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zzjg/">
+                      组织架构
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/dsj/">
+                      大事记
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zpxx/">
+                      招聘信息
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/lxwm/">
+                      联系我们
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/jdjb/">
+                      监督举报
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/xfqd/">
+                      信访渠道
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+<div class="banner">
+  <img src="../../../images/banner.jpg" width="100%" />
+</div>
+<div class="wrapper">
+    <div class="main between">
+      <div class="mainBox">
+        <div class="leftMenu">
+          <ul>
+           
+             <li><h5><a href="../../flfg/">法律法规</a></h5></li>
+           
+             <li><h5><a href="../../zcwj/">政策文件</a></h5></li>
+           
+             <li><h5><a href="../">交易规则</a></h5></li>
+           
+             <li><h5><a href="../../ywzy/">业务指引</a></h5></li>
+           
+             <li><h5><a href="../../sfbz/">收费标准</a></h5></li>
+           
+          </ul>
+        </div>
+        <div class="rightMain">
+          <div class="content">
+            <h3 class="title">云南电力市场规则</h3>
+            <p class="subTitle">信息来源：海南电力交易中心    发布时间：2024-12-09</p>
+            <div class="txt">
+              <div class=TRS_Editor><style type="text/css">
+
+.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style>
+<div class="TRS_Editor"><style type="text/css">
+
+.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style>
+<p style="text-align: center;">云南电力市场规则</p>
+</div></div>
+            </div>
+            <div style="padding:20px 0">
+              <h5>相关附件</h5>
+              
+                <p><a href="./P020250214535301398404.pdf" target="_blank">[2024]146号国家能源局云南监管办公室 云南省发展和改革委员会 云南省能源局关于同意印发《云南电力市场现货电能量交易实施细则（V2.0版）》等五个实施细则的复函.pdf</a></p>
+              
+                <p><a href="./P020250214571412895800.pdf" target="_blank">[2024]145号国家能源局云南监管办公室 云南省发展和改革委员会 云南省能源局关于印发《云南电力中长期交易实施细则》《云南省绿色电力交易实施细则》的通知_纯图版.pdf</a></p>
+              
+                <p><a href="./P020250516615201082350.pdf" target="_blank">国家能源局云南监管办公室 云南省发展和改革委员会 云南省能源局关于印发《云南电力中长期交易实施细则》《云南省绿色电力交易实施细则》的通知.pdf</a></p>
+              
+                <p><a href="./P020250516615202221527.pdf" target="_blank">附件：《云南电力市场燃煤发电交易实施办法》补充修订条款.pdf</a></p>
+              
+                <p><a href="./P020250516615203155087.pdf" target="_blank">附件：云南电力市场燃煤发电交易实施办法.pdf</a></p>
+              
+                <p><a href="./P020250516615204238761.pdf" target="_blank">附件：云南电力市场现货电能量交易实施细则（V2.0版）-2024-12-13.pdf</a></p>
+              
+                <p><a href="./P020250516615205696789.pdf" target="_blank">附件2 云南电力市场结算实施细则（V2.0版）.pdf</a></p>
+              
+                <p><a href="./P020250516615206808002.pdf" target="_blank">附件3 云南电力市场交易信用管理实施细则（V2.0版）.pdf</a></p>
+              
+                <p><a href="./P020250516615208121746.pdf" target="_blank">附件4 云南电力市场售电公司履约保函（保险）管理实施细则（V2.0版）.pdf</a></p>
+              
+                <p><a href="./P020250516615209181305.pdf" target="_blank">附件5 云南电力零售市场实施细则（V2.0版）.pdf</a></p>
+              
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+<!-- footer -->
+    <div class="footer">
+      <ul class="linksTab">
+        <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+        <li><a href="../../../all/map/">网站地图</a></li>
+        <li><a href="../../../all/xglj/">相关链接</a></li>
+        <li><a href="../../../all/flsm/">法律声明</a></li>
+       <!-- <li><a href="../../../all/yszcz/">隐私政策</a></li> -->
+      </ul>
+      <ul class="linksMainTab">
+        <li><a href="../../../news/">新闻资讯</a></li>
+        <li><a href="../../../information/">信息发布</a></li>
+        <li><a href="../../../service/">市场服务</a></li>
+        <li><a href="../../">政策法规</a></li>
+        <li><a href="../../../aboutus/">关于我们</a></li>
+      </ul>
+      <div class="linksTabMain">
+        <ul>
+          
+            <li><a href="../../../news/ddsy/">党的声音</a></li>
+          
+            <li><a href="../../../news/gsdt/">公司动态</a></li>
+          
+            <li><a href="../../../news/mtgz/">媒体关注</a></li>
+          
+            <li><a href="../../../news/scyj/">市场研究</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../information/zxtz/">最新通知</a></li>
+          
+            <li><a href="../../../information/gsgg/">公示公告</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../service/scpx/">市场培训</a></li>
+          
+            <li><a href="../../../service/ffcn/">服务承诺</a></li>
+          
+            <li><a href="../../../service/cjwtjd/">常见问题解答</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../flfg/">法律法规</a></li>
+          
+            <li><a href="../../zcwj/">政策文件</a></li>
+          
+            <li><a href="../">交易规则</a></li>
+          
+            <li><a href="../../ywzy/">业务指引</a></li>
+          
+            <li><a href="../../sfbz/">收费标准</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/gsjj/">公司简介</a></li>
+          
+            <li><a href="../../../aboutus/zzjg/">组织架构</a></li>
+          
+            <li><a href="../../../aboutus/dsj/">大事记</a></li>
+          
+            <li><a href="../../../aboutus/zpxx/">招聘信息</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+          
+            <li><a href="../../../aboutus/jdjb/">监督举报</a></li>
+          
+            <li><a href="../../../aboutus/xfqd/">信访渠道</a></li>
+          
+        </ul>
+      </div>
+      <div class="footerBottom">
+        <div class="way">
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">广州电力交易<br/>中心公众号</p>
+              <img src=" ../../../all/gywm/202506/W020250625607877531250.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">交易服务<br/>留言咨询</p>
+              <img src=" ../../../all/ly/202507/W020250707507949428239.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/fwrx/202310/W020231008413156095796.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num">400-15-95598</p>
+              <p>交易服务热线</p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/nyjgrx/202310/W020231008413349834608.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num"><span style="font-size:0.18rem;">能源监督热线:</span>12398</p>
+              <p><a href="http://www.nea.gov.cn/ztzl/12398nyjgrx/index.htm" style="color:#a8bad2">12398能源监管热线网站</a></p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线公众号</p>
+              <img src=" ../../../all/gzh/202506/W020250625608092853450.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线APP</p>
+              <img src=" ../../../all/nyapp/202310/W020250625608245347243.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+        </div>
+        <div class="webSiteLink">
+          <p>南方电网安备1514A91LF号 ICP国网安备1514A91LF号</p>
+          <p>版权所有: © 2020 广州电力交易中心 版权所有 <a href="https://beian.miit.gov.cn" target="_blank" style="color:#a8bad2">粤ICP备20027641号-2</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../../../images/zepto.min.js"></script>
+  <script type="text/javascript" src="../../../images/swiper.min.js"></script>
+  <script>
+    var bannerSwiper = new Swiper('.banner', {
+      // 自动播放配置
+        autoplay: {
+            delay: 4000, // 3 秒切换
+            disableOnInteraction: false // 用户操作后仍自动播放
+        },
+        loop: true, // 循环播放
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      }
+    });
+    var newsImgsSwiper = new Swiper('.newsImgs', {
+      pagination: {
+        el: '.swiper-pagination'
+      }
+    });
+    var businessSwiper = new Swiper('.business', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      // slidesPerGroup: 4,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+  <script type="text/javascript">
+    $('.menuIcon').on('click', function () {
+      $('.menu').toggle()
+    })
+    $(window).on('resize', function () {
+      $('.rightMain').css('width', $('.mainBox').width() - $('.leftMenu').width() - 1)
+    }).resize();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,3836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>广州电力交易中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../../images/swiper.min.css">
+  <link rel="stylesheet" href="../../../images/main.css">
+  <style id="resetStyle"></style>
+  <script>
+    var resizeTimer;
+
+    // 创建一个函数来获取并处理可见区域的大小
+    function updateViewportSize() {
+      var viewportWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+      console.log("可见区域宽度：" + viewportWidth);
+      console.log("可见区域高度：" + viewportHeight);
+
+      // 在这里执行您希望在窗口大小变化时执行的其他操作
+    }
+
+    // 添加窗口大小变化事件监听器
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateViewportSize, 1000); // 1秒钟后执行
+    });
+
+    // 页面加载时也执行一次以获取初始窗口大小
+    window.addEventListener('load', updateViewportSize);
+
+    ! function () {
+      function calcRem() {
+        var rStyle = document.getElementById("resetStyle");
+
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var defaultWidth = 1200
+        if (clientWidth > defaultWidth) {
+          clientWidth = defaultWidth;
+        }
+
+        var rateWidth = clientWidth / defaultWidth;
+
+        var fSize = 100 * rateWidth;
+
+        rStyle.innerHTML = "html{font-size:" + fSize + "px;}";
+
+      }
+
+      calcRem();
+
+      window.addEventListener("resize", calcRem);
+    }();
+  </script>
+</head>
+<body>
+<div class="header">
+    <div class="one">
+      <ul class="top">
+        <li>交易服务热线: 400-15-95598</li>
+        <li>能源监管热线: 12398</li>
+        <li class="last chat">微 信
+          <div class="items chat-item">
+            <img src="../../../images/chatimg.jpg" alt="" width="100%" />
+          </div>
+        </li>
+        <li class="last app">平台系统
+          <ul class="items app-item">
+            
+              <li>
+                <a href="https://sso.poweremarket.com/supt/sr/pt/#/SecureUnisignon" target="_blank">
+                  南方区域统一电力交易平台
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://spot.poweremarket.com/uptspot" target="_blank">
+                  南方区域现货电能量交易系统
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://gp.poweremarket.com" target="_blank">
+                  南方区域绿色电力交易系统
+                </a>
+              </li>
+            
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+<div class="two">
+      <p class="logo"><img src="../../../images/logo.png" style="height:.45rem" /> </p>
+      <div class="menuIcon"></div>
+      <nav class="menu">
+        <ul class="first-menu">
+          <li class="active"><a href="../../../home/">首页</a></li>
+          <li>
+            <a href="../../../news/">新闻资讯</a>
+            <ul class="sub-menu">
+
+                
+                  <li>
+                    <a href="../../../news/ddsy/">
+                      党的声音
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/gsdt/">
+                      公司动态
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/mtgz/">
+                      媒体关注
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/scyj/">
+                      市场研究
+                    </a>
+                  </li>
+               
+          
+            </ul>
+          </li>
+          <li>
+            <a href="../../../information/">信息发布</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../information/zxtz/">
+                      最新通知
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../information/gsgg/">
+                      公示公告
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../service/">市场服务</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../service/scpx/">
+                      市场培训
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/ffcn/">
+                      服务承诺
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/cjwtjd/">
+                      常见问题解答
+                    </a>
+                  </li>
+               
+
+
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../">政策法规</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../flfg/">
+                      法律法规
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../zcwj/">
+                      政策文件
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../">
+                      交易规则
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../ywzy/">
+                      业务指引
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../sfbz/">
+                      收费标准
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../aboutus/">关于我们</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../aboutus/gsjj/">
+                      公司简介
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zzjg/">
+                      组织架构
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/dsj/">
+                      大事记
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zpxx/">
+                      招聘信息
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/lxwm/">
+                      联系我们
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/jdjb/">
+                      监督举报
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/xfqd/">
+                      信访渠道
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+<div class="banner">
+  <img src="../../../images/banner.jpg" width="100%" />
+</div>
+<div class="wrapper">
+    <div class="main between">
+      <div class="mainBox">
+        <div class="leftMenu">
+          <ul>
+           
+             <li><h5><a href="../../flfg/">法律法规</a></h5></li>
+           
+             <li><h5><a href="../../zcwj/">政策文件</a></h5></li>
+           
+             <li><h5><a href="../">交易规则</a></h5></li>
+           
+             <li><h5><a href="../../ywzy/">业务指引</a></h5></li>
+           
+             <li><h5><a href="../../sfbz/">收费标准</a></h5></li>
+           
+          </ul>
+        </div>
+        <div class="rightMain">
+          <div class="content">
+            <h3 class="title">电力市场信息披露基本规则（国能发监管〔2024〕9号）</h3>
+            <p class="subTitle">信息来源：国家发展改革委    发布时间：2025-05-16</p>
+            <div class="txt">
+              <style type="text/css">.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style><div class=TRS_Editor><style type="text/css">
+.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style>
+<div>
+<div>
+<p style="text-align: center;"><span>电力市场信息披露基本规则</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span><font>第一章</font> <font>总</font> <font>则</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第一条 </span><span><font>为</font></span><span>贯彻落实党中央、国务院</span><span><font>进一步深化电力体制改革</font></span><span>、加快建设全国统一大市场的有关精神，统一全国电力市场信息披露机制，</span><span><font>加强</font></span><span>和</span><span><font>规范</font></span><span><font>信息披露工作，</font></span><span>进一步满足市场经营主体信息需求，</span><span><font>维护市场</font></span><span>经营</span><span><font>主体合法权益，依据《电力监管条例》</font></span><span>（</span><span><font>中华人民共和国国务院令第</font>432<font>号</font></span><span><font>）《国家发展改革委</font> <font>国家能源局关于加快建设全国统一电力市场体系的指导意见》（发改体改〔</font><font>2022</font><font>〕</font><font>118</font><font>号）《</font></span><span>电力企业信息披露规定</span><span>》</span><span><font>等有关规定</font></span><span>，</span><span><font>结合电力市场</font></span><span><font>实践</font></span><span><font>，制定本</font></span><span>规则</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二条 </span><span><font>本</font></span><span>规则</span><span><font>所称电力市场包含</font></span><span>电力中长期</span><span><font>、</font></span><span>现货、</span><span><font>辅助服务市场等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三条 </span><span><font>本</font></span><span>规则</span><span><font>所称</font></span><span>信息披露</span><span><font>主体包括发电企业、售电公司、电力用户、新型主体（</font></span><span>独立</span><span><font>储能等）、电网企业和市场运营机构。市场运营机构包括电力交易机构和电力调度机构。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四条 </span><span><font>本</font></span><span>规则</span><span><font>所称信息披露是指</font></span><span>信息披露</span><span><font>主体提供、发布与电力市场相关信息的行为。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第五条 </span><span>各地区根据电力市场运营情况，若存在无法满足本规则要求的信息披露内容，有关信息披露主体应向国家能源局或其派出机构书面报备。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二章</font> <font>信息披露</font><font>原则和方式</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第六条 </span><span><font>信息披露应当遵循</font></span><span>安全、</span><span><font>真实、准确、完整、及时、易于使用的原则。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第七条 </span><span>信息披露</span><span><font>主体</font></span><span>应严格按照本规则要求披露信息，并</span><span><font>对其</font></span><span>披露</span><span><font>信息的真实性、准确性、完整性、及时性负责。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第八条 </span><span><font>电力交易机构负责电力市场信息披露的实施，以电力交易</font></span><span>平台为基础设立</span><span><font>信息</font></span><span>披露</span><span><font>平台</font></span><span>，做好国家能源局及其派出机构、政府相关部门、市场经营主体信息披露平台登录账号运维管理工作。</span><span><font>电力交易机构制定</font></span><span>全国统一的</span><span><font>信息披露标准</font></span><span>数据</span><span><font>格式</font></span><span>，在保障信息安全的前提下提供</span><span><font>数据接口</font></span><span>服务</span><span><font>。</font></span><span>相关数据接口标准另行制定。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第九条 </span><span>信息披露</span><span><font>主体按照标准</font></span><span>数据</span><span><font>格式</font></span><span>在</span><span><font>信息披露平台</font></span><span>披露</span><span><font>信息</font></span><span><font>，披露的信息保留或可供查询的时间不少于</font><font>2</font><font>年</font></span><span><font>。</font></span><span><font>信息披露应以结构化数据为主，非结构化信息采用</font><font>PDF</font><font>等文件格式。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十条 </span><span>电力市场信息应在信息披露平台上进行披露，在确保信息安全基础上，按信息公开范围要求，可同时通过信息发布会、交易机构官方公众号等渠道发布。</span><span>&nbsp;</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十一条 </span><span>电力市场信息按照年、季、月、周、日等周期开展披露。预测类信息在交易申报开始前披露，运行类信息在运行日次日披露。现货未开展的地区或时期，可根据市场运行需要披露周、日信息，现货市场不结算试运行期间暂不披露现货市场相关信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十二条 </span><span>涉及多省业务的信息披露主体应以法人为主体披露其全量及分省信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十三条 </span><span>市场成员对披露的信息内容、时限等有异议或者疑问，可向电力交易机构提出，电力交易机构根据本规则规定要求相关信息披露</span><span><font>主体</font></span><span>予以解释及配合。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span><font>第三章</font> <font>信息披露内容</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十四条 </span><span><font>按照信息公开范围，电力市场信息分为公众信息、公开信息</font></span><span>、特定</span><span><font>信息</font></span><span>三</span><span><font>类。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>（一）公众信息：是指向社会公众披露的信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>（二）公开信息：是指向</font></span><span>有关市场成员</span><span><font>披露的信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>（三）</font></span><span>特定信息</span><span><font>：是指</font></span><span>根据电力市场运营需要</span><span><font>向特定</font></span><span>市场成员</span><span><font>披露的信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>发电企业</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十五条 </span><span><font>发电企业应当披露的公众信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span><font>企业全称、</font></span><span>企业性质、</span><span><font>所属集团、工商注册时间、统一社会信用代码、</font></span><span>股权结构、</span><span><font>法定代表人、电源类型、装机容量、联系方式等。</font></span><span>&nbsp;</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span><font>企业变更情况，包括企业更名或法定代表人变更</font></span><span>，</span><span><font>企业</font></span><span><font>增</font></span><span><font>减资、合并、分立、解散及申请破产的决定</font></span><span>，</span><span><font>依法进入破产程序、被责令关闭等重大经营信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span><font>与其他市场</font></span><span>经营</span><span><font>主体之间的</font></span><span>股权</span><span><font>关联</font></span><span><font>关系</font></span><span><font>信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span><font>其他政策法规要求向社会公众</font></span><span>披露</span><span><font>的信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十六条 </span><span><font>发电企业应当披露的公开信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span><font>电厂机组信息，包括电厂调度名称</font></span><span>、</span><span><font>所在地</font></span><span>市、</span><span><font>电力业务许可证（发电类）编号</font></span><span>、</span><span><font>机组调度管辖关系</font></span><span>、</span><span><font>投运机组台数</font></span><span>、</span><span><font>单机容量及类型</font></span><span>、</span><span><font>投运日期</font></span><span>、</span><span><font>接入电压等级</font></span><span>、</span><span><font>单机最大出力</font></span><span>、机组出力受限的技术类型（如流化床、高背压供热）、</span><span>抽蓄机组最大及最小抽水充电能力、静止到满载发电及抽水时间</span><span><font>等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>配建储能信息（如有）。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span><font>机组出力受限情况。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span><font>机组检修及设备改造计划。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十七条 </span><span><font>发电企业应当向特定</font></span><span>市场成员</span><span><font>披露</font></span><span>的特定信息</span><span><font>包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span><font>市场交易申报信息、合同信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span><font>核定（设计）最低技术出力</font></span><span>，</span><span><font>核定（设计）深调极限出力</font></span><span>，</span><span><font>机组爬坡速率</font></span><span>，</span><span><font>机组边际能耗曲线</font></span><span>，</span><span><font>机组最小开停机时间</font></span><span>，</span><span><font>机组预计并网和解列时间</font></span><span>，</span><span><font>机组启停出力曲线</font></span><span>，</span><span><font>机组调试计划曲线</font></span><span>，</span><span><font>调频、调压、日内允许启停次数</font></span><span>，</span><span><font>厂用电率</font></span><span>，</span><span><font>热电联产机组供热信息等机组性能参数。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span><font>机组实际出力和发电量、上网电量、计量点信息等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span><font>发电企业燃料供应情况、燃料采购价格、存储情况、供应风险等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span>发电企业批发市场月度售电量、售电均价。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（六）</span><span><font>水电、新能源机组发电出力预测。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>售电公司</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十八条 </span><span><font>售电公司应当披露的公众信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span><font>企业全称、企业性质、售电公司类型、工商注册时间、注册资本金、统一社会信用代码</font></span><span><font>、股权结构、经营范围、</font></span><span><font>法定代表人、联系方式、</font></span><span><font>营业场所地址、</font></span><span><font>信用承诺书等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>企业资产信息，包括资产证明方式、资产证明出具机构、报告文号（</span><span>编号</span><span>）、报告日期、资产总额、实收资本总额等</span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span><font>从业人员</font></span><span><font>信息</font></span><span>，包括从业人员数量、职称及社保缴纳人数等</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span><font>企业变更情况，</font></span><span><font>包括企业更名或法定代表人变更，</font></span><span><font>企业</font></span><span>增</span><span><font>减资、合并、分立、解散及申请破产的决定，或者依法进入破产程序、被责令关闭等重大经营信息，</font></span><span><font>配电网运营资质变化</font></span><span>等</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span><font>售电公司年报信息</font></span><span>，内容</span><span><font>包括但不限于企业基本情况、持续满足市场准入条件情况、</font></span><span>财务情况</span><span><font>、经营状况、业务范围、</font></span><span>履约情况</span><span><font>、</font></span><span>重大事项</span><span><font>，</font></span><span>信用</span><span><font>信息</font></span><span>、竞争力</span><span><font>等</font></span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（六）</span><span><font>售电公司</font></span><span><font>零售</font></span><span><font>套餐</font></span><span>产品</span><span><font>信息</font></span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（七）</span><span><font>与其他市场</font></span><span>经营</span><span><font>主体之间的</font></span><span>股权</span><span><font>关联关系信息。</font></span><span>&nbsp;</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（八）</span><span><font>其他政策法规要求向社会公众</font></span><span>披露</span><span><font>的信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十九条 </span><span><font>售电公司应当披露的公开信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span><font>履约保函、保险缴纳</font></span><span>金额、有效期等</span><span><font>信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span><font>拥有配电网运营权的售电公司应当披露电力业务许可证（供电类）编号、配电网电压等级、配电区域、配电价格等信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span><font>财务审计报告</font></span><span>（</span><span>如有</span><span>）。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十条 </span><span><font>售电公司应当向特定</font></span><span>市场成员</span><span><font>披露</font></span><span>的特定信息</span><span><font>包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>市场交易申报信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>与代理用户签订的购售电合同信息或者协议信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span>与发电企业签订的交易合同信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span>售电公司批发侧月度结算电量、结算均价。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span>可参与系统调节的响应能力和响应方式等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>电力用户</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十一条 </span><span><font>电力用户应当披露的公众信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span><font>企业全称、企业性质、行业分类、用户类别、工商注册时间、统一社会信用代码、法定代表人、联系方式、</font></span><span>经营范围</span><span><font>、所属行业等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span><font>企业变更情况，包括</font></span><span><font>企业更名或法定代表人变更，</font></span><span><font>企业</font></span><span><font>增</font></span><span><font>减资、合并、分立、解散及申请破产的决定，依法进入破产程序、被责令关闭等重大经营信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span><font>与其他市场</font></span><span>经营</span><span><font>主体之间的</font></span><span>股权</span><span><font>关联关系信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span><font>其他政策法规要求向社会公众</font></span><span><font>披露</font></span><span><font>的信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十二条 </span><span><font>电力用户应当披露的公开信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span><font>企业用电类别、接入地</font></span><span>市</span><span><font>、用电电压等级、自备电源（如有）、变压器报装容量以及最大需量等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span><font>配建储能信息（如有）。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十三条 </span><span><font>电力用户应当向特定</font></span><span>市场成员</span><span><font>披露</font></span><span>的特定信息</span><span><font>包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>市场交易申报信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>与发电企业、售电公司签订的购售电合同信息或协议信息</span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span>企业</span><span><font>用电信息，包括用电户号、用电户名、结算户号、</font></span><span>用</span><span><font>电量</font></span><span>及</span><span><font>分时用电数据、计量点信息等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span><font>可参与系统调节的响应能力和响应方式等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span>用电需求信息，包括月度、季度、年度的用电需求安排。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（六）</span><span>大型电力用户计划检修信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四节</font> <font>新型主体</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十四条 </span><span>独立储能</span><span><font>应当披露的公众信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span><font>企业全称、企业性质、</font></span><span>额定容量、</span><span><font>工商注册时间、统一社会信用代码、股权结构</font></span><span>、</span><span><font>经营范围</font></span><span>、</span><span><font>法定代表人、联系方式等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span><font>企业变更情况，包括</font></span><span><font>企业更名或法定代表人变更</font></span><span>，</span><span><font>企业</font></span><span>增</span><span><font>减资、合并、分立、解散及申请破产的决定</font></span><span>，</span><span><font>依法进入破产程序、被责令关闭等重大经营信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span><font>与其他市场</font></span><span>经营</span><span><font>主体之间的</font></span><span>股权</span><span><font>关联关系信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span><font>其他政策法规要求向社会公众</font></span><span>披露</span><span><font>的信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十五条 </span><span>独立储能</span><span><font>应当披露的公开信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>调度名称、调度管辖关系、投运日期、接入电压等级、机组技术类型（电化学、压缩空气等）、所在地市。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>满足参与市场交易的相关技术参数，包括额定充（放）电功率、额定充（放）电时间、最大可调节容量、最大充放电功率、最大持续充放电时间等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十六条 </span><span>独立储能</span><span><font>应当向特定</font></span><span>市场成员</span><span><font>披露</font></span><span>的特定信息</span><span><font>包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>市场交易申报信息、合同信息</span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span><font>性能参数类信息，包括提供调峰、调频、旋转备用等辅助服务的持续响应时长</font></span><span>，</span><span><font>最大最小响应能力、</font></span><span>最大上下调节功（速）率、充放电爬坡速率</span><span><font>等</font></span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span>计量</span><span><font>信息，包括户名、</font></span><span>发电户号、用电户号</span><span><font>、结算户号、计量点信息、</font></span><span>充放电电力</span><span><font>电量等信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十七条 </span><span>虚拟电厂、负荷聚合商等其他新型主体信息披露要求根据市场发展需要另行明确。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五节</font> <font>电网企业</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十八条 </span><span><font>电网企业应当披露的公众信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>企业全称、企业性质、工商注册时间、统一社会信用代码、法定代表人、联系方式、供电区域等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>与其他市场经营主体之间的股权关联关系信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span>政府定价信息，包括输配电价、政府核定的输配电线损率、各类政府性基金及其他市场相关收费标准等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span>代理购电信息，包括代理购电电量及构成、代理购电电价及构成、代理购电用户分电压等级电价及构成等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span>其他政策法规要求向社会公众披露的信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十九条 </span><span><font>电网企业应当披露的公开信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>电力业务许可证（输电类、供电类）编号。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>发电机组装机、电量及分类构成（含独立储能）情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span>年度发用电负荷实际情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span>全社会用电量及分产业用电量信息（转载披露）。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span>年度电力电量供需平衡预测及实际情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（六）</span><span>输变电设备建设、投产情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（七）</span><span>市场经营主体电费违约总体情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（八）</span><span>需求响应执行情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十条 </span><span>电网企业</span><span><font>应当向特定</font></span><span>市场成员</span><span><font>披露</font></span><span>的特定信息</span><span><font>包括</font></span><span>：</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>向电力用户披露历史用电数据、用电量等用电信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>经电力用户授权同意后，应允许市场经营主体获取电力用户历史用电数据、用电量等信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第</span><span>六</span><span><font>节</font> </span><span>市场运营</span><span>机构</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十一条 </span><span>市场运营</span><span><font>机构应当披露的</font></span><span>公众</span><span><font>信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>电力交易机构全称、工商注册时间、股权结构、统一社会信用代码、法定代表人、</span><span><font>服务电话</font></span><span>、办公地址、网站网址等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>电力市场公开适用的法律法规、政策文件</span><span><font>、规则细则类信息</font></span><span>，包括交易规则、交易相关收费标准，制定、修订市场规则过程中涉及的解释性文档等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span><font>业务标准规范，包括注册流程、争议解决流程、</font></span><span>负荷预测方法和流程、辅助服务需求计算方法、电网安全校核规范、电力市场</span><span><font>服务指南、数据通讯格式规范等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span>信用信息，包括市场经营主体电力交易信用信息（经政府部门同意）、售电公司违约情况等</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span>电力市场运行情况，包括市场注册、交易总体情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（六）</span><span>强制或自愿退出且公示生效后的市场经营主体</span><span><font>名单。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（七）</span><span><font>市场</font></span><span>结构</span><span><font>情况</font></span><span><font>，可采用</font><font>HHI</font><font>、</font><font>Top-m</font><font>等指标</font></span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（八）</span><span>市场暂停、中止、重新启动等情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（九）</span><span><font>其他</font></span><span>政策</span><span><font>法规要求向社会公众</font></span><span>披露</span><span><font>的信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十二条 </span><span>市场运营</span><span><font>机构应当披露的公开信息包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>报告信息，包括</span><span><font>信息披露报告</font></span><span>等</span><span><font>定期报告</font></span><span>、</span><span><font>经国家能源局派出机构或者</font></span><span><font>地方政府</font></span><span><font>电力</font></span><span><font>管理</font></span><span><font>部门认定的违规行为通报</font></span><span>、</span><span><font>市场干预情况</font></span><span>、电力现货市场第三方校验报告、经审计的收支总体情况（收费的电力交易机构披露）等</span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>交易日历，包括多年、年、月、周、多日、日各类交易安排。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span>电网主要网络通道示意图。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span>约束信息，包括发输变电设备投产、检修、退役计划，关键断面输电通道可用容量，省间联络线输电可用容量，必开必停机组名单及总容量，开停机不满最小约束时间机组名单等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span>参数信息，包括市场出清模块算法及运行参数、价格限值、约束松弛惩罚因子、节点分配因子及其确定方法、节点及分区划分依据和详细数据等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（六）</span><span>预测信息，包括系统负荷预测、电力电量供需平衡预测、省间联络线输电曲线预测、发电总出力预测、非市场机组总出力预测、新能源（分电源类型）总出力预测、水电（含抽蓄）出力预测等</span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（七）</span><span>辅助服务需求信息，包括各类辅助服务市场需求情况，具备参与辅助服务市场的机组台数及容量、用户及售电公司总体情况。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（八）</span><span><font>交易公告，</font></span><span>包括</span><span><font>交易品种、</font></span><span>经营</span><span><font>主体、交易方式、</font></span><span>交易申报时间</span><span><font>、交易</font></span><span>合同执行</span><span><font>开始时间及终止时间、交易参数、</font></span><span><font>出清方式、</font></span><span><font>交易约束信息、交易</font></span><span><font>操作说明、</font></span><span><font>其他准备信息等</font></span><span>必要信息</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（九）</span><span>中长期交易申报及成交情况</span><span><font>，包括参与的主体</font></span><span><font>数量</font></span><span><font>、申报</font></span><span>电量</span><span><font>、成交的主体</font></span><span><font>数量</font></span><span><font>、最终成交</font></span><span>总量及分电源类型电量、成交均价及分电源类型均价、</span><span>中长期交易安全校核结果及原因</span><span><font>等</font></span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十）</span><span>绿电交易申报及成交情况，</span><span><font>包括参与的主体</font></span><span><font>数量</font></span><span><font>、申报</font></span><span>电量</span><span><font>、成交的主体</font></span><span><font>数量</font></span><span><font>、最终成交</font></span><span>总量、成交均价</span><span><font>等</font></span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十一）</span><span>省间月度</span><span>交易计划。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十二）</span><span>现货、辅助服务市场申报出清信息，</span><span><font>包括各时段出清</font></span><span>总</span><span><font>量</font></span><span>及分类电源中标台数和电量、出清电价、输电断面约束及阻塞情况等</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十三）</span><span><font>运行信息，包括</font></span><span>机组状态、</span><span><font>实际负荷</font></span><span>、</span><span><font>系统备用信息，重要通道实际输电情况</font></span><span>、</span><span><font>实际运行</font></span><span><font>输电</font></span><span><font>断面约束情况</font></span><span>、</span><span>省间</span><span><font>联络线潮流</font></span><span>、</span><span>重要线路与变压器平均潮流，发</span><span><font>输变电设备检修计划执行情况</font></span><span>、</span><span>重要线路非计划停运情况、发电机组非计划停运情况，</span><span><font>非市场机组实际出力曲线</font></span><span>，</span><span>月度发用电负荷总体情况</span><span><font>等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十四）</span><span>市场</span><span><font>结算</font></span><span>总体</span><span><font>情况，</font></span><span>包括结算总量、均价及分类构成情况，绿电交易结算情况，省间交易结算情况，</span><span>不平衡资金构成、分摊和分享情况</span><span>，偏差考核情况</span><span><font>等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十五）</span><span><font>电力</font></span><span>并网运行管理考核和返还明细情况，包括各并网主体分考核种类的考核费用、返还费用、免考核情况等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十六）</span><span><font>电力辅助服务考核、补偿、分摊明细情况，包括各市场经营主体分辅助服务品种的电量</font><font>/</font><font>容量、补偿费用、考核费用、分摊比例、分摊费用等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十七）</span><span>售电公司总体经营情况，包括售电公司总代理电量、户数、批发侧及零售侧结算均价信息，各售电公司履约保障凭证缴纳、执行情况、结合资产总额确定的售电量规模限额。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十八）</span><span>交易总体情况，包括</span><span>年度、月度、月内、</span><span>现货交易成交均价及电量</span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（十九）</span><span>发电机组转商情况，包括发电机组、独立储能完成整套设备启动试运行时间。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二十）</span><span>到期未取得电力业务许可证的市场经营主体名单。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二十一）</span><span><font>市场干预情况原始日志，包括干预时间、干预主体、干预操作、干预原因，涉及《电力安全事故应急处置和调查处理条例》（中华人民共和国国务院令第</font><font>599</font><font>号）规定电力安全事故等级的事故处理情形除外。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十三条 </span><span>市场运营</span><span><font>机构应当向特定</font></span><span>市场成员</span><span><font>披露</font></span><span>的特定信息</span><span><font>包括：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）</span><span>成交信息，包括各类交易成交量价信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）</span><span>日前省内机组预计划。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）</span><span>月度</span><span><font>交易计划</font></span><span>。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）</span><span>结算信息，包括各类交易结算量价信息、绿证划转信息、日清算单（现货市场）、月结算依据等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）</span><span>争议解决结果。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span><font>第四章</font> <font>披露信息调整</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十四条 </span><span>信息调整是指市场成员扩增或变更本规则规定披露的信息，包括新增披露信息，变更披露内容、披露范围</span><span><font>、披露周期</font></span><span>等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十五条 </span><span>市场成员</span><span><font>可申请扩增</font></span><span>或变更</span><span><font>信息</font></span><span>，</span><span><font>申请人应当将申请发送至电力交易机构，内容应包括扩增</font></span><span>或变更</span><span><font>信息内容、披露范围、披露周期、必要性描述、申请主体</font></span><span>名称</span><span><font>、联系方式等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十六条 </span><span><font>电力交易机构收到</font></span><span>扩增或变更</span><span><font>信息披露申请后</font></span><span><font>在交易平台发布相关信息，征求市场成员意见。受影响的市场成员在信息发布后</font><font>7</font><font>个工作日反馈意见，电力交易机构汇总各市场成员的反馈意见并形成初步审核建议，</font></span><span><font>报</font></span><span>国家能源局或其派出机构</span><span><font>审核，审核结果通过信息披露平台公示。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十七条 </span><span><font>申请</font></span><span>审核通过</span><span><font>后，电力交易机构组织相关</font></span><span>信息披露主体</span><span><font>开展披露</font></span><span>工作</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十八条 </span><span>现货市场信息如有变更应及时发布变更说明。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五章</font> </span><span>信息</span><span>保密和封存</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第三十九条 </span><span>信息披露</span><span><font>主体</font></span><span>在披露、查阅信息之前应在信息披露平台签订信息披露承诺书。信息披露承诺书中应明确信息安全保密责任与义务等条款。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十条 </span><span>任何市场成员不得违规获取或者泄露未经授权披露的信息。市场成员的工作人员未经许可不得公开发表可能影响市场成交结果的言论。市场成员应当建立健全信息保密管理制度，定期开展保密培训，明确保密责任，必要时应当对办公系统、办公场所采取隔离措施</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十一条 </span><span><font>信息封存是指对关键信息的记录留存。任何有助于还原运行日情况的关键信息应当记录、封存。封存信息包括但不限于：</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）运行日市场出清模型信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）市场申报量价信息。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）市场边界信息，包括外来（外送）电曲线、检修停运类信息、预测信息、新能源发电曲线、电网约束信息等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）市场干预行为，包括修改计划机组出力、修改外来（外送）电出力、修改市场出清参数、修改预设约束条件、调整检修计划、调整既有出清结果等，应当涵盖人工干预时间、干预主体、干预操作、干预原因等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（五）实时运行数据，包括机组状态、实际负荷等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（六）市场结算数据、计量数据</span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十二条 </span><span>市场运营</span><span><font>机构应当建立市场干预记录管理机制，明确记录保存方式。任何单位或者个人不得违法违规更改已封存信息。市场干预记录应当报</font></span><span>国家能源局或其派出机构</span><span><font>备案，国家能源局</font></span><span>及其</span><span><font>派出机构定期对市场干预行为进行监管，保证市场干预行为的公平性。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十三条 </span><span><font>封存的信息应当以易于访问的形式存档，存储系统应当满足访问、数据处理和安全方面的要求。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十四条 </span><span><font>信息的封存期限为</font></span><span><font>5</font></span><span><font>年，特殊情形除外。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span>第六</span><span><font>章</font>&nbsp;<font>监督</font></span><span>管理</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十五条 </span><span>国家能源局及其派出机构</span><span><font>对</font></span><span>市场成员的信息披露工作</span><span><font>进行监管。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十六条 </span><span>电力交易机构配合国家能源局及其派出机构开展信息披露监管工作，</span><span><font>对未按本规则披露信息的信息披露主体，采取提醒</font></span><span>信息披露主体</span><span><font>、</font></span><span>报送</span><span><font>国家能源局或</font></span><span>其派出机构等方式进行管理。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十七条 </span><span>市场成员</span><span><font>应按照本</font></span><span>规则</span><span><font>要求，做好电力市场信息披露工作</font></span><span>，不得出现</span><span><font>以下行为</font></span><span>：</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（一）信息披露不及时、不准确、不完整的。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（二）制造传播虚假信息的。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（三）发布误导性信息的。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>（四）其他违反信息披露有关规定的行为。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十八条 </span><span>对于出现以上行为的市场成员，纳入电力交易信用评价，国家能源局及其派出机构可依法依规将其纳入失信管理，采取有关监管措施，并根据《电力监管条例》等有关规定作出行政处罚。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第四十九条 </span><span><font>国家能源局</font></span><span>及其</span><span><font>派出机构</font></span><span>组织电力交易机构</span><span><font>对</font></span><span>各市场成员</span><span><font>披露信息</font></span><span>的及时性、完整性、准确性等</span><span><font>情况作出评价，评价结果向所有</font></span><span>市场成员</span><span><font>公布。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span>第</span><span>七</span><span><font>章</font> <font>附</font> &nbsp;<font>则</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第五十条 </span><span><font>本</font></span><span>规则</span><span><font>自</font></span><span><font>2024</font><font>年</font><font>1</font><font>月</font><font>31</font><font>日</font></span><span><font>起施行</font></span><span>，《电力现货市场信息披露办法（暂行）》（国能发监管</span><span>〔</span><span><font>2020</font></span><span>〕</span><span><font>56</font><font>号）同时废止</font></span><span><font>。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第五十一条 </span><span><font>本</font></span><span>规则</span><span><font>由国家能源局负责解释。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第五十二条 </span><span>本规则有效期五年。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span><font>附</font></span><span>表</span><span><font>：电力市场信息披露内容（公众、公开部分）</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+</div>
+<span>&nbsp;
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span>附表</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>电力市场信息披露内容（公众、公开部分）</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span>一、发电企业</span><span><o:p></o:p></span>&nbsp;</p>
+<div>
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <p><b><span>编号</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息名称</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息内容</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露时间或周期</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露范围</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>备注</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>1.1</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>基本信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>企业全称、所属集团、工商注册时间、统一社会信用代码、股权结构、法定代表人、电源类型、装机容量、联系方式等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>股权结构只披露直接股东及股份占比</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>1.2</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>变更情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括企业更名或法定代表人变更，企业增减资、合并、分立、解散及申请破产的决定，依法进入破产程序、被责令关闭等重大经营信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>1.3</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>关联信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>直接或间接控股其他企业</font><font>25%</font><font>以上的，双方被同一股东控股</font><font>50%</font><font>以上的</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>1.4</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电厂机组信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括电厂调度名称、所在地市、电力业务许可证（发电类）编号、机组调度管辖关系、投运机组台数、单机容量及类型、投运日期、接入电压等级、单机最大出力、机组出力受限的技术类型（如流化床、高背压供热）等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>1.5</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>抽蓄机组信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括最大发电能力、正常最小发电出力、最大抽水充电能力、正常最小抽水充电能力、静止到满载发电最小时间、静止到满载抽水最小时间、机组解列到重新并网最小间隔时间等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>1.6</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>配建储能信息（如有）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>额定充（放）电功率、最大调节容量、最大充（放）电功率、额定充（放）电时间、最大持续充（放）电时间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>1.7</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>机组出力受限情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>1.8</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>机组检修及设备改造计划</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p><b><span>&nbsp;</span></b></p>
+<p><span><o:p></o:p></span>&nbsp;</p>
+<p><span>二、售电公司</span><span><o:p></o:p></span>&nbsp;</p>
+<div>
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <p><b><span>编号</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息名称</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息内容</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露时间或周期</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露范围</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>备注</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.1</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>基本信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>企业全称、企业性质、售电公司类型、工商注册时间、注册资本金、统一社会信用代码、股权结构、经营范围、法定代表人、联系方式、营业场所地址、信用承诺书等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>股权结构只披露直接股东及股份占比</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.2</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>变更情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括企业更名或法定代表人变更，企业增减资、合并、分立、解散及申请破产的决定，或者依法进入破产程序、被责令关闭等重大经营信息，配电网运营资质变化等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.3</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>关联信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>直接或间接控股</font><font>25%</font><font>以上的，双方被同一股东控股</font><font>50%</font><font>以上的</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.4</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>资产信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括资产证明方式、资产证明出具机构、报告文号（编号）、报告日期、资产总额、实收资本总额等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.5</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>从业人员信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>从业人员数量、职称及社保缴纳人数</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.6</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>售电公司年报</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>企业基本情况、持续满足市场准入条件情况、财务情况、经营状况、业务范围、履约情况、重大事项，信用信息、竞争力等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.7</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>零售套餐产品信息（如有）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.8</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>履约保函、保险信息（如有）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>各省履约保函（保险）缴纳金额、有效期等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.9</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>配电网运营有关信息（如有）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力业务许可证（供电类）编号、配电网电压等级、配电区域、配电价格等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>2.10</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>财务审计报告（如有）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p><span>&nbsp;</span></p>
+<p><span><o:p></o:p></span>&nbsp;</p>
+<p><span>三、电力用户</span><span><o:p></o:p></span>&nbsp;</p>
+<div>
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <p><b><span>编号</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息名称</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息内容</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露时间或周期</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露范围</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>备注</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>3.1</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>基本信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>企业全称、企业性质、行业分类、用户类别、工商注册时间、统一社会信用代码、法定代表人、联系方式、经营范围、所属行业等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>3.2</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>变更情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括企业更名或法定代表人变更，企业增减资、合并、分立、解散及申请破产的决定，依法进入破产程序、被责令关闭等重大经营信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>3.3</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>关联信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>直接或间接控股</font><font>25%</font><font>以上的，双方被同一股东控股</font><font>50%</font><font>以上的</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>3.4</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>用电信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>用电类别、接入地市、自备电源（如有）、变压器报装容量以及最大需量等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>3.5</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>配建储能信息（如有）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>额定充（放）电功率、最大调节容量、最大充（放）电功率、额定充（放）电时间、最大持续充（放）电时间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p><b><span>&nbsp;</span></b>&nbsp;</p>
+<p><span>&nbsp;</span></p>
+<p><span><o:p></o:p></span>&nbsp;</p>
+<p><span>四、新型主体</span><span><o:p></o:p></span>&nbsp;</p>
+<div>
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <p><b><span>编号</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息名称</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息内容</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露时间或周期</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露范围</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>备注</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>4.1</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>基本信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>企业全称、企业性质、额定容量、工商注册时间、统一社会信用代码、股权结构、经营范围、法定代表人、联系方式等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>股权结构只披露直接股东及股份占比</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>4.2</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>变更情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括企业更名或法定代表人变更，企业增减资、合并、分立、解散及申请破产的决定，依法进入破产程序、被责令关闭等重大经营信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>4.3</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>关联信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>直接或间接控股</font><font>25%</font><font>以上的，双方被同一股东控股</font><font>50%</font><font>以上的</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>4.4</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>储能设备信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>调度名称、调度管辖关系、投运日期、接入电压等级、机组技术类型（电化学、压缩空气等）、所在地市</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>4.5</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>技术参数</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>额定充（放）电功率、最大调节容量、最大充（放）电功率、额定充（放）电时间、最大持续充（放）电时间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p><span>&nbsp;</span></p>
+<p><span><o:p></o:p></span>&nbsp;</p>
+<p><span>五、电网企业</span><span><o:p></o:p></span>&nbsp;</p>
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <p><b><span>编号</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息名称</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息内容</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露时间或周期</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露范围</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露市场</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>备注</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.1</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>基本信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>企业全称、企业性质、工商注册时间、统一社会信用代码、法定代表人、联系方式、供电区域等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.2</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>关联信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>直接或间接控股</font><font>25%</font><font>以上的，双方被同一股东控股</font><font>50%</font><font>以上的</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.3</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>政府定价信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>政府印发的电价政策相关文件、输配电价、政府核定的输配电线损率、政府性基金及附加等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>收到文件后</font><font>5</font><font>个工作日内</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.4</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>代理购电信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>代理购电量及构成、代理购电价及构成（含上网环节线损折价，系统运行费用折价等）、代理购电用户分电压等级电价及构成</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.5</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力业务许可证</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力业务许可证（输电类、供电类）编号</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.6</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发电机组装机及发电总体情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>各类型电源（含独立储能）的装机容量、投产及退役容量、发电量等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.7</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>全社会以及分产业用电量信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>转载披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.8</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年度供需实际情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电网最高负荷、负荷变化和供需情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.9</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年度电力电量供需预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>次年度供需预测情况（最高负荷、供需形势分析）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.10</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>输变电设备建设、投产情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>220kV</font><font>及以上输变电设备年度建设投产规模</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.11</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>220</font><font>千伏及以上电源送出工程建设投产计划</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.12</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间联络线工程建设投产计划</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.13</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>市场经营主体电费违约总体情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>5.14</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>需求响应执行情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>地方政府发布后及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><span>&nbsp;</span></p>
+<p><span><o:p></o:p></span>&nbsp;</p>
+<p><span>六、市场运营机构</span><span><o:p></o:p></span>&nbsp;</p>
+<div>
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <p><b><span>编号</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息名称</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>信息内容</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露时间或周期</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露范围</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>披露市场</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>提供方</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+            <td>
+            <p><b><span>备注</span></b><b><span><o:p></o:p></span></b>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.1</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易机构基本信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>机构全称、工商注册时间、股权结构、统一社会信用代码、法定代表人、服务电话、办公地址、网站网址等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>注册生效后披露，及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>股权结构披露直接股东及股份占比</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.2</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>法律法规、政策文件、规则及细则</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力市场公开适用的法律法规、政策文件</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>收到文件后</font><font>5</font><font>个工作日内</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.3</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>可公开的电力市场规则细则类信息，包括交易规则，制定、修订市场规则过程中涉及的解释性文档等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>文件印发后</font><font>5</font><font>个工作日内</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.4</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易收费标准</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>收到文件后</font><font>5</font><font>个工作日内</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.5</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>业务标准规范</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>负荷预测方法和流程</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.6</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>辅助服务需求计算方法</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.7</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电网安全校核规范</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.8</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>市场经营主体注册流程</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>制定后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.9</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>争议解决流程</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>制定后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.10</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力市场服务指南</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>制定后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.11</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>数据通讯格式规范</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>制定后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.12</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>信用信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>经政府同意的市场经营主体电力交易信用信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.13</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>售电公司违约情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发生后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.14</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力市场运行情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>截至上一年底各类市场经营主体注册情况，上一年度交易结算总量、均价情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.15</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>退市市场经营主体名单</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>强制或自愿退出且公示生效后的市场经营主体名单</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.16</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>市场结构情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>HHI</font><font>、</font><font>Top-m</font><font>指标</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.17</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>市场暂停、中止、重新启动等情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发生后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公众</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.18</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>市场信息披露报告</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>市场信息披露报告，包括电网概况、电力供需及预测情况、市场准入、市场交易、市场结算、市场建设、违规情况、市场干预情况等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>季、月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易机构牵头编制报告，其他信息披露主体提供相关信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.19</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>违规行为通报及市场干预情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>经国家能源局派出机构或者地方政府电力管理部门认定的违规行为通报、市场干预情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>收到文件后</font><font>5</font><font>个工作日内</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.20</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力现货市场第三方校验报告</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按照市场管理委员会要求时间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.21</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易机构经审计的收支总体情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>——</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>向市场经营主体收费的电力交易机构披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.22</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易日历</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>多年、年、月、周、多日、日各类交易安排</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.23</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电网主要网络通道示意图</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>500kV</font><font>电压等级及以上</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.24</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>约束信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发输变电设备投产、退役计划</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年、月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.25</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发输变电设备检修计划</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年、月、日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.26</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间联络线输电可用容量（考虑所有已知影响）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年、月、周</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月度分周按峰平谷时段披露，周按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.27</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内关键输电断面可用容量（考虑所有已知影响）</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年、月、周</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.28</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>必开必停机组名单及总容量</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.29</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>开停机不满最小约束时间机组名单</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.30</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>参数信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>市场出清模块算法及运行参数</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.31</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>价格限值</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.32</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>约束松弛惩罚因子</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.33</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>节点分配因子</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>以每两小时为单位披露，适用于节点边际电价市场</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.34</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>节点分配因子确定方法</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>适用于节点边际电价市场</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.35</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>节点及分区划分依据和详细数据</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>适用于节点边际电价市场</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.36</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>预测信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>系统负荷预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月最大负荷</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.37</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>周、日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.38</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力电量供需平衡预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>供需形势分析</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.39</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按交易时间单元披露供需差额</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.40</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>各电网电力平衡预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.41</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间联络线输电曲线预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日前、日内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.42</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发电总出力预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按交易时间单元披露，分区边际电价市场需发布分区预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.43</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>非市场机组总出力预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.44</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>新能源总出力预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>周、日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>分电源类型按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.45</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>水电（含抽蓄）总出力预测</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>周、日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.46</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>辅助服务需求信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>各类辅助服务需求总量</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.47</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>具备参与辅助服务市场的机组台数及容量、用户及售电公司个数等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.48</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易公告</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括交易品种、交易主体、交易方式、交易申报时间、交易合同执行开始时间及终止时间、交易参数、出清方式、交易约束信息、交易操作说明、其他准备信息等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易组织前及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.49</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>中长期交易申报及成交情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括交易参与的主体数量、申报情况、成交的主体数量、成交总量及分电源类型电量、成交均价及分电源类型均价等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易出清后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.50</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>中长期交易安全校核及原因</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易出清后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.51</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>绿电交易申报及成交情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>包括参与的主体数量、申报电量、成交的主体数量、最终成交总量、成交均价</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易出清后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.52</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>现货市场申报、出清信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日前、日内平均申报电价，日前、日内各时段出清电量及各类电源电量和台数，日前、日内平均出清电价</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>出清后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>节点边际电价市场应当披露交易时间单元所有节点的节点边际电价以及各节点边际电价的电能量、阻塞等各分量价格</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.53</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>辅助服务市场申报、出清信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>各类辅助服务市场申报总电量及平均价格，各时段出清电量及各类电源电量和台数、平均中标价格</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>出清后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>出清按交易时间单元披露，其他按日披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.54</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日前、实时市场各时段出清的断面约束及阻塞情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>运行结束按交易时间单元披露</font><font>,</font><font>适用节点边际电价市场</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.55</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间交易计划</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.56</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>运行信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>机组状态</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>运行日次日按交易时间单元披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.57</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发电总出力</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.58</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>非市场机组总出力</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.59</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>新能源总出力</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.60</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>水电（含抽蓄）总出力</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.61</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>实际负荷</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.62</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>系统备用信息</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.63</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>重要通道实际输电情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.64</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>实际运行输电断面约束情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.65</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间联络线输电情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.66</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>重要线路与变压器平均潮流</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.67</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发输变电设备投产、退役、检修、改造等计划执行情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月、日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.68</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>重要线路实际停运情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.69</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发电机组非停情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.70</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电网负荷总体情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>最高最低负荷和负荷变化情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.71</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力并网运行管理考核和返还明细</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>各并网主体分考核种类考核费用、返还费用、免考核情况等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.72</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力辅助服务考核、补偿和分摊明细</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><font>各市场经营主体分辅助服务品种的电量</font><font>/</font><font>容量、补偿费用、考核费用、分摊比例、分摊费用等</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><span>&nbsp;</span></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.73</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>结算情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>结算总体情况及分类构成情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.74</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span><span>&nbsp;</span></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.75</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>绿电交易结算情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.76</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间交易结算情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.77</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>不平衡资金构成、分摊和分享情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>不平衡资金分项计列</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.78</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>偏差考核情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.79</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>售电公司结算总体情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>售电公司代理电量，批发侧、零售侧结算均价</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>零售侧结算均价不含输配电价及基金附加等</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.80</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>售电公司履约保障凭证情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>各售电公司履约保障凭证缴纳、执行情况，结合资产总额确定的售电量规模限额</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.81</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>交易总体情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>年度、月度、月内、现货交易成交均价及电量</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>月</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>中长期交易分电源类型披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.82</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发电机组转商情况</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发电机组、独立储能完成整套设备启动试运行时间</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.83</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>到期未取得电力业务许可证的市场经营主体名单</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>及时更新</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.84</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>市场干预情况原始日志</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>干预时间、干预主体、干预操作、干预原因</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>发生后及时披露</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间、省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构电力交易机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.85</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间联络线输电容量分配结果</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>适用于分区边际电价市场</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.86</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省间联络线输电容量预留</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.87</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>平衡市场交易电量、价格</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>日</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><span><font>6.88</font></span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>再调度费用及明细</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>&nbsp;</span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>季</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>公开</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>省内</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+            <td>
+            <p><span>电力调度机构</span><span><o:p></o:p></span>&nbsp;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p><span>&nbsp;</span>&nbsp;</p>
+</span></div></div>
+            </div>
+            <div style="padding:20px 0">
+              <h5>相关附件</h5>
+              
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+<!-- footer -->
+    <div class="footer">
+      <ul class="linksTab">
+        <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+        <li><a href="../../../all/map/">网站地图</a></li>
+        <li><a href="../../../all/xglj/">相关链接</a></li>
+        <li><a href="../../../all/flsm/">法律声明</a></li>
+       <!-- <li><a href="../../../all/yszcz/">隐私政策</a></li> -->
+      </ul>
+      <ul class="linksMainTab">
+        <li><a href="../../../news/">新闻资讯</a></li>
+        <li><a href="../../../information/">信息发布</a></li>
+        <li><a href="../../../service/">市场服务</a></li>
+        <li><a href="../../">政策法规</a></li>
+        <li><a href="../../../aboutus/">关于我们</a></li>
+      </ul>
+      <div class="linksTabMain">
+        <ul>
+          
+            <li><a href="../../../news/ddsy/">党的声音</a></li>
+          
+            <li><a href="../../../news/gsdt/">公司动态</a></li>
+          
+            <li><a href="../../../news/mtgz/">媒体关注</a></li>
+          
+            <li><a href="../../../news/scyj/">市场研究</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../information/zxtz/">最新通知</a></li>
+          
+            <li><a href="../../../information/gsgg/">公示公告</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../service/scpx/">市场培训</a></li>
+          
+            <li><a href="../../../service/ffcn/">服务承诺</a></li>
+          
+            <li><a href="../../../service/cjwtjd/">常见问题解答</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../flfg/">法律法规</a></li>
+          
+            <li><a href="../../zcwj/">政策文件</a></li>
+          
+            <li><a href="../">交易规则</a></li>
+          
+            <li><a href="../../ywzy/">业务指引</a></li>
+          
+            <li><a href="../../sfbz/">收费标准</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/gsjj/">公司简介</a></li>
+          
+            <li><a href="../../../aboutus/zzjg/">组织架构</a></li>
+          
+            <li><a href="../../../aboutus/dsj/">大事记</a></li>
+          
+            <li><a href="../../../aboutus/zpxx/">招聘信息</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+          
+            <li><a href="../../../aboutus/jdjb/">监督举报</a></li>
+          
+            <li><a href="../../../aboutus/xfqd/">信访渠道</a></li>
+          
+        </ul>
+      </div>
+      <div class="footerBottom">
+        <div class="way">
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">广州电力交易<br/>中心公众号</p>
+              <img src=" ../../../all/gywm/202506/W020250625607877531250.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">交易服务<br/>留言咨询</p>
+              <img src=" ../../../all/ly/202507/W020250707507949428239.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/fwrx/202310/W020231008413156095796.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num">400-15-95598</p>
+              <p>交易服务热线</p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/nyjgrx/202310/W020231008413349834608.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num"><span style="font-size:0.18rem;">能源监督热线:</span>12398</p>
+              <p><a href="http://www.nea.gov.cn/ztzl/12398nyjgrx/index.htm" style="color:#a8bad2">12398能源监管热线网站</a></p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线公众号</p>
+              <img src=" ../../../all/gzh/202506/W020250625608092853450.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线APP</p>
+              <img src=" ../../../all/nyapp/202310/W020250625608245347243.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+        </div>
+        <div class="webSiteLink">
+          <p>南方电网安备1514A91LF号 ICP国网安备1514A91LF号</p>
+          <p>版权所有: © 2020 广州电力交易中心 版权所有 <a href="https://beian.miit.gov.cn" target="_blank" style="color:#a8bad2">粤ICP备20027641号-2</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../../../images/zepto.min.js"></script>
+  <script type="text/javascript" src="../../../images/swiper.min.js"></script>
+  <script>
+    var bannerSwiper = new Swiper('.banner', {
+      // 自动播放配置
+        autoplay: {
+            delay: 4000, // 3 秒切换
+            disableOnInteraction: false // 用户操作后仍自动播放
+        },
+        loop: true, // 循环播放
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      }
+    });
+    var newsImgsSwiper = new Swiper('.newsImgs', {
+      pagination: {
+        el: '.swiper-pagination'
+      }
+    });
+    var businessSwiper = new Swiper('.business', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      // slidesPerGroup: 4,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+  <script type="text/javascript">
+    $('.menuIcon').on('click', function () {
+      $('.menu').toggle()
+    })
+    $(window).on('resize', function () {
+      $('.rightMain').css('width', $('.mainBox').width() - $('.leftMenu').width() - 1)
+    }).resize();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+02_元数据/备份/
+02_元数据/知识库管理工作簿_更新版_*.xlsx
+
+~$*
+*.tmp
+*.bak
+*.log
+
+.DS_Store
+Thumbs.db
