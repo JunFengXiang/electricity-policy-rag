@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>市工业和信息化局等部门关于印发《天津市电力需求侧管理实施细则》的通知_委局文件_政务公开</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+
+<meta name="SiteName" content="天津市粮食和物资储备局" />
+<meta name="SiteDomain" content="http://lswz.tj.gov.cn" />
+<meta name="SiteIDCode" content="1200000079" />
+<meta name="ColumnName" content="委局文件" />
+<meta name="ColumnDescription" content="委局文件" />
+<meta name="ColumnKeywords" content="政务公开,委局文件" />
+<meta name="ColumnType" content="政务公开" />
+<meta name="PubTime" content="2026-02-02 19:20:48" random="138" />
+
+<meta name="ArticleTitle" content="市工业和信息化局等部门关于印发《天津市电力需求侧管理实施细则》的通知" />
+
+
+
+<meta name="PubDate" content="2025-11-25" />
+
+
+
+<meta name="ContentSource" content="天津市工业和信息化局" />
+
+
+    <!--资源引用脚本-->
+    <link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/N_common.css">
+
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/jquery-migrate-3.4.0.min.js"></script>
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/N_common.js"></script>
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/N_new_mixin.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../images/N_new_mixin.css">
+
+<link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/N-QT.css">
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/N-QT.js"></script>
+<link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/N_new_mixin-index-b.css">
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/N_new_mixin-index-b.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/N39-2-xl-style.css">
+    <script type="text/javascript">
+        //处理日期方法
+        function GetDateStr(timeStr) {
+            var yearStr = '', monthStr = '', dayStr = '';
+            if (timeStr.length >= 10) {
+                yearStr = timeStr.substr(0, 4);
+                monthStr = timeStr.substr(5, 2);
+                dayStr = timeStr.substr(8, 2);
+            }
+            return yearStr + '年' + monthStr + '月' + dayStr + '日';
+        }
+
+        $(function () {
+            //原模板去掉样式逻辑
+            //$(".TRS_PreAppend").removeAttr("style");
+            //处理段落两端对齐逻辑
+            $('.TRS_UEDITOR p').each(function () {
+                if ($(this).css('text-align') != 'right' && $(this).css('text-align') != 'center') {
+                    $(this).css('text-align', 'justify');
+                }
+            });
+
+            //处理主题分类
+            var ztValue = $('#content_zt').text();
+            ztValue = ztValue.replace(/\;/g, '；');
+            ztValue = ztValue.replace(/\-/g, '');
+            if (ztValue.lastIndexOf('\\') == (ztValue.length - 1)) {
+                ztValue = ztValue.substr(0, (ztValue.length - 1));
+            }
+            $('#content_zt').text(ztValue);
+            //处理成文日期
+            var cwrqValue = '2025-11-25 10:00';
+            cwrqValue = GetDateStr(cwrqValue);
+            $('#content_cwrq').text(cwrqValue);
+
+            //处理发文日期
+            var fbrqValue = '2025-11-25 14:00';
+            fbrqValue = GetDateStr(fbrqValue);
+            $('#content_fbrq').text(fbrqValue);
+
+			var hasRelated = false;
+			var zcjd = $('.xl-rl-zcjd').find('ul').find('li').length;
+			var xgzc = $('.xl-rl-xgzc').find('ul').find('li').length;
+			var xgbd = $('.xl-rl-xgbd').find('ul').find('li').length;
+
+            if ($('.xl-rl-zcjd').find('ul').find('li').length == 0) {
+                $('.xl-rl-zcjd').hide();
+            }
+			if ($('.xl-rl-xgzc').find('ul').find('li').length == 0) {
+                $('.xl-rl-xgzc').hide();
+            }
+			if ($('.xl-rl-xgbd').find('ul').find('li').length == 0) {
+                $('.xl-rl-xgbd').hide();
+            }
+			if((zcjd+xgzc+xgbd)==0){
+			    $("#xlrllt").removeClass("xl-w71 xl-fll xl-br-fg xl-zw-cons-lf").addClass("xl-w100");
+				$("#xlrlrt").removeClass("xl-w29 xl-fll");
+				$('.xl-zw-cons-rt').hide();
+			}else{
+				hasRelated = true;
+			}
+
+			//根据时间判断
+			var isQian = '',isPic=0;
+
+			isQian = '';
+			isPic = $('.xl-zw-info').find('img').length;
+			console.log("时间之前：" +isQian + "|包含图片："+isPic);
+
+			//就是如果有图片，则政策的宽度为606；如果没图片，判断日期，如果在日期时间点之前，606，如果时间点后，直接正常宽度。
+			//if (maxWidth != "" && maxWidth != null && maxWidth != undefined)
+			if (!ismobile()) {
+			    if (isQian != "" && isQian != null && isQian != undefined) {
+			        $(".xl-zw-info").css('width', '606px').css('margin', '0 auto');
+			    }
+				//if (isPic) {//有图片
+
+				//	$(".xl-zw-info").css('width','606px').css('margin','0 auto');
+
+				//} else {
+				//	if (isQian != "" && isQian != null && isQian != undefined){
+				//			$(".xl-zw-info").css('width','606px').css('margin','0 auto');
+				//	}
+				//}
+			}
+			if (ismobile()) {
+			    $(".xl-zw-info *").css('width', 'unset');
+                            $(".xl-zw-info img").css('height', 'unset');
+
+				//字体大小转换
+				var $box = $('.TRS_PreAppend');
+				pt2px($box);
+			}
+
+        });
+
+        function pt2px(box){
+		  if (box.children()&&box.children().length>0) {
+		    box.children().each(function(index,item) {
+		      var $item = $(item)
+		      pt2px($item);
+		      $.each(['fontSize','lineHeight','textIndent'],function(j,cur){
+		        var computed = parseFloat($item.css(cur));
+		        var computed = parseFloat(computed*0.22/16);
+		        if(computed>3 && cur=="textIndent"){
+		        	computed = 3;
+		        }
+		        if(computed){
+		          computed=computed+'rem';
+		          $item.css(cur,computed);
+		        }
+		      })
+
+		    });
+		  }
+		}
+    </script>
+    <style type="text/css">
+        /* 原编辑器样式，勿删勿注释！！！ Generator: eWebEditor */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            font-size: 10.5pt;
+            font-family: "Times New Roman";
+        }
+
+        p.MsoHeader, li.MsoHeader, div.MsoHeader {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: center;
+            tab-stops: center 207.65pt right 415.3pt;
+            layout-grid-mode: char;
+            border: none;
+            padding: 0cm;
+            font-size: 9.0pt;
+            font-family: "Times New Roman";
+        }
+
+        p.MsoFooter, li.MsoFooter, div.MsoFooter {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            tab-stops: center 207.65pt right 415.3pt;
+            layout-grid-mode: char;
+            font-size: 9.0pt;
+            font-family: "Times New Roman";
+        }
+
+        p.MsoBodyText, li.MsoBodyText, div.MsoBodyText {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            font-size: 16.0pt;
+            font-family: "Times New Roman";
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /*内容区域默认行高*/
+        .xl-zw-info {
+            line-height: 40px;
+            color: rgb(61,61,61);
+        }
+
+        .article_content {
+            /*width: 606px;*/
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0;
+            border: none;
+            line-height: 40px;
+            font-size: 16pt;
+            margin-top: 0px;
+            min-height: 400px;
+            font-family: "仿宋_GB2312";
+            background-color: #ffffff;
+        }
+
+            .article_content p {
+                text-justify:newspaper;
+                word-break: break-all;
+                word-wrap:break-word;
+            }
+   table{
+margin: 0 auto;
+}
+.qt-current-location{
+            font-size: 20px;;
+        }
+.qt-current-location a, 
+.qt-current-location a:hover,
+.qt-current-location a:visited, 
+.qt-current-location a:active
+{
+font-size:20px;
+}
+        .xl-zw-rtlist > li {
+            font-size: 14px;
+            height: auto;
+            line-height: 21px;
+        }
+        .xl-zw-rtlist > li > a:hover, 
+        .xl-zw-rtlist > li:hover:before {
+            color: rgb(70,129,175);
+        }
+    </style>
+</head>
+<body>
+    <!--公用common-head-政府信息公开.html-->
+    <style>
+        .head-zfxxgk-title {
+            width: 620px;
+            height: 100px;
+            left: 290px;
+        }
+.head-top img{
+margin-right: .05rem;
+}
+  #zzmsbtn,.zzzq_item{
+             border-left: none;
+    background: rgb(244, 186, 47);
+    padding: 0 10px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 9px;
+    margin-right: 10px;
+   font-weight: bold;
+    font-size: 14px;
+  display: inline-block !important;
+       }
+        @media screen and (max-device-width: 768px){
+            .head-zfxxgk-title {
+                width: 4.4rem;
+                height: unset;
+            }
+        }    
+    </style>
+<!-- 公用common-head-top.html -->
+<div class="head-top">
+  <div class="main clear">
+    <a href="https://www.tj.gov.cn/" target="_blank">
+      <img src="https://jyhpt.tj.gov.cn/images/DOCUMENT20200927635977932964.png" UrlIsAbs=TRUE />
+      天津政务网
+    </a>
+    <span class="current-now">2019年12月3日星期二</span>
+  <p>
+        <a id="simplifiedLink">简体</a><span class="jgline">|</span>
+      <a id="translateLink">繁体</a>
+<!--切换时注意更新无障碍-->
+     <a href="javascript:void(0);"  id="toolbarSwitch" onclick="EsdToolbarInit.openClickFunc();" onkeydown="EsdToolbarInit.openKeydownFunc(event);">无障碍</a>
+       <a href="javascript:void(0);"  id="zzmsbtn"><img class="wza-img" src="https://gyxxh.tj.gov.cn/images/zzmslogo.png" /><span>长者模式</span></a>
+    </p>
+  </div>
+</div>
+
+<!--公用common-head-政府信息公开.html-->
+<div class="head-zfxxgk-bg">
+  <div class="main">
+    <a id="logo-link" href='https://gyxxh.tj.gov.cn/' ><img class="head-zfxxgk-logo" src="https://gyxxh.tj.gov.cn/LSLMYZ5238/ZFXXGK9556/images/P020210107341730821238.png" /></a>
+    <img class="head-zfxxgk-title" src="https://gyxxh.tj.gov.cn/glllm/QDFY/xxgktb/202005/P020200903570449669625.png" />
+  </div>
+  <p class="head-line-blue"></p>
+</div>
+    <!--End 公用common-head-政府信息公开.html-->
+    <!--Center中间-->
+    <div class="xl-zw-main">
+        <div class="xl-mcon">
+            <!-- 面包屑 -->
+            <style>
+  .qt-current-location{
+             font-size: 20px;
+         }
+ .qt-current-location a, 
+ .qt-current-location a:hover,
+ .qt-current-location a:visited, 
+ .qt-current-location a:active
+ {
+ font-size:20px;
+ }
+ @media screen and (max-device-width: 768px){
+  .qt-current-location{
+             font-size: 0.24rem;
+         }
+ .qt-current-location a, 
+ .qt-current-location a:hover,
+ .qt-current-location a:visited, 
+ .qt-current-location a:active
+ {
+ font-size:0.24rem;
+ }
+  }    
+</style>
+<div class="qt-current-location">
+    <img class="qt-pcicon" src="https://jyhpt.tj.gov.cn/images/bread.png" />
+    <a href="../../../" target="_blank" title="政务公开" class="CurrChnlCls">政务公开</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="../../" target="_blank" title="政策法规" class="CurrChnlCls">政策法规</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="../" target="_blank" title="委局文件" class="CurrChnlCls">委局文件</a>
+</div>
+            <div class="xl-zw-con">
+                <div class="xl-zw-top">
+                    <div class="top-container">
+                        <div class="sx-item item-all">
+                            <div class="sx-title">名&#12288;&#12288;&#12288;&#8194;称&#8194;：</div>
+                            <div class="sx-con">市工业和信息化局等部门关于印发《天津市电力需求侧管理实施细则》的通知 </div>
+                            <div class="xl-clear"></div>
+                        </div>
+                        <div class="sx-item">
+                            <div class="sx-title">索&#8194;&#8194;&#8194;引&#8194;&#8194;号&#8194;：</div>
+                            <div class="sx-con">11120000MB1896646L/2025-00030</div>
+                            <div class="xl-clear"></div>
+                        </div>
+                        <div class="sx-item">
+                            <div class="sx-title">发&#8194;布&#8194;机&#8194;构&#8194;：</div>
+                            <div class="sx-con">天津市工业和信息化局</div>
+                            <div class="xl-clear"></div>
+                        </div>
+                        
+                            
+                        
+                        
+                            
+                                <div class="sx-item">
+                                    <div class="sx-title">发&#8194;文&#8194;字&#8194;号&#8194;：</div>
+                                    <div class="sx-con">津工信规〔2025〕1号</div>
+                                    <div class="xl-clear"></div>
+                                </div>
+                            
+                        
+                        <div class="sx-item">
+                            <div class="sx-title">主&#12288;&#12288;&#12288;&#8194;题&#8194;：</div>
+                            <div id="content_zt" class="sx-con">科技工业信息化\工业;科技工业信息化\信息化</div>
+                            <div class="xl-clear"></div>
+                        </div>
+                        
+                            
+                                <div class="sx-item">
+                                    <div class="sx-title">成&#8194;文&#8194;日&#8194;期&#8194;：</div>
+                                    <div id="content_cwrq" class="sx-con"></div>
+                                    <div class="xl-clear"></div>
+                                </div>
+                            
+                        
+                        <div class="sx-item">
+                            <div class="sx-title">发&#8194;文&#8194;日&#8194;期&#8194;：</div>
+                            <div id="content_fbrq" class="sx-con"></div>
+                            <div class="xl-clear"></div>
+                        </div>
+						
+                           
+                                <div class="sx-item">
+                                    <div class="sx-title">有&#8194;&#8194;&#8194;效&#8194;&#8194;性&#8194;：</div>
+                                    <div id="content_yxx" class="sx-con">有效</div>
+                                    <div class="xl-clear"></div>
+                                </div>
+                            
+                        
+                        
+                            
+                        
+                        <div class="xl-clear"></div>
+                    </div>
+                    <!--<ul class="xl-zwtop-sy">
+                        <li class="xl-zwtop-w100">名　　称：<p>市工业和信息化局等部门关于印发《天津市电力需求侧管理实施细则》的通知</p></li>
+                        <li class="xl-zwtop-w50">索&nbsp;&nbsp;引&nbsp;&nbsp;号：<p>11120000MB1896646L/2025-00030</p></li>
+                        <li class="xl-zwtop-w50">发布机构：<p>天津市工业和信息化局</p></li>
+                        <li class="xl-zwtop-w50">联合发文单位：<p></p></li>
+                        <li class="xl-zwtop-w50">文　　号：<p>津工信规〔2025〕1号</p></li>
+                        <li class="xl-zwtop-w50">主　　题：<p>工业;信息化</p></li>
+                        <li class="xl-zwtop-w50">成文日期：<p>2025年11月25日</p></li>
+                        <li class="xl-zwtop-w50">发文日期：<p>2025年11月25日</p></li>
+                        <li class="xl-zwtop-w50">废止依据：<p></p></li>
+                    </ul>
+                    <div class="xl-clear"></div>-->
+                </div>
+                <!--Center中间 Cont-->
+                <div class="xl-zw-cons">
+
+                    <div id="xlrllt" class="xl-zw-cons-lf xl-w71 xl-fll xl-br-fg">
+                        <!-- <div class="xl-zw-cons-lf xl-w71 xl-fll" class="xl-zw-cons-lf xl-w100">   原来正文样式：   -->
+                        <div class="article_content xl-zw-info" style="word-break:normal!important;">
+                            <div class="trs_editor_view TRS_UEDITOR trs_paper_default trs_word trs_web"><div><p style="text-align:center;;text-autospace:ideograph-numeric;line-height:40px"><span style=";font-family:&#39;Times New Roman&#39;;font-size:29px"><span style="font-family:方正小标宋简体">市工业和信息化局等部门关于印发</span></span></p><p style="text-align:center;;text-autospace:ideograph-numeric;line-height:40px"><span style=";font-family:&#39;Times New Roman&#39;;font-size:29px"><span style="font-family:方正小标宋简体">《天津市电力需求侧管理实施细则》的通知</span></span></p><p style=";text-autospace:ideograph-numeric;line-height:37px"><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"> </span></p><p style=";text-autospace:ideograph-numeric;line-height:37px"><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"><span style="font-family:仿宋_GB2312">各有关单位：</span></span></p><p style="text-indent: 43px; line-height: 37px; text-align: justify;"><span style="font-size: 21px; font-family: 仿宋_GB2312;">为深入贯彻落实党的二十大和二十届二中、三中全会精神，加快推进我市新型能源体系建设，服务经济高质量发展，引导加强全社会用电管理</span><span style=";font-family:仿宋_GB2312;font-size:21px">，</span><span style="font-size: 21px; font-family: 仿宋_GB2312;">综合采取合理可行的技术、经济和管理措施，在工业、建筑、交通、商业、居民等终端用电环节实施节约用电、电能替代等，推动电力系统安全降碳、提效降耗。按照</span><span style="letter-spacing: 0px; font-size: 21px; font-family: 仿宋_GB2312;">《国家发展改革委等部门关于印发</span><span style="letter-spacing: 0px; font-size: 21px; font-family: 仿宋_GB2312;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">〈</span></span><span style=";font-family:&#39;Times New Roman&#39;;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">电力需求侧管理办法（</span>2023<span style="font-family:仿宋_GB2312">年版）<span style="letter-spacing: 0px; font-size: 21px; text-indent: 43px; text-wrap-mode: wrap; font-family: 仿宋_GB2312;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">〉</span></span>的通知</span></span><span style="letter-spacing: 0px; font-size: 21px; font-family: 仿宋_GB2312;">》</span><span style=";font-family:&#39;Times New Roman&#39;;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">（发改运行规〔</span>1283<span style="font-family:仿宋_GB2312">〕号）要求，我们组织编制了《天津市电力需求侧管理实施细则</span></span><span style="letter-spacing: 0px; font-size: 21px; font-family: 仿宋_GB2312;">》，现印发执行。</span></p><p style="text-align:center;margin-top:0;margin-bottom:0;text-autospace:ideograph-numeric;line-height:37px;background:rgb(255,255,255)"><strong><span style=";font-family:&#39;Times New Roman&#39;;font-size:29px"> </span></strong></p><p style="text-align:center;margin-top:0;margin-bottom:0;text-autospace:ideograph-numeric;line-height:37px;background:rgb(255,255,255)"><strong><span style=";font-family:&#39;Times New Roman&#39;;font-size:29px"> </span></strong><strong style="text-align: left;"><span style=";font-family:&#39;Times New Roman&#39;;font-size:29px"> </span></strong></p><p style="text-align:center;margin-top:0;margin-bottom:0;text-autospace:ideograph-numeric;line-height:37px;background:rgb(255,255,255)"><strong><span style=";font-family:&#39;Times New Roman&#39;;font-size:29px"> </span></strong></p><p style="text-align: right; margin-top: 0px; margin-bottom: 0px; text-indent: 21px; line-height: 37px; background: rgb(255, 255, 255);"><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"><span style="font-family:仿宋_GB2312">市工业和信息化局</span></span><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px">      <span style="font-family:仿宋_GB2312">市发展改革委</span>      </span><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"><span style="font-family:仿宋_GB2312">市财政局</span></span></p><p style="text-align: right; margin-top: 0px; margin-bottom: 0px; line-height: 37px; background: rgb(255, 255, 255);"><strong><span style=";font-family:&#39;Times New Roman&#39;;font-size:29px"> </span></strong></p><p style="text-align: right; margin-top: 0px; margin-bottom: 0px; text-indent: 85px; line-height: 37px; background: rgb(255, 255, 255);"><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"><span style="font-family:仿宋_GB2312">市住房城乡建设委</span></span><span style=";font-family:仿宋_GB2312;font-size:21px">              </span><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"><span style="font-family:仿宋_GB2312">市国资委</span></span></p><p style="text-align: right; margin-top: 0px; margin-bottom: 0px; line-height: 37px; background: rgb(255, 255, 255);"><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px">                             </span><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px">202</span><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px">5</span><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"><span style="font-family:仿宋_GB2312">年</span></span><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:Times New Roman">11</span></span><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"><span style="font-family:仿宋_GB2312">月</span></span><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:Times New Roman">25</span></span><span style=";font-family:&#39;Times New Roman&#39;;font-size:21px"><span style="font-family:仿宋_GB2312">日</span></span></p></div><p><span style=";font-family:&#39;Times New Roman&#39;;font-size:29px"><br/></span> </p><p style="text-align:center;margin-top:0;margin-bottom:0;text-autospace:ideograph-numeric;line-height:37px;background:rgb(255,255,255)"><span style=";font-family:方正小标宋简体;font-size:29px">天津市电力需求侧管理实施细则</span></p><p style="text-align:justify;margin-top:0;margin-bottom:0;text-autospace:ideograph-numeric;text-justify:inter-ideograph;line-height:37px;background:rgb(255,255,255)"><span style=";font-family:方正小标宋简体;font-size:29px"> </span></p><p style="text-align:center;;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px">第一章 </span><span style="font-family: 黑体;font-size: 21px">总则</span></p><p style="text-autospace:ideograph-numeric;line-height:37px"><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第一条</span><strong><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span></strong><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">为</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">确保本市电网安全稳定运行，维护正常供用电秩序，切实保障居民生活、公共服务和重要用户电力可靠供应，实现能源电力安全保供下的负荷精准控制和用户常态化、精细化的负荷管理，推动我市双碳目标实现，保障经济高质量发展，</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">根据《</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">国家发展改革委等部门关于印发〈</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">电力需求侧管理办法（</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"><span style="font-family:Times New Roman">2023</span><span style="font-family:仿宋_GB2312">年版</span></span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">）</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">〉的通知</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">》</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">及相关</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">文件规定，结合我</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">实际，制定本</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">实施</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">细则。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二条</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">本</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">实施</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">细则适用于</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">本市</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">行政区域内开展的电力需求侧管理工作和相关活动。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">市工业和信息化局是我市电力需求侧管理主管</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">部门，负责全市电力运行的平衡工作。区工业和信息化主管部门或区人民政府确定的部门（以下简称区电力管理部门）负责本区域内电力需求侧管理工作。市、区两级人民政府有关部门按照各自职责共同做好电力需求侧管理相关工作。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第四条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">电网企业、电力用户、电力需求侧管理服务机构、电力相关行业组织等是电力需求侧管理的重要实施主体，应依法依规开展电力需求侧管理工作。其中，电网企业包括国网天津市电力公司和增量配电网企业；电力需求侧管理服务机构包括负荷聚合商、售电公司、虚拟电厂运营商、综合能源服务商等。</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-align:center;margin-left:0;text-indent:0;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px">第二章 </span><span style="font-family: 黑体;font-size: 21px">节约用电</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第五条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">鼓励电网企业、电力需求侧管理服务机构针对产业链重点企业、专精特新中小企业、重点用能工业企业等开展公益性节能诊断服务，对主要工序、重点用能系统等查找用能薄弱环节，深入挖掘节能潜力。鼓励企业采用合同能源管理、能源托管等模式实施改造。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第六条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">区电力管理部门应用好节能降碳相关支持政策，推动高耗能、高排放企业采取有效的节约用电措施，降低单位产品的电量消耗，提高综合经济效益，坚持可持续发展。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第七条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">区电力管理部门应积极引导本区域内电网企业、电力用户、电力需求侧管理服务机构、电力相关行业组织优先使用节电的技术、产品和新能源，</span><span style=";font-family:仿宋_GB2312;font-size:21px">提升能源利用效率</span><span style=";font-family:仿宋_GB2312;font-size:21px">，</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">降低照明能耗。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第八条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">鼓励综合能源服务商通过合同能源管理等市场化方式为客户投资建设中央空调智能控制设备或提供节能改造服务等，加强节能诊断，有效提升中央空调节约用电水平。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第九条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">市工业和信息化局应</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">积极推动先进节能技术、装备和产品推广应用，推动钢铁、石化、化工等重点行业企业开展锅炉节能改造、能量系统优化等节能改造；培育绿色数据中心，加强在设备布局、制冷架构等方面优化升级，提升电能使用效率水平。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">鼓励电力用户积极使用高效节能产品，采用《国家重点推广的低碳技术目录》中的技术，推行绿色生产、生活方式，提高电能利用效率。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">鼓励</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">电网企业推广使用节能先进技术，通过无功电压优化调节、变压器经济运行、高效变压器应用、线路改造、电能质量治理、变电站无功补偿等措施实现节能降损。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十一条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">市工业和信息化局按照国家发展改革委对电网企业年度电力电量节约考核指标，组织开展评价考核。电网企业当年电力、电量节约指标不低于其售电营业区内上年最大用电负荷的</span><span style="font-family:Times New Roman">0.3%</span><span style="font-family:仿宋_GB2312">、上年售电量的</span><span style="font-family:Times New Roman">0.3%</span><span style="font-family:仿宋_GB2312">。</span></span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十二条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">区电力管理部门应完善考核评价机制，依据相关评价标准开展节能降碳成效评价，通过市场机制和经济激励推动碳减排目标实现，促进低碳技术和清洁能源发展，充分调动企业积极性，激发市场主体低碳转型发展的内生动力。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十三条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市工业和信息化局应加大对重点用能单位节能监察力度，统筹提升重点用能工艺设备产品效率和全链条综合能效，制定企业能效清单目录。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十四条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市工业和信息化局积极促进综合能源服务商、负荷聚合商等新兴经营主体培育。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">鼓励电网企业和电力需求侧管理服务机构构建资源共享平台，通过开展综合节能、可再生能源绿色电力证书交易以及碳交易等多元化能源服务，满足电力用户的差异化能源需求，助力电力用户能效提升、节电降碳。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">鼓励用电企业实行能源费用托管等合同能源管理模式，积极推广节能咨询、诊断、设计、融资、改造、托管等</span><span style="font-family:仿宋_GB2312">“一站式”综合服务模式。</span></span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-align:center;margin-left:0;text-indent:0;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px">第三章 </span><span style="font-family: 黑体;font-size: 21px">需求响应</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十五条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">市工业和信息化局负责组织开展电力需求响应相关工作，按年度编制电力需求响应实施细则。区电力管理部门结合本区域资源类型、负荷特征等关键参数，组织电网企业、电力用户申报需求响应，形成可用、可控的需求响应资源清单，到</span><span style="font-family:Times New Roman">2030</span><span style="font-family:仿宋_GB2312">年，形成规模化的实时需求响应能力。</span></span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">需求响应执行程序一般包括响应启动、邀约确认、响应执行、过程监测、效果评估等环节。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十六条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">鼓励</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">电力用户充分挖掘储能、分布式电源、电动汽车充换电、空调负荷、</span><span style="font-family:Times New Roman">5G</span><span style="font-family:仿宋_GB2312">基站、自备电厂等柔性可调负荷资源，或通过负荷聚合商、虚拟电厂运营商等第三方主体聚合柔性可调负荷参与需求响应。</span></span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十七条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">鼓励</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">工业、通信、金融、互联网等对供电可靠性、电能质量要求高的电力用户，根据系统运行需要合理配置新型储能设备，用电高峰期释放储能电量，从而降低大电网调峰调频压力。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十八条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">推动完善与电力市场衔接的需求响应价格机制，</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">逐步实现</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">由政府引导转变为市场引导的电力需求响应。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第十九条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">区电力管理部门应支持各类电力需求侧管理服务机构整合优化需求侧资源，支持工业电力用户、大型商业综合体、酒店、公共建筑等电力用户群开展虚拟电厂示范。推动虚拟电厂运营商参与需求响应、辅助服务等电力市场交易。</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-align:center;margin-left:0;text-indent:0;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px">第四章 </span><span style="font-family: 黑体;font-size: 21px">绿色用电</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">鼓励企业、园区、电力需求侧管理服务机构等各类市场主体积极推动屋顶光伏建设和光伏建筑一体化应用，提升可再生能源消费占比，加快新型储能多场景示范应用。鼓励电力用户购买可再生能源电力，促进可再生能源灵活消纳。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十一条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">市工业和信息化局、区电力管理部门应</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">推进电网运行方式向源网荷储互动、分层分区协同控制转变，鼓励各类市场主体参与绿电交易或购买绿证、使用绿电；鼓励工业企业、工业园区开展绿色低碳微电网和源网荷储一体化建设。</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-align:center;margin-left:0;text-indent:0;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px">第五章 </span><span style="font-family: 黑体;font-size: 21px">电能替代</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十二条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">鼓励电网企业</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">加大电能替代技术推广应用力度，稳步提升终端电气化水平。</span></p><p style="text-align:justify;margin-top:0;margin-bottom:0;text-indent:41px;text-autospace:ideograph-numeric;text-justify:inter-ideograph;line-height:37px"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">电能替代应优先考虑可再生能源供能。鼓励电力用户利用虚拟电厂和</span><span style="font-family:Times New Roman">5G</span><span style="font-family:仿宋_GB2312">等先进技术，加强电能替代负荷聚合。</span></span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十三条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">鼓励</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">电网企业强化电能替代配套电网规划、建设、调度和运维等，提高电能替代项目的供电保障能力，提升电网运行灵活性、可靠性和智能化水平，保证电网安全。</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-align:center;margin-left:0;text-indent:0;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px">第六章 </span><span style="font-family: 黑体;font-size: 21px">智能用电</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十四条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">市工业和信息化局、</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市发展改革委持续深化新型电力负荷管理系统、天津市能耗在线监测平台建设，推动信息化平台互联互通、数据共享。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十五条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">鼓励各类市场主体建设新型建筑电力系统和建筑智能化运行管理平台，提升建筑智能调控水平。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十六条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">鼓励</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">电网企业和电力用户</span><span style=";font-family:&#39;Times New Roman&#39;;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">推动家庭级、建筑级、区域级等</span></span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">不同类型</span><span style=";font-family:&#39;Times New Roman&#39;;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">系统用电基础设施和终端设备的智能化改造</span></span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">，推动传统和新型基础设施整体优化、协同融合。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十七条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">整合电网企业、电力用户、电力需求侧管理服务机构等用电数据资源，实现相关数据融合汇聚、开放共享，为电力经济运行分析、用电、节电决策等提供数据支持。电网企业、电力用户和电力需求侧管理服务机构应创新探索智能用电新模式、新业态，推进数字经济与电力经济融合，培育电力经济新增长点。</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-align:center;margin-left:0;text-indent:0;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px">第七章 </span><span style="font-family: 黑体;font-size: 21px">有序用电</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十八条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市工业和信息化局、区电力管理部门应指导电网企业积极发挥政企联动机制，保障有序用电工作的开展。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市工业和信息化局负责指导电网企业根据年度电力供需平衡预测和国家有关政策，编制本市年度有序用电方案，报市人民政府同意后，向国家发展改革委、国家能源局报告。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">区电力管理部门根据有序用电方案，定用户、定负荷。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第二十九条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">编制年度有序用电方案应按照</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">先错峰、后避峰、再限电的顺序安排电力电量平衡，不得在有序用电方案中滥用限电措施，影响正常的社会生产生活秩序。严格保障居民、农业、重要公用事业和公益性服务等用电，保障重点产业链供应链企业用电。确保生产安全的前提下，重点限制淘汰类、限制类、高耗能、高排放、低水平等企业用电。不得以国家和地方节能目标责任评价考核的名义对用能企业、单位等实施无差别的有序用电。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">电网企业应持续深化新型电力负荷管理系统建设，依托系统开展负荷实时监测和精准调控，负荷控制能力应逐步达到本市最大用电负荷的</span><span style="font-family:Times New Roman">20%</span><span style="font-family:仿宋_GB2312">以上。</span></span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十一条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市工业和信息化局、区电力管理部门应在迎峰度夏、迎峰度冬前分别修订有序用电方案，并</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">根据国家发改委年度工作安排适时开展专项演练</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">区电力管理部门应及时将有序用电方案告知涉及的电力用户，并指导电力用户加强电能管理，编制具有可操作性的内部负荷调整方案。负荷管理措施执行前，方案内涉及的电力用户的可调负荷如发生重大变化，区电力管理部门应及时调整方案。</span></p><p style="text-align:justify;margin-top:0;margin-bottom:0;text-indent:41px;text-autospace:ideograph-numeric;text-justify:inter-ideograph;line-height:37px"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十二条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">当执行提升发电出力、实施省间现货购电和应急调度等各类措施后，仍出现电力缺口时，电网企业应优先启动需求响应，需求响应能力无法满足电力缺口时，应依法依规启动有序用电。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十三条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">发生重大自然灾害和突发事件时，电网企业、电力用户应根据不同情形执行事故限电序位表、大面积停电事件应急预案和黑启动预案等。</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-align:center;margin-left:0;text-indent:0;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px">第八章 </span><span style="font-family: 黑体;font-size: 21px">保障措施</span></p><p><span style=";font-family:文星仿宋;font-size:14px"> </span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十四条</span><strong><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span></strong><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">市工业和信息化局、区电力管理部门应分别</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">指导市、区两级负荷管理中心建设，发挥电力需求侧管理在保障电网安全稳定运行中的作用。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十五条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市工业和信息化局、区电力管理部门应积极加强电力需求侧管理研究，推动电力需求侧管理相关地方标准建设并积极参与研制行业标准。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十六条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">市工业和信息化局、区电力管理部门和电网企业应开展电力需求侧管理工作培训，加强人才队伍培养，开展线上线下培训和宣传，通过技能比武、知识竞赛等方式强化基础业务水平，加强相关行业组织能力建设，提升行业服务能力。</span></p><p style="text-align:center;;text-autospace:ideograph-numeric;line-height:37px"><span style="font-family: 黑体;font-size: 21px"><span style="font-family:黑体">第九章</span> </span><span style="font-family: 黑体;font-size: 21px"> <span style="font-family:黑体">附</span> <span style="font-family:黑体">则</span></span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十七条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">区电力管理部门应结合本区域实际情况，做好《天津市电力需求侧管理实施细则》的落实工作。</span></p><p style="text-indent: 41px; line-height: 37px; text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十八条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px"><span style="font-family:仿宋_GB2312">本实施细则有关数量的表述中，</span><span style="font-family:仿宋_GB2312">“以上”含本数，“以下”不含本数。</span></span></p><p style="text-align: justify;"><span style="font-family: 楷体_GB2312;letter-spacing: 0;font-size: 21px">第三十九条</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"> </span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">本实施</span><span style=";font-family:仿宋_GB2312;letter-spacing:0;font-size:21px">细则有效期五年，自发布之日起施行。</span></p><p><br/></p></div>
+                            <link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/attachments.css">
+<div class="qt-attachments">
+    <table>
+        <tr>
+            <td class="first"><p class="qt-attachments-title">附件：</p></td>
+            <td>
+                <ul class="qt-attachments-list">
+                    <li><a href="./W020251229629067298393.doc">市工业和信息化局等部门关于印发《天津市电力需求侧管理实施细则》的通知原文下载.doc</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+                        </div>
+                    </div>
+                    <!-- hide right-->
+                    <div id="xlrlrt" class="xl-zw-cons-rt xl-w29 xl-fll">
+                        <div class="xl-zw-rtpl xl-rl-zcjd">
+                            <div class="xl-zw-rttlt">
+                                | 政策解读
+                            </div>
+                            <ul class="xl-zw-rtlist">
+                                
+                            </ul>
+                        </div>
+                        <div class="xl-zw-rtpl xl-rl-xgzc">
+                            <div class="xl-zw-rttlt">
+                                | 相关政策
+                            </div>
+                            <ul class="xl-zw-rtlist">
+                                
+                            </ul>
+                        </div>
+                        <div class="xl-zw-rtpl xl-rl-xgbd">
+                            <div class="xl-zw-rttlt">
+                                | 相关报道
+                            </div>
+                            <ul class="xl-zw-rtlist">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End hide right-->
+                    <div class="xl-clear"></div>
+                </div>
+
+                <!--End Center中间 Cont-->
+            </div>
+        </div>
+
+    </div>
+    <!--End Center中间-->
+    <!-- 公用底部common-footer.html -->
+    <div class="pc-footer-body">
+  <div class="bottom">
+      <div class="btn">
+          <div class="left wzjc">
+             <a class="fiind-error-box"><script id="_jiucuo_" sitecode='1200000032' src='https://zfwzgl.www.gov.cn/exposure/jiucuo.js'></script></a>
+          </div>
+          <div class="left dt" style="text-align: center;">
+              <p class="gywm">
+              <span>
+                  <a href='https://gyxxh.tj.gov.cn/sitemap/' target="_blank">网站地图
+                  </a>
+              </span>|<span>
+                  <a href='https://gyxxh.tj.gov.cn/about/202007/t20200731_3293700.html' target="_blank">联系我们
+                  </a>
+              </span>
+          </p>
+              <p>主办：天津市工业和信息化局 版权所有©</p>
+              <p>编辑部客服信箱jwxxc@tjec.gov.cn</p>
+              <p>
+                网站标识码：1200000032 津ICP备19003166号
+                  <a target="_blank" href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12010302000967'
+                     style="color:#B0B0B0;">
+                      <img src="https://gyxxh.tj.gov.cn/glllm/QDFY/mhdb/202005/P020200903570326761060.png" />
+                      津公网安备 12010302000967号
+                  </a>
+              </p>
+              <p class="h-warning" style="display:none;">
+                  系统检测到您正在使用ie11以下内核的浏览器，不能实现完美体验，请更换或升级浏览器访问！
+              </p>
+          </div>
+           <div class="dzjg">
+               <a href='http://bszs.conac.cn/sitename?method=show&id=0A739228E6326485E053022819ACDD4E'
+         title=''
+         target="_blank">
+        <img class="fl" src='https://gyxxh.tj.gov.cn/glllm/QDFY/TYDB/202008/W020200822346009636252.png' alt="党政机关" />
+      </a>
+           </div>
+      </div>
+  </div>
+</div>
+<div class="m-footer-body">
+  <!-- m-bottom s -->
+  <div class="m-bottom">
+      <div class="m-btm2">
+          <p class="m-btm-links">
+          <a href='https://gyxxh.tj.gov.cn/sitemap/' target="_blank">网站地图</a>|<a href='https://gyxxh.tj.gov.cn/about/202007/t20200731_3293700.html' target="_blank">联系我们</a>
+      </p>
+          <div class="m-btm-info">
+                
+              <div class="m-infodetail">
+                  <p>主办：天津市工业和信息化局 版权所有©</p>
+                  <p>编辑部客服信箱jwxxc@tjec.gov.cn</p>
+                  <p>  网站标识码：1200000032 津ICP备19003166号</p>
+                  <p>
+                      <a href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12010302000967'>
+                          <img src="https://gyxxh.tj.gov.cn/glllm/QDFY/mhdb/202005/P020200903570326761060.png" />
+                          津公网安备 12010302000967号
+                      </a>
+                  </p>
+              </div>
+              <a class="fiind-error-mbox"></a>
+              <a href='http://bszs.conac.cn/sitename?method=show&id=0A739228E6326485E053022819ACDD4E'
+       title=''
+       target="_blank">
+      <img class="fl" src='https://gyxxh.tj.gov.cn/glllm/QDFY/TYDB/202008/W020200822346009636252.png' alt="党政机关" />
+    </a>
+          </div>
+      </div>
+  </div>
+  <!-- m-bottom e -->
+</div>
+<div id="alert-f">
+  <div class="footer-alert">
+      <div class="footer-alert-bd"></div>
+  </div>
+</div>
+<div  id="zzmsMobileBtn"><div class="ghbClose"></div><div class="ghbBtn"></div></div>
+<script>
+ var tpldClass=[".detail-article .view.TRS_UEDITOR",".article-detail .view.TRS_UEDITOR",".right-content-inf .view.TRS_UEDITOR",".article_content .view.TRS_UEDITOR",".xw-txt .view.TRS_UEDITOR",".zw .view.TRS_UEDITOR"];
+        $.each(tpldClass,function(n,value){
+            if($(value).length != 0){
+          window.esdArOption = {contentDom: value};
+                return true 
+            }
+        })
+</script>
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/articleReader.js"></script>
+<!--网脉-->	 
+<script src="https://jyhpt.tj.gov.cn/images/ta_Info.js" async="async" defer="defer"></script>
+
+<script type="text/javascript" src="https://gyxxh.tj.gov.cn/images/RoleSetInit.js"></script>
+<script type="text/javascript" src="https://gyxxh.tj.gov.cn/images/esdToolsInit.js"></script>
+<script type="text/javascript" src="https://gyxxh.tj.gov.cn/images/ElderModelTool.js"></script>
+<link rel="stylesheet" type="text/css" href="https://gyxxh.tj.gov.cn/images/ZZMS_change.css">
+<!--非党政机关链接跳转提示脚本-->	 
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/offSiteLinkRedirectionPrompt.js" charset="UTF-8" defer="defer"></script>
+<script src="https://gyxxh.tj.gov.cn/images/jquery.qrcode.min.js"></script>
+
+<style>
+/* 长者模式s */
+.ztzl_panel .float_card_title .card_title_view{
+width:100%;
+}
+body.useOldFixed{
+background: none;
+}
+.useOldFixed .head-top p{
+display:block;
+}
+.useOldFixed .head-top p #simplifiedLink{
+display:none;
+}
+.useOldFixed .head-top p #translateLink{
+display:none;
+}
+.useOldFixed .head-top p #toolbarSwitch{
+display:none;
+}
+.useOldFixed .head-top p #toolbarCtrl{
+display:none;
+}
+.useOldFixed .jgline{
+display:none;
+}
+.useOldFixed .head-top img{
+height:0.2rem;
+width:0.2rem
+}
+.useOldFixed #zzmsbtn{
+margin-top:10px;
+}
+#zzmsMobileBtn{
+display:none;
+/*background-color: #4a82b0c7;*/
+    height: 1.7rem;
+   
+    position: fixed;
+    bottom: 100px;
+    right: 0;
+    z-index: 1000;
+    width: 140px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 20px;
+background-image:url(https://csgl.tj.gov.cn/images/mobile_zzms.png);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+}
+.ghbClose{
+height: 20px;
+    width: 20px;
+    float: right;
+    margin: 5px 5px 0 0;
+    display: none;
+    cursor: pointer;
+}
+.ghbBtn{
+height: 40px;
+    width: 140px;
+    float: right;
+    margin: 0px 5px 0 0;
+    display: none;
+    cursor: pointer;
+}
+/* 分享 */
+  #share-qrcode {
+    border: 1px solid #ddd;
+    width: 170px;
+    padding: 14px;
+    position: absolute;
+    display: none;
+    z-index: 99;
+    bottom: 30px;
+    right: 0px;
+    background: #fff;
+    border-radius: 3px;
+  }
+  #share_container {
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+  }
+@media screen and (max-width: 1200px){
+#zzmsbtn{
+display:none;
+}
+#zzmsMobileBtn{
+display:block;
+}
+.ghbClose, .ghbBtn{
+  display: block;
+}
+}
+
+/* 长者模式e */
+</style>
+<script>
+  function showTips() {
+    var dom = document.createElement("div");
+    var t = '/images/tipImg-ioswx.png';
+    dom.style.cssText = "position:fixed;z-index:100;top:0;left:0;width:100%;height:100%;background:url(" + t + ") top right no-repeat;background-size:150px 125px;background-color:rgba(0,0,0,0.7);";
+    dom.onclick = function() {
+      document.body.removeChild(dom);
+    };
+    document.body.appendChild(dom);
+  }
+  function changeHref() {
+    var agent = navigator.userAgent.match(/MicroMessenger/i);
+    if (Boolean(agent)) {
+      $('a').each(function(index,item){
+        if (/\.doc|\.docx|\.rar|\.zip|\.xls|\.xlsx|\.pdf|\.ppt|\.ppts|\.cab$/.test(item.href)) {
+          item.href='javascript:;';
+          $(item).on('click',showTips);
+        }
+      })
+    }
+  }
+
+  $(function(){
+    setTimeout(function(){
+      changeHref();
+//适老化新增s
+var zzmsword1 = getCookie('TjElderModelFlag');
+if (zzmsword1 == 2) {
+    let str = $('.fiind-error-box').html()
+    $('.fiind-error-mbox').html(str)
+    $("html").css("font-size", "100px");
+    $(".m-footer-body").css("display", "block");
+} else {
+
+}
+    },500)
+  })
+//关闭移动端按钮
+$('.ghbClose').click(function () {
+$("#zzmsMobileBtn").hide();
+})
+  // 长者模式设置字号
+    var TjElderModelFlag = getCookie('TjElderModelFlag');
+    if(TjElderModelFlag === "2"){
+        $('html').css('font-size','100px')
+        $('.pc-footer-body').hide()
+        $('.m-footer-body').show()
+    }else{
+        $('.pc-footer-body').show()
+        $('.m-footer-body').hide()
+    }
+// 判断是否是手机端
+function ismobile () {
+ var TjElderModelFlag = getCookie('TjElderModelFlag');
+    if(TjElderModelFlag === "2"){
+return true
+}
+var mobileArry = ["iPhone", "iPad", "Android", "Windows Phone", "BB10; Touch", "BB10; Touch", "PlayBook", "Nokia"];
+var ua = navigator.userAgent;
+var res = [];
+for (var i = 0; i < mobileArry.length; i++) {
+  if (mobileArry[i] && ua.indexOf(mobileArry[i]) > 0) {
+    res.push(mobileArry[i]);
+  }
+}
+return res.length > 0;
+}
+// 把纠错标签从pc端的dom移到移动端
+$(function(){
+  if (ismobile ()){
+     let str = $('.fiind-error-box').html()
+     $('.fiind-error-mbox').html(str)
+  } 
+})
+</script>
+<script>
+
+var zzmsword = getCookie('TjElderModelFlag');
+ if (zzmsword !== "2") {
+ $('#zzmsbtn span').text("长者模式");
+}else{
+ $('#zzmsbtn span').text("退出长者模式");
+ $('html').css("font-size","100px");
+ if (ismobile ()){
+     let str = $('.fiind-error-box').html()
+     $('.fiind-error-mbox').html(str)
+  } 
+}
+    $('#zzmsbtn').click(function () {
+    var zzmsword = getCookie('TjElderModelFlag');
+       if (zzmsword !== "2") {//如果当前不是长者模式，打开工具条，进入长者模式 
+         addCookie('wzalsOn', 'true', 0);
+if(typeof(EsdToolbarInit.openClickFunc)=='function'){
+       EsdToolbarInit.openClickFunc();
+}
+if(typeof(EsdToolbar)=="object"&&EsdToolbar.isOpen){
+	jq_t("#toolbar_Div").css("overflow","hidden");
+	jq_t("body").css("padding-top", "98px");
+	if(EsdToolbar.defalt.browser.mozilla){
+		jq_t("body")[0].style.setProperty("transform","unset","important");
+		jq_t("body")[0].style.setProperty("transform-origin","unset","important");
+		jq_t("#toolbar_Div").css({"-moz-transform":"scale(1.5)","-moz-transform-origin":"center -64px 0px"});
+		jq_t("#toolbarHtml").css({"-moz-transform":"scale(1)","-moz-transform-origin":"top"});
+	}
+	
+	jq_t("#toolbarHtml").show("fast",function(){
+		if(!EsdToolbar.defalt.browser.msie){
+			jq_t("#toolbarHtml").css("zoom","0.67");
+			jq_t("body").css({"max-width":"100%","min-width":"100%","padding-top":"65px"});
+		}else{
+			jq_t("#toolbarHtml").css("left","0");
+			jq_t("body").css({"max-width":"100%","padding-top":"65px"});
+		}
+		if(EsdToolbar.pageZoom.zoom>=1.3){
+			jq_t("body").css({"max-width": "170%", "min-width": "170%"});
+		}
+		jq_t("#toolbarPage2").hide();
+		jq_t("#toolbar").show();
+		//jq_t("body").css({"max-width":"100%","min-width":"100%","padding-top":"65px"});
+		jq_t("#toolbar_Div").css({"width":"750px","margin":"0 auto"});
+		setTimeout(function(){jq_t("#toolbar").show();},500);
+	});
+}
+	
+         $('html').css("font-size","100px");
+          $('body').addClass("useOldFixed");
+          $('#zzmsbtn span').text("退出长者模式");
+    $('.pc-footer-body').hide()
+        $('.m-footer-body').show()
+if (IEVersion()) {
+        $("body").css({
+            transform: "scale(1.5)",
+            "-moz-transform": "scale(1.5)",
+            "-ms-filter": "scale(1.5)",
+            "transform-origin": "center top",
+            "-ms-transform-origin": "center top",
+        });
+        $("body").css("zoom", "1");
+    }
+
+      
+       } else {//如果当前是长者模式，关闭工具条，退出长者模式
+           addCookie('wzalsOn', 'false', 0);
+            $('body').removeClass("useOldFixed");
+            $('#zzmsbtn span').text("长者模式");
+          try{
+            EsdToolbar.close();
+           }catch(error){
+                // console.log("捕获异常");
+           }
+        }
+        ElderModeTool.changeElderMode();
+    });
+  
+
+//关怀版切换
+$("#zzmsMobileBtn  .ghbBtn").bind("click",function(){
+    if(getCookie('TjElderMobileFlag') === "2"){
+        addCookie('TjElderMobileFlag',"1",0);
+           addCookie('wzalsOn', 'false', 0);
+          try{
+            EsdToolbar.close();
+           }catch(error){
+                // console.log("捕获异常");
+           }
+
+$("#zzmsMobileBtn").css("display","block");
+    } else{
+        addCookie('TjElderMobileFlag',"2",0);
+         addCookie('wzalsOn', 'true', 0);
+if(typeof(EsdToolbarInit.openClickFunc)=='function'){
+         EsdToolbarInit.openClickFunc();
+}
+
+$("#zzmsMobileBtn").css("display","none");
+    }
+    location.reload();
+})
+// 进入关怀版
+var MzjGhbFlag = getCookie('TjElderMobileFlag');
+if(ismobile()&&zzmsword != 2){
+if(MzjGhbFlag === "2"){
+    var cssFileUrl = "https://gyxxh.tj.gov.cn/images/SetMobileElder.css";
+    if (cssFileUrl) {
+        $("<link>").attr({
+            rel: "stylesheet",
+            type: "text/css",
+            href: cssFileUrl,
+        }).appendTo("head");
+    }
+$("#zzmsMobileBtn").css("display","none");
+
+
+}else{
+removejscssfile("SetMobileElder", "css");
+
+$("#zzmsMobileBtn").css("display","block");
+}
+}
+  //关闭工具条按钮
+    $('#toolbar_exit').bind("click",function(){
+        //关闭工具条，判断当前是否处于长者模式，如果是则退出长者模式
+        var zzmsword = getCookie("TjElderModelFlag");
+        if (zzmsword === "2") {
+            addCookie("TjElderModelFlag", "1", 0);
+        }
+if(getCookie('TjElderMobileFlag') === "2"){
+        addCookie('TjElderMobileFlag',"1",0);
+           addCookie('wzalsOn', 'false', 0);
+          try{
+            EsdToolbar.close();
+           }catch(error){
+                // console.log("捕获异常");
+           }
+
+
+    } 
+    });
+
+// 分享
+  var weixinHtml = '<div id="share-qrcode"><h3 id="share_container">微信分享“扫一扫”</h3><dd id="share_div"></dd></div>';
+  if ($('.gwds_weixin').lenght != 0) {
+    $('.gwds_weixin').append(weixinHtml);
+    jQuery('#share_div').qrcode(window.location.href);
+  }
+  $(".gwds_weixin").click(function (event) {
+    event.preventDefault()
+    return false
+  })
+
+</script>
+
+</body>
+</html>

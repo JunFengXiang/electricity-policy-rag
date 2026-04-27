@@ -73,6 +73,20 @@ log_action.py
   生成 02_元数据/政策关联关系表.csv
   只在新政策明文出现旧政策文号或准确规则名称时建立关系
   不做标题相似度推断，避免误连
+
+14_extract_pdf_texts.py
+  尝试从已下载 PDF 中抽取文本
+  对扫描件 PDF 只能识别为无文本，后续需要 OCR
+
+15_mass_crawl_candidates.py
+  基于 来源清单.csv 做大规模候选池采集
+  输出 大规模候选池_YYYYMMDD.csv 和 summary.json
+  标注质量分、入库状态和建议动作，避免低质量网页直接进入正式台账
+
+16_build_knowledge_chunks.py
+  从 03_处理后文本 生成 02_元数据/知识切片表.csv
+  同步输出 05_输出成果/knowledge_chunks.jsonl
+  用于后续 RAG/向量数据库入库
 ```
 
 常用命令：
@@ -91,6 +105,8 @@ D:\miniconda\envs\py311\python.exe .\scripts\10_audit_titles.py
 D:\miniconda\envs\py311\python.exe .\scripts\11_backfill_source_org.py
 D:\miniconda\envs\py311\python.exe .\scripts\12_doc_number_and_rule_list.py --rebuild-doc-no
 D:\miniconda\envs\py311\python.exe .\scripts\13_build_policy_relations.py
+D:\miniconda\envs\py311\python.exe .\scripts\15_mass_crawl_candidates.py --pages 20 --timeout 15
+D:\miniconda\envs\py311\python.exe .\scripts\16_build_knowledge_chunks.py --max-chars 450 --overlap 60
 ```
 
 注意：不要在 `04_export_excel_workbook.py` 仍在生成工作簿时同时运行 `05_sync_excel_to_csv.py`，否则同步脚本可能读到未写完的 Excel 文件。
@@ -98,12 +114,9 @@ D:\miniconda\envs\py311\python.exe .\scripts\13_build_policy_relations.py
 后续建议继续补：
 
 ```text
-14_extract_text.py
-  从 PDF、Word、网页中提取规范化文本
+17_build_vector_index.py
+  根据知识切片表建立向量检索索引
 
-15_build_index.py
-  根据元数据和文本建立检索索引
-
-16_rag_answer.py
+18_rag_answer.py
   基于检索结果生成带引用的回答
 ```

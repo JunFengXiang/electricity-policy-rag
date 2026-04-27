@@ -19,6 +19,7 @@ SOURCES = [
     ("人工核验表", META_DIR / "人工核验表.csv"),
     ("政策资料台账", META_DIR / "政策资料台账.csv"),
     ("规则清单", META_DIR / "规则清单.csv"),
+    ("知识切片表", META_DIR / "知识切片表.csv"),
     ("政策关联关系", META_DIR / "政策关联关系表.csv"),
     ("来源清单", META_DIR / "来源清单.csv"),
     ("地区覆盖清单", META_DIR / "地区覆盖清单.csv"),
@@ -38,6 +39,11 @@ def latest_search_result() -> Path | None:
 
 def latest_title_audit() -> Path | None:
     files = sorted(OUTPUT_DIR.glob("标题清洗建议_*.csv"), key=lambda p: p.name, reverse=True)
+    return files[0] if files else None
+
+
+def latest_mass_candidate_pool() -> Path | None:
+    files = sorted(OUTPUT_DIR.glob("大规模候选池_*.csv"), key=lambda p: p.name, reverse=True)
     return files[0] if files else None
 
 
@@ -101,6 +107,7 @@ def write_readme_sheet(wb: Workbook) -> None:
         ["人工核验表", "用于逐份核验标题、日期、部门、地区、标签、有效状态和正文完整性。"],
         ["政策资料台账", "用于查看已采集入库资料。"],
         ["规则清单", "从台账抽取规则名称、发布机构、文号、省份和原文链接，方便对照规则库目录。"],
+        ["知识切片表", "从处理后文本切分出的RAG检索条目，后续可进入向量数据库。"],
         ["政策关联关系", "仅记录新政策明文引用旧政策的关系，用于搜索页库内跳转和版本脉络核验。"],
         ["来源清单", "用于控制自动采集的白名单来源。"],
         ["地区覆盖清单", "用于查看省级、直辖市、副省级城市和电网经营区覆盖情况。"],
@@ -143,6 +150,10 @@ def build_workbook() -> Path:
     if title_audit_path:
         write_table_sheet(wb, "标题清洗建议", title_audit_path)
 
+    mass_candidate_path = latest_mass_candidate_pool()
+    if mass_candidate_path:
+        write_table_sheet(wb, "大规模候选池", mass_candidate_path)
+
     WORKBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
     try:
         wb.save(WORKBOOK_PATH)
@@ -167,6 +178,8 @@ def self_check(path: Path) -> list[str]:
         expected_sheets.append("全文检索结果")
     if latest_title_audit():
         expected_sheets.append("标题清洗建议")
+    if latest_mass_candidate_pool():
+        expected_sheets.append("大规模候选池")
 
     for sheet_name in expected_sheets:
         if sheet_name not in wb.sheetnames:

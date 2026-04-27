@@ -130,6 +130,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Backfill candidate official links into 待采集链接.csv.")
     parser.add_argument("--candidate", default="", help="Candidate csv path. Defaults to latest 来源清单候选链接 file.")
     parser.add_argument("--limit", type=int, default=0, help="Maximum new rows to append. 0 means all.")
+    parser.add_argument("--min-score", type=int, default=0, help="Minimum 质量分 when using 大规模候选池 files.")
     parser.add_argument("--write", action="store_true", help="Write changes. Without it only previews.")
     args = parser.parse_args()
 
@@ -145,6 +146,14 @@ def main() -> int:
 
     new_rows: list[dict[str, str]] = []
     for row in candidates:
+        if row.get("入库状态") and row.get("入库状态") != "新增候选":
+            continue
+        if row.get("质量分"):
+            try:
+                if int(row.get("质量分", "0")) < args.min_score:
+                    continue
+            except ValueError:
+                pass
         url = row.get("原文链接", "").strip()
         if not url or url in existing_urls:
             continue

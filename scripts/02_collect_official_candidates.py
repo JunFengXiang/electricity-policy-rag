@@ -108,6 +108,8 @@ COMMON_TITLE_SKIP = [
     "公示新增",
     "活动",
     "会议",
+    "数据清单",
+    "结算数据清单",
 ]
 
 CUSTOM_SOURCE_FILTERS = {
@@ -410,6 +412,7 @@ def collect_candidates(
     timeout: int,
     source_file: Path,
     pages: int = 1,
+    max_page_errors: int = 3,
 ) -> tuple[list[dict[str, str]], list[str], int]:
     today = f"{dt.date.today():%Y-%m-%d}"
     rows: list[dict[str, str]] = []
@@ -420,6 +423,7 @@ def collect_candidates(
         page_urls = paginated_urls(config["list_url"], config["fetch_mode"], pages)
         source_had_success = False
         source_errors: list[str] = []
+        consecutive_page_errors = 0
 
         for page_url in page_urls:
             try:
@@ -429,8 +433,12 @@ def collect_candidates(
                 else:
                     items = parse_html_links(page_url, raw_text)
                 source_had_success = True
+                consecutive_page_errors = 0
             except Exception as exc:
                 source_errors.append(f"{page_url} :: {exc}")
+                consecutive_page_errors += 1
+                if max_page_errors and source_had_success and consecutive_page_errors >= max_page_errors:
+                    break
                 continue
 
             page_config = dict(config)
@@ -508,6 +516,7 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=20, help="Request timeout in seconds.")
     parser.add_argument("--limit", type=int, default=20, help="Print top N rows to stdout.")
     parser.add_argument("--pages", type=int, default=1, help="HTML list pages to try per source.")
+    parser.add_argument("--max-page-errors", type=int, default=3, help="Stop one source after N consecutive page errors.")
     parser.add_argument("--source-file", default=str(SOURCE_CSV), help="Source whitelist csv path.")
     args = parser.parse_args()
 
@@ -520,6 +529,7 @@ def main() -> int:
             timeout=args.timeout,
             source_file=source_file,
             pages=args.pages,
+            max_page_errors=args.max_page_errors,
         )
     except Exception as exc:
         append_collection_log(output_path, 0, args.keywords, result="失败", source_count=0, error_count=1, note=str(exc))
