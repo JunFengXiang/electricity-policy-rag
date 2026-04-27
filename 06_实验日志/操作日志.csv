@@ -83,3 +83,4 @@
 2026-04-27 20:53,RAG索引构建,基于知识切片表构建本地RAG检索索引，切片 4400 条,02_元数据\知识切片表.csv; 05_输出成果\rag_index.pkl.gz; 05_输出成果\rag_index.summary.json,17_build_rag_index.py --max-features=80000,完成,TF-IDF char 2-4gram，本地离线检索索引
 2026-04-27 20:53,RAG查询测试,运行本地RAG查询：四川电力辅助服务市场交易实施细则有哪些主要依据,05_输出成果\rag回答_20260427_205346_四川电力辅助服务市场交易实施细则有哪些主要依据.md,"18_rag_query.py --query ""四川电力辅助服务市场交易实施细则有哪些主要依据"" --top-k 8",完成,返回切片=8; 本地检索增强草稿，未调用大模型
 2026-04-27 20:55,RAG原型,新增本地RAG索引构建和查询脚本 生成四川辅助服务样例回答 并补充RAG使用说明,scripts/17_build_rag_index.py; scripts/18_rag_query.py; 05_输出成果/rag_index.pkl.gz; 00_说明/RAG使用说明.md,,完成,当前为本地检索增强草稿 未调用外部大模型；切片数4400
+2026-04-27 21:11,搜索评分优化,细化搜索页综合得分：加入命中次数、字段命中明细、标题/文号短语加权、发布日期近期权重和排序打散；重新生成 search.html、search_index.json 和知识库管理工作簿。自检：09_build_search_page.py、04_export_excel_workbook.py、07_search.py 通过；Node 语法解析因本机 node.exe Access denied 未执行。,,,,

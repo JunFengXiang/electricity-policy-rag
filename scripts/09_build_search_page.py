@@ -424,6 +424,20 @@ def html_template(index: dict) -> str:
       font-size: 12px;
       white-space: nowrap;
     }}
+    .hit-detail {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 4px 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }}
+    .hit-detail span {{
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 2px 6px;
+    }}
     .fields {{
       display: flex;
       flex-wrap: wrap;
@@ -642,34 +656,82 @@ def html_template(index: dict) -> str:
       return score;
     }}
 
+    function countOccurrences(value, key) {{
+      if (!key) return 0;
+      const text = norm(value);
+      let count = 0;
+      let pos = 0;
+      while ((pos = text.indexOf(key, pos)) !== -1) {{
+        count += 1;
+        pos += Math.max(1, key.length);
+        if (count >= 20) break;
+      }}
+      return count;
+    }}
+
+    function recencyBoost(raw) {{
+      if (!raw) return 0;
+      const time = Date.parse(raw);
+      if (!Number.isFinite(time)) return 0;
+      const days = Math.max(0, (Date.now() - time) / 86400000);
+      if (days <= 30) return 3.5;
+      if (days <= 90) return 2.8;
+      if (days <= 365) return 2.0;
+      if (days <= 365 * 3) return 1.0;
+      return 0.3;
+    }}
+
     function scoreDoc(doc, queryTerms) {{
-      if (!queryTerms.length) return authorityScore(doc) + Math.min(dateScore(doc.publish_date) / 3000, 5);
+      const base = authorityScore(doc) + recencyBoost(doc.publish_date);
+      if (!queryTerms.length) return {{ score: base, hits: [], hitCount: 0 }};
       const fields = {{
-        id: [doc.id, 20],
-        title: [doc.title, 12],
-        keywords: [(doc.keywords || []).join(';'), 8],
-        topics: [(doc.topics || []).join(';'), 7],
-        provinces: [(doc.provinces || []).join(';'), 6],
-        regions: [(doc.regions || []).join(';'), 3],
-        department: [doc.department, 4],
-        collection_source: [doc.collection_source, 4],
-        document_number: [doc.document_number, 4],
-        note: [doc.note, 4],
-        snippet: [doc.snippet, 3],
-        text: [doc.text, 1]
+        id: {{ label: '编号', value: doc.id, weight: 20 }},
+        title: {{ label: '标题', value: doc.title, weight: 14 }},
+        document_number: {{ label: '文号', value: doc.document_number, weight: 10 }},
+        keywords: {{ label: '关键词', value: (doc.keywords || []).join(';'), weight: 8 }},
+        topics: {{ label: '主题', value: (doc.topics || []).join(';'), weight: 7 }},
+        provinces: {{ label: '省份', value: (doc.provinces || []).join(';'), weight: 6 }},
+        regions: {{ label: '范围', value: (doc.regions || []).join(';'), weight: 3 }},
+        department: {{ label: '发布部门', value: doc.department, weight: 4 }},
+        collection_source: {{ label: '来源机构', value: doc.collection_source, weight: 4 }},
+        note: {{ label: '备注', value: doc.note, weight: 4 }},
+        snippet: {{ label: '摘要', value: doc.snippet, weight: 3 }},
+        text: {{ label: '正文', value: doc.text, weight: 1.2 }}
       }};
-      let score = authorityScore(doc);
+      let score = base;
       let hitCount = 0;
+      const hitMap = new Map();
       queryTerms.forEach(term => {{
         const key = norm(term);
-        Object.values(fields).forEach(([value, weight]) => {{
-          if (norm(value).includes(key)) {{
-            score += weight;
-            hitCount += 1;
+        if (!key) return;
+        Object.values(fields).forEach(field => {{
+          const occurrences = countOccurrences(field.value, key);
+          if (occurrences) {{
+            const phraseBonus = key.length >= 6 ? 1.8 : key.length >= 4 ? 1.2 : 0;
+            const repeatBonus = Math.min(4, Math.log2(occurrences + 1) * 1.3);
+            score += field.weight + phraseBonus + repeatBonus;
+            hitCount += occurrences;
+            const existing = hitMap.get(field.label) || {{ label: field.label, terms: new Set(), count: 0 }};
+            existing.terms.add(term);
+            existing.count += occurrences;
+            hitMap.set(field.label, existing);
           }}
         }});
       }});
-      return hitCount ? score : 0;
+      if (!hitMap.size) return {{ score: 0, hits: [], hitCount: 0 }};
+      const titlePhrase = queryTerms.some(term => norm(doc.title).includes(norm(term)) && norm(term).length >= 4);
+      if (titlePhrase) score += 4;
+      const docNoHit = queryTerms.some(term => norm(doc.document_number).includes(norm(term)) && norm(term).length >= 4);
+      if (docNoHit) score += 3;
+      const parsedDate = Date.parse(doc.publish_date || '');
+      const dateTiebreaker = Number.isFinite(parsedDate) ? (parsedDate % 997) / 1000 : 0;
+      score += Math.min(2.5, hitCount * 0.08) + dateTiebreaker;
+      const hits = Array.from(hitMap.values()).map(item => ({{
+        label: item.label,
+        terms: Array.from(item.terms).slice(0, 4),
+        count: item.count
+      }}));
+      return {{ score, hits, hitCount }};
     }}
 
     function highlight(text, queryTerms) {{
@@ -699,7 +761,10 @@ def html_template(index: dict) -> str:
       const authority = els.authority.value;
       const status = els.status.value;
 
-      let rows = docs.map(doc => ({{ doc, score: scoreDoc(doc, queryTerms) }}))
+      let rows = docs.map(doc => {{
+          const match = scoreDoc(doc, queryTerms);
+          return {{ doc, score: match.score, hits: match.hits, hitCount: match.hitCount }};
+        }})
         .filter(item => queryTerms.length ? item.score > 0 : true)
         .filter(item => containsAny(item.doc.provinces || [], province))
         .filter(item => containsAny(item.doc.topics || [], topic))
@@ -708,11 +773,11 @@ def html_template(index: dict) -> str:
         .filter(item => !status || item.doc.status === status);
 
       if (els.sort.value === 'date') {{
-        rows.sort((a, b) => dateScore(b.doc.publish_date) - dateScore(a.doc.publish_date) || b.score - a.score);
+        rows.sort((a, b) => dateScore(b.doc.publish_date) - dateScore(a.doc.publish_date) || b.score - a.score || b.hitCount - a.hitCount);
       }} else if (els.sort.value === 'authority') {{
-        rows.sort((a, b) => authorityScore(b.doc) - authorityScore(a.doc) || b.score - a.score);
+        rows.sort((a, b) => authorityScore(b.doc) - authorityScore(a.doc) || b.score - a.score || b.hitCount - a.hitCount);
       }} else {{
-        rows.sort((a, b) => b.score - a.score || dateScore(b.doc.publish_date) - dateScore(a.doc.publish_date));
+        rows.sort((a, b) => b.score - a.score || b.hitCount - a.hitCount || dateScore(b.doc.publish_date) - dateScore(a.doc.publish_date));
       }}
 
       els.count.textContent = `${{rows.length}} 条结果`;
@@ -735,12 +800,17 @@ def html_template(index: dict) -> str:
       const sourceLine = [doc.department, doc.collection_source].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i).join(' / ') || '发布部门未知';
       const docNo = doc.document_number ? `<span class="mini-action">文号：${{escapeHtml(doc.document_number)}}</span>` : '';
       const relationBlock = relationHtml(doc);
+      const hitDetails = scoreDoc(doc, queryTerms).hits;
+      const hitDetail = hitDetails && hitDetails.length
+        ? `<div class="hit-detail">${{hitDetails.slice(0, 5).map(hit => `<span>${{escapeHtml(hit.label)}}：${{escapeHtml(hit.terms.join('、'))}}${{hit.count > 1 ? ' x' + hit.count : ''}}</span>`).join('')}}</div>`
+        : '';
       return `
         <article class="result" id="doc-${{escapeHtml(doc.id)}}">
           <div class="result-head">
             <h2 class="title">${{rank}}. ${{highlight(doc.title, queryTerms)}}</h2>
             <div class="score">得分 ${{score.toFixed(1)}}</div>
           </div>
+          ${{hitDetail}}
           <div class="fields">
             ${{provinceTags}}${{scopeTags}}${{topicTags}}${{sourceTag}}${{authTag}}${{statusTag}}${{note}}
           </div>
