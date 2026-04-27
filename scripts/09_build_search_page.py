@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_CSV = ROOT / "02_元数据" / "政策资料台账.csv"
+RELATION_CSV = ROOT / "02_元数据" / "政策关联关系表.csv"
 OUTPUT_DIR = ROOT / "05_输出成果"
 INDEX_PATH = OUTPUT_DIR / "search_index.json"
 HTML_PATH = OUTPUT_DIR / "search.html"
@@ -157,6 +158,42 @@ def text_snippet(text: str, limit: int = 220) -> str:
     return compact[:limit] + ("..." if len(compact) > limit else "")
 
 
+def relation_maps(valid_ids: set[str]) -> tuple[dict[str, list[dict]], dict[str, list[dict]]]:
+    outgoing: dict[str, list[dict]] = {}
+    incoming: dict[str, list[dict]] = {}
+    if not RELATION_CSV.exists():
+        return outgoing, incoming
+
+    for row in read_csv(RELATION_CSV):
+        new_id = row.get("新政策资料编号", "")
+        old_id = row.get("旧政策资料编号", "")
+        if not new_id or not old_id or new_id not in valid_ids or old_id not in valid_ids:
+            continue
+        outgoing.setdefault(new_id, []).append(
+            {
+                "target_id": old_id,
+                "target_title": row.get("旧政策标题", ""),
+                "target_date": row.get("旧政策发布日期", ""),
+                "relation_type": row.get("关联类型", ""),
+                "basis": row.get("匹配依据", ""),
+                "evidence": row.get("证据文本", ""),
+                "confidence": row.get("置信度", ""),
+            }
+        )
+        incoming.setdefault(old_id, []).append(
+            {
+                "target_id": new_id,
+                "target_title": row.get("新政策标题", ""),
+                "target_date": row.get("新政策发布日期", ""),
+                "relation_type": row.get("关联类型", ""),
+                "basis": row.get("匹配依据", ""),
+                "evidence": row.get("证据文本", ""),
+                "confidence": row.get("置信度", ""),
+            }
+        )
+    return outgoing, incoming
+
+
 def build_index(text_limit: int) -> dict:
     rows = read_csv(LEDGER_CSV)
     docs = []
@@ -216,9 +253,16 @@ def build_index(text_limit: int) -> dict:
             }
         )
 
+    valid_ids = {doc["id"] for doc in docs if doc.get("id")}
+    outgoing, incoming = relation_maps(valid_ids)
+    for doc in docs:
+        doc["outgoing_relations"] = outgoing.get(doc["id"], [])[:8]
+        doc["incoming_relations"] = incoming.get(doc["id"], [])[:8]
+
     return {
         "generated_at": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "document_count": len(docs),
+        "relation_count": sum(len(items) for items in outgoing.values()),
         "filters": {
             "regions": sorted(region_set),
             "provinces": order_provinces(province_set),
@@ -402,6 +446,32 @@ def html_template(index: dict) -> str:
       white-space: pre-wrap;
       overflow-wrap: anywhere;
     }}
+    .relations {{
+      display: grid;
+      gap: 5px;
+      margin: 8px 0 10px;
+      font-size: 12px;
+    }}
+    .relation-row {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }}
+    .relation-label {{
+      color: var(--muted);
+      min-width: 84px;
+    }}
+    .relation-link {{
+      color: var(--blue);
+      text-decoration: none;
+      background: #f8fbff;
+      border: 1px solid #dbe8ff;
+      border-radius: 6px;
+      padding: 4px 7px;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }}
     .links {{
       display: flex;
       flex-wrap: wrap;
@@ -571,6 +641,7 @@ def html_template(index: dict) -> str:
     function scoreDoc(doc, queryTerms) {{
       if (!queryTerms.length) return authorityScore(doc) + Math.min(dateScore(doc.publish_date) / 3000, 5);
       const fields = {{
+        id: [doc.id, 20],
         title: [doc.title, 12],
         keywords: [(doc.keywords || []).join(';'), 8],
         topics: [(doc.topics || []).join(';'), 7],
@@ -659,8 +730,9 @@ def html_template(index: dict) -> str:
       const note = doc.note ? `<span class="tag">${{escapeHtml(doc.note).slice(0, 60)}}</span>` : '';
       const sourceLine = [doc.department, doc.collection_source].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i).join(' / ') || '发布部门未知';
       const docNo = doc.document_number ? `<span class="mini-action">文号：${{escapeHtml(doc.document_number)}}</span>` : '';
+      const relationBlock = relationHtml(doc);
       return `
-        <article class="result">
+        <article class="result" id="doc-${{escapeHtml(doc.id)}}">
           <div class="result-head">
             <h2 class="title">${{rank}}. ${{highlight(doc.title, queryTerms)}}</h2>
             <div class="score">得分 ${{score.toFixed(1)}}</div>
@@ -669,6 +741,7 @@ def html_template(index: dict) -> str:
             ${{provinceTags}}${{scopeTags}}${{topicTags}}${{sourceTag}}${{authTag}}${{statusTag}}${{note}}
           </div>
           <div class="snippet">${{highlight(doc.snippet || doc.summary || doc.department || '', queryTerms)}}</div>
+          ${{relationBlock}}
           <div class="links">
             <a href="${{escapeHtml(doc.url)}}" target="_blank" rel="noreferrer">原文链接</a>
             ${{localText}}
@@ -677,6 +750,26 @@ def html_template(index: dict) -> str:
           </div>
         </article>
       `;
+    }}
+
+    function relationHtml(doc) {{
+      const rows = [];
+      if ((doc.outgoing_relations || []).length) {{
+        rows.push(relationRow('明文引用', doc.outgoing_relations));
+      }}
+      if ((doc.incoming_relations || []).length) {{
+        rows.push(relationRow('被后续引用', doc.incoming_relations));
+      }}
+      return rows.length ? `<div class="relations">${{rows.join('')}}</div>` : '';
+    }}
+
+    function relationRow(label, relations) {{
+      const links = relations.map(rel => {{
+        const text = `${{rel.relation_type || '关联'}}：${{rel.target_title || rel.target_id}}${{rel.target_date ? '（' + rel.target_date + '）' : ''}}`;
+        const title = [rel.basis, rel.evidence].filter(Boolean).join('；');
+        return `<a class="relation-link" href="#doc-${{escapeHtml(rel.target_id)}}" data-jump-doc="${{escapeHtml(rel.target_id)}}" title="${{escapeHtml(title)}}">${{escapeHtml(text)}}</a>`;
+      }}).join('');
+      return `<div class="relation-row"><span class="relation-label">${{escapeHtml(label)}}</span>${{links}}</div>`;
     }}
 
     [els.province, els.topic, els.source, els.authority, els.status, els.sort].forEach(el => el.addEventListener('change', render));
@@ -690,6 +783,21 @@ def html_template(index: dict) -> str:
       [els.province, els.topic, els.source, els.authority, els.status].forEach(el => el.value = '');
       els.sort.value = 'score';
       render();
+    }});
+    document.addEventListener('click', event => {{
+      const link = event.target.closest('[data-jump-doc]');
+      if (!link) return;
+      event.preventDefault();
+      const targetId = link.getAttribute('data-jump-doc') || '';
+      if (!targetId) return;
+      els.query.value = targetId;
+      [els.province, els.topic, els.source, els.authority, els.status].forEach(el => el.value = '');
+      els.sort.value = 'score';
+      render();
+      window.setTimeout(() => {{
+        const target = document.getElementById(`doc-${{targetId}}`);
+        if (target) target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+      }}, 0);
     }});
 
     const params = new URLSearchParams(window.location.search);

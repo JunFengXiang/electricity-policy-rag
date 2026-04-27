@@ -68,6 +68,11 @@ log_action.py
   为 政策资料台账.csv 新增/回填 文号 字段
   生成 02_元数据/规则清单.csv
   支持 --rebuild-doc-no 重新计算文号，写回前会自动备份原台账
+
+13_build_policy_relations.py
+  生成 02_元数据/政策关联关系表.csv
+  只在新政策明文出现旧政策文号或准确规则名称时建立关系
+  不做标题相似度推断，避免误连
 ```
 
 常用命令：
@@ -85,6 +90,7 @@ D:\miniconda\envs\py311\python.exe .\scripts\09_build_search_page.py
 D:\miniconda\envs\py311\python.exe .\scripts\10_audit_titles.py
 D:\miniconda\envs\py311\python.exe .\scripts\11_backfill_source_org.py
 D:\miniconda\envs\py311\python.exe .\scripts\12_doc_number_and_rule_list.py --rebuild-doc-no
+D:\miniconda\envs\py311\python.exe .\scripts\13_build_policy_relations.py
 ```
 
 注意：不要在 `04_export_excel_workbook.py` 仍在生成工作簿时同时运行 `05_sync_excel_to_csv.py`，否则同步脚本可能读到未写完的 Excel 文件。
@@ -92,12 +98,12 @@ D:\miniconda\envs\py311\python.exe .\scripts\12_doc_number_and_rule_list.py --re
 后续建议继续补：
 
 ```text
-13_extract_text.py
+14_extract_text.py
   从 PDF、Word、网页中提取规范化文本
 
-14_build_index.py
+15_build_index.py
   根据元数据和文本建立检索索引
 
-15_rag_answer.py
+16_rag_answer.py
   基于检索结果生成带引用的回答
 ```
