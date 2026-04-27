@@ -76,7 +76,8 @@ log_action.py
 
 14_extract_pdf_texts.py
   尝试从已下载 PDF 中抽取文本
-  对扫描件 PDF 只能识别为无文本，后续需要 OCR
+  支持 --ocr 对扫描件 PDF 做 OCR
+  支持 --sync-existing 将已经生成的 .txt/.ocr.txt 挂回台账
 
 15_mass_crawl_candidates.py
   基于 来源清单.csv 做大规模候选池采集
@@ -87,6 +88,16 @@ log_action.py
   从 03_处理后文本 生成 02_元数据/知识切片表.csv
   同步输出 05_输出成果/knowledge_chunks.jsonl
   用于后续 RAG/向量数据库入库
+
+17_build_rag_index.py
+  从 02_元数据/知识切片表.csv 构建本地 RAG 检索索引
+  当前使用 TF-IDF 字符 2-4gram，离线运行，不依赖外部 API
+  输出 05_输出成果/rag_index.pkl.gz 和 rag_index.summary.json
+
+18_rag_query.py
+  查询本地 RAG 索引
+  按向量相似度、关键词命中、权威等级、检索权重重排
+  生成带来源标题、机构、日期、文号、原文链接的回答草稿
 ```
 
 常用命令：
@@ -105,18 +116,13 @@ D:\miniconda\envs\py311\python.exe .\scripts\10_audit_titles.py
 D:\miniconda\envs\py311\python.exe .\scripts\11_backfill_source_org.py
 D:\miniconda\envs\py311\python.exe .\scripts\12_doc_number_and_rule_list.py --rebuild-doc-no
 D:\miniconda\envs\py311\python.exe .\scripts\13_build_policy_relations.py
+D:\miniconda\envs\py311\python.exe .\scripts\14_extract_pdf_texts.py --ocr
 D:\miniconda\envs\py311\python.exe .\scripts\15_mass_crawl_candidates.py --pages 20 --timeout 15
 D:\miniconda\envs\py311\python.exe .\scripts\16_build_knowledge_chunks.py --max-chars 450 --overlap 60
+D:\miniconda\envs\py311\python.exe .\scripts\17_build_rag_index.py
+D:\miniconda\envs\py311\python.exe .\scripts\18_rag_query.py --query "四川电力辅助服务市场交易实施细则有哪些主要依据" --region 四川 --write
 ```
 
 注意：不要在 `04_export_excel_workbook.py` 仍在生成工作簿时同时运行 `05_sync_excel_to_csv.py`，否则同步脚本可能读到未写完的 Excel 文件。
 
-后续建议继续补：
-
-```text
-17_build_vector_index.py
-  根据知识切片表建立向量检索索引
-
-18_rag_answer.py
-  基于检索结果生成带引用的回答
-```
+后续建议继续补：接入可选大模型生成层，并让回答强制引用 `18_rag_query.py` 返回的证据。

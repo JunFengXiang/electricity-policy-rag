@@ -2,3 +2,5 @@ pypdf
 openpyxl
 pymupdf
 rapidocr-onnxruntime
+scikit-learn
+scipy

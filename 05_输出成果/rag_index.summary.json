@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-04-27T20:53:33",
+  "source_csv": "02_元数据\\知识切片表.csv",
+  "row_count": 4400,
+  "feature_count": 80000,
+  "index_path": "05_输出成果\\rag_index.pkl.gz",
+  "by_source_type": {
+    "监管规则": 2466,
+    "官方政策": 1384,
+    "交易规则": 550
+  },
+  "by_authority": {
+    "A": 1417,
+    "B": 2983
+  }
+}

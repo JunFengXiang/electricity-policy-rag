@@ -60,6 +60,14 @@ def has_path(row: dict[str, str], rel_path: str) -> bool:
     return any(item.replace("/", "\\") == normalized for item in split_paths(row.get("本地文件路径", "")))
 
 
+def existing_text_for_pdf(path: Path) -> Path | None:
+    for suffix in [".ocr.txt", ".txt"]:
+        text_path = TEXT_ROOT / f"{path.stem}{suffix}"
+        if text_path.exists() and text_path.stat().st_size > 0:
+            return text_path
+    return None
+
+
 def extract_pdf_text(path: Path, max_pages: int | None = None) -> str:
     reader = PdfReader(str(path))
     parts: list[str] = []
@@ -133,6 +141,7 @@ def main() -> int:
     parser.add_argument("--max-pages", type=int, default=0, help="Limit pages per PDF for testing. 0 means all pages.")
     parser.add_argument("--ocr-dpi", type=int, default=160, help="OCR render DPI.")
     parser.add_argument("--min-text-chars", type=int, default=120, help="OCR threshold for embedded text length.")
+    parser.add_argument("--sync-existing", action="store_true", help="Only attach existing .txt/.ocr.txt files to ledger.")
     args = parser.parse_args()
 
     rows = read_rows(LEDGER_CSV)
@@ -149,6 +158,21 @@ def main() -> int:
     for row in rows:
         path = pdf_path(row)
         if not path:
+            continue
+        existing_text = existing_text_for_pdf(path)
+        if existing_text and not args.force_ocr:
+            rel_text = str(existing_text.relative_to(ROOT))
+            if not has_path(row, rel_text):
+                row["本地文件路径"] = "; ".join([*split_paths(row.get("本地文件路径", "")), rel_text])
+                changed = True
+            if existing_text.name.endswith(".ocr.txt"):
+                append_note(row, "OCR文本待人工复核")
+                changed = True
+            if args.sync_existing or has_text_path(row):
+                continue
+        if args.sync_existing:
+            continue
+        if has_text_path(row) and not args.force_ocr:
             continue
 
         text = extract_pdf_text(path, max_pages=max_pages)

@@ -75,3 +75,11 @@
 2026-04-27 20:00,知识切片生成,从处理后文本生成 RAG 知识切片 3991 条，覆盖文件 248 个,02_元数据\知识切片表.csv; 05_输出成果\knowledge_chunks.jsonl,D:\miniconda\envs\py311\python.exe scripts\16_build_knowledge_chunks.py --max-chars 280 --overlap 40 --min-chars 60,完成,max_chars=280; overlap=40; min_chars=60
 2026-04-27 20:02,来源扩展,新增四川发改通知公告 山西能源局JSON检索 江苏浙江福建四川贵州新疆监管办等自动采集来源 并登记国家电网经营区交易平台半自动来源,02_元数据/来源清单.csv; scripts/02_collect_official_candidates.py; scripts/01_fetch_seed_urls.py,,完成,来源清单由68条增至81条 自动采集源由39个增至51个 候选池302条 新增候选48条
 2026-04-27 20:02,候选回填,将大规模候选池中质量分不低于55的新增候选回填到待采集链接 并完成实际下载入库,05_输出成果/大规模候选池_20260427.csv; 02_元数据/待采集链接.csv; 02_元数据/政策资料台账.csv,,完成,回填48条 新增实际入库49条 台账总数254条
+2026-04-27 20:19,RAG索引构建,基于知识切片表构建本地RAG检索索引，切片 3991 条,02_元数据\知识切片表.csv; 05_输出成果\rag_index.pkl.gz; 05_输出成果\rag_index.summary.json,17_build_rag_index.py --max-features=80000,完成,TF-IDF char 2-4gram，本地离线检索索引
+2026-04-27 20:20,RAG索引构建,基于知识切片表构建本地RAG检索索引，切片 3991 条,02_元数据\知识切片表.csv; 05_输出成果\rag_index.pkl.gz; 05_输出成果\rag_index.summary.json,17_build_rag_index.py --max-features=80000,完成,TF-IDF char 2-4gram，本地离线检索索引
+2026-04-27 20:20,RAG查询测试,运行本地RAG查询：四川电力辅助服务市场交易实施细则有哪些主要依据,05_输出成果\rag回答_20260427_202038_四川电力辅助服务市场交易实施细则有哪些主要依据.md,"18_rag_query.py --query ""四川电力辅助服务市场交易实施细则有哪些主要依据"" --top-k 8",完成,返回切片=8; 本地检索增强草稿，未调用大模型
+2026-04-27 20:52,PDF文本抽取,抽取PDF文本 0 个，其中OCR 0 个,03_处理后文本; 02_元数据\政策资料台账.csv,14_extract_pdf_texts.py --ocr=False --force-ocr=False --max-pages=0,完成,OCR页数=0; dpi=160; min_text_chars=120
+2026-04-27 20:53,知识切片生成,从处理后文本生成 RAG 知识切片 4400 条，覆盖文件 252 个,02_元数据\知识切片表.csv; 05_输出成果\knowledge_chunks.jsonl,D:\miniconda\envs\py311\python.exe scripts\16_build_knowledge_chunks.py --max-chars 280 --overlap 40 --min-chars 60,完成,max_chars=280; overlap=40; min_chars=60
+2026-04-27 20:53,RAG索引构建,基于知识切片表构建本地RAG检索索引，切片 4400 条,02_元数据\知识切片表.csv; 05_输出成果\rag_index.pkl.gz; 05_输出成果\rag_index.summary.json,17_build_rag_index.py --max-features=80000,完成,TF-IDF char 2-4gram，本地离线检索索引
+2026-04-27 20:53,RAG查询测试,运行本地RAG查询：四川电力辅助服务市场交易实施细则有哪些主要依据,05_输出成果\rag回答_20260427_205346_四川电力辅助服务市场交易实施细则有哪些主要依据.md,"18_rag_query.py --query ""四川电力辅助服务市场交易实施细则有哪些主要依据"" --top-k 8",完成,返回切片=8; 本地检索增强草稿，未调用大模型
+2026-04-27 20:55,RAG原型,新增本地RAG索引构建和查询脚本 生成四川辅助服务样例回答 并补充RAG使用说明,scripts/17_build_rag_index.py; scripts/18_rag_query.py; 05_输出成果/rag_index.pkl.gz; 00_说明/RAG使用说明.md,,完成,当前为本地检索增强草稿 未调用外部大模型；切片数4400
