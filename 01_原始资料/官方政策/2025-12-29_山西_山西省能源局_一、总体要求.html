@@ -1,0 +1,429 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>山西省能源局</title>
+		<!--<script src="js/pace.min.js"></script>-->
+		<!--<link href="css/pace-theme-flash.min.css" rel="stylesheet" />-->
+		<link rel="stylesheet" href="../../../../images/nyj_newhome_style1.css">
+		<script type="text/javascript" src="../../../../images/jquery.min.js"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	</head>
+
+	<body>
+		<div class="sxnyj clearfix">
+
+			<style> @media screen and (max-width: 1700px) {
+    html {
+        zoom: 0.8;
+    }
+}
+</style>
+
+<div class="sxnytop clearfix">
+    <div class="nytop clearfix">
+        <div class="content">
+            <div class="nytop_left clearfix">
+                <a href="http://www.nea.gov.cn/">国家能源局</a>|<a href="https://www.shanxi.gov.cn/">山西省人民政府</a>
+            </div>
+            <div class="nytop_right clearfix">
+                <a href="javascript:StranBody()" title="點擊切換到繁體中文網站" id="StranLink" name="StranLink">切換到繁體</a>|<a
+                    id="toolbarSwitch" href="javascript:void(0);">无障碍浏览</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../images/jQuery-3.2.1.min.js"></script>
+    <script src="../../../../images/esdToolsInit.js" charset="UTF-8"></script>
+    <div class="nyjnav clearfix">
+        <div class="content">
+            <ul>
+
+                <li><a href="../../../../">首 页</a></li>
+
+
+                
+                    <li ><a href="../../../../zwgk_230510/">政务公开</a></li>
+                
+
+                
+                    <li><a href="../../../../zwfw_230510/">政务服务</a></li>
+                
+
+                <li><a href="../../../../jgdj_230510/" target="_Blank">机关党建</a></li>
+                
+                    <li ><a href="../../../../hdjl_0531/">互动交流</a></li>
+                
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="nyj_banner clearfix">
+        <div class="content">
+            <div class="nyjlogo clearfix"><a href="../../../../"><!--<img src="../../../../images/sxsnyj3.png" />-->
+                <img src="../../../../images/能源局头部logo.png" alt="能源局头部logo.png" title="能源局头部logo.png" />
+            </a></div>
+            <div class="retrieval clearfix">
+                <input type="text" id="HeaderSearchInput" value="请输入检索词" autocomplete="off" onblur="if(this.value==''){this.value='请输入检索词';}" onfocus="javascript:if(this.value=='请输入检索词')this.value=''" />
+
+                <a href="#"><img id="search_btn" src="../../../../images/sxsnyj2.png" /></a>
+            </div>
+        </div>
+    </div>
+    <div class="nyjbanner_fot clearfix"></div>
+</div><!-- 头部结束 -->
+
+<script>
+    //检索
+    $('#search_btn').click(function() {
+        var siteTag = 1
+        var siteid = 60 ;
+        if (!$('#HeaderSearchInput').val()) {
+            alert('请输入搜索内容')
+            return
+        }
+        //if($('.logo .logoR1 button span').text() == '搜本站') {
+        // siteTag = 1
+        //}
+        window.open("/dept_search/#/Door?keywords=" + $('#HeaderSearchInput').val() + "&siteTag=" + siteTag +
+            "&siteid=" + siteid);
+    })
+    //按下回车键搜索
+    $('#HeaderSearchInput').bind('keyup', function(event) {
+        if (event.keyCode == "13") {
+            $('#search_btn').click();
+        }
+    });
+</script>
+<script language="JavaScript" type="text/javascript">
+    var Default_isFT = 0 //默认是否繁体，0-简体，1-繁体
+    var StranIt_Delay = 50 //翻译延时毫秒（设这个的目的是让网页先流畅的显现出来）－－
+    //转换文本
+    function StranText(txt, toFT, chgTxt) {
+        if (txt == "" || txt == null) return ""
+        toFT = toFT == null ? BodyIsFt : toFT
+        if (chgTxt) txt = txt.replace((toFT ? "简" : "繁"), (toFT ? "繁" : "简"))
+        if (toFT) {
+            return Traditionalized(txt)
+        } else {
+            return Simplized(txt)
+        }
+    }
+    //转换对象，使用递归，逐层剥到文本
+    function StranBody(fobj) {
+        if (typeof(fobj) == "object") {
+            var obj = fobj.childNodes
+        } else {
+            var tmptxt = StranLink_Obj.innerHTML.toString()
+            if (tmptxt.indexOf("简") < 0) {
+                BodyIsFt = 1
+                StranLink_Obj.innerHTML = StranText(tmptxt, 0, 1)
+                StranLink.title = StranText(StranLink.title, 0, 1)
+            } else {
+                BodyIsFt = 0
+                StranLink_Obj.innerHTML = StranText(tmptxt, 1, 1)
+                StranLink.title = StranText(StranLink.title, 1, 1)
+            }
+            setCookie(JF_cn, BodyIsFt, 7)
+            var obj = document.body.childNodes
+        }
+        for (var i = 0; i < obj.length; i++) {
+            var OO = obj.item(i)
+            if ("||BR|HR|TEXTAREA|".indexOf("|" + OO.tagName + "|") > 0 || OO == StranLink_Obj) continue;
+            if (OO.title != "" && OO.title != null) OO.title = StranText(OO.title);
+            if (OO.alt != "" && OO.alt != null) OO.alt = StranText(OO.alt);
+            if (OO.tagName == "INPUT" && OO.value != "" && OO.type != "text" && OO.type != "hidden") OO.value = StranText(
+                OO.value);
+            if (OO.nodeType == 3) {
+                OO.data = StranText(OO.data)
+            } else StranBody(OO)
+        }
+    } //trs-silentblue
+    function JTPYStr() {
+        return '万与丑专业丛东丝丢两严丧个丬丰临为丽举么义乌乐乔习乡书买乱争于亏云亘亚产亩亲亵亸亿仅从仑仓仪们价众优伙会伛伞伟传伤伥伦伧伪伫体余佣佥侠侣侥侦侧侨侩侪侬俣俦俨俩俪俭债倾偬偻偾偿傥傧储傩儿兑兖党兰关兴兹养兽冁内冈册写军农冢冯冲决况冻净凄凉凌减凑凛几凤凫凭凯击凼凿刍划刘则刚创删别刬刭刽刿剀剂剐剑剥剧劝办务劢动励劲劳势勋勐勚匀匦匮区医华协单卖卢卤卧卫却卺厂厅历厉压厌厍厕厢厣厦厨厩厮县参叆叇双发变叙叠叶号叹叽吁后吓吕吗吣吨听启吴呒呓呕呖呗员呙呛呜咏咔咙咛咝咤咴咸哌响哑哒哓哔哕哗哙哜哝哟唛唝唠唡唢唣唤唿啧啬啭啮啰啴啸喷喽喾嗫呵嗳嘘嘤嘱噜噼嚣嚯团园囱围囵国图圆圣圹场坂坏块坚坛坜坝坞坟坠垄垅垆垒垦垧垩垫垭垯垱垲垴埘埙埚埝埯堑堕塆墙壮声壳壶壸处备复够头夸夹夺奁奂奋奖奥妆妇妈妩妪妫姗姜娄娅娆娇娈娱娲娴婳婴婵婶媪嫒嫔嫱嬷孙学孪宁宝实宠审宪宫宽宾寝对寻导寿将尔尘尧尴尸尽层屃屉届属屡屦屿岁岂岖岗岘岙岚岛岭岳岽岿峃峄峡峣峤峥峦崂崃崄崭嵘嵚嵛嵝嵴巅巩巯币帅师帏帐帘帜带帧帮帱帻帼幂幞干并广庄庆庐庑库应庙庞废庼廪开异弃张弥弪弯弹强归当录彟彦彻径徕御忆忏忧忾怀态怂怃怄怅怆怜总怼怿恋恳恶恸恹恺恻恼恽悦悫悬悭悯惊惧惨惩惫惬惭惮惯愍愠愤愦愿慑慭憷懑懒懔戆戋戏戗战戬户扎扑扦执扩扪扫扬扰抚抛抟抠抡抢护报担拟拢拣拥拦拧拨择挂挚挛挜挝挞挟挠挡挢挣挤挥挦捞损捡换捣据捻掳掴掷掸掺掼揸揽揿搀搁搂搅携摄摅摆摇摈摊撄撑撵撷撸撺擞攒敌敛数斋斓斗斩断无旧时旷旸昙昼昽显晋晒晓晔晕晖暂暧札术朴机杀杂权条来杨杩杰极构枞枢枣枥枧枨枪枫枭柜柠柽栀栅标栈栉栊栋栌栎栏树栖样栾桊桠桡桢档桤桥桦桧桨桩梦梼梾检棂椁椟椠椤椭楼榄榇榈榉槚槛槟槠横樯樱橥橱橹橼檐檩欢欤欧歼殁殇残殒殓殚殡殴毁毂毕毙毡毵氇气氢氩氲汇汉污汤汹沓沟没沣沤沥沦沧沨沩沪沵泞泪泶泷泸泺泻泼泽泾洁洒洼浃浅浆浇浈浉浊测浍济浏浐浑浒浓浔浕涂涌涛涝涞涟涠涡涢涣涤润涧涨涩淀渊渌渍渎渐渑渔渖渗温游湾湿溃溅溆溇滗滚滞滟滠满滢滤滥滦滨滩滪漤潆潇潋潍潜潴澜濑濒灏灭灯灵灾灿炀炉炖炜炝点炼炽烁烂烃烛烟烦烧烨烩烫烬热焕焖焘煅煳熘爱爷牍牦牵牺犊犟状犷犸犹狈狍狝狞独狭狮狯狰狱狲猃猎猕猡猪猫猬献獭玑玙玚玛玮环现玱玺珉珏珐珑珰珲琎琏琐琼瑶瑷璇璎瓒瓮瓯电画畅畲畴疖疗疟疠疡疬疮疯疱疴痈痉痒痖痨痪痫痴瘅瘆瘗瘘瘪瘫瘾瘿癞癣癫癯皑皱皲盏盐监盖盗盘眍眦眬着睁睐睑瞒瞩矫矶矾矿砀码砖砗砚砜砺砻砾础硁硅硕硖硗硙硚确硷碍碛碜碱碹磙礼祎祢祯祷祸禀禄禅离秃秆种积称秽秾稆税稣稳穑穷窃窍窑窜窝窥窦窭竖竞笃笋笔笕笺笼笾筑筚筛筜筝筹签简箓箦箧箨箩箪箫篑篓篮篱簖籁籴类籼粜粝粤粪粮糁糇紧絷纟纠纡红纣纤纥约级纨纩纪纫纬纭纮纯纰纱纲纳纴纵纶纷纸纹纺纻纼纽纾线绀绁绂练组绅细织终绉绊绋绌绍绎经绐绑绒结绔绕绖绗绘给绚绛络绝绞统绠绡绢绣绤绥绦继绨绩绪绫绬续绮绯绰绱绲绳维绵绶绷绸绹绺绻综绽绾绿缀缁缂缃缄缅缆缇缈缉缊缋缌缍缎缏缐缑缒缓缔缕编缗缘缙缚缛缜缝缞缟缠缡缢缣缤缥缦缧缨缩缪缫缬缭缮缯缰缱缲缳缴缵罂网罗罚罢罴羁羟羡翘翙翚耢耧耸耻聂聋职聍联聩聪肃肠肤肷肾肿胀胁胆胜胧胨胪胫胶脉脍脏脐脑脓脔脚脱脶脸腊腌腘腭腻腼腽腾膑臜舆舣舰舱舻艰艳艹艺节芈芗芜芦苁苇苈苋苌苍苎苏苘苹茎茏茑茔茕茧荆荐荙荚荛荜荞荟荠荡荣荤荥荦荧荨荩荪荫荬荭荮药莅莜莱莲莳莴莶获莸莹莺莼萚萝萤营萦萧萨葱蒇蒉蒋蒌蓝蓟蓠蓣蓥蓦蔷蔹蔺蔼蕲蕴薮藁藓虏虑虚虫虬虮虽虾虿蚀蚁蚂蚕蚝蚬蛊蛎蛏蛮蛰蛱蛲蛳蛴蜕蜗蜡蝇蝈蝉蝎蝼蝾螀螨蟏衅衔补衬衮袄袅袆袜袭袯装裆裈裢裣裤裥褛褴襁襕见观觃规觅视觇览觉觊觋觌觍觎觏觐觑觞触觯詟誉誊讠计订讣认讥讦讧讨让讪讫训议讯记讱讲讳讴讵讶讷许讹论讻讼讽设访诀证诂诃评诅识诇诈诉诊诋诌词诎诏诐译诒诓诔试诖诗诘诙诚诛诜话诞诟诠诡询诣诤该详诧诨诩诪诫诬语诮误诰诱诲诳说诵诶请诸诹诺读诼诽课诿谀谁谂调谄谅谆谇谈谊谋谌谍谎谏谐谑谒谓谔谕谖谗谘谙谚谛谜谝谞谟谠谡谢谣谤谥谦谧谨谩谪谫谬谭谮谯谰谱谲谳谴谵谶谷豮贝贞负贠贡财责贤败账货质贩贪贫贬购贮贯贰贱贲贳贴贵贶贷贸费贺贻贼贽贾贿赀赁赂赃资赅赆赇赈赉赊赋赌赍赎赏赐赑赒赓赔赕赖赗赘赙赚赛赜赝赞赟赠赡赢赣赪赵赶趋趱趸跃跄跖跞践跶跷跸跹跻踊踌踪踬踯蹑蹒蹰蹿躏躜躯车轧轨轩轪轫转轭轮软轰轱轲轳轴轵轶轷轸轹轺轻轼载轾轿辀辁辂较辄辅辆辇辈辉辊辋辌辍辎辏辐辑辒输辔辕辖辗辘辙辚辞辩辫边辽达迁过迈运还这进远违连迟迩迳迹适选逊递逦逻遗遥邓邝邬邮邹邺邻郁郄郏郐郑郓郦郧郸酝酦酱酽酾酿释里鉅鉴銮錾钆钇针钉钊钋钌钍钎钏钐钑钒钓钔钕钖钗钘钙钚钛钝钞钟钠钡钢钣钤钥钦钧钨钩钪钫钬钭钮钯钰钱钲钳钴钵钶钷钸钹钺钻钼钽钾钿铀铁铂铃铄铅铆铈铉铊铋铍铎铏铐铑铒铕铗铘铙铚铛铜铝铞铟铠铡铢铣铤铥铦铧铨铪铫铬铭铮铯铰铱铲铳铴铵银铷铸铹铺铻铼铽链铿销锁锂锃锄锅锆锇锈锉锊锋锌锍锎锏锐锑锒锓锔锕锖锗错锚锜锞锟锠锡锢锣锤锥锦锨锩锫锬锭键锯锰锱锲锳锴锵锶锷锸锹锺锻锼锽锾锿镀镁镂镃镆镇镈镉镊镌镍镎镏镐镑镒镕镖镗镙镚镛镜镝镞镟镠镡镢镣镤镥镦镧镨镩镪镫镬镭镮镯镰镱镲镳镴镶长门闩闪闫闬闭问闯闰闱闲闳间闵闶闷闸闹闺闻闼闽闾闿阀阁阂阃阄阅阆阇阈阉阊阋阌阍阎阏阐阑阒阓阔阕阖阗阘阙阚阛队阳阴阵阶际陆陇陈陉陕陧陨险随隐隶隽难雏雠雳雾霁霉霭靓静靥鞑鞒鞯鞴韦韧韨韩韪韫韬韵页顶顷顸项顺须顼顽顾顿颀颁颂颃预颅领颇颈颉颊颋颌颍颎颏颐频颒颓颔颕颖颗题颙颚颛颜额颞颟颠颡颢颣颤颥颦颧风飏飐飑飒飓飔飕飖飗飘飙飚飞飨餍饤饥饦饧饨饩饪饫饬饭饮饯饰饱饲饳饴饵饶饷饸饹饺饻饼饽饾饿馀馁馂馃馄馅馆馇馈馉馊馋馌馍馎馏馐馑馒馓馔馕马驭驮驯驰驱驲驳驴驵驶驷驸驹驺驻驼驽驾驿骀骁骂骃骄骅骆骇骈骉骊骋验骍骎骏骐骑骒骓骔骕骖骗骘骙骚骛骜骝骞骟骠骡骢骣骤骥骦骧髅髋髌鬓魇魉鱼鱽鱾鱿鲀鲁鲂鲄鲅鲆鲇鲈鲉鲊鲋鲌鲍鲎鲏鲐鲑鲒鲓鲔鲕鲖鲗鲘鲙鲚鲛鲜鲝鲞鲟鲠鲡鲢鲣鲤鲥鲦鲧鲨鲩鲪鲫鲬鲭鲮鲯鲰鲱鲲鲳鲴鲵鲶鲷鲸鲹鲺鲻鲼鲽鲾鲿鳀鳁鳂鳃鳄鳅鳆鳇鳈鳉鳊鳋鳌鳍鳎鳏鳐鳑鳒鳓鳔鳕鳖鳗鳘鳙鳛鳜鳝鳞鳟鳠鳡鳢鳣鸟鸠鸡鸢鸣鸤鸥鸦鸧鸨鸩鸪鸫鸬鸭鸮鸯鸰鸱鸲鸳鸴鸵鸶鸷鸸鸹鸺鸻鸼鸽鸾鸿鹀鹁鹂鹃鹄鹅鹆鹇鹈鹉鹊鹋鹌鹍鹎鹏鹐鹑鹒鹓鹔鹕鹖鹗鹘鹚鹛鹜鹝鹞鹟鹠鹡鹢鹣鹤鹥鹦鹧鹨鹩鹪鹫鹬鹭鹯鹰鹱鹲鹳鹴鹾麦麸黄黉黡黩黪黾鼋鼌鼍鼗鼹齄齐齑齿龀龁龂龃龄龅龆龇龈龉龊龋龌龙龚龛龟志制咨只里系范松没尝尝闹面准钟别闲干尽脏';
+    }
+
+    function FTPYStr() {
+        return '萬與醜專業叢東絲丟兩嚴喪個爿豐臨為麗舉麼義烏樂喬習鄉書買亂爭於虧雲亙亞產畝親褻嚲億僅從侖倉儀們價眾優夥會傴傘偉傳傷倀倫傖偽佇體餘傭僉俠侶僥偵側僑儈儕儂俁儔儼倆儷儉債傾傯僂僨償儻儐儲儺兒兌兗黨蘭關興茲養獸囅內岡冊寫軍農塚馮衝決況凍淨淒涼淩減湊凜幾鳳鳧憑凱擊氹鑿芻劃劉則剛創刪別剗剄劊劌剴劑剮劍剝劇勸辦務勱動勵勁勞勢勳猛勩勻匭匱區醫華協單賣盧鹵臥衛卻巹廠廳曆厲壓厭厙廁廂厴廈廚廄廝縣參靉靆雙發變敘疊葉號歎嘰籲後嚇呂嗎唚噸聽啟吳嘸囈嘔嚦唄員咼嗆嗚詠哢嚨嚀噝吒噅鹹呱響啞噠嘵嗶噦嘩噲嚌噥喲嘜嗊嘮啢嗩唕喚呼嘖嗇囀齧囉嘽嘯噴嘍嚳囁嗬噯噓嚶囑嚕劈囂謔團園囪圍圇國圖圓聖壙場阪壞塊堅壇壢壩塢墳墜壟壟壚壘墾坰堊墊埡墶壋塏堖塒塤堝墊垵塹墮壪牆壯聲殼壺壼處備複夠頭誇夾奪奩奐奮獎奧妝婦媽嫵嫗媯姍薑婁婭嬈嬌孌娛媧嫻嫿嬰嬋嬸媼嬡嬪嬙嬤孫學孿寧寶實寵審憲宮寬賓寢對尋導壽將爾塵堯尷屍盡層屭屜屆屬屢屨嶼歲豈嶇崗峴嶴嵐島嶺嶽崠巋嶨嶧峽嶢嶠崢巒嶗崍嶮嶄嶸嶔崳嶁脊巔鞏巰幣帥師幃帳簾幟帶幀幫幬幘幗冪襆幹並廣莊慶廬廡庫應廟龐廢廎廩開異棄張彌弳彎彈強歸當錄彠彥徹徑徠禦憶懺憂愾懷態慫憮慪悵愴憐總懟懌戀懇惡慟懨愷惻惱惲悅愨懸慳憫驚懼慘懲憊愜慚憚慣湣慍憤憒願懾憖怵懣懶懍戇戔戲戧戰戩戶紮撲扡執擴捫掃揚擾撫拋摶摳掄搶護報擔擬攏揀擁攔擰撥擇掛摯攣掗撾撻挾撓擋撟掙擠揮撏撈損撿換搗據撚擄摑擲撣摻摜摣攬撳攙擱摟攪攜攝攄擺搖擯攤攖撐攆擷擼攛擻攢敵斂數齋斕鬥斬斷無舊時曠暘曇晝曨顯晉曬曉曄暈暉暫曖劄術樸機殺雜權條來楊榪傑極構樅樞棗櫪梘棖槍楓梟櫃檸檉梔柵標棧櫛櫳棟櫨櫟欄樹棲樣欒棬椏橈楨檔榿橋樺檜槳樁夢檮棶檢欞槨櫝槧欏橢樓欖櫬櫚櫸檟檻檳櫧橫檣櫻櫫櫥櫓櫞簷檁歡歟歐殲歿殤殘殞殮殫殯毆毀轂畢斃氈毿氌氣氫氬氳彙漢汙湯洶遝溝沒灃漚瀝淪滄渢溈滬濔濘淚澩瀧瀘濼瀉潑澤涇潔灑窪浹淺漿澆湞溮濁測澮濟瀏滻渾滸濃潯濜塗湧濤澇淶漣潿渦溳渙滌潤澗漲澀澱淵淥漬瀆漸澠漁瀋滲溫遊灣濕潰濺漵漊潷滾滯灩灄滿瀅濾濫灤濱灘澦濫瀠瀟瀲濰潛瀦瀾瀨瀕灝滅燈靈災燦煬爐燉煒熗點煉熾爍爛烴燭煙煩燒燁燴燙燼熱煥燜燾煆糊溜愛爺牘犛牽犧犢強狀獷獁猶狽麅獮獰獨狹獅獪猙獄猻獫獵獼玀豬貓蝟獻獺璣璵瑒瑪瑋環現瑲璽瑉玨琺瓏璫琿璡璉瑣瓊瑤璦璿瓔瓚甕甌電畫暢佘疇癤療瘧癘瘍鬁瘡瘋皰屙癰痙癢瘂癆瘓癇癡癉瘮瘞瘺癟癱癮癭癩癬癲臒皚皺皸盞鹽監蓋盜盤瞘眥矓著睜睞瞼瞞矚矯磯礬礦碭碼磚硨硯碸礪礱礫礎硜矽碩硤磽磑礄確鹼礙磧磣堿镟滾禮禕禰禎禱禍稟祿禪離禿稈種積稱穢穠穭稅穌穩穡窮竊竅窯竄窩窺竇窶豎競篤筍筆筧箋籠籩築篳篩簹箏籌簽簡籙簀篋籜籮簞簫簣簍籃籬籪籟糴類秈糶糲粵糞糧糝餱緊縶糸糾紆紅紂纖紇約級紈纊紀紉緯紜紘純紕紗綱納紝縱綸紛紙紋紡紵紖紐紓線紺絏紱練組紳細織終縐絆紼絀紹繹經紿綁絨結絝繞絰絎繪給絢絳絡絕絞統綆綃絹繡綌綏絛繼綈績緒綾緓續綺緋綽緔緄繩維綿綬繃綢綯綹綣綜綻綰綠綴緇緙緗緘緬纜緹緲緝縕繢緦綞緞緶線緱縋緩締縷編緡緣縉縛縟縝縫縗縞纏縭縊縑繽縹縵縲纓縮繆繅纈繚繕繒韁繾繰繯繳纘罌網羅罰罷羆羈羥羨翹翽翬耮耬聳恥聶聾職聹聯聵聰肅腸膚膁腎腫脹脅膽勝朧腖臚脛膠脈膾髒臍腦膿臠腳脫腡臉臘醃膕齶膩靦膃騰臏臢輿艤艦艙艫艱豔艸藝節羋薌蕪蘆蓯葦藶莧萇蒼苧蘇檾蘋莖蘢蔦塋煢繭荊薦薘莢蕘蓽蕎薈薺蕩榮葷滎犖熒蕁藎蓀蔭蕒葒葤藥蒞蓧萊蓮蒔萵薟獲蕕瑩鶯蓴蘀蘿螢營縈蕭薩蔥蕆蕢蔣蔞藍薊蘺蕷鎣驀薔蘞藺藹蘄蘊藪槁蘚虜慮虛蟲虯蟣雖蝦蠆蝕蟻螞蠶蠔蜆蠱蠣蟶蠻蟄蛺蟯螄蠐蛻蝸蠟蠅蟈蟬蠍螻蠑螿蟎蠨釁銜補襯袞襖嫋褘襪襲襏裝襠褌褳襝褲襇褸襤繈襴見觀覎規覓視覘覽覺覬覡覿覥覦覯覲覷觴觸觶讋譽謄訁計訂訃認譏訐訌討讓訕訖訓議訊記訒講諱謳詎訝訥許訛論訩訟諷設訪訣證詁訶評詛識詗詐訴診詆謅詞詘詔詖譯詒誆誄試詿詩詰詼誠誅詵話誕詬詮詭詢詣諍該詳詫諢詡譸誡誣語誚誤誥誘誨誑說誦誒請諸諏諾讀諑誹課諉諛誰諗調諂諒諄誶談誼謀諶諜謊諫諧謔謁謂諤諭諼讒諮諳諺諦謎諞諝謨讜謖謝謠謗諡謙謐謹謾謫譾謬譚譖譙讕譜譎讞譴譫讖穀豶貝貞負貟貢財責賢敗賬貨質販貪貧貶購貯貫貳賤賁貰貼貴貺貸貿費賀貽賊贄賈賄貲賃賂贓資賅贐賕賑賚賒賦賭齎贖賞賜贔賙賡賠賧賴賵贅賻賺賽賾贗讚贇贈贍贏贛赬趙趕趨趲躉躍蹌蹠躒踐躂蹺蹕躚躋踴躊蹤躓躑躡蹣躕躥躪躦軀車軋軌軒軑軔轉軛輪軟轟軲軻轤軸軹軼軤軫轢軺輕軾載輊轎輈輇輅較輒輔輛輦輩輝輥輞輬輟輜輳輻輯轀輸轡轅轄輾轆轍轔辭辯辮邊遼達遷過邁運還這進遠違連遲邇逕跡適選遜遞邐邏遺遙鄧鄺鄔郵鄒鄴鄰鬱郤郟鄶鄭鄆酈鄖鄲醞醱醬釅釃釀釋裏钜鑒鑾鏨釓釔針釘釗釙釕釷釺釧釤鈒釩釣鍆釹鍚釵鈃鈣鈈鈦鈍鈔鍾鈉鋇鋼鈑鈐鑰欽鈞鎢鉤鈧鈁鈥鈄鈕鈀鈺錢鉦鉗鈷缽鈳鉕鈽鈸鉞鑽鉬鉭鉀鈿鈾鐵鉑鈴鑠鉛鉚鈰鉉鉈鉍鈹鐸鉶銬銠鉺銪鋏鋣鐃銍鐺銅鋁銱銦鎧鍘銖銑鋌銩銛鏵銓鉿銚鉻銘錚銫鉸銥鏟銃鐋銨銀銣鑄鐒鋪鋙錸鋱鏈鏗銷鎖鋰鋥鋤鍋鋯鋨鏽銼鋝鋒鋅鋶鐦鐧銳銻鋃鋟鋦錒錆鍺錯錨錡錁錕錩錫錮鑼錘錐錦鍁錈錇錟錠鍵鋸錳錙鍥鍈鍇鏘鍶鍔鍤鍬鍾鍛鎪鍠鍰鎄鍍鎂鏤鎡鏌鎮鎛鎘鑷鐫鎳鎿鎦鎬鎊鎰鎔鏢鏜鏍鏰鏞鏡鏑鏃鏇鏐鐔钁鐐鏷鑥鐓鑭鐠鑹鏹鐙鑊鐳鐶鐲鐮鐿鑔鑣鑞鑲長門閂閃閆閈閉問闖閏闈閑閎間閔閌悶閘鬧閨聞闥閩閭闓閥閣閡閫鬮閱閬闍閾閹閶鬩閿閽閻閼闡闌闃闠闊闋闔闐闒闕闞闤隊陽陰陣階際陸隴陳陘陝隉隕險隨隱隸雋難雛讎靂霧霽黴靄靚靜靨韃鞽韉韝韋韌韍韓韙韞韜韻頁頂頃頇項順須頊頑顧頓頎頒頌頏預顱領頗頸頡頰頲頜潁熲頦頤頻頮頹頷頴穎顆題顒顎顓顏額顳顢顛顙顥纇顫顬顰顴風颺颭颮颯颶颸颼颻飀飄飆飆飛饗饜飣饑飥餳飩餼飪飫飭飯飲餞飾飽飼飿飴餌饒餉餄餎餃餏餅餑餖餓餘餒餕餜餛餡館餷饋餶餿饞饁饃餺餾饈饉饅饊饌饢馬馭馱馴馳驅馹駁驢駔駛駟駙駒騶駐駝駑駕驛駘驍罵駰驕驊駱駭駢驫驪騁驗騂駸駿騏騎騍騅騌驌驂騙騭騤騷騖驁騮騫騸驃騾驄驏驟驥驦驤髏髖髕鬢魘魎魚魛魢魷魨魯魴魺鮁鮃鯰鱸鮋鮓鮒鮊鮑鱟鮍鮐鮭鮚鮳鮪鮞鮦鰂鮜鱠鱭鮫鮮鮺鯗鱘鯁鱺鰱鰹鯉鰣鰷鯀鯊鯇鮶鯽鯒鯖鯪鯕鯫鯡鯤鯧鯝鯢鯰鯛鯨鯵鯴鯔鱝鰈鰏鱨鯷鰮鰃鰓鱷鰍鰒鰉鰁鱂鯿鰠鼇鰭鰨鰥鰩鰟鰜鰳鰾鱈鱉鰻鰵鱅鰼鱖鱔鱗鱒鱯鱤鱧鱣鳥鳩雞鳶鳴鳲鷗鴉鶬鴇鴆鴣鶇鸕鴨鴞鴦鴒鴟鴝鴛鴬鴕鷥鷙鴯鴰鵂鴴鵃鴿鸞鴻鵐鵓鸝鵑鵠鵝鵒鷳鵜鵡鵲鶓鵪鶤鵯鵬鵮鶉鶊鵷鷫鶘鶡鶚鶻鶿鶥鶩鷊鷂鶲鶹鶺鷁鶼鶴鷖鸚鷓鷚鷯鷦鷲鷸鷺鸇鷹鸌鸏鸛鸘鹺麥麩黃黌黶黷黲黽黿鼂鼉鞀鼴齇齊齏齒齔齕齗齟齡齙齠齜齦齬齪齲齷龍龔龕龜誌製谘隻裡係範鬆冇嚐嘗鬨麵準鐘彆閒乾儘臟';
+    }
+
+    function Traditionalized(cc) {
+        var str = '',
+            ss = JTPYStr(),
+            tt = FTPYStr();
+        for (var i = 0; i < cc.length; i++) {
+            if (cc.charCodeAt(i) > 10000 && ss.indexOf(cc.charAt(i)) != -1) str += tt.charAt(ss.indexOf(cc.charAt(i)));
+            else str += cc.charAt(i);
+        }
+        return str;
+    } //trs-silentblue
+    function Simplized(cc) {
+        var str = '',
+            ss = JTPYStr(),
+            tt = FTPYStr();
+        for (var i = 0; i < cc.length; i++) {
+            if (cc.charCodeAt(i) > 10000 && tt.indexOf(cc.charAt(i)) != -1) str += ss.charAt(tt.indexOf(cc.charAt(i)));
+            else str += cc.charAt(i);
+        }
+        return str;
+    } //trs-silentblue
+    function setCookie(name, value) //cookies设置
+    {
+        var argv = setCookie.arguments;
+        var argc = setCookie.arguments.length;
+        var expires = (argc > 2) ? argv[2] : null;
+        if (expires != null) {
+            var LargeExpDate = new Date();
+            LargeExpDate.setTime(LargeExpDate.getTime() + (expires * 1000 * 3600 * 24));
+        }
+        document.cookie = name + "=" + escape(value) + ((expires == null) ? "" : ("; expires=" + LargeExpDate
+            .toGMTString()));
+    } //trs-silentblue
+    function getCookie(Name) //cookies读取
+    {
+        var search = Name + "="
+        if (document.cookie.length > 0) {
+            offset = document.cookie.indexOf(search)
+            if (offset != -1) {
+                offset += search.length
+                end = document.cookie.indexOf(";", offset)
+                if (end == -1) end = document.cookie.length
+                return unescape(document.cookie.substring(offset, end))
+            } else return ""
+        }
+    }
+    var StranLink_Obj = document.getElementById("StranLink")
+    if (StranLink_Obj) {
+        var JF_cn = "ft" + self.location.hostname.toString().replace(/\./g, "")
+        var BodyIsFt = getCookie(JF_cn)
+        if (BodyIsFt != "1") BodyIsFt = Default_isFT
+        with(StranLink_Obj) {
+            if (typeof(document.all) != "object") //非IE浏览器
+            {
+                href = "javascript:StranBody()"
+            } else {
+                href = "#";
+                onclick = new Function("StranBody();return false")
+            }
+            title = StranText("点击切换到繁体中文网站", 1, 1)
+            innerHTML = StranText(innerHTML, 1, 1)
+        }
+        if (BodyIsFt == "1") {
+            setTimeout("StranBody()", StranIt_Delay)
+        }
+    } //trs-silentblue
+</script>
+<style>
+    .kjtab_box .wyk ul li a i {
+        border-radius:20px;
+    }
+    .retrieval a {
+
+        width: 65px;
+
+    }
+    .content .foot_foot{
+        width:1000px;
+    }
+    .czwz_right{
+        float:left;
+        margin-left: 60px;
+    }
+    .wwzxg .tzxx h1{
+        background-position: left;
+        width:215px;
+    }
+</style>
+			<!--  -->
+			<div class="nyj3c_1 clearfix">
+				<div class="nyj_content">
+					<div class="dcwz clearfix">当前位置：<a href="../../../../" target="_blank" title="首页" class="CurrChnlCls">首页</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../../../" target="_blank" title="政府信息公开" class="CurrChnlCls">政府信息公开</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../../" target="_blank" title="法定主动公开目录" class="CurrChnlCls">法定主动公开目录</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../" target="_blank" title="最新文件" class="CurrChnlCls">最新文件</a>
+					</div>
+					<div class="gwy_xqy clearfix">
+						<div class="nyjxqy clearfix">
+							<div class="wrap" style="font-family:宋体;">
+								<table border="0" cellpadding="0" cellspacing="0" class="bd1" style="margin:0 auto;">
+									<tbody>
+										<tr>
+											<td width="75"><b>标　　题：</b></td>
+											<td colspan="3" width="907" style="text-align:left">
+												山西省能源局关于印发《推动绿电直连项目有序建设实施方案》的通知
+											</td>
+										</tr>
+										<tr>
+
+											<td co width="75"><b>发文字号：</b></td>
+											<td width="533">
+												晋能源规发〔2025〕259号
+											</td>
+											<td width="75"><b>主题分类：</b></td>
+											<td width="300">
+												发展规划
+											</td>
+										</tr>
+										<tr>
+											<td><b>成文日期：</b></td>
+											<td>
+												2025年12月29日
+											</td>
+											<td><b>发布日期：</b></td>
+											<td>
+												2025年12月30日
+											</td>
+										</tr>
+										<tr>
+											<td><b>是否有效：</b></td>
+											<td colspan="3" width="907" style="text-align:left">是</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="zfwjjd clearfix">
+								<div class="zfwjjd_left clearfix" id="main_content" style="width: 100%;border-right: 0;">
+									<!--<h3>
+										山西省能源局关于印发《推动绿电直连项目有序建设实施方案》的通知
+									</h3>
+									<h2>
+										
+									</h2>
+-->
+									<div class="article-body clearfix">
+
+										<!--<script language="javascript" type="text/javascript">
+											var pdfurl = '';
+											var pdfwidth = 730; //定义pdf单页宽度
+											var pdfheight = 800; //定义pdf单页高度
+											if (pdfurl.indexOf(".pdf") >= 0) { //判断是否为PDF，是就显示，不是就不显示 
+												document.write(
+													"<div style='width:730px;margin:0 auto;'><object classid='clsid:CA8A9780-280D-11CF-A24D-444553540000' width='" +
+													pdfwidth + "' height='" + pdfheight + "' border='0' top='-10' name='pdf'> ");
+												document.write("<param name='toolbar' value='true'>");
+												document.write("<param name='_Version' value='65539'>");
+												document.write("<param name='_ExtentX' value='20108'>");
+												document.write("<param name='_ExtentY' value='10866'>");
+												document.write("<param name='_StockProps' value='0'>");
+												document.write("<param name='SRC' value=''>");
+												document.write("<embed name='plugin' src='" + pdfurl + "' type='application/pdf' width='" + pdfwidth +
+													"' height='" + pdfheight + "'>");
+												document.write("</object></div>")
+											}; 
+										</script>-->
+										<div class="trs_editor_view TRS_UEDITOR trs_paper_default trs_word trs_web"><p style="margin: 0px; text-indent: 0px; text-align: center; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 29px;"><strong><span data-index="4" style="font-family: 宋体, SimSun; font-size: 29px;">山西省能源局关于印发</span></strong></p><p style="margin: 0px; text-indent: 0px; text-align: center; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 29px;"><strong><span data-index="4" style="font-family: 宋体, SimSun; font-size: 29px;">《推动绿电直连项目有序建设实施方案》的通知</span></strong></p><p style="margin: 0px; text-indent: 0px; text-align: center; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 29px;"><strong><span data-index="4" style="font-family: 宋体, SimSun; font-size: 29px;"><br/></span></strong></p><p style="margin: 0px; text-indent: 0px; text-align: center; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 29px;"><strong><span data-index="4" style="font-family: 宋体, SimSun; font-size: 29px;"></span></strong></p><p style="white-space: normal; text-align: center; font-size: 21px;"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">晋能源规发〔<span style="font-family: &quot;Times New Roman&quot;;">2025</span><span style="font-family: 楷体_GB2312;">〕</span><span style="font-family: &quot;Times New Roman&quot;;">259</span><span style="font-family: 楷体_GB2312;">号</span></span></p><p style="white-space: normal; text-align: center; font-size: 21px;"><span data-index="6" style="font-size: 21px; font-family: 楷体_GB2312;"><br/></span></p><p style="margin: 0px; text-indent: 0px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;">各市能源局，国网山西省电力有限公司、山西地方电力有限公司，山西电力交易中心有限公司，各有关主体：</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;">为有序做好我省绿电直连项目建设，根据《国家发展改革委 国家能源局关于有序推动绿电直连发展有关事项的通知》（发改能源〔2025〕650号），我局制定了《推动绿电直连项目有序建设实施方案》，现印发给你们，请认真组织实施。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;"><br/></span></p><p style="margin: 0px; text-indent: 42px; text-align: right; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;">山西省能源局&nbsp; &nbsp;         </span></p><p style="margin: 0px; text-indent: 42px; text-align: right; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;">2025年12月29日         </span></p><p style="margin: 0px; text-indent: 42px; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px; text-align: right;"><span style="font-family: 仿宋, FangSong;">                                                                                        </span><span style="font-family: 仿宋, FangSong;"> </span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;"></span></p><p style="white-space: normal; font-size: 29px; text-align: center;"><span style="font-family: 宋体, SimSun;"><strong><span data-index="4" style="font-size: 29px;"><br/></span></strong></span></p><p style="white-space: normal; font-size: 29px; text-align: center;"><span style="font-family: 宋体, SimSun;"><strong><span data-index="4" style="font-size: 29px;">《推动绿电直连项目有序建设实施方案》</span></strong></span></p><p style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 仿宋_GB2312;font-size: 24px;white-space: normal"><span style="font-size: 24px"> </span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">为深入贯彻习近平总书记对山西工作的重要讲话重要指示精神，更好推动能源转型、产业升级和适度多元发展，探索创新新能源生产和消费融合发展模式，促进新能源就近就地消纳，更好满足企业绿色用能需求，根据《国家发展改革委 国家能源局关于有序推动绿电直连发展有关事项的通知》（发改能源〔2025〕650号），结合我省电力市场化改革、新能源供需形势和产业发展需求，制定本实施方案。</span></p><h1 style="text-indent: 42px; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 黑体; font-size: 21px;">一、总体要求</span></h1><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（一）适用范围</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">绿电直连是指风电、太阳能发电、生物质发电等新能源不直接接入公共电网，通过直连线路向单一电力用户供给绿电，可实现供给电量清晰物理溯源的模式。其中，直连线路是指电源与电力用户直接连接的专用电力线路。在国家出台向多用户开展绿色电力直连供应具体办法前，支持各地结合电网支撑能力、绿电资源禀赋、产业发展需求，参照本方案先行先试，稳妥开展多用户绿电直连和绿电园区试点。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（二）发展目标</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">绿电直连项目以满足企业绿色用能需求和促进新能源就近就地消纳为目标，秉持安全优先、绿色友好、权责对等、源荷匹配原则，通过构建“点面”结合的绿电消纳体系，培育形成“单一用户+多用户+园区”的立体化绿电消纳格局。</span></p><h1 style="text-indent: 42px;line-height: 43px;font-family: 仿宋_GB2312;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 黑体; font-size: 21px;">二、项目类型</span></h1><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（一）并网方式</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">项目按是否接入公共电网分为并网型和离网型两类。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>1.并网型项目。</strong>项目作为整体接入公共电网，与公共电网形成清晰的物理界面与责任界面，电源应接入用户和公共电网产权分界点的用户侧。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>2.离网型项目。</strong>项目不接入公共电网，发电、输电、变电、配电、用电及辅助控制系统独立于公共电网之外。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（二）电源类型</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">电源原则上为新建新能源项目，支持尚未开展电网接入工程建设或因新能源消纳受限等原因无法并网的新能源项目，在履行相应变更手续后开展绿电直连。项目中新能源发电项目豁免电力业务许可，另有规定除外。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（三）负荷类型</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>1.新增负荷。</strong>尚未向电网企业报装、已报装但配套电网工程尚未建设的用电项目均可视为新增负荷。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>2.存量负荷。</strong>已有燃煤、燃气自备电厂的用电项目，在足额清缴可再生能源发展基金的前提下，可通过绿电直连压减自备电厂出力，实现清洁能源替代。有降碳刚性需求的出口外向型企业或产业链上下游为出口外向型企业的项目，提供相关支撑性证明文件后，可利用周边新能源资源开展存量负荷绿电直连。支持零碳园区、碳达峰等国家改革试点的用能项目开展绿电直连。国家对可再生能源电力消纳责任权重有考核要求的行业，通过绿电直连能够有力降低碳排放、显著提升产品竞争力的用能项目，也可开展绿电直连。</span></p><h1 style="text-indent: 42px;line-height: 43px;font-family: 仿宋_GB2312;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 黑体; font-size: 21px;">三、组织实施</span></h1><h2 style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 楷体; font-size: 24px; white-space: normal;"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（一）统筹规划</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">按照“省级清单规划、市级评审确定，成熟一个、实施一个”的原则，开展绿电直连项目建设。省能源局通过清单管理，做好绿电直连项目的统筹规划，确保合理布局、有序发展。各市能源局组织项目实施方案评审，县（区、市）能源主管部门协调做好项目要素支撑保障。列入省级清单的绿电直连项目，其新能源项目纳入省级年度开发建设计划，配套储能列入省级储能项目库，电网接入工程纳入省级电力规划，并按《企业投资项目核准和备案管理办法》等规定进行管理。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（二）申报评审流程</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>1.</strong><strong>项目规划</strong><strong>。</strong>各市能源局组织有意愿建设绿电直连项目的单位，初步落实负荷和新能源项目建设条件，并取得所在县（区、市）政府支持性意见后，向省能源局提出项目申请并附相关印证材料。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>2</strong><strong>.列入清单。</strong>省能源局对直连项目电源、负荷的政策符合性和可行性进行审核，并结合各地已列入绿电直连清单的项目推进情况，将申报项目有序纳入省级绿电直连项目清单。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>3.编制方案。</strong>纳入省级清单的项目，由项目单位编制实施方案，方案应包含电源、负荷、专线、调度、调节及接入系统等内容，对资源条件、消纳能力、接入条件、安全可靠性和经济可行性进行分析，同时评估系统风险、用电安全及电能质量等关键指标，提出针对性技术保障措施。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>4.市级评审。</strong>各市能源局委托具备资质的第三方机构，会同市级相关部门及电网企业，对列入省级绿电直连项目清单的项目实施方案开展评审并组织实施。</span></p><h2 style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 楷体; font-size: 24px; white-space: normal;"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（三）建设运营管理</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>1.</strong><strong>建设</strong><strong>。</strong>项目单位要落实主体责任，按照实施方案统一建设、同步投产。各市能源局积极协调相关部门做好要素支撑和调度管理。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>2.</strong><strong>验收。</strong>项目单位应及时组织竣工验收，完成后向市能源局报送验收情况，同步抄报省能源局和山西能源监管办。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>3</strong><strong>.</strong><strong>退出机制</strong><strong>。</strong>对列入省级清单半年以上未通过市级评审的项目，自动移出清单。通过评审后1年内未开工的项目，原则上由各市取消实施资格，并向省能源局和山西能源监管办报送。绿电直连项目投运后如出现负荷中断，应及时匹配新的负荷，如2年内无法匹配新的负荷，可由市能源局报请省能源局，省能源局会同电网企业重新评估项目电网接入和并网消纳条件，具备条件的可转为市场化新能源项目。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>4</strong><strong>.</strong><strong>监管评估</strong><strong>。</strong>各市能源局每月15日前向省能源局报送清单内项目推进情况。省能源局联合山西能源监管办、电网企业加强对各市绿电直连项目的指导，定期开展抽检核查和跟踪评估。</span></p><h1 style="text-indent: 42px;line-height: 43px;font-family: 仿宋_GB2312;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 黑体; font-size: 21px;">四、相关要求</span></h1><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（一）项目主体</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">包括民营企业在内的各类经营主体（不含电网企业）可投资绿电直连项目。绿电直连项目原则上由负荷方作为主责单位。鼓励负荷作为绿电直连项目的同一投资主体，实现电源、负荷、储能、直连专线一体化投资运营。涉及多个投资主体的，应签订多年期购电协议或合同能源管理协议，明确电力设施建设、产权划分、运行维护、调度运行、结算关系、违约责任等事项。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（二）电网接入</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">项目应按标准配置继电保护、安全稳定控制装置、通信设备等二次系统，内部各设施涉网性能需满足相关标准，避免因自身原因影响电网安全稳定运行。电网企业应向满足并网条件的项目公平无歧视提供电网接入服务。并网型项目接入电压等级原则上不超过220千伏。确需接入220千伏及以上的，由省能源局会同山西能源监管办组织电网企业等相关单位开展电力系统安全风险专项评估，市能源局组织评审前，需取得评估意见。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（三）源荷匹配</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">并网型项目严格遵循“以荷定源”原则，科学配置新能源电源类型和装机规模，采用“自发自用为主、余电上网为辅”的运营模式，并落实源荷匹配消纳比例约束指标：项目整体新能源年自发自用电量占总可用发电量的比例应不低于60%，占总用电量的比例应不低于30%，并不断提高自发自用比例，2030年前不低于35%，上网电量占总可用发电量的比例不得超过20%。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">项目应通过挖掘用户侧负荷灵活调节潜力、开展源荷匹配仿真测算，合理配置储能，明确负荷调节方案，分析论证项目新能源利用率及最大负荷峰谷差率，与公共电网交换功率的峰谷差率不高于方案规划值。因负荷停运、故障异常、交易报价等造成的弃风弃光，不纳入全省弃风弃光电量统计。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（四）调度运行</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>1.调度运行管理。</strong>并网型项目整体及内部电源按照接入电压等级和容量规模接受相应调度机构管理，依据《电网运行准则》等向电力调度机构提供相关资料，并按为系统提供服务的类别接入新型电力负荷管理系统或电力调度自动化系统，确保生产控制区与信息管理区有效隔离，实现内部资源“可观、可测、可调、可控”，具备对可控资源实时遥测、遥信能力，能够接受、分解、执行实时调度指令。调度机构应按项目自主安排的发用电曲线下达调度计划，仅在影响公用系统安全稳定运行的突发情况下进行干预。在新能源消纳困难时段，项目不应向公共电网反送电。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"><strong>2</strong><strong>.</strong><strong>涉网</strong><strong>安全管理。</strong>绿电直连项目应严格落实各项安全生产管理措施，保障安全稳定运行。项目应开展风险管控及隐患排查治理，深入评估并及时消除项目内部设备故障以及各类安全风险，持续提升运行可靠性。项目应按照有关管理要求和技术标准做好无功和电能质量管理。</span></p><h2 style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 楷体; font-size: 24px; white-space: normal;"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（五）计量与安全防护</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">项目须在发电、厂用电、自发自用、储能等关口加装符合标准的双向计量装置，严格执行电力市场计量管理相关规定。由电网企业负责项目计量采集装置安装、运行和维护服务，对发电、用电数据进行全流程实时监测与核验，绿电直连项目的可用功率、测风测光信息、新能源功率预测等按要求上传至电网企业，确保数据真实、准确、可追溯；核准数据同步至省级电力交易中心，作为绿电交易结算与绿证核发的唯一依据。项目各业务系统须严格执行《电力监控系统安全防护规定》，安装网络安全监测、隔离等设施，完成网络安全等级保护认证及评级工作，按要求向相关调度机构备案，接受调度机构开展的技术监督。</span></p><h2 style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 楷体; font-size: 24px; white-space: normal;"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（六）权责划分</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">项目应明确发电企业、电网企业、用户及市场运营机构等多方主体的产权分界点与安全责任界面，各方在各自安全责任界面内履行相应电力安全风险管控责任。项目应统筹考虑内部源荷特性、平衡能力、经济收益、与公共电网交换功率等因素，自主合理申报并网容量，并与电网企业协商确定并网容量以外的供电责任和费用。电网企业应按项目申报容量和有关协议履行供电责任。项目应调节内部发电和负荷，确保项目与公共电网的交换功率不超过申报容量，自行承担自身原因造成供电中断的相关责任。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（七）区域管控</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">项目原则上应将发电、输电、变电、配电、用电及配套设施集中布局在就近范围，涉及多个县（区、市）的，应取得所在县（区、市）政府支持性意见。直连线路应优化路径设计，减少线路交叉跨越；确需跨越的，须落实完善安全防护措施，确保运行安全可靠。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（八）市场运营</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">并网型绿电直连项目作为独立市场主体，享有平等市场地位，需依据电力市场规则体系和虚拟电厂管理规定在山西省电力交易中心注册。<span style="font-family: 仿宋_GB2312; font-size: 21px;">电源和负荷非同一投资主体的可分别注册，以</span>“源荷类”虚拟电厂身份聚合参与电力市场交易，根据市场交易结果安排生产，并按照与公共电网的交换功率进行结算。项目负荷不得由电网企业代理购电。</span></p><h2 style="margin: 0 0 0;text-indent: 42px;text-align: justify;line-height: 43px;font-family: 楷体;font-size: 24px;white-space: normal"><span data-index="6" style="font-family: 楷体_GB2312; font-size: 21px;">（九）费用缴纳</span></h2><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">对符合条件的项目，相关价格机制按《山西省发展和改革委员会 山西省能源局关于贯彻落实&lt;<span style="font-family: 仿宋_GB2312; font-size: 21px;">国家发展改革委</span> <span style="font-family: 仿宋_GB2312; font-size: 21px;">国家能源局关于完善价格机制促进新能源发电就近消纳的通知</span>&gt;有关事项的通知》（晋发改商品发<span style="font-family: 仿宋_GB2312; font-size: 21px;">〔</span>2025〕397号）执行。项目除自发自用电量以外的上网电量全部参与电力市场交易，不纳入机制电价执行范围。</span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"> </span></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;">附件：</span><a appendix="true" data-appendix="true" needdownload="true" data-needdownload="true" otheroperation="false" data-otheroperation="false" href="./P020260104617940967018.doc" title="绿电直连项目实施方案编制大纲（参考）.doc" download="绿电直连项目实施方案编制大纲（参考）.doc" style="color: rgb(0, 102, 204); font-family: 仿宋, FangSong; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;">绿电直连项目实施方案编制大纲（参考）.doc</span></a></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-size: 21px;"></span><br/></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;">  </span><br/></p><p style="margin: 0px; text-indent: 42px; text-align: justify; line-height: 43px; font-family: 仿宋_GB2312; white-space: normal; font-size: 21px;"><span data-index="6" style="font-family: 仿宋, FangSong; font-size: 21px;"><br/></span></p><p><br/></p></div>
+
+										 
+									</div>
+								</div>
+								<div class="zfwjjd_right clearfix" id="unscramble" style="display: none;">
+									<ul>
+										<li>
+											<h6 class="bt11"
+												style="font-size: 16px; font-family: 宋体; line-height: 35px;">关联文件</h6>
+										</li>
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script>
+				
+			</script>
+			<!-- 底部 -->
+			<div class="nyjfoot clearfix">
+	<div class="foot_yqlj clearfix" style="display:none; background-color: #ececec">
+		<div class="content">
+			<h6><img src="../../../../images/sxsnyj52.png" />公共服务</h6>
+			<p><a href="">山西省煤炭经营监督管理系统</a></p>
+		</div>
+	</div>
+	<div class="nyfoot_ft clearfix" style="background-color: white;">
+<div style= "width:100%; line-height: 65px; background-color: #1f4e83; margin-top:-35px;"   >
+<div class="ftyqlj clearfix" >
+				<form method="post">
+					<ul>
+						<li>
+							<select onchange="window.open(this.options[this.selectedIndex].value)" id="select">
+								<option>各市能源局网站</option>
+								<option value="http://nyj.taiyuan.gov.cn/">太原市能源局网站</option>
+								<option value="http://www.dt.gov.cn/dtzww/bumdtgg/dept_xxgk_list.shtml">大同市能源局网站
+								</option>
+								<option value="http://mtj.shuozhou.gov.cn">朔州市能源局网站</option>
+								<option value="http://nyj.sxxz.gov.cn/">忻州市能源局网站</option>
+								<option value="http://nyj.yq.gov.cn/">阳泉市能源局网站</option>
+								<option value="http://nyj.sxjz.gov.cn/">晋中市能源局网站</option>
+								<option value="http://www.lvliang.gov.cn/zfjgzd/llmtgy/">吕梁市能源局网站</option>
+								<option
+									value="https://www.changzhi.gov.cn/xxgkml/zfxxgkml/szfgzbm/czsnyj/gkzn_201/index.shtml">
+									长治市能源局网站</option>
+								<option value="http://nyj.jcgov.gov.cn/">晋城市能源局网站</option>
+								<option value="http://nyj.linfen.gov.cn/">临汾市能源局网站</option>
+								<option value="https://www.yuncheng.gov.cn/bmzt/snyjzl/mhlist.shtml">运城市能源局网站</option>
+							</select>
+						</li>
+							<script>
+							    $(function(){
+							        $("#select").change(function(){
+							            var op=$("#select").find('option');
+							            op.get(0).selected=true;
+							        });
+							    })
+							</script>
+						<li>
+							<select onchange="window.open(this.options[this.selectedIndex].value)" id="select1">
+								<option>能源行业相关网站</option>
+								<option value="http://www.ndrc.gov.cn/">国家发改委</option>
+								<option value="http://www.nea.gov.cn/">国家能源局</option>
+								<option value="https://www.mem.gov.cn/">中华人民共和国应急管理部</option>
+								<option value="http://www.coalchina.org.cn/">国家煤炭工业网</option>
+								<!--<option value="http://www.chinacoal.gov.cn/">中国煤炭工业网</option>-->
+								<option value="http://www.sxsmtgyxh.com/">山西省煤炭工业协会</option>
+								<option value="https://sxepa.org/">山西省电力行业协会</option>
+							</select>
+						</li>
+							<script>
+							    $(function(){
+							        $("#select1").change(function(){
+							            var op1=$("#select1").find('option');
+							            op1.get(0).selected=true;
+							        });
+							    })
+							</script>
+					</ul>
+				</form>
+			</div>
+</div>
+		<div class="content">
+			
+			<div class="foot_foot clearfix" >
+				<div class="czwz_left clearfix">
+					<a href="http://bszs.conac.cn/sitename?method=show&id=86283A653758B39BE05310291AACDD87"><img src="../../../../images/sxsnyj53.png" alt="sxsnyj53.png" title="sxsnyj53.png" /></a>
+					<a href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=1400000063&url=https%3A%2F%2Fnyj.shanxi.gov.cn%2Findex.html"><img src="../../../../images/sxsnyj54.png" alt="sxsnyj54.png" title="sxsnyj54.png" style="margin-top: 12px;" /></a>
+				</div>
+				<div class="czwz_right clearfix" >
+
+					<P style="color:black" >
+						主办单位：山西省能源局<br/>© 山西省能源局版权所有,如需转载，请注明来源 <br/>地址：山西省太原市并州北路67号 &nbsp;&nbsp;&nbsp;邮编：030012 <br/> <a style="color:black" 
+							href="#">网站地图</a> &nbsp;&nbsp;&nbsp; 联系方式：4117512，4117555<br><a style="color:black" href= 
+							"https://beian.miit.gov.cn/">晋ICP备：12000773 号</a> &nbsp;&nbsp;&nbsp; <a href="#" style="color:black" ><img class="gx" src="../../../../images/sxsnyj55.png" />晋公网安备
+							14010602060577号</a><br>网站标识码：1400000063
+					</P>
+
+
+
+
+				</div>
+<img style = "height:150px; margin-left: 40px;" src="../../../../images/微信公众号.jpg" alt="微信公众号.jpg" title="微信公众号.jpg" />
+<div>
+
+</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script id="_trs_ta_js" src="//ta.trs.cn/c/js/ta.js?mpid=5387" async="async" defer="defer"></script>
+		</div>
+	</body>
+</html>

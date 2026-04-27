@@ -7,7 +7,9 @@ import hashlib
 import html
 import io
 import re
+import shutil
 import ssl
+import subprocess
 import sys
 import time
 import urllib.error
@@ -24,6 +26,10 @@ SEED_CSV = ROOT / "02_元数据" / "待采集链接.csv"
 LEDGER_CSV = ROOT / "02_元数据" / "政策资料台账.csv"
 RAW_ROOT = ROOT / "01_原始资料"
 TEXT_ROOT = ROOT / "03_处理后文本"
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+)
 
 LEDGER_FIELDS = [
     "资料编号",
@@ -141,10 +147,40 @@ def fetch(url: str, timeout: int) -> tuple[bytes, str]:
     except urllib.error.URLError as exc:
         reason = getattr(exc, "reason", None)
         if not isinstance(reason, ssl.SSLCertVerificationError):
-            raise
-        insecure_ctx = ssl._create_unverified_context()
-        with urllib.request.urlopen(req, timeout=timeout, context=insecure_ctx) as resp:
-            return resp.read(), resp.headers.get("Content-Type", "")
+            return fetch_with_curl(url, timeout)
+        try:
+            insecure_ctx = ssl._create_unverified_context()
+            with urllib.request.urlopen(req, timeout=timeout, context=insecure_ctx) as resp:
+                return resp.read(), resp.headers.get("Content-Type", "")
+        except Exception:
+            return fetch_with_curl(url, timeout)
+    except Exception:
+        return fetch_with_curl(url, timeout)
+
+
+def fetch_with_curl(url: str, timeout: int) -> tuple[bytes, str]:
+    if not shutil.which("curl.exe"):
+        raise OSError("curl.exe not found")
+    result = subprocess.run(
+        [
+            "curl.exe",
+            "-k",
+            "-L",
+            "--compressed",
+            "--max-time",
+            str(max(timeout, 1)),
+            "-A",
+            USER_AGENT,
+            url,
+        ],
+        check=False,
+        capture_output=True,
+        timeout=timeout + 5,
+    )
+    if result.returncode != 0 or not result.stdout:
+        stderr = result.stderr.decode("utf-8", errors="ignore").strip()
+        raise OSError(f"curl fallback failed: {stderr or result.returncode}")
+    return result.stdout, ""
 
 
 def guess_extension(url: str, content_type: str) -> str:
@@ -170,16 +206,27 @@ def sanitize_filename(text: str, fallback: str) -> str:
 
 def extract_title(raw_html: str, fallback: str) -> str:
     patterns = [
+        r"<meta[^>]+name=[\"']ArticleTitle[\"'][^>]+content=[\"']([^\"']+)[\"']",
+        r"<meta[^>]+content=[\"']([^\"']+)[\"'][^>]+name=[\"']ArticleTitle[\"']",
         r"<h1[^>]*>(.*?)</h1>",
         r"<title[^>]*>(.*?)</title>",
         r"公开事项名称[:：]\s*([^<\n]+)",
     ]
+    generic_titles = {
+        "山西省能源局",
+        "云南省能源局",
+        "国家能源局江苏监管办公室",
+        "国家能源局浙江监管办公室",
+        "国家能源局四川监管办公室",
+        "国家能源局福建监管办公室",
+        "国家能源局新疆监管办公室",
+    }
     for pattern in patterns:
         match = re.search(pattern, raw_html, flags=re.I | re.S)
         if match:
             title = re.sub(r"<[^>]+>", "", match.group(1))
             title = html.unescape(re.sub(r"\s+", " ", title)).strip()
-            if title:
+            if title and title not in generic_titles:
                 return title
     return fallback
 
@@ -316,7 +363,7 @@ def collect_one(seed_row: dict[str, str], timeout: int, dry_run: bool) -> dict[s
     text = ""
     if ext in {".html", ".htm"}:
         raw_html = decode_bytes(data, content_type)
-        title = extract_title(raw_html, fallback)
+        title = extract_title(raw_html, seed_row.get("备注", "").strip() or fallback)
         publish_date = extract_publish_date(raw_html, seed_row)
         text = text_from_html(raw_html)
     elif ext == ".pdf":

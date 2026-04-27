@@ -3,6 +3,9 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
+import html
+import shutil
+import subprocess
 import json
 import re
 import ssl
@@ -130,9 +133,46 @@ CUSTOM_SOURCE_FILTERS = {
     },
 }
 
-TITLE_KEYS = ["title", "bt", "name", "articleTitle", "docTitle", "policyTitle", "xxbt", "cname"]
-URL_KEYS = ["url", "link", "href", "articleUrl", "xxnr_url", "wjgl", "wjlj", "xxlj"]
-DATE_KEYS = ["publishTime", "pubDate", "fbrq", "date", "riqi", "sj", "publishDate", "releaseTime", "gxsj"]
+TITLE_KEYS = [
+    "title",
+    "gk_doctitle",
+    "zc_doctitle",
+    "informationNewsMainTitle",
+    "bt",
+    "name",
+    "articleTitle",
+    "docTitle",
+    "policyTitle",
+    "xxbt",
+    "cname",
+]
+URL_KEYS = [
+    "url",
+    "docpuburl",
+    "staticHtmlUrl",
+    "informationNewsLink",
+    "link",
+    "href",
+    "articleUrl",
+    "xxnr_url",
+    "wjgl",
+    "wjlj",
+    "xxlj",
+]
+DATE_KEYS = [
+    "scrq",
+    "docpubtime",
+    "informationNewsPublishTime",
+    "publishTime",
+    "pubDate",
+    "fbrq",
+    "date",
+    "riqi",
+    "sj",
+    "publishDate",
+    "releaseTime",
+    "gxsj",
+]
 
 
 class LinkParser(HTMLParser):
@@ -163,6 +203,31 @@ class LinkParser(HTMLParser):
     def handle_data(self, data: str) -> None:
         if self.in_a:
             self.current_parts.append(data)
+
+
+def fetch_bytes_with_curl(url: str, timeout: int) -> tuple[bytes, str]:
+    if not shutil.which("curl.exe"):
+        raise RuntimeError("curl.exe not found")
+    result = subprocess.run(
+        [
+            "curl.exe",
+            "-k",
+            "-L",
+            "--compressed",
+            "--max-time",
+            str(max(timeout, 1)),
+            "-A",
+            USER_AGENT,
+            url,
+        ],
+        check=False,
+        capture_output=True,
+        timeout=timeout + 5,
+    )
+    if result.returncode != 0 or not result.stdout:
+        stderr = result.stderr.decode("utf-8", errors="ignore").strip()
+        raise RuntimeError(f"curl fallback failed: {stderr or result.returncode}")
+    return result.stdout, ""
 
 
 def read_csv_rows(path: Path) -> list[dict[str, str]]:
@@ -237,11 +302,17 @@ def fetch_text(url: str, timeout: int) -> str:
     except urllib.error.URLError as exc:
         reason = getattr(exc, "reason", None)
         if not isinstance(reason, ssl.SSLCertVerificationError):
-            raise
-        insecure_ctx = ssl._create_unverified_context()
-        with urllib.request.urlopen(req, timeout=timeout, context=insecure_ctx) as resp:
-            data = resp.read()
-            content_type = resp.headers.get("Content-Type", "")
+            data, content_type = fetch_bytes_with_curl(url, timeout)
+        else:
+            try:
+                insecure_ctx = ssl._create_unverified_context()
+                with urllib.request.urlopen(req, timeout=timeout, context=insecure_ctx) as resp:
+                    data = resp.read()
+                    content_type = resp.headers.get("Content-Type", "")
+            except Exception:
+                data, content_type = fetch_bytes_with_curl(url, timeout)
+    except Exception:
+        data, content_type = fetch_bytes_with_curl(url, timeout)
 
     encodings = []
     match = re.search(r"charset=([\w-]+)", content_type, flags=re.I)
@@ -255,6 +326,11 @@ def fetch_text(url: str, timeout: int) -> str:
         except (LookupError, UnicodeDecodeError):
             continue
     return data.decode("utf-8", errors="ignore")
+
+
+def clean_text(value: str) -> str:
+    without_tags = re.sub(r"<[^>]+>", "", value or "")
+    return " ".join(html.unescape(without_tags).split())
 
 
 def parse_html_links(base_url: str, html_text: str) -> list[dict[str, str]]:
@@ -292,9 +368,9 @@ def first_value(obj: dict, keys: list[str]) -> str:
 
 def walk_json(obj, base_url: str, items: list[dict[str, str]]) -> None:
     if isinstance(obj, dict):
-        title = first_value(obj, TITLE_KEYS)
-        url = first_value(obj, URL_KEYS)
-        publish_date = first_value(obj, DATE_KEYS)
+        title = clean_text(first_value(obj, TITLE_KEYS))
+        url = clean_text(first_value(obj, URL_KEYS))
+        publish_date = clean_text(first_value(obj, DATE_KEYS))
         if title and url:
             items.append(
                 {
@@ -382,11 +458,32 @@ def deduplicate(rows: list[dict[str, str]]) -> list[dict[str, str]]:
 
 
 def paginated_urls(list_url: str, fetch_mode: str, pages: int) -> list[str]:
-    if pages <= 1 or fetch_mode != "html":
+    if pages <= 1:
+        return [list_url]
+
+    if "{page}" in list_url:
+        return [list_url.replace("{page}", str(page)) for page in range(1, pages + 1)]
+
+    parsed = urllib.parse.urlsplit(list_url)
+    query = urllib.parse.parse_qs(parsed.query, keep_blank_values=True)
+    page_keys = [key for key in ("pageNum", "page", "pageNo", "currentPage") if key in query]
+    if page_keys:
+        urls = []
+        for page in range(1, pages + 1):
+            page_query = dict(query)
+            for key in page_keys:
+                page_query[key] = [str(page)]
+            urls.append(
+                urllib.parse.urlunsplit(
+                    parsed._replace(query=urllib.parse.urlencode(page_query, doseq=True))
+                )
+            )
+        return list(dict.fromkeys(urls))
+
+    if fetch_mode != "html":
         return [list_url]
 
     urls = [list_url]
-    parsed = urllib.parse.urlsplit(list_url)
     path = parsed.path
 
     for page_index in range(1, pages):
