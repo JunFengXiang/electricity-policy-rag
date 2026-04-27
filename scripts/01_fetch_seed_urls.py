@@ -5,6 +5,7 @@ import csv
 import datetime as dt
 import hashlib
 import html
+import io
 import re
 import ssl
 import sys
@@ -162,7 +163,7 @@ def guess_extension(url: str, content_type: str) -> str:
 
 def sanitize_filename(text: str, fallback: str) -> str:
     text = text.strip() or fallback
-    text = re.sub(r"[\\/:*?\"<>|]+", "_", text)
+    text = re.sub(r"[\\/:*?\"<>|;；]+", "_", text)
     text = re.sub(r"\s+", "_", text)
     return text[:120].strip("._") or fallback
 
@@ -280,6 +281,28 @@ def text_from_html(raw_html: str) -> str:
     return "\n".join(compact)
 
 
+def text_from_pdf(data: bytes) -> str:
+    try:
+        from pypdf import PdfReader
+    except ImportError:
+        return ""
+
+    try:
+        reader = PdfReader(io.BytesIO(data))
+    except Exception:
+        return ""
+
+    parts: list[str] = []
+    for page in reader.pages:
+        try:
+            text = page.extract_text() or ""
+        except Exception:
+            text = ""
+        if text.strip():
+            parts.append(text.strip())
+    return "\n\n".join(parts)
+
+
 def collect_one(seed_row: dict[str, str], timeout: int, dry_run: bool) -> dict[str, str]:
     url = seed_row["url"].strip()
     if not url:
@@ -296,9 +319,13 @@ def collect_one(seed_row: dict[str, str], timeout: int, dry_run: bool) -> dict[s
         title = extract_title(raw_html, fallback)
         publish_date = extract_publish_date(raw_html, seed_row)
         text = text_from_html(raw_html)
+    elif ext == ".pdf":
+        title = seed_row.get("备注", "").strip() or fallback
+        publish_date = extract_publish_date("", seed_row)
+        text = text_from_pdf(data)
     else:
-        title = fallback
-        publish_date = ""
+        title = seed_row.get("备注", "").strip() or fallback
+        publish_date = extract_publish_date("", seed_row)
     document_number = extract_doc_number(title, text)
 
     file_stem = sanitize_filename(

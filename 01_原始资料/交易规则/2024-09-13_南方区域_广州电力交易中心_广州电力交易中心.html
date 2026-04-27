@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>广州电力交易中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../../images/swiper.min.css">
+  <link rel="stylesheet" href="../../../images/main.css">
+  <style id="resetStyle"></style>
+  <script>
+    var resizeTimer;
+
+    // 创建一个函数来获取并处理可见区域的大小
+    function updateViewportSize() {
+      var viewportWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+      console.log("可见区域宽度：" + viewportWidth);
+      console.log("可见区域高度：" + viewportHeight);
+
+      // 在这里执行您希望在窗口大小变化时执行的其他操作
+    }
+
+    // 添加窗口大小变化事件监听器
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateViewportSize, 1000); // 1秒钟后执行
+    });
+
+    // 页面加载时也执行一次以获取初始窗口大小
+    window.addEventListener('load', updateViewportSize);
+
+    ! function () {
+      function calcRem() {
+        var rStyle = document.getElementById("resetStyle");
+
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var defaultWidth = 1200
+        if (clientWidth > defaultWidth) {
+          clientWidth = defaultWidth;
+        }
+
+        var rateWidth = clientWidth / defaultWidth;
+
+        var fSize = 100 * rateWidth;
+
+        rStyle.innerHTML = "html{font-size:" + fSize + "px;}";
+
+      }
+
+      calcRem();
+
+      window.addEventListener("resize", calcRem);
+    }();
+  </script>
+</head>
+<body>
+<div class="header">
+    <div class="one">
+      <ul class="top">
+        <li>交易服务热线: 400-15-95598</li>
+        <li>能源监管热线: 12398</li>
+        <li class="last chat">微 信
+          <div class="items chat-item">
+            <img src="../../../images/chatimg.jpg" alt="" width="100%" />
+          </div>
+        </li>
+        <li class="last app">平台系统
+          <ul class="items app-item">
+            
+              <li>
+                <a href="https://sso.poweremarket.com/supt/sr/pt/#/SecureUnisignon" target="_blank">
+                  南方区域统一电力交易平台
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://spot.poweremarket.com/uptspot" target="_blank">
+                  南方区域现货电能量交易系统
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://gp.poweremarket.com" target="_blank">
+                  南方区域绿色电力交易系统
+                </a>
+              </li>
+            
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+<div class="two">
+      <p class="logo"><img src="../../../images/logo.png" style="height:.45rem" /> </p>
+      <div class="menuIcon"></div>
+      <nav class="menu">
+        <ul class="first-menu">
+          <li class="active"><a href="../../../home/">首页</a></li>
+          <li>
+            <a href="../../../news/">新闻资讯</a>
+            <ul class="sub-menu">
+
+                
+                  <li>
+                    <a href="../../../news/ddsy/">
+                      党的声音
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/gsdt/">
+                      公司动态
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/mtgz/">
+                      媒体关注
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/scyj/">
+                      市场研究
+                    </a>
+                  </li>
+               
+          
+            </ul>
+          </li>
+          <li>
+            <a href="../../../information/">信息发布</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../information/zxtz/">
+                      最新通知
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../information/gsgg/">
+                      公示公告
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../service/">市场服务</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../service/scpx/">
+                      市场培训
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/ffcn/">
+                      服务承诺
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/cjwtjd/">
+                      常见问题解答
+                    </a>
+                  </li>
+               
+
+
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../">政策法规</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../flfg/">
+                      法律法规
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../zcwj/">
+                      政策文件
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../">
+                      交易规则
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../ywzy/">
+                      业务指引
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../sfbz/">
+                      收费标准
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../aboutus/">关于我们</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../aboutus/gsjj/">
+                      公司简介
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zzjg/">
+                      组织架构
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/dsj/">
+                      大事记
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zpxx/">
+                      招聘信息
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/lxwm/">
+                      联系我们
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/jdjb/">
+                      监督举报
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/xfqd/">
+                      信访渠道
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+<div class="banner">
+  <img src="../../../images/banner.jpg" width="100%" />
+</div>
+<div class="wrapper">
+    <div class="main between">
+      <div class="mainBox">
+        <div class="leftMenu">
+          <ul>
+           
+             <li><h5><a href="../../flfg/">法律法规</a></h5></li>
+           
+             <li><h5><a href="../../zcwj/">政策文件</a></h5></li>
+           
+             <li><h5><a href="../">交易规则</a></h5></li>
+           
+             <li><h5><a href="../../ywzy/">业务指引</a></h5></li>
+           
+             <li><h5><a href="../../sfbz/">收费标准</a></h5></li>
+           
+          </ul>
+        </div>
+        <div class="rightMain">
+          <div class="content">
+            <h3 class="title">电力市场注册基本规则</h3>
+            <p class="subTitle">信息来源：国家发展改革委    发布时间：2024-09-13</p>
+            <div class="txt">
+              <style type="text/css">.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style><div class=TRS_Editor><style type="text/css">
+.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style>
+<div>
+<div>
+<p align="justify" style="text-align: center;">电力市场注册基本规则</p>
+<p align="justify" style="text-align: center;">&nbsp;</p>
+<p align="justify">第一章 总则</p>
+<p align="justify">第一条&nbsp;为贯彻落实党中央、国务院进一步深化电力体制改革、加快建设全国统一大市场的有关精神，统一电力市场注册机制，加强和规范电力市场注册工作，维护电力市场秩序和各类经营主体合法权益，根据《中共中央 国务院关于进一步深化电力体制改革的若干意见》《国家发展改革委 国家能源局关于加快建设全国统一电力市场体系的指导意见》（发改体改〔2022〕118号）《电力市场运行基本规则》（中华人民共和国国家发展和改革委员会2024年第20号令）等文件，结合工作实际，制定本规则。</p>
+<p align="justify">第二条&nbsp;本规则所称电力市场包含电力中长期、现货、辅助服务市场等。</p>
+<p align="justify">第三条&nbsp;本规则所称的经营主体包括参与电力市场交易的发电企业、售电公司、电力用户和新型经营主体（含新型储能企业、虚拟电厂、智能微电网等）。</p>
+<p align="justify">第四条&nbsp;电力市场注册应遵循以下原则：</p>
+<p align="justify">（一）规范入市。拟参与电力市场交易的经营主体应在电力交易机构办理市场注册，对注册业务信息以及相关支撑性材料的真实性、准确性、完整性负责。</p>
+<p align="justify">（二）公开透明。电力交易机构公平公开受理各类市场注册业务，不得设置不合理和歧视性的条件以限制商品服务、要素资源自由流动，做到服务无差别，信息规范披露，接受公众监督。</p>
+<p align="justify">（三）全国统一。严格落实“全国一张清单”管理模式，严禁各部门自行发布具有市场准入性质的负面清单，严禁单独设置附加条件。经营主体市场注册业务流程、审验标准、受理期限、公示要求应做到全国统一规范。</p>
+<p align="justify">（四）信息共享。经营主体可自主选择电力交易机构进行办理，获取交易资格，无需重复注册。电力交易平台应实现互联互通，共享注册信息，实现“一地注册、各方共享”。</p>
+<p align="justify">第五条&nbsp;电力交易机构负责开展电力市场注册服务，建设并运维电力交易平台市场注册业务功能，依法依规披露市场注册业务的相关信息。实现与电力调度机构电力调度自动化系统及电网企业营销、新型电力负荷管理系统的市场注册所需信息交互，提升经营主体市场注册业务便捷性。</p>
+<p align="justify">第六条&nbsp;本规则适用于全国范围内各类经营主体的电力市场注册，各省、自治区、直辖市统一按照规范执行。</p>
+<p align="justify">第二章 基本条件</p>
+<p align="justify">第七条&nbsp;经营主体应当是财务独立核算、能够独立承担民事责任的企业、经法人单位授权的内部核算主体、个体工商户、执行工商业电价或具有分布式电源的自然人等民事主体，提供有效身份证明证件及相关注册材料，可办理市场注册业务；若存在较严重的不良信用记录或者曾作出虚假承诺等情形的经营主体，在修复后方可办理市场注册业务。</p>
+<p align="justify">第八条&nbsp;发电企业基本条件：</p>
+<p align="justify">（一）依法取得发电项目核准或者备案文件，依法取得、按规定时限正在办理或者豁免电力业务许可证（发电类）；</p>
+<p align="justify">（二）已与电网企业签订并网调度协议，接入电力调度自动化系统；</p>
+<p align="justify">（三）具备相应的计量能力或者替代技术手段，满足电力市场计量和结算的要求；</p>
+<p align="justify">（四）并网自备电厂取得电力业务许可证（发电类），达到能效、环保要求，可作为经营主体直接参与电力市场交易。</p>
+<p align="justify">第九条&nbsp;售电公司按照《售电公司管理办法》（发改体改规〔2021〕1595号）（以下简称《售电公司管理办法》）规定执行，如有新规的从其规定。</p>
+<p align="justify">第十条&nbsp;电力用户基本条件：</p>
+<p align="justify">（一）工商业用户原则上全部直接参与电力市场交易，暂未直接参与市场交易的工商业用户按规定由电网企业代理购电；</p>
+<p align="justify">（二）具备相应的计量能力或者替代技术手段，满足电力市场计量和结算的要求。</p>
+<p align="justify">第十一条&nbsp;新型储能企业基本条件：</p>
+<p align="justify">（一）与电网企业签订并网调度协议，接入电力调度自动化系统；</p>
+<p align="justify">（二）具备电力、电量数据分时计量与传输条件，数据准确性与可靠性满足结算要求；</p>
+<p align="justify">（三）满足最大充放电功率、最大调节容量及持续充放电时间等对应的技术条件，具体数值以相关标准或国家、地方有关部门规定为准；</p>
+<p align="justify">（四）配建新型储能与所属经营主体视为一体，具备独立计量、控制等技术条件，接入电力调度自动化系统可被电网监控和调度，具有法人资格时可选择转为独立新型储能项目，作为经营主体直接参与电力市场交易。</p>
+<p align="justify">第十二条&nbsp;虚拟电厂（含负荷聚合商）经营主体基本条件：</p>
+<p align="justify">（一）与电网企业签订负荷确认协议或并网调度协议，接入新型电力负荷管理系统或电力调度自动化系统；</p>
+<p align="justify">（二）具备电力、电量数据分时计量与传输条件，数据准确性与可靠性满足结算要求；</p>
+<p align="justify">（三）具备聚合可调节负荷以及分布式电源、新型储能等资源的能力；</p>
+<p align="justify">（四）具备对聚合资源的调节或控制能力，拥有具备信息处理、运行监控、业务管理、计量监管、控制执行等功能的软硬件系统；</p>
+<p align="justify">（五）聚合范围、调节性能等条件应满足相应市场的相关规则规定。</p>
+<p align="justify">第十三条&nbsp;分布式电源经营主体基本条件：</p>
+<p align="justify">（一）依法取得发电项目核准或者备案文件；</p>
+<p align="justify">（二）与电网企业签订负荷确认协议或并网调度协议，根据电压等级标准接入新型电力负荷管理系统或电力调度自动化系统；</p>
+<p align="justify">（三）具备相应的计量能力或者替代技术手段，满足电力市场计量和结算的要求。</p>
+<p align="justify">第十四条&nbsp;电动汽车充电设施经营主体基本条件：</p>
+<p align="justify">（一）具备相应的计量能力或者替代技术手段，满足电力市场计量和结算的要求；</p>
+<p align="justify">（二）有放电能力的电动汽车充电设施，与电网企业签订负荷确认协议，接入新型电力负荷管理系统。</p>
+<p align="justify">第十五条&nbsp;智能微电网经营主体基本条件初期参照电力用户基本条件执行，后期视国家有关规定进行调整。</p>
+<p align="justify">第十六条&nbsp;当国家政策调整或者交易规则变化导致经营主体类型或进入电力市场基本条件发生变化时，国家能源局按照全国统一标准进行调整。</p>
+<p align="justify">第三章 市场注册</p>
+<p align="justify">第十七条&nbsp;经营主体参与电力市场交易，应当符合基本条件，在电力交易机构办理市场注册。</p>
+<p align="justify">第十八条&nbsp;经营主体市场注册按照申请、承诺、审查、公示、生效的流程办理。经营主体应提交身份认证、联系方式等信息以及相关支撑性材料，签订入市协议等。售电公司市场注册条件和流程按照《售电公司管理办法》规定执行，虚拟电厂（含负荷聚合商）初期参照《售电公司管理办法》执行。</p>
+<p align="justify">第十九条&nbsp;电力交易机构收到经营主体提交的市场注册申请和注册材料后，在5个工作日内进行审查，必要时组织对经营主体进行现场核验。对于市场注册材料不符合要求的，应予以一次性告知。</p>
+<p align="justify">第二十条&nbsp;市场注册审查通过的发电企业、电力用户、新型储能企业、分布式电源、电动汽车充电设施经营主体原则上无需公示，注册手续直接生效。</p>
+<p align="justify">第二十一条&nbsp;电力交易机构将市场注册生效的经营主体纳入经营主体目录，实行动态管理，按照信息披露要求向社会公布，根据国家能源局派出机构和地方政府主管部门要求备案。</p>
+<p align="justify">第二十二条&nbsp;具有多重主体身份的经营主体，应当按经营主体类别分别进行注册。</p>
+<p align="justify">第二十三条&nbsp;原则上同一经营主体在同一合同周期内仅可与一家售电公司、虚拟电厂（含负荷聚合商）确立服务关系。</p>
+<p align="justify">第二十四条&nbsp;当国家政策调整或者交易规则变化导致市场注册信息发生变化时，电力交易机构应按照全国统一的原则组织经营主体重新注册或补充完善注册信息。</p>
+<p align="justify">第四章 信息变更</p>
+<p align="justify">第二十五条&nbsp;经营主体市场注册信息发生变化后，应在5个工作日内向首次注册的电力交易机构提出信息变更申请。</p>
+<p align="justify">第二十六条&nbsp;经营主体市场注册信息变更按照申请、承诺、审查、公示、生效的流程办理。经营主体应提交变更信息以及相关支撑性材料，若办理信息变更时其他注册信息或支撑性材料已过有效期，需要同步进行更新。售电公司市场注册信息变更条件和流程按照《售电公司管理办法》规定执行，虚拟电厂（含负荷聚合商）初期参照《售电公司管理办法》执行。</p>
+<p align="justify">第二十七条&nbsp;信息变更主要包含以下内容：</p>
+<p align="justify">（一）经营主体身份名称变更、法定代表人（或负责人）更换；</p>
+<p align="justify">（二）公司股东、股权结构的重大变化，因公司股权转让导致公司控股股东或者实际控制人发生变化等；</p>
+<p align="justify">（三）电力业务许可证变更、延续等；</p>
+<p align="justify">（四）发电企业机组转让、机组关停退役、机组调度关系调整、机组自备公用性质转换、机组进入及退出商业运营、机组容量调整、其他影响交易组织的关键技术参数变更等；</p>
+<p align="justify">（五）新型储能企业主体储能项目（单元）转让、储能单元容量调整、其他影响交易组织的关键技术参数变更等；</p>
+<p align="justify">（六）售电公司、虚拟电厂（含负荷聚合商）资产总额发生影响年度代理电量规模或调节能力的变化、企业高级或中级职称的专业人员变更、配电网运营资质变化、业务范围变更等。</p>
+<p align="justify">第二十八条&nbsp;电力交易机构收到经营主体提交的变更申请和变更材料后，在5个工作日内进行审查。对于变更材料不符合要求的，应予以一次性告知。</p>
+<p align="justify">第二十九条&nbsp;市场注册信息变更审查通过的发电企业、电力用户、新型储能企业、分布式电源、电动汽车充电设施经营主体原则上无需公示，信息变更手续直接生效。</p>
+<p align="justify">第三十条&nbsp;经营主体市场注册信息发生变化未按规定时间进行变更，并造成不良影响或经济损失的，由经营主体承担相应责任。</p>
+<p align="justify">第三十一条&nbsp;经营主体在市场注册信息变更期间可正常参与市场交易。</p>
+<p align="justify">第五章 市场注销</p>
+<p align="justify">第三十二条&nbsp;经营主体退出电力市场交易，分为申请注销和自动注销。售电公司市场注销条件和流程按照《售电公司管理办法》规定执行，虚拟电厂（含负荷聚合商）初期参照《售电公司管理办法》执行。</p>
+<p align="justify">第三十三条&nbsp;经营主体有下列正当理由之一的，可申请注销：</p>
+<p align="justify">（一）经营主体宣告破产，或虽未破产但被地方政府主管部门关停或主动拆除，不再发电或者用电；</p>
+<p align="justify">（二）因国家政策、电力市场规则发生重大调整，导致原有经营主体非自身原因无法继续参加市场的情况；</p>
+<p align="justify">（三）因电网网架调整，导致经营主体的发用电物理属性无法满足所在地区的电力市场进入条件；</p>
+<p align="justify">（四）经营主体所有机组关停退役的；</p>
+<p align="justify">（五）经营主体全部电量不再属于工商业用电性质的。</p>
+<p align="justify">第三十四条&nbsp;经营主体申请注销，应当符合正当理由，向首次注册的电力交易机构提出市场注销申请。</p>
+<p align="justify">第三十五条&nbsp;经营主体申请注销按照申请、声明、审查、公示、生效的流程办理。经营主体应提交注销申请、合同处理完毕声明以及相关支撑材料。</p>
+<p align="justify">第三十六条&nbsp;电力交易机构收到经营主体提交的注销申请和注销材料后，在5个工作日内进行审查。对于注销材料不符合要求的，应予以一次性告知。</p>
+<p align="justify">第三十七条&nbsp;电力交易机构每年开展经营主体持续满足注册条件核验，必要时组织对经营主体进行现场核验，发现符合正当理由退出电力市场交易或工商营业执照注销、吊销且未申请市场注销的，予以自动注销处理，并报国家能源局派出机构和地方政府主管部门备案。售电公司持续满足注册条件核验按照《售电公司管理办法》规定执行，虚拟电厂（含负荷聚合商）初期参照《售电公司管理办法》执行。</p>
+<p align="justify">第三十八条&nbsp;经营主体自动注销由电力交易机构发起，按照公示、生效的流程办理。售电公司退出电力市场交易条件和流程按照《售电公司管理办法》规定执行，虚拟电厂（含负荷聚合商）初期参照《售电公司管理办法》执行。</p>
+<p align="justify">第三十九条&nbsp;对于即将市场注销的经营主体，其所有已签订但未履行的市场交易合同，原则上通过自主协商等方式在下一个合同履行月之前的10个工作日内完成处理。因市场交易合同各方造成的损失由退市的经营主体承担，或自行通过司法程序解决。</p>
+<p align="justify">第四十条&nbsp;电力交易机构应通过电力交易平台，将经营主体市场注销信息向社会公示，公示期为10个工作日，公示期满无异议，在电力交易平台中予以注销，保留其历史信息5年。</p>
+<p align="justify">第四十一条&nbsp;已市场注销的经营主体再次参与电力市场交易，应在电力交易机构重新办理市场注册。</p>
+<p align="justify">第六章 异议处理</p>
+<p align="justify">第四十二条&nbsp;任何单位或个人对于经营主体电力市场注册存在异议，可通过异议反馈渠道向电力交易机构实名反映，需提供包括但不限于异议内容、有效联系方式等信息。异议反馈应提供相关证明材料，不得捏造事实、虚假举证。</p>
+<p align="justify">第四十三条&nbsp;对于公示期间存在异议的经营主体，电力交易机构应根据调查情况分类处理。</p>
+<p align="justify">（一）如因公示材料疏漏缺失、人员等变更而产生异议，经营主体可以补充材料申请再公示；</p>
+<p align="justify">（二）如因材料造假发生异议，经营主体自接到电力交易机构关于异议的告知之日起，5个工作日内无法做出合理解释，电力交易机构终止其市场注册业务公示，将情况报送首次注册地国家能源局派出机构和地方政府主管部门；</p>
+<p align="justify">（三）如对市场注销存在异议，经营主体可向电力交易机构说明情况，电力交易机构根据调查结果予以驳回或撤销公示。</p>
+<p align="justify">第四十四条&nbsp;对于公示生效后仍存在异议的经营主体，电力交易机构应继续开展调查，对于调查后不满足电力市场注册条件的经营主体，按照前款要求处理。</p>
+<p align="justify">第四十五条&nbsp;电力交易机构应对实名反映人相关身份信息进行保密，不得对外泄露，并及时回复调查处理情况。</p>
+<p align="justify">第七章 监督管理</p>
+<p align="justify">第四十六条&nbsp;国家能源局派出机构和地方政府主管部门按职责分工，对经营主体、电力交易机构开展的电力市场注册工作进行监督管理。</p>
+<p align="justify">第四十七条&nbsp;对未及时按本规则办理业务的经营主体，电力交易机构应采取提醒、公告等措施并报国家能源局派出机构和地方政府主管部门。</p>
+<p align="justify">第四十八条&nbsp;对于经营主体存在未按规定办理电力市场注册手续、提供虚假注册资料等严重情形的，国家能源局及其派出机构可依照《电力监管条例》第三十一条、《电力市场监管办法》第三十六条有关规定处理。对于电力交易机构存在未按照规定办理电力市场注册等情形的，国家能源局及其派出机构可依照《电力监管条例》第三十三条、《电力市场监管办法》第三十八条有关规定处理。对售电公司在注册过程中存在其他违规行为的，地方政府主管部门可依照《售电公司管理办法》第二十八、二十九、四十二、四十三条有关规定处理。</p>
+<p align="justify">第四十九条&nbsp;经营主体在办理电力市场注册业务过程中存在违法违规和失信行为的，纳入电力交易信用评价，国家能源局派出机构和地方政府主管部门可依法依规采取将其纳入失信管理等措施。</p>
+<p align="justify">第八章 附则</p>
+<p align="justify">第五十条&nbsp;本规则由国家能源局负责解释。</p>
+第五十一条&nbsp;本规则自发布之日起施行，有效期五年。　&nbsp;</div>
+</div></div>
+            </div>
+            <div style="padding:20px 0">
+              <h5>相关附件</h5>
+              
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+<!-- footer -->
+    <div class="footer">
+      <ul class="linksTab">
+        <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+        <li><a href="../../../all/map/">网站地图</a></li>
+        <li><a href="../../../all/xglj/">相关链接</a></li>
+        <li><a href="../../../all/flsm/">法律声明</a></li>
+       <!-- <li><a href="../../../all/yszcz/">隐私政策</a></li> -->
+      </ul>
+      <ul class="linksMainTab">
+        <li><a href="../../../news/">新闻资讯</a></li>
+        <li><a href="../../../information/">信息发布</a></li>
+        <li><a href="../../../service/">市场服务</a></li>
+        <li><a href="../../">政策法规</a></li>
+        <li><a href="../../../aboutus/">关于我们</a></li>
+      </ul>
+      <div class="linksTabMain">
+        <ul>
+          
+            <li><a href="../../../news/ddsy/">党的声音</a></li>
+          
+            <li><a href="../../../news/gsdt/">公司动态</a></li>
+          
+            <li><a href="../../../news/mtgz/">媒体关注</a></li>
+          
+            <li><a href="../../../news/scyj/">市场研究</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../information/zxtz/">最新通知</a></li>
+          
+            <li><a href="../../../information/gsgg/">公示公告</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../service/scpx/">市场培训</a></li>
+          
+            <li><a href="../../../service/ffcn/">服务承诺</a></li>
+          
+            <li><a href="../../../service/cjwtjd/">常见问题解答</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../flfg/">法律法规</a></li>
+          
+            <li><a href="../../zcwj/">政策文件</a></li>
+          
+            <li><a href="../">交易规则</a></li>
+          
+            <li><a href="../../ywzy/">业务指引</a></li>
+          
+            <li><a href="../../sfbz/">收费标准</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/gsjj/">公司简介</a></li>
+          
+            <li><a href="../../../aboutus/zzjg/">组织架构</a></li>
+          
+            <li><a href="../../../aboutus/dsj/">大事记</a></li>
+          
+            <li><a href="../../../aboutus/zpxx/">招聘信息</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+          
+            <li><a href="../../../aboutus/jdjb/">监督举报</a></li>
+          
+            <li><a href="../../../aboutus/xfqd/">信访渠道</a></li>
+          
+        </ul>
+      </div>
+      <div class="footerBottom">
+        <div class="way">
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">广州电力交易<br/>中心公众号</p>
+              <img src=" ../../../all/gywm/202506/W020250625607877531250.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">交易服务<br/>留言咨询</p>
+              <img src=" ../../../all/ly/202507/W020250707507949428239.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/fwrx/202310/W020231008413156095796.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num">400-15-95598</p>
+              <p>交易服务热线</p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/nyjgrx/202310/W020231008413349834608.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num"><span style="font-size:0.18rem;">能源监督热线:</span>12398</p>
+              <p><a href="http://www.nea.gov.cn/ztzl/12398nyjgrx/index.htm" style="color:#a8bad2">12398能源监管热线网站</a></p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线公众号</p>
+              <img src=" ../../../all/gzh/202506/W020250625608092853450.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线APP</p>
+              <img src=" ../../../all/nyapp/202310/W020250625608245347243.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+        </div>
+        <div class="webSiteLink">
+          <p>南方电网安备1514A91LF号 ICP国网安备1514A91LF号</p>
+          <p>版权所有: © 2020 广州电力交易中心 版权所有 <a href="https://beian.miit.gov.cn" target="_blank" style="color:#a8bad2">粤ICP备20027641号-2</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../../../images/zepto.min.js"></script>
+  <script type="text/javascript" src="../../../images/swiper.min.js"></script>
+  <script>
+    var bannerSwiper = new Swiper('.banner', {
+      // 自动播放配置
+        autoplay: {
+            delay: 4000, // 3 秒切换
+            disableOnInteraction: false // 用户操作后仍自动播放
+        },
+        loop: true, // 循环播放
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      }
+    });
+    var newsImgsSwiper = new Swiper('.newsImgs', {
+      pagination: {
+        el: '.swiper-pagination'
+      }
+    });
+    var businessSwiper = new Swiper('.business', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      // slidesPerGroup: 4,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+  <script type="text/javascript">
+    $('.menuIcon').on('click', function () {
+      $('.menu').toggle()
+    })
+    $(window).on('resize', function () {
+      $('.rightMain').css('width', $('.mainBox').width() - $('.leftMenu').width() - 1)
+    }).resize();
+  </script>
+</body>
+
+</html>

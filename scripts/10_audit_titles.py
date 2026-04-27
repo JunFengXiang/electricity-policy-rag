@@ -168,14 +168,19 @@ def text_candidate(row: dict[str, str], max_lines: int = 100) -> tuple[str, str]
 
 
 def title_issue_type(title: str) -> str:
+    original = title or ""
     title = clean_candidate(title)
     issues: list[str] = []
+    if title != original.strip():
+        issues.append("标题可规则清洗")
     if title in GENERIC_EXACT:
         issues.append("机构名或栏目名标题")
     if re.fullmatch(r"W\d{10,}", title):
         issues.append("附件编号标题")
     if len(title) <= 8 and not is_meaningful_title(title):
         issues.append("标题过短")
+    if re.match(r"^[一二三四五六七八九十]+[、.．]", title):
+        issues.append("疑似正文小标题")
     if any(token in title for token in ["_中国政府网", "_国务院", "_国家能源局", "-国家发展和改革委员会"]):
         issues.append("标题含网站或栏目后缀")
     if "首页" in title or "当前位置" in title:
@@ -200,7 +205,13 @@ def find_issue(row: dict[str, str]) -> dict[str, str] | None:
     action = "人工确认后修正"
     explanation = ""
 
-    if note_title and normalize(note_title) != normalize(current_clean):
+    if current_clean != current:
+        suggestion = current_clean
+        source = "标题规则清洗"
+        confidence = "高"
+        action = "建议自动修正"
+        explanation = "当前标题可去除网站或栏目后缀等噪声"
+    elif note_title and normalize(note_title) != normalize(current_clean):
         suggestion = note_title
         source = "备注字段"
         confidence = "高"
@@ -211,11 +222,6 @@ def find_issue(row: dict[str, str]) -> dict[str, str] | None:
         source = "处理后文本"
         confidence = "中"
         explanation = "正文前部存在更像正式文件标题的内容"
-    elif current_clean != current:
-        suggestion = current_clean
-        source = "标题规则清洗"
-        confidence = "中"
-        explanation = "当前标题可去除网站或栏目后缀"
     else:
         suggestion = ""
         source = "未找到"

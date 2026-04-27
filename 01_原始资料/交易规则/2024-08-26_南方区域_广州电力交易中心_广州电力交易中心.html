@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>广州电力交易中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../../images/swiper.min.css">
+  <link rel="stylesheet" href="../../../images/main.css">
+  <style id="resetStyle"></style>
+  <script>
+    var resizeTimer;
+
+    // 创建一个函数来获取并处理可见区域的大小
+    function updateViewportSize() {
+      var viewportWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+      console.log("可见区域宽度：" + viewportWidth);
+      console.log("可见区域高度：" + viewportHeight);
+
+      // 在这里执行您希望在窗口大小变化时执行的其他操作
+    }
+
+    // 添加窗口大小变化事件监听器
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateViewportSize, 1000); // 1秒钟后执行
+    });
+
+    // 页面加载时也执行一次以获取初始窗口大小
+    window.addEventListener('load', updateViewportSize);
+
+    ! function () {
+      function calcRem() {
+        var rStyle = document.getElementById("resetStyle");
+
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var defaultWidth = 1200
+        if (clientWidth > defaultWidth) {
+          clientWidth = defaultWidth;
+        }
+
+        var rateWidth = clientWidth / defaultWidth;
+
+        var fSize = 100 * rateWidth;
+
+        rStyle.innerHTML = "html{font-size:" + fSize + "px;}";
+
+      }
+
+      calcRem();
+
+      window.addEventListener("resize", calcRem);
+    }();
+  </script>
+</head>
+<body>
+<div class="header">
+    <div class="one">
+      <ul class="top">
+        <li>交易服务热线: 400-15-95598</li>
+        <li>能源监管热线: 12398</li>
+        <li class="last chat">微 信
+          <div class="items chat-item">
+            <img src="../../../images/chatimg.jpg" alt="" width="100%" />
+          </div>
+        </li>
+        <li class="last app">平台系统
+          <ul class="items app-item">
+            
+              <li>
+                <a href="https://sso.poweremarket.com/supt/sr/pt/#/SecureUnisignon" target="_blank">
+                  南方区域统一电力交易平台
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://spot.poweremarket.com/uptspot" target="_blank">
+                  南方区域现货电能量交易系统
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://gp.poweremarket.com" target="_blank">
+                  南方区域绿色电力交易系统
+                </a>
+              </li>
+            
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+<div class="two">
+      <p class="logo"><img src="../../../images/logo.png" style="height:.45rem" /> </p>
+      <div class="menuIcon"></div>
+      <nav class="menu">
+        <ul class="first-menu">
+          <li class="active"><a href="../../../home/">首页</a></li>
+          <li>
+            <a href="../../../news/">新闻资讯</a>
+            <ul class="sub-menu">
+
+                
+                  <li>
+                    <a href="../../../news/ddsy/">
+                      党的声音
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/gsdt/">
+                      公司动态
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/mtgz/">
+                      媒体关注
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/scyj/">
+                      市场研究
+                    </a>
+                  </li>
+               
+          
+            </ul>
+          </li>
+          <li>
+            <a href="../../../information/">信息发布</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../information/zxtz/">
+                      最新通知
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../information/gsgg/">
+                      公示公告
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../service/">市场服务</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../service/scpx/">
+                      市场培训
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/ffcn/">
+                      服务承诺
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/cjwtjd/">
+                      常见问题解答
+                    </a>
+                  </li>
+               
+
+
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../">政策法规</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../flfg/">
+                      法律法规
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../zcwj/">
+                      政策文件
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../">
+                      交易规则
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../ywzy/">
+                      业务指引
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../sfbz/">
+                      收费标准
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../aboutus/">关于我们</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../aboutus/gsjj/">
+                      公司简介
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zzjg/">
+                      组织架构
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/dsj/">
+                      大事记
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zpxx/">
+                      招聘信息
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/lxwm/">
+                      联系我们
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/jdjb/">
+                      监督举报
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/xfqd/">
+                      信访渠道
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+<div class="banner">
+  <img src="../../../images/banner.jpg" width="100%" />
+</div>
+<div class="wrapper">
+    <div class="main between">
+      <div class="mainBox">
+        <div class="leftMenu">
+          <ul>
+           
+             <li><h5><a href="../../flfg/">法律法规</a></h5></li>
+           
+             <li><h5><a href="../../zcwj/">政策文件</a></h5></li>
+           
+             <li><h5><a href="../">交易规则</a></h5></li>
+           
+             <li><h5><a href="../../ywzy/">业务指引</a></h5></li>
+           
+             <li><h5><a href="../../sfbz/">收费标准</a></h5></li>
+           
+          </ul>
+        </div>
+        <div class="rightMain">
+          <div class="content">
+            <h3 class="title">可再生能源绿色电力证书核发和交易规则</h3>
+            <p class="subTitle">信息来源：国家能源局    发布时间：2024-08-26</p>
+            <div class="txt">
+              <div class=TRS_Editor><style type="text/css">
+
+.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style>
+<div class="TRS_Editor"><style type="text/css">
+
+.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style>
+<p align="justify" style="text-align: center;">可再生能源绿色电力证书核发和交易规则</p>
+<span>
+<div style="text-align: center;">&nbsp;</div>
+<div style="text-align: justify;">第一章　总　　则</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第一条　为规范可再生能源绿色电力证书（Green Electricity Certificate（GEC），以下简称绿证）核发和交易，依法维护各方合法权益，根据《国家发展改革委 财政部 国家能源局关于做好可再生能源绿色电力证书全覆盖工作促进可再生能源电力消费的通知》（发改能源〔2023〕1044号）等要求，制定本规则。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二条　本规则适用于我国境内生产的风电（含分散式风电和海上风电）、太阳能发电（含分布式光伏发电和光热发电）、常规水电、生物质发电、地热能发电、海洋能发电等可再生能源发电项目电量对应绿证的核发、交易及相关管理工作。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第三条　绿证是我国可再生能源电量环境属性的唯一证明，是认定可再生能源电力生产、消费的唯一凭证。绿证核发和交易应坚持“统一核发、交易开放、市场竞争、信息透明、全程可溯”的原则，核发由国家统一组织，交易面向社会开放，价格通过市场化方式形成，信息披露及时、准确，全生命周期数据真实可信、防篡改、可追溯。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二章　职责分工</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第四条　国家能源局负责绿证具体政策设计，制定核发交易相关规则，指导核发机构和交易机构开展具体工作。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第五条　国家能源局电力业务资质管理中心（以下简称国家能源局资质中心）具体负责绿证核发工作。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第六条　电网企业、电力交易机构、国家可再生能源信息管理中心配合做好绿证核发工作，为绿证核发、交易、应用、核销等提供数据和技术支撑。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第七条　绿证交易机构按相关规范要求负责各自绿证交易平台建设运营，组织开展绿证交易，并按要求将交易信息同步至国家绿证核发交易系统。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第八条　绿证交易主体包括卖方和买方。卖方为已建档立卡的发电企业或项目业主，买方为符合国家有关规定的法人、非法人组织和自然人。买方和卖方应依照本规则合法合规参与绿证交易。交易主体可委托代理机构参与绿证核发和交易。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第九条　电网企业、电力交易机构、发电企业或项目业主，以及交易主体委托的代理机构，应按要求及时提供或核对绿证核发所需信息，并对信息的真实性、准确性负责。电网企业还应按相关规定，做好参与电力市场交易补贴项目绿证收益的补贴扣减。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第三章　绿证账户</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十条　交易主体应在国家绿证核发交易系统建立唯一的实名绿证账户，用于参与绿证核发和交易，记载其持有的绿证情况。其中：</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">卖方在国家可再生能源发电项目信息管理平台完成可再生能源发电项目建档立卡后，在国家绿证核发交易系统注册绿证账户，注册信息自动同步至各绿证交易平台。买方可在国家绿证核发交易系统注册绿证账户，也可通过任一绿证交易平台提供注册相关信息，注册相关信息自动推送至国家绿证核发交易系统并生成绿证账户。省级专用账户通过国家绿证核发交易系统统一分配，由各省级发改、能源主管部门统筹管理，用于参与绿证交易和接受无偿划转的绿证。国家能源局资质中心可依据补贴项目参与绿色电力交易相关要求，设立相应的绿证专用账户。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十一条　交易主体注册绿证账户时应按要求提交营业执照或国家认可的身份证明等材料，并保证账户注册申请资料真实完整、准确有效。其中卖方还须承诺仅申领中国绿证、不重复申领其他同属性凭证。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十二条　当注册信息发生变化时，交易主体应及时提交账户信息变更申请。账户可通过原注册渠道申请注销，注销后交易主体无法使用该账户进行相关操作。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第四章　绿证核发</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十三条　可再生能源发电项目电量由国家能源局按月统一核发绿证，稳步提升核发效率。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十四条　对风电（含分散式风电和海上风电）、太阳能发电（含分布式光伏发电和光热发电）、生物质发电、地热能发电、海洋能发电等可再生能源发电项目上网电量，以及2023年1月1日（含）以后新投产的完全市场化常规水电项目上网电量，核发可交易绿证。对项目自发自用电量和2023年1月1日（不含）之前的常规存量水电项目上网电量，现阶段核发绿证但暂不参与交易。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">可交易绿证核发范围动态调整。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十五条　1个绿证单位对应1000千瓦时可再生能源电量。不足核发1个绿证的当月电量结转至次月。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十六条　绿证核发原则上以电网企业、电力交易机构提供的数据为基础，与发电企业或项目业主提供数据相核对。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">电网企业、电力交易机构应在每月22日前，通过国家绿证核发交易系统推送绿证核发所需上月电量信息。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">对于自发自用等电网企业无法提供绿证核发所需电量信息的，可再生能源发电企业或项目业主可直接或委托代理机构提供电量信息，并附电量计量等相关证明材料，还应定期提交经法定电能计量检定机构出具的电能量计量装置检定证明。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十七条　国家能源局资质中心依托国家绿证核发交易系统开展绿证核发工作。对于电网企业、电力交易机构无法提供绿证核发所需信息的，国家可再生能源信息管理中心对发电企业或项目业主申报数据及材料初核，国家能源局资质中心复核后核发相应绿证。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第五章　交易及划转</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十八条　绿证既可单独交易；也可随可再生能源电量一同交易，并在交易合同中单独约定绿证数量、价格及交割时间等条款。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第十九条　绿证在符合国家相关规范要求的平台开展交易，目前依托中国绿色电力证书交易平台，以及北京、广州电力交易中心开展绿证单独交易；依托北京、广州、内蒙古电力交易中心开展跨省区绿色电力交易，依托各省（区、市）电力交易中心开展省内绿色电力交易。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">绿证交易平台按国家需要适时拓展。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十条　现阶段绿证仅可交易一次。绿证交易最小单位为1个，价格单位为元/个。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十一条　绿证交易的组织方式主要包括挂牌交易、双边协商、集中竞价等，交易价格由市场化方式形成。国家绿证核发交易系统与各绿证交易平台实时同步待出售绿证和绿证交易信息，确保同一绿证不重复成交。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">（一）挂牌交易。卖方可同时将拟出售绿证的数量和价格等相关信息在多个绿证交易平台挂牌，买方通过摘牌的方式完成绿证交易和结算。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">（二）双边协商交易。买卖双方可自主协商确定绿证交易的数量和价格，并通过选定的绿证交易平台完成交易和结算。鼓励双方签订省内、省间中长期双边交易合同，提前约定双边交易的绿证数量、价格及交割时间等。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">（三）集中竞价交易。按需适时组织开展，具体规则另行明确。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十二条　可交易绿证完成交易后，交易平台应将交易主体、数量、价格、交割时间等信息实时同步至国家绿证核发交易系统。国家能源局资质中心依绿证交易信息实时做好绿证划转，划转后的绿证相关信息与对应交易平台同步。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">对2023年1月1日（不含）前投产的存量常规水电项目对应绿证，依据电网企业、电力交易机构报送的水电电量交易结算结果，从卖方账户直接划转至买方账户；电网代理购电的，相应绿证依电量交易结算结果自动划转至相应省级绿证账户，绿证分配至用户的具体方式由省级能源主管部门会同相关部门确定。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十三条　参与绿色电力交易的对应绿证通过国家绿证核发交易系统，由国家能源局资质中心依绿色电力交易结算信息做好绿证划转，划转后的绿证相关信息与对应电力交易中心同步。绿色电力交易组织方式等按相关规则执行。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十四条　绿证有效期2年，时间自电量生产自然月（含）起计算。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">对2024年1月1日（不含）之前的可再生能源发电项目电量，对应绿证有效期延至2025年底。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">超过有效期或已声明完成绿色电力消费的绿证，国家能源局资质中心应及时予以核销。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十五条　任何单位不得采取强制性手段直接或间接干扰绿证市场，包括干涉绿证交易价格形成机制、限制绿证交易区域等。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第六章　信息管理</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十六条　国家绿证核发交易系统建设和运行管理由国家能源局资质中心组织实施，国家可再生能源信息管理中心配合。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十七条　国家绿证核发交易系统提供绿证在线查验服务，用户登录绿证账户或通过扫描绿证二维码，可获取绿证编码、项目名称、项目类型、电量生产日期等信息。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十八条　国家能源局资质中心按要求汇总统计全国绿证核发和交易信息，按月编制发布绿证核发和交易报告。支撑绿证与可再生能源电力消纳责任权重、能耗“双控”、碳市场等有效衔接，国家可再生能源信息管理中心会同电网企业、电力交易机构按有关要求及时核算相关绿证交易数据。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第二十九条　国家能源局资质中心通过国家绿证核发交易系统披露全国绿证核发、交易和核销信息，各绿证交易平台定期披露本平台绿证交易和核销信息。披露内容主要包括绿证核发量、交易量、平均交易价格、核销信息等。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第三十条　国家绿证核发交易系统和各绿证交易平台应按照国家相关信息数据安全管理要求，利用人工智能、云计算、区块链等新技术，保障绿证核发交易数据真实可信、系统安全可靠、全过程防篡改、可追溯，相关信息留存5年以上备查。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第七章　绿证监管</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第三十一条　国家能源局各派出机构会同地方相关部门做好辖区内绿证制度实施的监管，及时提出监管意见和建议。国家能源局会同有关部门做好指导。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第三十二条　因推送数据迟延、填报信息有误、系统故障等原因导致绿证核发或交易有误的，国家能源局资质中心或绿证交易平台应及时予以纠正。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第三十三条　当出现以下情况时，依法依规采取以下处置措施。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">（一）对于绿证对应电量重复申领其他同属性凭证，或存在数据造假等行为的卖方主体，以及为绿证对应电量颁发其他同属性凭证的绿证交易平台，责令其改正；拒不改正的，予以约谈。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">对于扰乱正常绿证交易市场秩序的交易主体，责令其改正；拒不改正的，予以约谈。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">（二）对于发生违纪违法问题，按程序移交纪检监察和司法部门处理。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第八章　附　　则</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第三十四条　国家能源局资质中心依据本规则编制绿证核发实施细则，各绿证交易平台依据本规则完善绿证交易实施细则。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">第三十五条　本规则由国家能源局负责解释。</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">本规则自印发之日起实施，有效期5年。</div>
+</span></div></div>
+            </div>
+            <div style="padding:20px 0">
+              <h5>相关附件</h5>
+              
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+<!-- footer -->
+    <div class="footer">
+      <ul class="linksTab">
+        <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+        <li><a href="../../../all/map/">网站地图</a></li>
+        <li><a href="../../../all/xglj/">相关链接</a></li>
+        <li><a href="../../../all/flsm/">法律声明</a></li>
+       <!-- <li><a href="../../../all/yszcz/">隐私政策</a></li> -->
+      </ul>
+      <ul class="linksMainTab">
+        <li><a href="../../../news/">新闻资讯</a></li>
+        <li><a href="../../../information/">信息发布</a></li>
+        <li><a href="../../../service/">市场服务</a></li>
+        <li><a href="../../">政策法规</a></li>
+        <li><a href="../../../aboutus/">关于我们</a></li>
+      </ul>
+      <div class="linksTabMain">
+        <ul>
+          
+            <li><a href="../../../news/ddsy/">党的声音</a></li>
+          
+            <li><a href="../../../news/gsdt/">公司动态</a></li>
+          
+            <li><a href="../../../news/mtgz/">媒体关注</a></li>
+          
+            <li><a href="../../../news/scyj/">市场研究</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../information/zxtz/">最新通知</a></li>
+          
+            <li><a href="../../../information/gsgg/">公示公告</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../service/scpx/">市场培训</a></li>
+          
+            <li><a href="../../../service/ffcn/">服务承诺</a></li>
+          
+            <li><a href="../../../service/cjwtjd/">常见问题解答</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../flfg/">法律法规</a></li>
+          
+            <li><a href="../../zcwj/">政策文件</a></li>
+          
+            <li><a href="../">交易规则</a></li>
+          
+            <li><a href="../../ywzy/">业务指引</a></li>
+          
+            <li><a href="../../sfbz/">收费标准</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/gsjj/">公司简介</a></li>
+          
+            <li><a href="../../../aboutus/zzjg/">组织架构</a></li>
+          
+            <li><a href="../../../aboutus/dsj/">大事记</a></li>
+          
+            <li><a href="../../../aboutus/zpxx/">招聘信息</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+          
+            <li><a href="../../../aboutus/jdjb/">监督举报</a></li>
+          
+            <li><a href="../../../aboutus/xfqd/">信访渠道</a></li>
+          
+        </ul>
+      </div>
+      <div class="footerBottom">
+        <div class="way">
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">广州电力交易<br/>中心公众号</p>
+              <img src=" ../../../all/gywm/202506/W020250625607877531250.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">交易服务<br/>留言咨询</p>
+              <img src=" ../../../all/ly/202507/W020250707507949428239.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/fwrx/202310/W020231008413156095796.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num">400-15-95598</p>
+              <p>交易服务热线</p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/nyjgrx/202310/W020231008413349834608.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num"><span style="font-size:0.18rem;">能源监督热线:</span>12398</p>
+              <p><a href="http://www.nea.gov.cn/ztzl/12398nyjgrx/index.htm" style="color:#a8bad2">12398能源监管热线网站</a></p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线公众号</p>
+              <img src=" ../../../all/gzh/202506/W020250625608092853450.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线APP</p>
+              <img src=" ../../../all/nyapp/202310/W020250625608245347243.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+        </div>
+        <div class="webSiteLink">
+          <p>南方电网安备1514A91LF号 ICP国网安备1514A91LF号</p>
+          <p>版权所有: © 2020 广州电力交易中心 版权所有 <a href="https://beian.miit.gov.cn" target="_blank" style="color:#a8bad2">粤ICP备20027641号-2</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../../../images/zepto.min.js"></script>
+  <script type="text/javascript" src="../../../images/swiper.min.js"></script>
+  <script>
+    var bannerSwiper = new Swiper('.banner', {
+      // 自动播放配置
+        autoplay: {
+            delay: 4000, // 3 秒切换
+            disableOnInteraction: false // 用户操作后仍自动播放
+        },
+        loop: true, // 循环播放
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      }
+    });
+    var newsImgsSwiper = new Swiper('.newsImgs', {
+      pagination: {
+        el: '.swiper-pagination'
+      }
+    });
+    var businessSwiper = new Swiper('.business', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      // slidesPerGroup: 4,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+  <script type="text/javascript">
+    $('.menuIcon').on('click', function () {
+      $('.menu').toggle()
+    })
+    $(window).on('resize', function () {
+      $('.rightMain').css('width', $('.mainBox').width() - $('.leftMenu').width() - 1)
+    }).resize();
+  </script>
+</body>
+
+</html>

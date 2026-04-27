@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>广州电力交易中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../../images/swiper.min.css">
+  <link rel="stylesheet" href="../../../images/main.css">
+  <style id="resetStyle"></style>
+  <script>
+    var resizeTimer;
+
+    // 创建一个函数来获取并处理可见区域的大小
+    function updateViewportSize() {
+      var viewportWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+      console.log("可见区域宽度：" + viewportWidth);
+      console.log("可见区域高度：" + viewportHeight);
+
+      // 在这里执行您希望在窗口大小变化时执行的其他操作
+    }
+
+    // 添加窗口大小变化事件监听器
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateViewportSize, 1000); // 1秒钟后执行
+    });
+
+    // 页面加载时也执行一次以获取初始窗口大小
+    window.addEventListener('load', updateViewportSize);
+
+    ! function () {
+      function calcRem() {
+        var rStyle = document.getElementById("resetStyle");
+
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var defaultWidth = 1200
+        if (clientWidth > defaultWidth) {
+          clientWidth = defaultWidth;
+        }
+
+        var rateWidth = clientWidth / defaultWidth;
+
+        var fSize = 100 * rateWidth;
+
+        rStyle.innerHTML = "html{font-size:" + fSize + "px;}";
+
+      }
+
+      calcRem();
+
+      window.addEventListener("resize", calcRem);
+    }();
+  </script>
+</head>
+<body>
+<div class="header">
+    <div class="one">
+      <ul class="top">
+        <li>交易服务热线: 400-15-95598</li>
+        <li>能源监管热线: 12398</li>
+        <li class="last chat">微 信
+          <div class="items chat-item">
+            <img src="../../../images/chatimg.jpg" alt="" width="100%" />
+          </div>
+        </li>
+        <li class="last app">平台系统
+          <ul class="items app-item">
+            
+              <li>
+                <a href="https://sso.poweremarket.com/supt/sr/pt/#/SecureUnisignon" target="_blank">
+                  南方区域统一电力交易平台
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://spot.poweremarket.com/uptspot" target="_blank">
+                  南方区域现货电能量交易系统
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://gp.poweremarket.com" target="_blank">
+                  南方区域绿色电力交易系统
+                </a>
+              </li>
+            
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+<div class="two">
+      <p class="logo"><img src="../../../images/logo.png" style="height:.45rem" /> </p>
+      <div class="menuIcon"></div>
+      <nav class="menu">
+        <ul class="first-menu">
+          <li class="active"><a href="../../../home/">首页</a></li>
+          <li>
+            <a href="../../../news/">新闻资讯</a>
+            <ul class="sub-menu">
+
+                
+                  <li>
+                    <a href="../../../news/ddsy/">
+                      党的声音
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/gsdt/">
+                      公司动态
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/mtgz/">
+                      媒体关注
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../news/scyj/">
+                      市场研究
+                    </a>
+                  </li>
+               
+          
+            </ul>
+          </li>
+          <li>
+            <a href="../../../information/">信息发布</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../information/zxtz/">
+                      最新通知
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../information/gsgg/">
+                      公示公告
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../service/">市场服务</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../service/scpx/">
+                      市场培训
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/ffcn/">
+                      服务承诺
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../service/cjwtjd/">
+                      常见问题解答
+                    </a>
+                  </li>
+               
+
+
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../">政策法规</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../flfg/">
+                      法律法规
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../zcwj/">
+                      政策文件
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../">
+                      交易规则
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../ywzy/">
+                      业务指引
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../sfbz/">
+                      收费标准
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+          <li>
+            <a href="../../../aboutus/">关于我们</a>
+            <ul class="sub-menu">
+                
+                  <li>
+                    <a href="../../../aboutus/gsjj/">
+                      公司简介
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zzjg/">
+                      组织架构
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/dsj/">
+                      大事记
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/zpxx/">
+                      招聘信息
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/lxwm/">
+                      联系我们
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/jdjb/">
+                      监督举报
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a href="../../../aboutus/xfqd/">
+                      信访渠道
+                    </a>
+                  </li>
+               
+            
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+<div class="banner">
+  <img src="../../../images/banner.jpg" width="100%" />
+</div>
+<div class="wrapper">
+    <div class="main between">
+      <div class="mainBox">
+        <div class="leftMenu">
+          <ul>
+           
+             <li><h5><a href="../../flfg/">法律法规</a></h5></li>
+           
+             <li><h5><a href="../../zcwj/">政策文件</a></h5></li>
+           
+             <li><h5><a href="../">交易规则</a></h5></li>
+           
+             <li><h5><a href="../../ywzy/">业务指引</a></h5></li>
+           
+             <li><h5><a href="../../sfbz/">收费标准</a></h5></li>
+           
+          </ul>
+        </div>
+        <div class="rightMain">
+          <div class="content">
+            <h3 class="title">发改能源规〔2023〕1217号 《电力现货市场基本规则（试行）》</h3>
+            <p class="subTitle">信息来源：国家发展改革委    发布时间：2023-09-10</p>
+            <div class="txt">
+              <style type="text/css">.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style><div class=TRS_Editor><style type="text/css">
+.TRS_Editor P{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor DIV{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TD{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor TH{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor SPAN{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor FONT{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor UL{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor LI{line-height:2;font-family:宋体;font-size:12pt;}.TRS_Editor A{line-height:2;font-family:宋体;font-size:12pt;}</style>
+<div>
+<p style="text-align: center;"><span>国家发展改革委国家能源局关于印发《电力现货市场基本规则(试行)》的通知</span><span><o:p></o:p></span>&nbsp;</p>
+<p style="text-align: center;"><span><font>发改能源规〔</font><font>2023〕1217号</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p><span>各省、自治区、直辖市、新疆生产建设兵团发展改革委、能源局,天津市、辽宁省、上海市、重庆市、四川省、甘肃省经信委(经信厅、工信厅、经信局、工信局),国家能源局各派出机构,国家电网有限公司、中国南方电网有限责任公司、中国华能集团有限公司、中国大唐集团有限公司、中国华电集团有限公司、国家能源投资集团有限责任公司、国家电力投资集团有限公司、中国长江三峡集团有限公司、国家开发投资集团有限公司、中国核工业集团有限公司、中国广核集团有限公司、华润(集团)有限公司、内蒙古电力(集团)有限责任公司:</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>为加快推进电力市场建设,规范电力现货市场的运营和管理,我们组织制定了《电力现货市场基本规则(试行)》。现印发给你们,请遵照执行。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p style="text-align: right;"><span>国家发展改革委</span><span><o:p></o:p></span>&nbsp;</p>
+<p style="text-align: right;"><span>国家能源局</span><span><o:p></o:p></span>&nbsp;</p>
+<p style="text-align: right;"><span>2023年9月7日</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span>电力现货市场基本规则(试行)</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>&nbsp;</span>&nbsp;</p>
+<p><span><font>第一章</font> <font>总则</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一条</font> <font>为规范电力现货市场运营和管理,依法维护经营主体的合法权益,推进统一开放、竞争有序的电力市场体系建设,根据《中共中央国务院关于进一步深化电力体制改革的若干意见》《中共中央国务院关于加快建设全国统一大市场的意见》《关于加快建设全国统一电力市场体系的指导意见》(发改体改〔</font><font>2022〕118号)和有关法律、法规规定,制定本规则。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二条</font> <font>本规则所称电力现货市场是指符合准入条件的经营主体开展日前、日内和实时电能量交易的市场。电力现货市场通过竞争形成体现时空价值的市场出清价格,并配套开展调频、备用等辅助服务交易。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>所称市场成员包括经营主体、电网企业和市场运营机构。经营主体包括各类型发电企业、电力用户(含电网企业代理购电用户)、售电公司和新型经营主体(含分布式发电、负荷聚合商、储能和虚拟电厂等);市场运营机构包括电力调度机构和电力交易机构。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三条</font> <font>本规则适用于采用集中式市场模式的省(区、市)</font><font>/区域现货市场,以及省(区、市)/区域现货市场与相关市场的衔接。采用分散式市场模式的省(区、市)/区域和省间电力现货市场可探索制定相应市场规则。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四条</font> <font>各省(区、市)</font><font>/区域结合能源转型需要和市场建设进程,及时制修订电力现货市场运营规则及其配套实施细则,并公开发布。规则制修订应充分发挥电力市场管理委员会作用。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五条</font> <font>电力现货市场信息披露工作应当按照国家有关规定执行,信息披露主体对其提供信息的真实性、准确性、完整性负责。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二章</font> <font>总体要求</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>建设目标和基本原则</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六条</font> <font>电力现货市场建设的目标是形成体现时间和空间特性、反映市场供需变化的电能量价格信号,发挥市场在电力资源配置中的决定性作用,提升电力系统调节能力,促进可再生能源消纳,保障电力安全可靠供应,引导电力长期规划和投资,促进电力系统向清洁低碳、安全高效转型。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七条</font> <font>电力现货市场建设与运营应坚持安全可靠、绿色低碳、经济高效、稳步协同、公开透明原则。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>建设路径</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八条</font> <font>近期推进省间、省(区、市)</font><font>/区域市场建设,以省间、省(区、市)/区域市场“统一市场、协同运行”起步;逐步推动省间、省(区、市)/区域市场融合。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九条</font> <font>电力现货市场近期建设主要任务:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(一)按照</font><font>“统一市场、协同运行”的框架,构建省间、省(区、市)/区域现货市场,建立健全日前、日内、实时市场。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)加强中长期市场与现货市场的衔接,明确中长期分时交易曲线和交易价格。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)做好调频、备用等辅助服务市场与现货市场的衔接,加强现货市场与调峰辅助服务市场融合,推动现货市场与辅助服务市场联合出清。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)推动电力零售市场建设,畅通批发、零售市场价格传导。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)稳妥有序推动新能源参与电力市场,设计适应新能源特性的市场机制,与新能源保障性政策做好衔接;推动分布式发电、负荷聚合商、储能和虚拟电厂等新型经营主体参与交易。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)直接参与市场的电力用户、售电公司、代理购电用户等应平等参与现货交易,公平承担责任义务;推动代理购电用户、居民和农业用户的偏差电量分开核算,代理购电用户偏差电量按照现货价格结算,为保障居民、农业用电价格稳定产生的新增损益(含偏差电费),由全体工商业用户分摊或分享。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(七)省间市场逐步引入其他经营主体,放开各类发电企业、用户、售电公司等参与交易;兼顾送受端利益,加强省间市场与省(区、市)</font><font>/区域市场在经济责任、价格形成机制等方面的动态衔接。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十条</font> <font>电力现货市场中远期建设主要任务:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)持续完善适应新型电力系统的电力市场机制,通过市场时空价格信号实现源网荷储各环节灵活互动、高效衔接,促进保障电力供应安全充裕。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(二)推动制定统一的市场准入退出、交易品种、交易时序、交易执行结算等规则体系和技术标准,加强国家市场、省(区、市)</font><font>/区域电力市场间的相互耦合、有序衔接。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)不断推动各类经营主体平等参与市场,扩大新型经营主体参与交易范围,形成平等竞争、自主选择的市场环境。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>运行要求</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十一条</font> <font>电力现货市场应依序开展模拟试运行、结算试运行和正式运行,启动相关试运行和正式运行前按各省(区、市)</font><font>/区域电力现货市场规则规定的程序开展相关市场运行工作。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十二条</font> <font>电力现货市场模拟试运行的启动条件和工作内容如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)启动模拟试运行时,至少应具备以下条件:模拟试运行工作方案及规则向经营主体征求意见,并公开发布;技术支持系统功能符合要求,通过市场运营机构内部系统测试;市场运营人员和经营主体经过相关培训,能够准确理解规则,掌握技术支持系统使用方法;关键市场参数按照明确的原则确定。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)模拟试运行工作内容至少应包括:组织经营主体参与现货市场申报,检验技术支持系统功能,适时依据市场出清结果进行生产调度;根据模拟试运行情况对市场规则进行讨论修改、对技术支持系统进行完善,对关键流程进行记录备查;形成模拟试运行分析报告,并向市场成员公开;初步开展结算分析,测算对市场成员的影响。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十三条</font> <font>电力现货市场结算试运行的启动条件和工作内容如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)启动结算试运行时,至少应具备以下条件:结算试运行工作方案及规则向经营主体征求意见,并公开发布;技术支持系统通过第三方校验并向经营主体公开校验报告,能够连续多日按照规则出清并为形成调度计划提供依据;市场运营机构和电网企业、发电企业、售电公司等市场成员的业务流程基本理顺;关键市场参数按照明确的原则确定;市场应急处置预案完备并经过演练。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)结算试运行工作内容至少应包括:依据市场出清结果进行生产调度并结算;检验技术支持系统市场出清等有关功能;根据结算试运行情况对市场规则进行讨论修改、对技术支持系统进行完善,对关键流程进行记录备查;形成结算试运行分析报告,向市场成员公开。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十四条</font> <font>电力现货市场正式运行的启动条件和工作内容如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)启动正式运行时,至少应具备以下条件:现货市场规则体系健全;市场风险防控、信息披露、信用管理等制度体系已建立;技术支持系统定期开展第三方校验并向经营主体公开校验报告;市场成员具备符合条件的人员、场所,市场成员之间的业务衔接实现制度化、程序化。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)正式运行工作内容至少应包括:按照规则连续不间断运行现货市场,保障技术支持系统正常运转,依据市场出清结果进行调度生产并结算,依法依规进行信息披露、市场干预、争议处理,实施市场监管和市场监测,具备开展现货市场体系第三方校验的条件。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三章</font> <font>市场成员</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>权利与义务</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十五条</font> <font>发电企业的权利和义务主要包括:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)按照规则参与电能量、辅助服务等交易,签订和履行电力交易合同,按规定参与电费结算,在规定时间内可对结算结果提出异议。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)获得公平的输配电服务和电网接入服务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)签订并执行并网调度协议,服从电力调度机构统一调度,提供承诺的有效容量和辅助服务,提供电厂检修计划、实测参数、预测运行信息、紧急停机信息等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)依法依规提供相关市场信息,按照信息披露有关规定获得市场交易、输配电服务、信用评价、电力负荷、系统运行等相关信息,并承担保密义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)法律法规规定的其他权利和义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第十六条电力用户的权利和义务主要包括:</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)按照规则参与电能量和辅助服务交易,签订和履行电力交易合同,暂时无法直接参与市场的电力用户按规定由电网企业代理购电,其中参与批发电能量交易的用户,可以按照规则进行跨省跨区购电和省内购电。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)获得公平的输配电服务和电网接入服务,按规定支付购电费、输配电费、线损电费、系统运行费(含辅助服务费)、政府性基金及附加等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)依法依规提供相关市场信息,获得电力交易和输配电服务等相关信息,并承担保密义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)服从电力调度机构的统一调度,遵守电力需求侧管理等相关规定,提供承诺的需求响应服务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)按规定支付电费,在规定时间内可对结算结果提出异议。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)法律法规规定的其他权利和义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十七条</font> <font>售电公司的权利和义务主要包括:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)按照规则参与跨省跨区、省内电能量交易和辅助服务交易,提供增值服务,与用户签订零售合同,并履行合同规定的各项义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)按照规则向电力交易机构提供代理零售用户的交易合同及电力电量需求,获得电力交易、输配电服务和代理零售用户历史用电负荷(或典型用电负荷)等相关信息,承担用户信息保密义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)获得电网企业的电费结算服务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)具有配电网运营权的售电公司负责提供相应配电服务,按用户委托提供代理购电服务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)法律法规规定的其他权利和义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十八条</font> <font>其他经营主体根据参与的市场交易类型,享受与上述经营主体同等的权利和义务,并需满足参与现货市场的技术条件。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十九条</font> <font>电网企业的权利和义务:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)保障输变电设备正常运行。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)根据现货市场价格信号反映的阻塞情况,加强电网建设。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)为经营主体提供公平的输电、配电服务和电网接入服务,提供报装、计量、抄表、收付费等服务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)建设、运行、维护和管理电网相关配套系统,服从电力调度机构的统一调度。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)依法依规提供相关市场信息,并承担保密义务;向市场运营机构提供支撑现货市场交易和市场服务所需的相关数据,保证数据交互的准确性和及时性。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)收取输配电费,代收代付电费和政府性基金及附加等,按时完成电费结算。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(七)保障居民(含执行居民电价的学校、社会福利机构、社区服务中心等公益性事业用户)、农业用电供应,执行现行目录销售电价政策;单独预测居民、农业用户的用电量规模及典型用电曲线。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(八)向符合规定的工商业用户提供代理购电服务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(九)法律法规规定的其他权利和义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二十条</font> <font>电力调度机构的权利和义务主要包括:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)组织电力现货交易,负责安全校核、市场监测和风险防控,按照调度规程实施电力调度,保障电网安全稳定运行。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)合理安排电网运行方式,保障电力市场正常运行。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)按规则建设、运行和维护电力现货市场技术支持系统。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)按照信息披露和报送等有关规定披露和提供电网运行的相关信息,提供支撑市场化交易以及市场服务所需的相关数据,按照国家网络安全有关规定与电力交易机构进行数据交互,承担保密义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)配合国家能源局派出机构、省(区、市)有关主管部门开展市场分析和运营监控,履行相应市场风险防范职责,依法依规实施市场干预,并向国家能源局派出机构、省(区、市)有关主管部门报告,按照规则规定实施的市场干预予以免责。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)法律法规规定的其他权利和义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二十一条</font> <font>电力交易机构的权利和义务主要包括:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)向经营主体提供市场注册、信息变更和退出等相关服务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)负责中长期交易组织及合同管理,负责现货交易申报和信息发布。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)提供电力交易结算依据及相关服务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)建设、运营和维护电力交易平台和相关配套系统。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)按照国家信息安全与保密、电力市场信息披露和报送等有关规定披露和发布信息,承担保密义务;提供信息发布平台,为经营主体信息发布提供便利,获得市场成员提供的支撑现货市场交易以及服务需求的数据等;制定信息披露标准格式,及时开放数据接口。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)监测和分析市场运行情况,记录经营主体违反交易规则、扰乱市场秩序等违规行为,向国家能源局派出机构、省(区、市)有关主管部门及时报告并配合相关调查,依法依规实施市场干预,防控市场风险。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(七)法律法规规定的其他权利和义务。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>准入与退出</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二十二条</font> <font>参加电力市场交易的经营主体应是具有法人资格、财务独立核算、信用良好、能够独立承担民事责任的经济实体,其中发电企业应当依法依规取得电力业务许可证。内部核算的经营主体经法人单位授权,可申请参与电力市场交易。参与中长期交易的经营主体均可参与现货市场。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二十三条</font> <font>准入电力市场的发电企业和电力用户不允许退出。满足下列情形之一的,可自愿申请办理退市手续:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)经营主体宣告破产、退役,不再发电或用电。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)因国家政策、电力市场规则发生重大调整,导致原有经营主体因自身原因无法继续参加市场。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)因电网网架结构调整,导致经营主体的发用电物理属性无法满足所在地区的市场准入条件。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)售电公司退出条件按照国家有关售电公司准入与退出的管理规定执行。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十四条经营主体发生以下情况时,电力交易机构依法依规强制其退出市场,并向国家能源局派出机构、省(区、市)有关主管部门备案。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)因情况变化不再符合准入条件(包括依法被撤销、解散,依法宣告破产、歇业,电力业务许可证被注销等情况)。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)隐瞒有关情况或者以提供虚假申请材料等方式违法违规进入市场,且拒不整改的。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)严重违反市场交易规则,且拒不整改的。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)企业违反信用承诺且拒不整改或信用评价降低为不适合继续参与市场交易的。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)因违反交易规则及市场管理规定等情形被暂停交易,且未在期限内完成整改的。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)法律、法规规定的其他情形。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二十五条</font> <font>退出市场的经营主体应缴清市场化费用及欠费,处理完毕尚未交割的成交电量。无正当理由退出市场的经营主体及其法定代表人三年内均不得申请市场准入。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>注册、变更与注销</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二十六条</font> <font>符合电力市场准入条件的各类经营主体在电力交易机构完成市场注册程序后,方可参与电力市场交易。各电力交易机构共享注册信息。经营主体应当保证注册提交材料的真实性、完整性,履行承诺、公示、注册、备案等相关手续后,电力交易机构及时向社会发布经营主体注册信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二十七条</font> <font>已完成市场注册的经营主体,当市场注册信息发生变更时,应当及时向电力交易机构提出变更申请,变更信息经公示无异议后,电力交易机构向社会重新发布相关经营主体注册信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第二十八条因故需要退出市场的经营主体,应及时向电力交易机构提出市场退出申请,履行或处理完成已成交合同有关事项,并由电力交易机构公示无异议后,方可注销其市场注册信息并退出市场。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四章</font> <font>市场构成与价格</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>市场构成</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二十九条</font> <font>现货市场一般包括日前市场、日内市场和实时市场。各省(区、市)</font><font>/区域可根据实际情况选择实际构成。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)日前市场。市场运营机构按日组织日前市场,根据经营主体日前交易申报,在考虑电网运行和物理约束的前提下,满足日前市场负荷需求和备用需求,以社会福利最大为目标,进行日前市场集中优化出清,形成日前出清结果。加快推动日前市场以市场化用户申报曲线叠加非市场化用户预测曲线为依据开展集中优化出清。如不开展日前市场,可选择开展日前预出清,日前预出清结果不作为结算依据,仅向经营主体披露。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)日内市场。市场运营机构在运行日,根据系统运行情况和最新预测信息,滚动优化快速启停机组等灵活调节资源,以满足系统平衡要求。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)实时市场。实时市场中,市场运营机构在运行日根据经营主体申报,在机组组合基本确定的基础上,考虑电网实际运行状态和物理约束,满足超短期负荷预测和备用需求,以社会福利最大为目标,进行实时市场出清,形成实时市场出清结果。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十条</font> <font>可靠性机组组合是日前市场的重要环节。为满足系统运行安全需要,可靠性机组组合根据发电侧报价、可再生能源出力预测、省间送受电计划和系统负荷预测等,确定需要启停的机组。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>价格机制</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十一条</font> <font>可根据电网结构和阻塞等情况,选择节点边际电价、分区边际电价和系统边际电价等机制。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)节点边际电价包含电能量分量和阻塞分量。对于电网阻塞程度较为严重、输电能力受限的地区,宜采用节点边际电价机制。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)当电网存在输电阻塞时,可按阻塞断面将市场分成几个不同的分区,并以各分区内边际价格作为该分区电价。对于存在明显阻塞断面的地区,宜采用分区边际电价机制。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)现货市场出清时,以市场内统一边际价格作为系统电价的,可不区分节点或价区。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十二条</font> <font>经营主体具有报价权和参与定价权。电网企业代理购电用户在现货市场中不申报价格。经营主体不能参与定价的情况有:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)机组已达到最大爬坡能力。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)机组因自身原因,出力必须维持在某一固定水平。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)机组因自身原因或因水电厂水位控制或下游综合利用需要,出力不得低于某一水平,低于该水平的部分不能参与定价。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)机组正处于从并网到最小技术出力水平,或从最小技术出力水平到解列的过程。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十三条</font> <font>发电侧价格由电能量价格、辅助服务费用等构成。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十四条</font> <font>直接参与交易的用户侧用电价格由电能量价格、输配电价(含交叉补贴)、上网环节线损费用、系统运行费用(包括辅助服务费用、抽水蓄能容量电费等)、政府性基金及附加等构成。代理购电用户用电价格按照政府有关规定执行。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十五条</font> <font>输配电价(含交叉补贴)、综合线损率等以政府核定水平为准。政府性基金及附加遵循政府有关规定。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十六条</font> <font>通过在市场出清中考虑线路</font><font>/断面安全约束等方式进行阻塞管理。采用分区电价或节点电价所产生的阻塞费用,可按规则分配给经营主体。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>市场限价</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十七条</font> <font>市场限价设定应考虑经济社会承受能力,有利于市场发现价格,激励投资,引导用户侧削峰填谷,提高电力保供能力,防范市场运行风险。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十八条</font> <font>现货市场应设定报价限价和出清限价,报价限价不应超过出清限价范围。除正常交易的市场限价之外,当市场价格处于价格限值的连续时间超过一定时长后,可设置并执行二级价格限值。二级价格限值的上限可参考长期平均电价水平确定,一般低于正常交易的市场限价。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三十九条</font> <font>市场限价应综合考虑边际机组成本、电力供需情况、失负荷价值、经济发展水平等因素,经科学测算后按规则规定合理确定,并适时调整。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十条</font> <font>市场限价应与市场建设相适应,并加强不同交易品种市场限价的协同。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)未建立容量成本回收机制的地区,市场限价应考虑机组固定成本回收。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)随着交易接近交割时间,市场价格上限应依次递增或持平。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十一条</font> <font>现货市场限价规则、价格干预规则等管制性价格规则由国务院价格主管部门明确制定原则,各省(区、市)价格主管部门会同有关主管部门、国家能源局派出机构组织制定具体规则,并在当地市场规则中体现。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五章</font> <font>现货市场运营</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>市场准备</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十二条</font> <font>参加省(区、市)</font><font>/区域市场的成员,应分别遵守所参加市场的市场规则,按照所参加市场的规则和交易结果承担相应经济责任。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十三条</font> <font>发电企业(机组)按要求向电力市场运营机构提供运行技术参数,作为电力现货市场出清的参数。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十四条</font> <font>电网企业负责预测代理购电用户分时段用电量及居民、农业用电量和典型曲线,并通过技术支持系统发布。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十五条</font> <font>在经营主体申报前,电力调度机构开展运行日分时段负荷预测和母线负荷预测。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十六条</font> <font>各省(区、市)</font><font>/区域根据系统运行需要,确定系统正、负备用要求。现货交易出清结果需满足运行日的系统备用要求,特殊时期电力调度机构可根据系统安全运行需要,调整备用值,并向经营主体披露调整情况。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十七条</font> <font>电力调度机构基于发、输变电设备投产、退役和检修计划,结合电网实际运行状态,确定运行日的发、输变电设备检修和投运计划。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十八条</font> <font>系统安全约束条件包括输变电设备极限功率、断面极限功率、发电机组(群)必开必停约束、发电机组(群)出力上下限约束等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四十九条</font> <font>现货市场每日连续运行,经营主体需在规定时间前向市场运营机构提交申报信息,迟报、漏报或不报者均默认采用缺省值作为申报信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十条</font> <font>关键参数的设置和修改应按规则规定的程序开展,不得随意更改。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>市场运营</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十一条</font> <font>市场运营机构综合考虑省间中长期合同约定曲线、电网实际运行情况、省间现货市场日前交易结果等因素,确定跨省跨区联络线计划,作为送受两端市场的初始条件。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十二条</font> <font>开展日前市场的地区,市场运营机构按照上级电力调度机构下发的省间交易结果形成的联络线计划,进行信息发布。电力调度机构以社会福利最大为目标,以已发布的信息作为市场优化边界条件,将用户侧申报电量或调度负荷预测作为需求,集中优化出清形成日前市场出清结果。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十三条</font> <font>开展现货市场但未开展日前市场的地区,市场运营机构可依据已发布的送受电曲线、经营主体申报信息和次日负荷预测,形成省(区、市)</font><font>/区域日前预出清结果。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十四条</font> <font>开展日内市场的地区,电力调度机构以日前机组组合为基础,根据日内运行情况和相关预测信息,滚动优化快速启停机组等灵活调节资源。具备条件的地区,经营主体可在规定时间前调整报价。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十五条</font> <font>开展实时市场的地区,电力调度机构根据最新的电力负荷预测、联络线计划和系统约束条件等,以社会福利最大为目标进行出清。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十六条</font> <font>各省(区、市)价格主管部门会同国家能源局派出机构结合各地机组启动成本、变动成本(含空载成本)和固定成本等变化趋势,及时开展成本调查,明确各类型机组成本。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>市场出清和结果发布</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十七条</font> <font>市场运营机构应按照规则及时向经营主体发布对应出清结果,当出清结果缺失或错误时,应根据规则及时补发或更正,并进行情况说明。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)开展日前市场的地区,日前正式出清结果应包含机组组合及机组出力曲线、分时价格。未开展日前市场的地区,日前预出清结果应包含机组组合及机组出力曲线等。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)日前市场出清(或日前预出清)后,电力调度机构应在规定时间内下达调度计划(含机组组合)。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(三)运行日内,市场运营机构按规定发布省(区、市)</font><font>/区域市场日内出清结果和实时出清结果,包含机组组合及机组出力曲线、分时价格。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)实时运行中,如发生场外调度或市场干预,电力调度机构应记录事件经过、计划调整情况等,并按照相关要求进行信息披露。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六章</font> <font>市场衔接机制</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>中长期与现货市场衔接</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十八条</font> <font>现货市场运行地区,经营主体应通过自主协商或集中交易方式确定中长期交易合同曲线或曲线形成方式,并约定分时电量、分时价格、结算参考点等关键要素。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五十九条</font> <font>现货市场运行地区,市场运营机构应不断优化中长期与现货市场运营衔接,开展中长期分时段带曲线交易,增加交易频次,缩短交易周期。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十条</font> <font>跨省跨区交易卖方成交结果作为送端关口负荷增量,买方成交结果作为受端关口电源参与省内出清结算,省间交易结果作为省间交易电量的结算依据。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>代理购电与现货市场衔接</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十一条</font> <font>电网企业应定期预测代理购电工商业用户用电量及典型负荷曲线,并考虑季节变更、节假日安排等因素分别预测分时段用电量,通过参与场内集中交易方式(不含撮合交易)代理购电,形成分时合同。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十二条</font> <font>代理工商业用户购电的偏差电量应按照现货市场价格结算。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十三条</font> <font>为保障居民、农业用电价格稳定产生的新增损益,由全体工商业用户分摊或分享。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>辅助服务市场与现货市场衔接</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十四条</font> <font>现货市场起步阶段,调频、备用辅助服务市场与现货市场可单独出清;具备条件时,调频、备用辅助服务市场与现货市场联合出清。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十五条</font> <font>现货市场运行期间,已通过电能量市场机制完全实现系统调峰功能的,原则上不再设置与现货市场并行的调峰辅助服务品种。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十六条</font> <font>现货市场运行地区,辅助服务费用由发用电两侧按照公平合理原则共同分担。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四节</font> <font>容量补偿机制与现货市场衔接</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十七条</font> <font>各省(区、市)</font><font>/区域要按照国家总体部署,结合实际需要探索建立市场化容量补偿机制,用于激励各类电源投资建设、保障系统发电容量充裕度、调节能力和运行安全。开展现货市场的地区,要做好市场限价、市场结算、发电成本调查等与容量补偿机制的衔接。具备条件时,可探索建立容量市场。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七章</font> <font>计量</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>计量要求</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十八条</font> <font>计量管理的目的是保证电能计量量值的准确性、溯源性、及时性,确保电能计量装置运行安全可靠,维护市场成员合法权益,为电力现货市场规范开展提供计量保证。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六十九条</font> <font>发用单元各计量点结算时段电量应通过计量装置计量或通过数据拟合获得,并考虑变(线)损电量。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)若某计量点的电量数据需分配给多个单元,则各单元的电量根据既定方法分配获得。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)若某计量点无计量装置,则该点的电量应根据与其相关联计量点的电量数据计算得出。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>计量装置管理</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十条</font> <font>电网企业应当为参与现货市场的发电企业、电力用户计量点配置符合国家标准的计量装置,满足电力现货市场对计量数据的采集频次、成功率和存储等要求。计量装置满足经营主体要求后,在以后的改造(含更换)过程中不应降低其技术要求。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十一条</font> <font>若计量点配置主、副电表,应当确保主、副电表型号、规格、准确度相同,且有明确标志,以主表计量数据作为结算依据,副表计量数据作为参照,当确认主表故障后,副表计量数据替代主表计量数据作为结算依据。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十二条</font> <font>电网企业负责本供电营业区内所有用于交易结算(含发电企业上网交易电量)的电能计量装置的计量管理。发电企业配合电网企业完成与本企业有关的交易结算所使用电能计量装置的技术管理。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十三条</font> <font>电网企业根据经营主体的申请,设置关口电能计量点,作为交易结算计量点。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)计量装置应安装在产权分界点,产权分界点无法安装计量装置的,电网企业应在与经营主体协商明确计量装置安装位置后,依法确定相应的变(线)损,参与交易结算的关口计量点应在相关合同、协议中予以明确。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)发电单元需设置接入对应电网的关口计量点,参与市场的用户需设置接入对应电网的关口计量点,不同电网间需设置关口计量点。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)若某发电单元未安装计量装置,上网电量可通过其他单元和出线侧计量装置的计量数据计算获得,且该计算数据满足结算要求,电量的计算方法应征求经营主体意见。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)多个发电侧结算单元共用计量点且无法拆分时,结算单元电量分配方式应在市场规则或方案中予以明确。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)依法依规设置新型经营主体关口电能计量点。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>计量数据管理</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十四条</font> <font>发电单元关口计量点的电量数据通过相关计量点计量或拟合确定;电力用户(含代理购电用户)关口计量点的电量数据由电网企业根据计量装置或计量电量数据拟合规则确定,并传输给电力交易机构(售电公司或新型经营主体在电力用户授权下也可获得该部分数据)。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十五条</font> <font>计量数据应当满足最小交易周期的结算需要,电网企业应对各结算时段内计量数据进行校核,保证计量数据准确、完整。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十六条</font> <font>电网企业应按照有关数据采集、校验、估算的细则和标准,及时、准确计量其服务区域内经营主体计量装置记录的分时电量数据(包括拟合数据)。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)当计量装置计量时段无法满足结算时段要求时,由计量数据采集系统进行电量数据拟合。数据拟合可采用插值法、外推法、样本法等方法,并在市场规则或方案中予以明确。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)当自动采集数据不完整时,由电能计量采集管理信息系统根据拟合规则补全电量数据。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)当计量装置故障等问题导致计量表计底码不可用时,电网企业依据相关拟合规则出具电量更正报告,经相关经营主体确认后进行电量追退补。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)对于计量装置无法满足分时计量的电力用户,应细化其计量数据拟合方法。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十七条</font> <font>电网企业依法依规对采集到的数据进行物理计量点到产权分界点的变(线)损分配。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十八条</font> <font>电网企业应按照结算周期,依据适用于计量装置及相关经营主体的通用校核规则、个别计量装置特定的校核规则及任何可用的计量数据,通过系统对计量数据发起自动校核。若计量数据未通过自动校核,则应对该数据进行人工审核,并记录审核结果。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第七十九条</font> <font>电网企业应当按照电力市场结算要求定期抄录各类经营主体的电能计量装置数据,并将各类经营主体计量数据(包括拟合计量数据)按结算时序要求提交电力交易机构。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十条</font> <font>电网企业应根据经营主体询问及争议,对计量数据问题进行分类管理,并按规定进行处理。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十一条</font> <font>当计量数据缺失、错误或不可用时,可由相应经营主体或电网企业提出,并由具备资质的计量检定机构确认并出具报告,电网企业按照市场规则进行数据拟合作为电量追补依据,对电量电费进行差错退补。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十二条</font> <font>电网企业负责经营主体计量数据管理,包括原始分时计量数据、调整和汇总后的电量数据(包括线(变)损调整参数)、验证和拟合数据的方法、计量数据的调整参数等。计量数据需按要求保存,数据保存时间应依法依规确定。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八章</font> <font>市场结算</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>市场结算管理</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十三条</font> <font>现货市场结算,及中长期、辅助服务市场结算涉及现货市场的相关内容适用本章节有关规定。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十四条</font> <font>电能量批发市场可以按以下两种方式结算:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>方式一:现货市场全电量按现货市场价格结算,中长期合同电量按中长期合同价格与中长期结算参考点的现货价格差值结算。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>方式二:中长期合同电量按中长期合同价格结算,并结算所在节点</font><font>/分区与中长期结算参考点的现货价格差值,实际电量与中长期合同电量的偏差按现货市场价格结算。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十五条</font> <font>现货市场可采用</font><font>“日清月结”的结算模式,每日对已执行的成交结果进行清分计算,以自然月为周期出具结算依据并开展电费结算。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十六条</font> <font>结算时段是指市场进行结算的最小时段,每个结算时段以市场设计为准。每个结算时段的电费依据相关出清时段的出清结果计算确定。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十七条</font> <font>电力市场结算不得设置不平衡资金池,每项结算项目均需独立记录,分类明确疏导。所有结算项目的分摊(返还)应根据</font><font>“谁产生、谁负责,谁受益、谁承担”原则事先商定分摊(返还)方式,明确各方合理的权利与义务。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>市场结算权责</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十八条</font> <font>电力交易机构在市场结算方面的权利和义务主要包括:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)负责按照规则,通过电力交易平台等方式向各经营主体单独推送其结算明细和结算依据,在电力交易平台公开计算示例和说明,数据推送应采用数据接口等便于经营主体使用的方式。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)负责按规则处理经营主体结算的相关查询。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)负责经营主体的履约保函管理,接受电网企业履约保函、保险的使用申请,要求履约保函、保险的开立单位支付款项,向经营主体发出履约保函、保险执行告知书并做好相关信用评价管理记录。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)按照有关规定,将经营主体的结算信息和数据进行涉密管理。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第八十九条</font> <font>电网企业在市场结算方面的权利和义务主要包括:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)负责根据电力交易机构提供的结算依据,按自然月周期向经营主体出具结算账单,并按照规定向经营主体收付款。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)按照有关规定,将经营主体的结算信息和数据进行涉密管理。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)负责向发生付款违约的经营主体催缴欠款,对于逾期仍未全额付款的经营主体,向电力交易机构提出履约保函、保险的使用申请。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十条</font> <font>经营主体在市场结算方面的权利和义务主要包括:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)可以获取、查看其在各历史交易日、各历史结算时段的结算明细。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)结算依据出具后,应按照时间表核对并确认结算依据的完整性和准确性。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)对结算依据、结算账单存在疑问时,可在规定时间内向电力交易机构、电网企业提交结算查询。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)负责提供用于资金结算的银行账户。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)应按规定向电网企业支付(或收取)款项。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)拥有配电网运营权的售电公司根据政府有关规定开展电费结算。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>市场结算计算</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十一条</font> <font>省(区、市)</font><font>/区域内发电侧主体电能量电费计算应符合以下要求:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(一)按照本规则第八十四条方式一,运行日前市场的省(区、市)</font><font>/区域,发电侧主体电能量电费为其日前全电量电费、实时偏差电量电费、中长期差价合约电费之和,结算公式如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>发电侧电能量电费=日前全电量电费+实时偏差电量电费</font><font>+中长期差价合约电费</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>日前全电量电费</font><font>=∑(日前市场出清电量×日前市场节点/分区边际电价)</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>实时偏差电量电费</font><font>=∑[(实际上网电量-日前市场出清电量)×实时市场节点/分区边际电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>中长期差价合约电费</font><font>=∑[合约电量×(合约价格-中长期结算参考点现货电价)]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>未运行日前市场、仅运行实时市场的省(区、市)</font><font>/区域,发电侧主体电能量电费为其实时全电量电费、中长期差价合约电费之和,结算公式如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>发电侧电能量电费=实时全电量电费+中长期差价合约电费</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>实时全电量电费</font><font>=∑(实际上网电量×实时市场节点/分区边际电价)</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>中长期差价合约电费</font><font>=∑[合约电量×(合约价格-中长期结算参考点现货电价)]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(二)按照本规则第八十四条方式二,运行日前市场的省(区、市)</font><font>/区域,发电侧主体电能量电费为中长期合约电费、日前电能量电费与实时电能量电费之和。结算公式如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>发电侧电能量电费=中长期合约电费+日前电能量电费+实时电能量电费</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>中长期合约电费</font><font>=∑[合约电量×(合约价格+日前市场节点/分区边际电价-中长期结算参考点现货电价)]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>日前电能量电费</font><font>=∑[(日前市场出清电量-∑合约电量)×日前市场节点/分区边际电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>实时电能量电费</font><font>=∑[(实际上网电量-日前市场出清电量)×实时市场节点/分区边际电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>未运行日前市场、仅运行实时市场的省(区、市)</font><font>/区域,发电侧主体电能量电费为中长期合约电费与实时电能量电费之和,结算公式如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>发电侧电能量电费=中长期合约电费+实时电能量电费</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>中长期合约电费</font><font>=∑[合约电量×(合约价格+实时市场节点/分区边际电价-中长期结算参考点现货电价)]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>实时电能量电费</font><font>=∑[(实际上网电量-∑合约电量)×实时市场节点/分区边际电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)根据市场构成不同,中长期结算参考点的现货价格可以由日前市场出清价格或者实时市场出清价格确定。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)针对不同发电类型,可设计不同的政府授权合约结算公式。主要区别在于如何规定政府授权合约价格、合约电量曲线以及合约结算参考点。具体可在相关市场实施细则中明确。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十二条</font> <font>省(区、市)</font><font>/区域内用户侧主体电能量电费计算应符合以下要求:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(一)按照本规则第八十四条方式一,运行日前市场的省(区、市)</font><font>/区域,用户侧主体电能量电费为其日前全电量电费、实时偏差电量电费、中长期差价合约电费之和,结算公式如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>用户侧电能量电费=日前全电量电费+实时偏差电量电费</font><font>+中长期差价合约电费</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>日前全电量电费</font><font>=∑[日前市场出清电量×日前市场节点/分区边际电价或统一结算点电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>实时偏差电量电费</font><font>=∑[(实际用电量-日前市场出清电量)×实时市场节点/分区边际电价或统一结算点电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>中长期差价合约电费</font><font>=∑[合约电量×(合约价格-中长期结算参考点现货电价)]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>未运行日前与日内市场、仅运行实时市场的省(区、市)</font><font>/区域,用户侧主体电能量电费为其实时全电量电费、中长期差价合约电费之和,结算公式如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>用户侧电能量电费=实时全电量电费+中长期差价合约电费</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>实时全电量电费</font><font>=∑[实际用电量×实时市场节点/分区边际电价或统一结算点电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>中长期差价合约电费</font><font>=∑[合约电量×(合约价格-中长期结算参考点现货电价)]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(二)按照本规则第八十四条方式二,运行日前市场的省(区、市)</font><font>/区域,用户侧主体电能量电费包括中长期合约电费、日前电能量电费与实时电能量电费,结算公式如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>用户侧电能量电费=中长期合约电费+日前电能量电费+实时电能量电费</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>中长期合约电费</font><font>=∑[合约电量×(合约价格+日前市场节点/分区边际电价或统一结算点电价-中长期结算参考点现货电价)]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>日前电能量电费</font><font>=∑[(日前市场出清电量-∑合约电量)×日前市场节点/分区边际电价或统一结算点电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>实时电能量电费</font><font>=∑[(实际用电量-日前市场出清电量)×实时市场节点/分区边际电价或统一结算点电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>若未运行日前与日内市场、仅运行实时市场的省(区、市)</font><font>/区域时,用户侧主体电能量电费为中长期合约电费和实时电能量电费之和,结算公式如下:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>用户侧电能量电费=中长期合约电费+实时电能量电费</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>中长期合约电费</font><font>=∑[合约电量×(合约价格+实时市场节点/分区边际电价或统一结算点电价-中长期结算参考点现货电价)]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>实时电能量电费</font><font>=∑[(实际用电量-∑合约电量)×实时市场节点/分区边际电价或统一结算点电价]</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)根据市场构成不同,中长期结算参考点的现货价格可以由日前市场出清价格或者实时市场出清价格确定。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十三条</font> <font>日前市场、实时市场阻塞费用为由于阻塞造成的应付费用与应收费用之差。市场设计中应考虑省内的阻塞费用分配方式,并明确跨省阻塞费用的计算和分配方式。阻塞费用可按规则分配给经营主体,初期可采用分配方式处理阻塞费用,待条件成熟时,可通过市场化方式拍卖输电权,由输电权拥有者获取相应的阻塞收入。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第四节</font> <font>结算依据及流程</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十四条</font> <font>经营主体结算依据包括现货电能量电费、中长期合同电费(包括双边合同、政府授权合约等)、系统运行费用(包含辅助服务费用、抽水蓄能容量电费等)、不平衡费用等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十五条</font> <font>电力交易机构和电网企业应确定结算周期、结算依据和结算账单出具日期以及收付款日期等,在此基础上制定相关时间节点和流程,并提前</font><font>1个季度公开上述信息。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十六条</font> <font>电力交易机构从电网企业按日获取每个经营主体的计量数据,计算每个经营主体批发市场的月度结算结果,在规定截止日期前形成结算依据。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十七条</font> <font>电力交易机构在规定截止日期前向经营主体出具结算依据,并推送给电网企业。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十八条</font> <font>电网企业在规定截止日期前,根据结算依据向经营主体发布结算账单。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九十九条</font> <font>用户侧主体应根据其结算账单在规定截止日期前向电网企业全额支付相关电费。电网企业应根据结算账单在规定截止日期前向发电侧主体全额支付相关电费。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百条</font> <font>结算账单内容包括结算依据、汇总表及其他适用的附加项目。向用户侧主体收取电费的结算账单应包括电能量费用、输配电价、线损电费、系统运行费、政府性基金及附加等。向发电侧主体支付电费的结算账单应包括电能量费用(包括现货和中长期交易的电能量电费)、系统运行费、相关成本补偿费用等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第五节</font> <font>结算查询及调整</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇一条</font> <font>经营主体对结算明细数据、结算依据计算过程、结算依据内容等向电力交易机构提出查询或就结算账单问题向电网企业提出查询的,收到结算查询后,电力交易机构或电网企业应确认和评估查询是否有效,可要求经营主体追加信息,若确认结算查询有效且需要修改结算依据或结算账单,应按照规则进行调整。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇二条</font> <font>结算调整应按照以下方式开展:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(一)若结算错误影响多个经营主体,电力交易机构应重新进行结算计算,并在最近一次结算周期内完成调整;无法在最近一次结算周期内完成调整的,调整金额应在下个结算周期的结算依据中记为</font><font>“结算调整项目”费用。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(二)可根据结算周期内对单个经营主体的影响设定阈值,超出阈值的,应在下个月的结算依据中记为</font><font>“结算调整项目”;低于阈值的,可每年定期开展统一结算调整。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第六节</font> <font>违约处理</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇三条</font> <font>对付款违约经营主体的处理应符合以下要求:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)若经营主体未能在付款截止日前完成全额付款,电网企业应及时告知电力交易机构,电力交易机构按规定向经营主体发出违约通知。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)当电力交易机构发出违约通知后,电网企业应尽快按照违约金额提出履约保函、保险的适用申请。电力交易机构向履约保函、保险开立单位出具索赔通知及履约保函、保险原件,要求开立单位支付款项。电网企业向经营主体付款的总额不应超过实际收款及提取到的履约保函、保险金额总和。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)电力交易机构向违约经营主体发出履约保函、保险执行告知书,同时发出暂停交易通知,并做好相关信用记录。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第九章</font> <font>风险防控</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>基本要求</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇四条</font> <font>建立健全电力市场风险防控机制,防范市场风险,保障电力系统安全和市场平稳运行,维护经营主体合法权益和社会公共利益。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇五条</font> <font>市场运营机构在国家能源局派出机构、省(区、市)有关主管部门指导下,履行市场风险防控职责,市场成员应共同遵守并按规定落实电力市场风险防控职责。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>风险分类</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇六条</font> <font>电力市场风险类型包括:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)电力供需风险,指电力供应与需求大幅波动、超出正常预测偏差范围,影响电力系统供需平衡的风险。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)市场价格异常风险,指部分时段或局部地区市场价格持续偏高或偏低,波动范围或持续时间明显超过正常变化范围的风险。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)电力系统安全运行风险,指电力系统在运行中承受扰动时,无法承受住扰动引起的暂态过程并过渡到一个可接受的运行工况,或者在新的运行工况下,各种约束条件不能得到满足的风险。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)电力市场技术支持系统风险,指支撑电力市场的各类技术支持系统出现异常或不可用状态,影响市场正常运行的风险。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)网络安全风险,指因黑客、恶意代码等攻击、干扰和破坏等行为,造成被攻击系统及其中数据的机密性、完整性和可用性被破坏的风险。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)履约风险,指经营主体签订的批发、零售合同,由于经营主体失信、存在争议或不可抗力等原因而不能正常履行,影响市场结算工作正常开展的风险。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>风险防控与处置</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇七条</font> <font>市场风险监测以事前、事中为主。市场运营机构按照国家能源局派出机构、省(区、市)有关主管部门要求,加强对电力市场各类交易活动的风险防范和监测。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇八条</font> <font>市场运营机构按照有关程序对市场风险进行预警,并报告国家能源局派出机构、省(区、市)有关主管部门。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百〇九条</font> <font>市场运营机构负责编制各类风险处置预案,包括风险级别、处置措施、各方职责等内容,并滚动修编。风险处置预案经国家能源局派出机构、省(区、市)有关主管部门审定后执行。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百一十条</font> <font>市场风险发生时,各方按照事前制定的有关预案,在事中、事后采取相应的措施进行处置,尽可能减小风险造成的后果,并按要求披露市场风险处置情况。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十章</font> <font>市场干预</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一节</font> <font>市场干预条件</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百一十一条</font> <font>市场干预分为政府干预和市场运营机构干预。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第一百一十二条现货市场运行过程中发生下列情形之一的,由国家能源局派出机构、省(区、市)价格等有关主管部门根据职责作出市场干预决定,包括临时中止市场运行、中止部分或全部规则的执行、价格管制等措施,并委托市场运营机构实施市场干预:</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)电力供应严重不足时。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)电力市场未按照规则运行和管理时。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)电力市场运营规则不适应电力市场交易需要,必须进行重大修改时。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)电力市场交易发生恶意串通操纵市场的行为,并严重影响交易结果时。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)市场价格达到价格限值且触发管控条件时。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)其他认为需要进行市场干预的情形。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百一十三条</font> <font>现货市场运行过程中出现如下情况时,市场运营机构应按照安全第一的原则采取取消市场出清结果、实施发用电计划管理等措施对市场进行干预,并尽快报告国家能源局派出机构、省(区、市)有关主管部门:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)电力系统发生故障导致网络拓扑发生重大变化,或当电网整体、局部发生稳定破坏,严重危及电网安全时。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)因重大自然灾害、突发事件等原因导致电网运行安全风险较大时。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)电力市场技术支持系统发生重大故障,导致无法按照市场规则进行出清和调度时。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)其他认为需要进行市场干预的情形。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第二节</font> <font>市场干预内容</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百一十四条</font> <font>市场运营机构须按要求记录干预的原因、措施,分析存在的问题,形成方案建议,并尽快向国家能源局派出机构、省(区、市)价格等有关主管部门备案。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百一十五条</font> <font>市场运营机构应公布市场干预情况原始日志,包括干预时间、干预人员、干预操作、干预原因,涉及《电力安全事故应急处置和调查处理条例》(中华人民共和国国务院令第</font><font>99号)规定电力安全事故等级的事故处理情形除外。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百一十六条</font> <font>市场干预期间的干预触发条件、干预规则等由国家能源局派出机构和省(区、市)价格等有关主管部门制定,并在省(区、市)</font><font>/区域市场交易规则中明确。若干预期间机组总发电收入低于核定的总发电成本(包含调用停机机组的启动成本),应按照核定的总发电成本对机组进行结算。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百一十七条</font> <font>当采用价格管制的方式干预市场时,管制定价的制定应综合考虑市场供需情况、电力稀缺价值以及机组变动成本等因素,定期根据市场运行情况更新、调整计算方法,并同步建立与结算联动的机制。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第三节</font> <font>市场中止和恢复</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>第一百一十八条当触发市场干预条件,且市场中止之外的措施不足以将市场恢复到正常运行状态,由国家能源局派出机构、省(区、市)有关主管部门做出市场中止决定,并委托市场运营机构实施。市场运营机构应立即发布市场中止声明。突发情况时,市场运营机构可按规定进行市场干预,并做好相关记录,事后由国家能源局派出机构、省(区、市)有关主管部门做出是否中止市场的决定并发布。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百一十九条</font> <font>当异常情况解除、电力市场重启具备条件后,经国家能源局派出机构、省(区、市)有关主管部门同意,市场运营机构按程序恢复市场正常运行。市场恢复通知应按要求提前向经营主体发布。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十条</font> <font>国家能源局派出机构、省(区、市)有关主管部门应建立电力市场中止和恢复工作机制并在规则中予以明确。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十一章</font> <font>争议处理</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十一条</font> <font>经营主体之间、经营主体与市场运营机构之间、经营主体与电网企业之间因参与电力现货市场发生争议的,可先通过市场管理委员会调解,也可向国家能源局派出机构、省(区、市)有关主管部门申请行政调解;调解不成的可通过仲裁、司法等途径解决争议。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十二条</font> <font>市场成员应按照以下规定时间提出争议调解申请:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(一)对于出清价格、结算依据中的电量或金额有争议的,应在市场运营机构给出查询回复后的</font><font>10个工作日内以书面方式提出。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>(二)对于结算凭证中的电量或金额有争议的,应在电网企业给出结算查询回复后的</font><font>10个工作日内以书面方式提出。</font></span></p>
+<p>(三)对于其他争议,市场成员应在事件发生之日起2年内提出。<o:p></o:p>&nbsp;</p>
+<p><span><font>第一百二十三条</font> <font>市场成员有义务为国家能源局派出机构、省(区、市)有关主管部门提供争议处理所需的数据和材料。承担调解工作的相关人员应遵守保密规定,不得泄露因调解工作知悉的商业秘密。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十二章</font> <font>电力市场技术支持系统</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十四条</font> <font>电力市场技术支持系统与市场成员及市场运营所需相关系统的数据通信应符合相关标准和通信协议。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十五条</font> <font>电力市场技术支持系统功能规范要求:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)电力市场技术支持系统应符合国家有关技术标准和行业标准。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)电力市场技术支持系统所有软、硬件模块应采用冗余配置。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)电力市场技术支持系统应建立备用系统或并列双活运行系统,实现双套系统互为主备和并列运行,防止遭受严重自然灾害而导致的系统瘫痪。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)电力市场技术支持系统应保障电力市场运营所需的交易安全、数据安全和网络安全,并具备可维护性、适应性、稳定性,适应电力市场逐步发展完善的需要。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(五)电力市场技术支持系统须对电力市场的经营主体注册管理、数据申报、合同分解与管理、市场出清、调度计划编制、安全校核、辅助服务、市场信息发布、市场结算、市场运行监控等运作环节提供技术支撑,保障电力市场稳定运行。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(六)电力市场技术支持系统应具备数据校验功能,支持对规则配置和生效设置的校验,包括各类分项数据的单一合理性验证、各种关联数据的相关性验证。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(七)电力市场技术支持系统应能够按照相关要求和数据接口规范提供数据接口服务,支持市场成员按规定获取相关数据,市场成员在使用数据接口服务时应满足相关网络安全要求。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(八)电力市场技术支持系统应具备在线监测功能,按有关规定对市场运营情况进行监测,并向国家能源局派出机构、省(区、市)有关主管部门开放相应的访问权限。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(九)现货结算子系统应充分考虑未来发展趋势,统筹规划系统功能的维护管理与扩展升级,满足市场全周期全品种结算要求。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十六条</font> <font>电力市场技术支持系统第三方校验要求:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)电力市场技术支持系统投入运行前,应由国家能源局派出机构、省(区、市)有关主管部门组织第三方开展市场出清软件的标准算例校验。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)电力市场技术支持系统应通过第三方校验,确保电力现货市场技术支持系统算法模型、市场出清功能和结果与现货市场规则一致,同时满足出清时效性及实用性的要求。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)电力市场技术支持系统由国家能源局派出机构、省(区、市)有关主管部门遵循利益回避原则组织独立第三方开展校验。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十七条</font> <font>电力市场技术支持系统数据交互和管理的要求:</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(一)电力市场技术支持系统交互应支持多周期多品种电力交易全过程业务,相关数据交互应确保流程清晰、数据准确、责任明晰,可支持市场出清的离线仿真。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(二)电力市场技术支持系统数据交互应满足《中华人民共和国网络安全法》、《电力监控系统安全防护规定》、《电力监控系统安全防护方案》等法律法规和相关文件要求。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(三)电力市场技术支持系统交换数据精度应满足电力市场运行规则要求。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>(四)电力市场技术支持系统交换的数据应由市场运营机构、经营主体和承担计量、资金结算等服务的单位按各自职责进行采集、提供和核验,并负责数据准确性。</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第十三章</font> <font>附则</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十八条</font> <font>本规则由国家发展改革委、国家能源局负责解释。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>第一百二十九条</font> <font>本规则自</font><font>2023年10月15日起施行,有效期截至2026年10月15日。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>附件</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span>名词解释</span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>1.电力批发市场(Wholesale Electricity Market):发电企业和电力批发用户或售电公司之间进行电力交易的市场,主要包括通过市场化方式开展的中长期电能量交易和现货电能量交易等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>2.电力零售市场(Retail Electricity Market):在批发市场的基础上,由电力零售商和电力用户自主开展交易的市场。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>3.电力现货市场(Electricity Spot Market):通过现货交易平台在日前及更短时间内集中开展的次日、日内至实时调度之前电力交易活动的总称。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>4.中长期交易(Medium and Long-term Transaction):对未来某一时期内交割电力产品或服务的交易,包含数年、年、月、周、多日等不同时间维度的交易。中长期交易合同包括实物合同和财务合同。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>5.安全校核(Power System Security Analysis):对检修计划、发电计划、市场出清结果和电网运行方式等内容,从电力系统运行安全角度分析的过程。分析方法包括静态安全分析、暂态稳定分析、动态稳定分析、电压稳定分析等。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>6.辅助服务市场(Ancillary Service Market):为维护电力系统的安全稳定运行、保证电能质量,由发电企业、电网企业、电力用户等提供除正常电能生产、传输、使用之外的电力辅助服务的市场,包括调频、备用、无功调节、黑启动等市场。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>7.节点边际电价(Locational Marginal Price,LMP):现货电能量交易中,在满足发电侧和输电安全等约束条件下,为满足某一电气节点增加单位负荷时导致的系统总电能供给成本的增量。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>8.分区边际电价(Zonal Marginal Price):当电网存在输电阻塞时,按阻塞断面将市场分成几个不同的分区(即价区),并以分区内边际机组的价格作为该分区市场出清价格,即分区边际电价。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>9.市场限价(Market Price Cap&amp;Floor):一般分为报价限价和出清限价等。报价限价指允许经营主体申报的价格范围,出清限价指市场运行允许出现的价格范围。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>10.日前市场(Day-ahead Market):运行日提前一天(D-1日)进行的决定运行日(D日)机组组合状态和发电计划的电能量市场。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>11.日内市场(Intra-day Market):运行日(D日)滚动进行的决定运行日(D日)未来数小时调度机组组合状态和发电计划的电能量市场。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>12.实时市场(Real-time Market):运行日(D日)进行的决定运行日(D日)未来5-15分钟最终调度资源分配状态和计划的电能量市场。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>13.市场注册(Market Registration):指市场交易成员将用于取得经营主体资格相关的信息和资料提交给市场运营机构并获得经营主体资格的过程。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>14.市场出清(Market Clearing):电力市场根据市场规则通过竞争确定交易量、价。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>15.市场结算(Market Settlement):根据交易结果和市场规则相关规定,在规定周期内对市场成员参与电能量等市场的有关款项进行的计算、划拨。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>16.阻塞管理(Congestion Management):当市场出清过程中进行安全校核时,若输电线路潮流超出了安全约束,市场运营机构需根据一定原则调整发电机组出力,改变输电线路潮流使其符合安全约束,并且分配调整后产生的盈余或者成本。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>17.阻塞费用(Congestion Cost):因潮流阻塞需要系统总购电费用的增加部分,阻塞费用等于两节点之间的节点价格价差乘以连接两节点线路的潮流。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>18.调频服务(Frequency Regulation Service):电力系统频率偏离目标频率时,并网主体通过调速系统、自动功率控制等方式,调整有功出力减少频率偏差所提供的服务。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>19.备用服务(Reserve Service):为保证电力系统可靠供电,在调度需求指令下,并网主体通过预留调节能力,并在规定的时间内响应调度指令所提供的服务。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>20.市场监测(Market Monitoring):对发电企业生产及运行情况、电网运行状态、用户用电行为等运行情况,以及交易组织、交易行为等市场运营情况进行监视的行为。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>21.履约保函(Prudential Deposit):又称信用保证书,是指银行、保险公司、担保公司或担保人应申请人或企业的请求,向受益人或企业及第三方(电力交易机构)开立的一种书面信用担保凭证,以书面形式出具的、凭提交与承诺条件相符的书面索款通知和其它类似单据即行付款的保证文件。</font></span><span><o:p></o:p></span>&nbsp;</p>
+<p><span><font>22.电力市场技术支持系统(Electricity Market Operation System):是支持电力市场运营的计算机、数据网络与通信设备、各种技术标准和应用软件的有机组合,包括现货市场技术支持系统、电力交易平台等。</font></span>&nbsp;</p>
+</div></div>
+            </div>
+            <div style="padding:20px 0">
+              <h5>相关附件</h5>
+              
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+<!-- footer -->
+    <div class="footer">
+      <ul class="linksTab">
+        <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+        <li><a href="../../../all/map/">网站地图</a></li>
+        <li><a href="../../../all/xglj/">相关链接</a></li>
+        <li><a href="../../../all/flsm/">法律声明</a></li>
+       <!-- <li><a href="../../../all/yszcz/">隐私政策</a></li> -->
+      </ul>
+      <ul class="linksMainTab">
+        <li><a href="../../../news/">新闻资讯</a></li>
+        <li><a href="../../../information/">信息发布</a></li>
+        <li><a href="../../../service/">市场服务</a></li>
+        <li><a href="../../">政策法规</a></li>
+        <li><a href="../../../aboutus/">关于我们</a></li>
+      </ul>
+      <div class="linksTabMain">
+        <ul>
+          
+            <li><a href="../../../news/ddsy/">党的声音</a></li>
+          
+            <li><a href="../../../news/gsdt/">公司动态</a></li>
+          
+            <li><a href="../../../news/mtgz/">媒体关注</a></li>
+          
+            <li><a href="../../../news/scyj/">市场研究</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../information/zxtz/">最新通知</a></li>
+          
+            <li><a href="../../../information/gsgg/">公示公告</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../../service/scpx/">市场培训</a></li>
+          
+            <li><a href="../../../service/ffcn/">服务承诺</a></li>
+          
+            <li><a href="../../../service/cjwtjd/">常见问题解答</a></li>
+          
+        </ul>
+        <ul>
+          
+            <li><a href="../../flfg/">法律法规</a></li>
+          
+            <li><a href="../../zcwj/">政策文件</a></li>
+          
+            <li><a href="../">交易规则</a></li>
+          
+            <li><a href="../../ywzy/">业务指引</a></li>
+          
+            <li><a href="../../sfbz/">收费标准</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/gsjj/">公司简介</a></li>
+          
+            <li><a href="../../../aboutus/zzjg/">组织架构</a></li>
+          
+            <li><a href="../../../aboutus/dsj/">大事记</a></li>
+          
+            <li><a href="../../../aboutus/zpxx/">招聘信息</a></li>
+          
+        </ul>
+        <ul class="ours">
+          
+            <li><a href="../../../aboutus/lxwm/">联系我们</a></li>
+          
+            <li><a href="../../../aboutus/jdjb/">监督举报</a></li>
+          
+            <li><a href="../../../aboutus/xfqd/">信访渠道</a></li>
+          
+        </ul>
+      </div>
+      <div class="footerBottom">
+        <div class="way">
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">广州电力交易<br/>中心公众号</p>
+              <img src=" ../../../all/gywm/202506/W020250625607877531250.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">交易服务<br/>留言咨询</p>
+              <img src=" ../../../all/ly/202507/W020250707507949428239.jpg" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/fwrx/202310/W020231008413156095796.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num">400-15-95598</p>
+              <p>交易服务热线</p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright">
+            <div><img src=" ../../../all/nyjgrx/202310/W020231008413349834608.png" width="100%" /></div>
+            <div class="txt">
+              <p class="num"><span style="font-size:0.18rem;">能源监督热线:</span>12398</p>
+              <p><a href="http://www.nea.gov.cn/ztzl/12398nyjgrx/index.htm" style="color:#a8bad2">12398能源监管热线网站</a></p>
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线公众号</p>
+              <img src=" ../../../all/gzh/202506/W020250625608092853450.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+          
+          <div class="copyright" style="width:10%">
+            <div class="txt">
+              <p class="num" style="font-size:0.15rem!important">12398能源监管<br/>热线APP</p>
+              <img src=" ../../../all/nyapp/202310/W020250625608245347243.png" style="width:0.8rem!important" />
+            </div>
+          </div>
+          
+        </div>
+        <div class="webSiteLink">
+          <p>南方电网安备1514A91LF号 ICP国网安备1514A91LF号</p>
+          <p>版权所有: © 2020 广州电力交易中心 版权所有 <a href="https://beian.miit.gov.cn" target="_blank" style="color:#a8bad2">粤ICP备20027641号-2</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../../../images/zepto.min.js"></script>
+  <script type="text/javascript" src="../../../images/swiper.min.js"></script>
+  <script>
+    var bannerSwiper = new Swiper('.banner', {
+      // 自动播放配置
+        autoplay: {
+            delay: 4000, // 3 秒切换
+            disableOnInteraction: false // 用户操作后仍自动播放
+        },
+        loop: true, // 循环播放
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      }
+    });
+    var newsImgsSwiper = new Swiper('.newsImgs', {
+      pagination: {
+        el: '.swiper-pagination'
+      }
+    });
+    var businessSwiper = new Swiper('.business', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      // slidesPerGroup: 4,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+  <script type="text/javascript">
+    $('.menuIcon').on('click', function () {
+      $('.menu').toggle()
+    })
+    $(window).on('resize', function () {
+      $('.rightMain').css('width', $('.mainBox').width() - $('.leftMenu').width() - 1)
+    }).resize();
+  </script>
+</body>
+
+</html>
