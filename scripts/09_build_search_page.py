@@ -753,6 +753,12 @@ def html_template(index: dict) -> str:
       return '';
     }}
 
+    function localTextHref(path) {{
+      if (!path) return '';
+      const normalized = String(path).replace(/\\\\/g, '/');
+      return encodeURI(`../${{normalized}}`);
+    }}
+
     function render() {{
       const queryTerms = terms(els.query.value);
       const province = els.province.value;
@@ -795,7 +801,7 @@ def html_template(index: dict) -> str:
       const sourceTag = `<span class="tag">${{escapeHtml(doc.source_type || '来源未知')}}</span>`;
       const authTag = `<span class="tag authority-a">等级 ${{escapeHtml(doc.authority || '未标')}}</span>`;
       const statusTag = `<span class="tag ${{statusClass(doc.status)}}">${{escapeHtml(doc.status || '状态未知')}}</span>`;
-      const localText = doc.text_path ? `<span class="mini-action">${{escapeHtml(doc.text_path)}}</span>` : '';
+      const localText = doc.text_path ? `<a href="${{escapeHtml(localTextHref(doc.text_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.text_path)}}">本地文本</a>` : '';
       const note = doc.note ? `<span class="tag">${{escapeHtml(doc.note).slice(0, 60)}}</span>` : '';
       const sourceLine = [doc.department, doc.collection_source].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i).join(' / ') || '发布部门未知';
       const docNo = doc.document_number ? `<span class="mini-action">文号：${{escapeHtml(doc.document_number)}}</span>` : '';
