@@ -1,3 +1,9 @@
+"""把政策全文切分为知识切片。
+
+知识切片是 RAG 和细粒度检索的基础单元：脚本会清理正文、按段落切分、补充来源字段，
+并为每个切片计算时间和检索权重。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -135,6 +141,7 @@ def split_long_text(text: str, max_chars: int, overlap: int) -> list[str]:
 
 
 def paragraph_chunks(text: str, max_chars: int, overlap: int, min_chars: int) -> list[tuple[str, str, str]]:
+    """按段落聚合切片，尽量保留章节语义，同时控制每个切片长度。"""
     lines = clean_lines(text)
     chunks: list[tuple[str, str, str]] = []
     buffer: list[str] = []
@@ -176,6 +183,7 @@ def parse_date(value: str) -> dt.date | None:
 
 
 def time_weight_level(publish_date: str) -> str:
+    """按 15 天一档计算时间等级，承接前期确定的政策时效权重思路。"""
     parsed = parse_date(publish_date)
     if not parsed:
         return "未知"
@@ -184,6 +192,7 @@ def time_weight_level(publish_date: str) -> str:
 
 
 def retrieval_weight(row: dict[str, str], level: str) -> str:
+    """综合权威等级、来源类型、有效状态和时间等级生成切片检索权重。"""
     score = 50
     authority = row.get("权威等级", "")
     if authority == "A":
@@ -207,6 +216,7 @@ def chunk_id(doc_id: str, index: int, text: str) -> str:
 
 
 def build_chunks(max_chars: int, overlap: int, min_chars: int, per_doc_limit: int) -> list[dict[str, str]]:
+    """从政策台账逐篇读取处理后文本，并展开为带来源字段的知识切片。"""
     rows = read_csv(LEDGER_CSV)
     chunks: list[dict[str, str]] = []
     for row in rows:

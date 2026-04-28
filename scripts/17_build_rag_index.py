@@ -1,3 +1,9 @@
+"""根据知识切片构建本地 RAG 检索索引。
+
+当前索引是轻量本地版，使用压缩 pickle 保存切片文本和字段，方便在没有数据库服务的
+情况下先验证问答链路。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -39,6 +45,7 @@ def chunk_text(row: dict[str, str]) -> str:
 
 
 def compact_row(row: dict[str, str]) -> dict[str, str]:
+    """只保留问答展示和过滤需要的字段，降低索引体积。"""
     fields = [
         "切片编号",
         "资料编号",
@@ -64,6 +71,7 @@ def compact_row(row: dict[str, str]) -> dict[str, str]:
 
 
 def build_index(chunks: list[dict[str, str]], max_features: int):
+    """用 TF-IDF 构建轻量检索矩阵，作为本地 RAG 的第一版召回器。"""
     import numpy as np
     from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -100,6 +108,7 @@ def build_index(chunks: list[dict[str, str]], max_features: int):
 
 
 def write_index(payload: dict, index_path: Path) -> None:
+    """压缩写入索引，减少 Git 和本地磁盘占用。"""
     index_path.parent.mkdir(parents=True, exist_ok=True)
     with gzip.open(index_path, "wb") as f:
         pickle.dump(payload, f, protocol=pickle.HIGHEST_PROTOCOL)

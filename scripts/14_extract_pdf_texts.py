@@ -1,3 +1,9 @@
+"""为 PDF 原始资料提取或 OCR 处理后文本。
+
+脚本优先使用 PDF 内置文本；如果文本为空或质量不足，再尝试 OCR，最后把生成的 txt
+路径回填到政策台账的本地文件路径中。
+"""
+
 from __future__ import annotations
 
 import csv
@@ -69,6 +75,7 @@ def existing_text_for_pdf(path: Path) -> Path | None:
 
 
 def extract_pdf_text(path: Path, max_pages: int | None = None) -> str:
+    """优先读取 PDF 内嵌文本；扫描件通常会在这里得到很短或空的结果。"""
     reader = PdfReader(str(path))
     parts: list[str] = []
     pages = reader.pages[:max_pages] if max_pages else reader.pages
@@ -83,6 +90,7 @@ def extract_pdf_text(path: Path, max_pages: int | None = None) -> str:
 
 
 def ocr_pdf_text(path: Path, dpi: int = 160, max_pages: int | None = None) -> tuple[str, int]:
+    """把 PDF 页面渲染成图片后 OCR，返回识别文本和实际处理页数。"""
     import fitz
     import numpy as np
     from rapidocr_onnxruntime import RapidOCR
@@ -133,6 +141,7 @@ def append_note(row: dict[str, str], note: str) -> None:
 
 
 def main() -> int:
+    """遍历台账中的 PDF，必要时生成 txt 并把路径写回本地文件路径字段。"""
     import argparse
 
     parser = argparse.ArgumentParser(description="Extract text from local PDF files and optionally OCR scanned PDFs.")

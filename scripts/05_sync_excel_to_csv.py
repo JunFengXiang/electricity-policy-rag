@@ -1,3 +1,9 @@
+"""将人工编辑后的 Excel 工作表同步回 CSV 元数据表。
+
+同步前会做表头校验并备份原 CSV，避免 Excel 手工维护时把流水线依赖的字段
+误删或改名。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -73,6 +79,7 @@ def sheet_to_rows(workbook_path: Path, sheet_name: str) -> tuple[list[str], list
 
 
 def validate_sheet(sheet_name: str, target_path: Path, headers: list[str], rows: list[dict[str, str]]) -> list[str]:
+    """同步前校验表头，防止 Excel 中的列被误删或改名后覆盖 CSV。"""
     errors: list[str] = []
     if not target_path.exists():
         errors.append(f"{sheet_name}: 目标CSV不存在：{target_path}")
@@ -109,6 +116,7 @@ def write_csv(path: Path, headers: list[str], rows: list[dict[str, str]]) -> Non
 
 
 def backup_csv(path: Path, timestamp: str) -> Path:
+    """每次写回 CSV 前都留一份备份，方便人工误操作后回滚。"""
     target_dir = BACKUP_DIR / timestamp
     target_dir.mkdir(parents=True, exist_ok=True)
     backup_path = target_dir / path.name
@@ -126,6 +134,7 @@ def selected_targets(sheet_names: list[str] | None) -> dict[str, Path]:
 
 
 def run_sync(workbook_path: Path, sheet_names: list[str] | None, write: bool) -> int:
+    """执行 Excel 到 CSV 的同步；未加 --write 时只做预检。"""
     if not workbook_path.exists():
         print(f"未找到Excel工作簿：{workbook_path}")
         return 1

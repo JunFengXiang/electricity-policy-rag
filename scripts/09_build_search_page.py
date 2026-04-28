@@ -1,3 +1,9 @@
+"""生成本地搜索页面和前端检索索引。
+
+该脚本把政策台账、处理后文本和政策关联关系打包成一个静态 HTML，方便像搜索引擎
+一样筛选政策，同时保留原文链接、本地文本和引用关系追溯。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -644,6 +650,7 @@ def html_template(index: dict) -> str:
       return Number.isFinite(time) ? time / 86400000 : 0;
     }}
 
+    // 权威分是搜索页的底座：先保证官方、监管、现行有效资料有合理优先级。
     function authorityScore(doc) {{
       let score = 0;
       if ((doc.authority || '').includes('A')) score += 7;
@@ -681,6 +688,7 @@ def html_template(index: dict) -> str:
       return 0.3;
     }}
 
+    // 查询分在权威分之上叠加字段命中、出现次数和短语长度，用于减少大量同分结果。
     function scoreDoc(doc, queryTerms) {{
       const base = authorityScore(doc) + recencyBoost(doc.publish_date);
       if (!queryTerms.length) return {{ score: base, hits: [], hitCount: 0 }};
@@ -753,6 +761,7 @@ def html_template(index: dict) -> str:
       return '';
     }}
 
+    // search.html 位于 05_输出成果，处理后文本在上一级目录下，所以这里生成相对链接。
     function localTextHref(path) {{
       if (!path) return '';
       const normalized = String(path).replace(/\\\\/g, '/');
@@ -794,6 +803,7 @@ def html_template(index: dict) -> str:
       els.results.innerHTML = limited.length ? limited.map((item, index) => resultHtml(item.doc, item.score, index + 1, queryTerms)).join('') : '<div class="empty">没有匹配结果</div>';
     }}
 
+    // 结果卡片只展示面向用户的短标签，长路径等追溯信息放入链接或悬停提示。
     function resultHtml(doc, score, rank, queryTerms) {{
       const provinceTags = (doc.provinces || []).map(v => `<span class="tag">${{escapeHtml(v)}}</span>`).join('');
       const scopeTags = (doc.regions || []).filter(v => !(doc.provinces || []).includes(v)).map(v => `<span class="tag">适用范围：${{escapeHtml(v)}}</span>`).join('');
@@ -832,6 +842,7 @@ def html_template(index: dict) -> str:
       `;
     }}
 
+    // 政策关联只展示已入库且能定位到资料编号的关系，点击后回到对应结果卡片。
     function relationHtml(doc) {{
       const rows = [];
       if ((doc.outgoing_relations || []).length) {{

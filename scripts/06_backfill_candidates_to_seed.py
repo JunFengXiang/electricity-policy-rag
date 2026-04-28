@@ -1,3 +1,9 @@
+"""把大规模候选池中通过筛选的链接回填到待采集链接表。
+
+候选池负责“发现”，待采集链接负责“入库”。本脚本在两者之间补齐来源类型、
+主题、权威等级等基础字段，减少后续抓取时的人工录入量。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -49,6 +55,7 @@ def latest_candidates() -> Path:
 
 
 def infer_source_type(row: dict[str, str]) -> str:
+    """根据来源栏目和标题粗判来源类型，后续仍可在台账中人工修正。"""
     source_level = row.get("来源层级", "")
     source_name = row.get("来源栏目", "")
     if "交易" in source_level or "交易中心" in source_name:
@@ -107,6 +114,7 @@ def infer_topics(title: str, hits: str) -> str:
 
 
 def candidate_to_seed(row: dict[str, str]) -> dict[str, str]:
+    """把候选池字段映射成待采集链接字段。"""
     title = row.get("文件标题", "").strip()
     source_type = infer_source_type(row)
     return {
@@ -127,6 +135,7 @@ def candidate_to_seed(row: dict[str, str]) -> dict[str, str]:
 
 
 def main() -> int:
+    """筛选候选池并追加到待采集链接表；默认先预览，加 --write 才写入。"""
     parser = argparse.ArgumentParser(description="Backfill candidate official links into 待采集链接.csv.")
     parser.add_argument("--candidate", default="", help="Candidate csv path. Defaults to latest 来源清单候选链接 file.")
     parser.add_argument("--limit", type=int, default=0, help="Maximum new rows to append. 0 means all.")

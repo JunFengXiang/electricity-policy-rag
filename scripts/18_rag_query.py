@@ -1,3 +1,9 @@
+"""查询本地 RAG 索引并生成带引用的回答草稿。
+
+脚本负责把用户问题转成检索词、筛选切片、排序打分，并把命中的政策来源整理成
+可追溯的 Markdown 回答。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -75,6 +81,7 @@ def to_float(value: str, default: float = 0.0) -> float:
 
 
 def query_terms(query: str) -> list[str]:
+    """合并领域词表和粗分词结果，用于给向量召回结果增加可解释的精确命中分。"""
     terms = [term for term in KNOWN_TERMS if term in query]
     rough_tokens = re.findall(r"[A-Za-z0-9]+|[\u4e00-\u9fa5]{2,}", query)
     terms.extend(token for token in rough_tokens if len(token) >= 2)
@@ -114,6 +121,7 @@ def row_blob(row: dict[str, str]) -> str:
 
 
 def exact_hit_score(row: dict[str, str], terms: list[str]) -> tuple[float, list[str]]:
+    """统计查询词在切片字段中的直接命中，弥补短政策术语在 TF-IDF 中的波动。"""
     blob = row_blob(row)
     hits = [term for term in terms if term and term in blob]
     score = min(16.0, sum(min(5, len(term)) for term in hits) * 0.8)
@@ -131,6 +139,7 @@ def passes_filters(row: dict[str, str], region: str, source_type: str, official_
 
 
 def search(payload: dict, query: str, top_k: int, candidate_pool: int, region: str, source_type: str, official_only: bool):
+    """先用向量召回候选，再叠加权威、来源和精确命中分排序。"""
     vectorizer = payload["vectorizer"]
     matrix = payload["matrix"]
     rows = payload["rows"]
@@ -193,6 +202,7 @@ def compact_snippet(text: str, max_len: int = 180) -> str:
 
 
 def build_answer(query: str, results: list[dict]) -> str:
+    """把检索结果整理成回答草稿；最终结论仍需要人工或更强模型润色。"""
     lines = [
         f"# RAG检索回答草稿",
         "",

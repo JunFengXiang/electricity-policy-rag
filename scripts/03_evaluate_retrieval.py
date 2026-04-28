@@ -1,3 +1,9 @@
+"""用问题评测表检查当前知识库的检索效果。
+
+脚本会把问题、期望关键词和政策台账/处理后文本进行匹配，输出检索评测结果，
+用于判断搜索规则和字段权重是否需要调整。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -173,6 +179,7 @@ def authority_score(row: dict[str, str]) -> float:
 
 
 def score_document(question: dict[str, str], doc: dict[str, str], include_text: bool) -> float:
+    """按评测问题给单篇政策打分，模拟用户搜索时的排序逻辑。"""
     question_terms = split_terms(
         question.get("问题", ""),
         question.get("检索关键词", ""),
@@ -217,6 +224,7 @@ def rank_documents(
     include_text: bool,
     top_k: int,
 ) -> list[tuple[float, dict[str, str]]]:
+    """对全量政策排序并截取 Top K，供评测表判断命中情况。"""
     region_terms = split_terms(question.get("地区", ""))
     should_filter_region = bool(region_terms) and not any(term == "全国" for term in region_terms)
     if should_filter_region:
@@ -252,6 +260,7 @@ def check_headers(path: Path, expected_fields: list[str]) -> list[str]:
 
 
 def self_check(limit: int) -> tuple[list[str], list[str]]:
+    """运行评测前检查必要表和样本量，提前暴露配置问题。"""
     errors: list[str] = []
     warnings: list[str] = []
 
@@ -308,6 +317,7 @@ def self_check(limit: int) -> tuple[list[str], list[str]]:
 
 
 def evaluate(limit: int, top_k: int, include_text: bool) -> tuple[Path, list[dict[str, str]]]:
+    """执行整轮问题评测，并把每个问题的 Top K 结果写入 CSV。"""
     questions = read_csv(QUESTION_FILE)[:limit]
     docs = read_csv(LEDGER_FILE)
     rows: list[dict[str, str]] = []

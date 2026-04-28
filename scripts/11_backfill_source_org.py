@@ -1,3 +1,9 @@
+"""回填并规范化“采集来源机构”字段。
+
+发布部门和采集来源机构不总是同一个概念：前者是政策署名，后者是我们从哪里抓到。
+本脚本用于补齐来源机构，方便后续统计来源覆盖和排查采集链路。
+"""
+
 from __future__ import annotations
 
 import csv
@@ -58,6 +64,7 @@ def backup(path: Path) -> Path:
 
 
 def insert_field(fields: list[str]) -> list[str]:
+    """把新字段插到发布部门后面，保持台账列顺序便于人工阅读。"""
     if NEW_FIELD in fields:
         return fields
     if AFTER_FIELD not in fields:
@@ -67,6 +74,7 @@ def insert_field(fields: list[str]) -> list[str]:
 
 
 def normalize_source_org(value: str) -> str:
+    """去掉栏目后缀，只保留真正的来源机构名称。"""
     value = (value or "").strip()
     for delimiter in ["-", "－", "—"]:
         if delimiter in value:
@@ -77,6 +85,7 @@ def normalize_source_org(value: str) -> str:
 
 
 def main() -> int:
+    """依据待采集链接和原有字段补齐政策台账中的采集来源机构。"""
     ledger_rows = read_csv(LEDGER_CSV)
     seed_rows = read_csv(SEED_CSV)
     fields = insert_field(read_header(LEDGER_CSV))

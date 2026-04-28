@@ -1,3 +1,9 @@
+"""命令行全文检索工具。
+
+该脚本面向快速验证：它直接读取政策台账和处理后文本，按关键词、主题、省份、
+权威等级等字段打分，输出 CSV 检索结果。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -99,6 +105,7 @@ def combined_text(row: dict[str, str], include_text: bool) -> dict[str, str]:
 
 
 def authority_boost(row: dict[str, str]) -> float:
+    """给官方、高权威、现行有效资料提供基础分，避免搜索结果被低质命中挤占。"""
     score = 0.0
     authority = row.get("权威等级", "")
     source_type = row.get("来源类型", "")
@@ -120,6 +127,7 @@ def authority_boost(row: dict[str, str]) -> float:
 
 
 def time_boost(row: dict[str, str]) -> float:
+    """把发布日期转成轻量新鲜度加分；旧政策仍可因强命中排到前面。"""
     raw_date = row.get("发布日期", "")
     match = re.match(r"(20\d{2})-(\d{2})-(\d{2})", raw_date)
     if not match:
@@ -141,6 +149,7 @@ def time_boost(row: dict[str, str]) -> float:
 
 
 def score_row(row: dict[str, str], query_terms: list[str], include_text: bool) -> tuple[float, list[str]]:
+    """按字段权重计算单条政策得分，并返回命中字段用于人工解释排序。"""
     fields = combined_text(row, include_text)
     normalized_fields = {name: normalize(value) for name, value in fields.items()}
     score = authority_boost(row) + time_boost(row)

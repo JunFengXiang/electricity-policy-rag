@@ -1,3 +1,9 @@
+"""根据明文引用构建政策之间的关联关系。
+
+脚本只在正文中能找到明确标题、文号或引用语境时建立关系，用于把“新政策引用旧政策”
+转成搜索页可跳转的超链接。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -201,6 +207,7 @@ def context_window(text: str, term: str, radius: int = 80) -> str:
 
 
 def relation_type(evidence: str) -> str:
+    """根据引用上下文判断关系类型，优先识别“依据/根据”这类强引用。"""
     for keyword in ["根据", "依据", "按照", "参照", "贯彻", "落实", "结合"]:
         if keyword in evidence:
             return "引用依据"
@@ -213,6 +220,7 @@ def relation_type(evidence: str) -> str:
 
 
 def has_relation_context(evidence: str) -> bool:
+    """只有出现引用、修订、废止等关系词时才建边，减少标题偶然同名造成的误连。"""
     return any(keyword in evidence for _, keywords in RELATION_KEYWORDS for keyword in keywords)
 
 
@@ -226,6 +234,7 @@ def has_explicit_title_context(title: str, name: str) -> bool:
 
 
 def can_be_old_policy(new_row: dict[str, str], old_row: dict[str, str]) -> bool:
+    """防止把未来政策当成旧依据；日期缺失时保守放行，交给证据上下文过滤。"""
     if new_row.get("资料编号") == old_row.get("资料编号"):
         return False
     new_date = parse_date(new_row.get("发布日期", ""))
@@ -236,6 +245,7 @@ def can_be_old_policy(new_row: dict[str, str], old_row: dict[str, str]) -> bool:
 
 
 def build_policy_text(row: dict[str, str], text_limit: int) -> str:
+    """把标题、摘要、备注和正文前部合并成关系识别文本，控制长度以保证速度。"""
     parts = [
         row.get("文件标题", ""),
         row.get("摘要", ""),

@@ -1,3 +1,9 @@
+"""从来源清单中的官方栏目页发现候选政策链接。
+
+这个脚本不直接入库，而是生成候选池，供后续去重、筛选后再回填到
+待采集链接表。它承担“扩大来源覆盖面”的探索任务。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -22,6 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "05_输出成果"
 SOURCE_CSV = ROOT / "02_元数据" / "来源清单.csv"
 
+# 默认关键词只用于“候选发现”，不是最终分类依据；最终主题仍由后续清洗脚本确认。
 DEFAULT_KEYWORDS = [
     "电力市场",
     "交易规则",
@@ -248,6 +255,7 @@ def build_allowed_domains(*urls: str) -> set[str]:
 
 
 def detect_fetch_mode(raw_mode: str) -> str | None:
+    """把来源清单中的采集方式文字折算成脚本可执行的抓取模式。"""
     if "JSON列表" in raw_mode:
         return "json"
     if "HTML列表" in raw_mode or "公开平台" in raw_mode:
@@ -334,6 +342,7 @@ def clean_text(value: str) -> str:
 
 
 def parse_html_links(base_url: str, html_text: str) -> list[dict[str, str]]:
+    """从栏目 HTML 中抽取候选链接，并把相对链接转成绝对链接。"""
     parser = LinkParser()
     parser.feed(html_text)
     items: list[dict[str, str]] = []
@@ -421,6 +430,7 @@ def domain_allowed(url: str, allowed_domains: set[str]) -> bool:
 
 
 def is_candidate(item: dict[str, str], config: dict[str, str], keywords: list[str]) -> bool:
+    """过滤导航链接、非政策链接和关键词无关链接，保留值得进入候选池的条目。"""
     title = item["title"].strip()
     url = item["url"].strip()
     if not title or len(title) < 6:

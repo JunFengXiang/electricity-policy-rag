@@ -1,3 +1,9 @@
+"""记录实验日志和操作日志。
+
+所有关键脚本运行、数据变更和人工判断都应写入这里，保证知识库建设过程可回放、
+可追溯。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -27,6 +33,7 @@ def now_text() -> str:
 
 
 def ensure_log_files() -> None:
+    """初始化 Markdown 和 CSV 两套日志文件。"""
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     if not CSV_LOG.exists() or CSV_LOG.stat().st_size == 0:
         with CSV_LOG.open("w", encoding="utf-8-sig", newline="") as f:
@@ -49,6 +56,7 @@ def append_log(
     note: str = "",
     timestamp: str | None = None,
 ) -> None:
+    """追加一条结构化日志，同时写入人可读的 Markdown 摘要。"""
     ensure_log_files()
     timestamp = timestamp or now_text()
 
@@ -86,6 +94,7 @@ def append_log(
 
 
 def main() -> int:
+    """提供命令行入口，便于其他脚本或手工操作统一记账。"""
     parser = argparse.ArgumentParser(description="Append an operation log entry.")
     parser.add_argument("--type", required=True, help="Operation type")
     parser.add_argument("--content", required=True, help="Operation content")

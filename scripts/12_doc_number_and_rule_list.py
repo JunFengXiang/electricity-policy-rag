@@ -1,3 +1,9 @@
+"""抽取文号并生成规则清单。
+
+文号用于去重、版本追踪和政策引用关系识别；规则清单则把政策台账整理成更接近
+“电力交易规则库”的结构化视图。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -116,6 +122,7 @@ REGIONAL_PROVINCES = {
     "华东区域": ["上海", "江苏", "浙江", "安徽", "福建", "山东"],
 }
 
+# 文号格式跨部门差异很大，这里覆盖常见的 〔2025〕、[2025]、令第 X 号等写法。
 DOC_NO_PATTERNS = [
     re.compile(r"[一-龥A-Za-z]{1,18}〔20\d{2}〕\s*\d+\s*号"),
     re.compile(r"[一-龥A-Za-z]{1,18}\[20\d{2}\]\s*\d+\s*号"),
@@ -222,6 +229,7 @@ def relevant_text_lines(text: str) -> str:
 
 
 def extract_doc_numbers(row: dict[str, str], max_count: int = 1) -> str:
+    """优先从标题和元数据抽文号，再回退到正文前部的发文字号区域。"""
     found: list[str] = []
     seen: set[str] = set()
 
@@ -258,6 +266,7 @@ def order_provinces(values: set[str]) -> list[str]:
 
 
 def derive_provinces(row: dict[str, str]) -> str:
+    """把适用地区、标题和主题中的区域词映射为省份筛选字段。"""
     raw_regions = [part.strip() for part in re.split(r"[;；,，、]+", row.get("适用地区", "")) if part.strip()]
     text = " ".join([row.get("文件标题", ""), row.get("备注", ""), row.get("适用地区", ""), row.get("市场主题", "")])
     provinces: set[str] = set()
@@ -278,6 +287,7 @@ def text_path_value(row: dict[str, str]) -> str:
 
 
 def build_rule_list(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """把政策台账转成规则清单，保留搜索和汇报最常用的结构化字段。"""
     output: list[dict[str, str]] = []
     for index, row in enumerate(rows, start=1):
         output.append(

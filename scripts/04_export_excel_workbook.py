@@ -1,3 +1,9 @@
+"""把知识库 CSV 表导出为方便人工核验的 Excel 工作簿。
+
+Excel 是人工维护入口，CSV 是脚本流水线入口；本脚本负责把两者衔接起来，
+并把最新的检索、标题审核、候选池等结果放进同一本管理工作簿。
+"""
+
 from __future__ import annotations
 
 import csv
@@ -65,6 +71,7 @@ def fit_width(value: str) -> int:
 
 
 def write_table_sheet(wb: Workbook, sheet_name: str, path: Path) -> None:
+    """把一个 CSV 表写成工作表，并统一冻结首行、加筛选和列宽。"""
     ws = wb.create_sheet(title=sheet_name)
     headers, rows = read_csv(path)
     if not headers:
@@ -129,6 +136,7 @@ def write_readme_sheet(wb: Workbook) -> None:
 
 
 def build_workbook() -> Path:
+    """按固定顺序组装管理工作簿，保证人工核验入口稳定。"""
     wb = Workbook()
     default_sheet = wb.active
     wb.remove(default_sheet)
@@ -166,6 +174,7 @@ def build_workbook() -> Path:
 
 
 def self_check(path: Path) -> list[str]:
+    """检查工作簿是否包含核心工作表，避免导出一个空壳文件。"""
     errors: list[str] = []
     if not path.exists():
         return [f"未生成文件：{path}"]

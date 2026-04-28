@@ -1,3 +1,9 @@
+"""生成供人工核验的抽样清单。
+
+脚本会综合本地文件状态、处理后文本是否存在、资料来源等信息，挑出需要人工看一眼
+的政策记录，帮助把核验精力放在高风险样本上。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -68,6 +74,7 @@ def has_text(row: dict[str, str]) -> bool:
 
 
 def raw_file_state(row: dict[str, str]) -> str:
+    """检查台账记录的本地路径是否完整存在。"""
     paths = local_paths(row)
     if not paths:
         return "未记录本地路径"
@@ -77,6 +84,7 @@ def raw_file_state(row: dict[str, str]) -> str:
 
 
 def build_review_row(index: int, row: dict[str, str], existing_ids: set[str]) -> dict[str, str]:
+    """把台账记录转换成人工核验表的一行，并生成稳定的核验编号。"""
     doc_id = row.get("资料编号", "")
     review_id = f"V-{index:03d}"
     while review_id in existing_ids:
@@ -123,6 +131,7 @@ def build_review_row(index: int, row: dict[str, str], existing_ids: set[str]) ->
 
 
 def main() -> int:
+    """从台账中抽取未核验样本；默认预览，加 --write 才写入核验表。"""
     parser = argparse.ArgumentParser(description="Prepare first review sample rows from ledger.")
     parser.add_argument("--limit", type=int, default=20, help="Total number of review rows to prepare.")
     parser.add_argument("--write", action="store_true", help="Write review csv. Without this flag only previews.")

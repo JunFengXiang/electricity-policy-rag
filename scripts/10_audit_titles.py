@@ -1,3 +1,9 @@
+"""检查政策标题质量，并对明显异常标题给出修正建议。
+
+标题是搜索、去重和规则清单的核心字段；本脚本会识别栏目名、空标题、过短标题等
+问题，必要时从正文或本地文件名中提取更可靠的候选标题。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -103,6 +109,7 @@ def normalize(value: str) -> str:
 
 
 def is_meaningful_title(value: str) -> bool:
+    """判断标题是否像正式政策标题，而不是栏目名、导航名或过短噪声。"""
     value = clean_candidate(value)
     if len(value) < 8 or len(value) > 160:
         return False
@@ -191,6 +198,7 @@ def title_issue_type(title: str) -> str:
 
 
 def find_issue(row: dict[str, str]) -> dict[str, str] | None:
+    """定位单条台账记录的标题问题，并给出可人工复核的候选标题。"""
     current = row.get("文件标题", "").strip()
     current_clean = clean_candidate(current)
     issue_type = title_issue_type(current)
@@ -268,6 +276,7 @@ def backup_ledger() -> Path:
 
 
 def apply_safe_fixes(issues: list[dict[str, str]]) -> int:
+    """只应用高置信、低风险的标题修正，其余保留给人工核验。"""
     rows = read_csv(LEDGER_CSV)
     by_id = {
         row["资料编号"]: row

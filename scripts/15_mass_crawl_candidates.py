@@ -1,3 +1,9 @@
+"""对官方来源进行批量候选采集和质量评分。
+
+它复用候选发现逻辑，生成更大的候选池，并给每条链接标注相关性、处理动作和质量分，
+用于逐步把数据量从样例级扩展到规模化。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -143,6 +149,7 @@ POWER_RELEVANCE_TERMS = [
 
 
 def load_collector():
+    """动态加载候选发现脚本，避免复制一份 HTML/JSON 解析逻辑。"""
     spec = importlib.util.spec_from_file_location("official_candidate_collector", COLLECTOR_PATH)
     if not spec or not spec.loader:
         raise RuntimeError(f"无法加载采集器：{COLLECTOR_PATH}")
@@ -193,6 +200,7 @@ def parse_date(value: str) -> dt.date | None:
 
 
 def quality_score(row: dict[str, str]) -> int:
+    """给候选链接打入库优先级分，分数越高越值得回填到待采集链接。"""
     title = row.get("文件标题", "")
     source_level = row.get("来源层级", "")
     source_name = row.get("来源栏目", "")
@@ -243,6 +251,7 @@ def is_power_relevant(row: dict[str, str]) -> bool:
 
 
 def status_and_action(url: str, ledger_urls: set[str], seed_urls: set[str], score: int) -> tuple[str, str]:
+    """结合已有台账和待采集表判断候选链接下一步动作。"""
     key = canonical_url(url)
     if key in ledger_urls:
         return "已入库", "无需重复入库"
@@ -254,6 +263,7 @@ def status_and_action(url: str, ledger_urls: set[str], seed_urls: set[str], scor
 
 
 def enrich_rows(rows: list[dict[str, str]], min_score: int, include_existing: bool) -> list[dict[str, str]]:
+    """为候选池补充质量分、入库状态和处理建议。"""
     ledger_urls = {canonical_url(row.get("原文链接", "")) for row in read_csv(LEDGER_CSV) if row.get("原文链接")}
     seed_urls = {canonical_url(row.get("url", "")) for row in read_csv(SEED_CSV) if row.get("url")}
     batch = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
