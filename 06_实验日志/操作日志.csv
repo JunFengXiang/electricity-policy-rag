@@ -86,3 +86,4 @@
 2026-04-27 21:11,搜索评分优化,细化搜索页综合得分：加入命中次数、字段命中明细、标题/文号短语加权、发布日期近期权重和排序打散；重新生成 search.html、search_index.json 和知识库管理工作簿。自检：09_build_search_page.py、04_export_excel_workbook.py、07_search.py 通过；Node 语法解析因本机 node.exe Access denied 未执行。,,,,
 2026-04-28 16:43,搜索页展示优化,将搜索结果中的本地文本路径由完整路径展示改为 本地文本 入口，完整相对路径保留在悬停提示 title 中，并生成可点击的相对链接，避免卡片底部出现冗长路径。重新生成 search.html/search_index.json，09_build_search_page.py 和 07_search.py 自检通过。,,,,
 2026-04-28 17:25,代码注释完善,为 scripts 目录下 Python 脚本补充模块级说明和关键函数注释，覆盖采集、候选池、检索评测、Excel 同步、搜索页、文号规则清单、政策关联、PDF/OCR、知识切片和 RAG 查询等环节。已运行 compileall、搜索页生成自检和全文检索自检。,,,,
+2026-04-29 16:06,采集脚本回退,发现 scripts/01_fetch_seed_urls.py 的未提交改动会削弱采集能力，已按要求回退到上一次提交版本；恢复采集来源机构、文号、curl 兜底、ArticleTitle 标题识别、PDF 文本提取和文号抽取能力。已运行 py_compile 验证通过。,,,,
