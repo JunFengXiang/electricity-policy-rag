@@ -1,12 +1,11 @@
 {
   "mode": "screenshot",
-  "generated_at": "2026-04-30 12:04:30",
+  "generated_at": "2026-04-30 13:38:32",
   "count": 254,
   "stats": {
-    "browser_html_full_page": 235,
-    "text_fallback": 1,
-    "pdf_render": 16,
-    "text_fallback_after_error": 2
+    "online_full_page": 232,
+    "local_html_full_page_after_online_error": 21,
+    "text_fallback_after_error": 1
   },
   "entries": [
     {
@@ -17,7 +16,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-2ABE953CDD.jpg",
       "source_path": "01_原始资料/官方政策/2024-09-13_全国_国家能源局_国家能源局关于印发《电力市场注册基本规则》的通知.htm",
       "text_path": "03_处理后文本/2024-09-13_全国_国家能源局_国家能源局关于印发《电力市场注册基本规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -29,7 +28,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-FD9AA2BEA1.jpg",
       "source_path": "01_原始资料/官方政策/2022-01-30_全国_国家发展改革委_国家能源局_国家发展改革委_国家能源局关于加快建设全国统一电力市场体系的指导意见_国务院部门文件_中国政府网.htm",
       "text_path": "03_处理后文本/2022-01-30_全国_国家发展改革委_国家能源局_国家发展改革委_国家能源局关于加快建设全国统一电力市场体系的指导意见_国务院部门文件_中国政府网.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -41,7 +40,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-10A4BBBC6D.jpg",
       "source_path": "01_原始资料/官方政策/2024-04-18_全国_国家发展改革委_电力市场运行基本规则_国家发展和改革委员会_中国政府网.htm",
       "text_path": "03_处理后文本/2024-04-18_全国_国家发展改革委_电力市场运行基本规则_国家发展和改革委员会_中国政府网.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -53,7 +52,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-55178B2DFC.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-24_全国_国家发展改革委_【关于修订省间电力现货交易规则的复函(发改办体改〔2026〕275号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2026-04-24_全国_国家发展改革委_【关于修订省间电力现货交易规则的复函(发改办体改〔2026〕275号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -65,7 +64,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-97CB3F74FC.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-09_华中区域_国家能源局华中监管局_国家能源局华中监管局关于印发《华中区域省间电力中长期市场实施细则》的通知.html",
       "text_path": "03_处理后文本/2026-04-09_华中区域_国家能源局华中监管局_国家能源局华中监管局关于印发《华中区域省间电力中长期市场实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -77,7 +76,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-663B4D5B07.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-14_湖北_国家能源局华中监管局_关于印发《湖北省电力中长期市场实施细则》的通知.html",
       "text_path": "03_处理后文本/2026-04-14_湖北_国家能源局华中监管局_关于印发《湖北省电力中长期市场实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -89,7 +88,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-674A18FA03.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-17_山东_国家能源局山东监管办公室_关于印发《山东电力市场规则(试行)》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2025-12-17_山东_国家能源局山东监管办公室_关于印发《山东电力市场规则(试行)》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -101,7 +100,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-08F5111897.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-06_山东_国家能源局山东监管办公室_关于印发《山东省电力并网运行管理实施细则》《山东省电力辅助服务管理实施细则》(修订稿)的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2026-01-06_山东_国家能源局山东监管办公室_关于印发《山东省电力并网运行管理实施细则》《山东省电力辅助服务管理实施细则》(修订稿)的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -113,9 +112,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-E89DAD0775.jpg",
       "source_path": "01_原始资料/交易规则/2025-06-22_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-06-22_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202506/t20250624_34712.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202506/t20250624_34712.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-54244C417B",
@@ -125,7 +124,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-54244C417B.jpg",
       "source_path": "01_原始资料/官方政策/2025-04-29_全国_国家发展改革委_国家能源局_【关于印发《电力辅助服务市场基本规则》的通知(发改能源规〔2025〕411号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-04-29_全国_国家发展改革委_国家能源局_【关于印发《电力辅助服务市场基本规则》的通知(发改能源规〔2025〕411号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -137,7 +136,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-D49D5FABE6.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-14_华中区域_国家能源局派出机构_关于印发《重庆市电力中长期市场实施细则》的通知.html",
       "text_path": "03_处理后文本/2026-04-14_华中区域_国家能源局派出机构_关于印发《重庆市电力中长期市场实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -149,7 +148,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-712572408D.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-14_华中区域_国家能源局派出机构_关于印发《西藏自治区电力中长期市场实施细则》的通知.html",
       "text_path": "03_处理后文本/2026-04-14_华中区域_国家能源局派出机构_关于印发《西藏自治区电力中长期市场实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -161,7 +160,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-A74926FCBF.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-14_华中区域_国家能源局派出机构_关于印发《江西省电力中长期市场实施细则》的通知.html",
       "text_path": "03_处理后文本/2026-04-14_华中区域_国家能源局派出机构_关于印发《江西省电力中长期市场实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -173,7 +172,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-9A3E9D6FC0.jpg",
       "source_path": "01_原始资料/官方政策/2026-03-27_山东_国家能源局派出机构_关于公开征求《山东电力市场监管办法(征求意见稿)》等意见的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2026-03-27_山东_国家能源局派出机构_关于公开征求《山东电力市场监管办法(征求意见稿)》等意见的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -185,7 +184,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-01719E4565.jpg",
       "source_path": "01_原始资料/官方政策/2026-03-17_山东_国家能源局派出机构_关于公开征求《山东电力市场规则(试行)》(征求意见稿)意见的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2026-03-17_山东_国家能源局派出机构_关于公开征求《山东电力市场规则(试行)》(征求意见稿)意见的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -197,7 +196,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-D5F253F0B2.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-30_重庆_重庆市经济和信息化委员会_重庆市经济和信息化委员会行政规范性文件.html",
       "text_path": "03_处理后文本/2025-12-30_重庆_重庆市经济和信息化委员会_重庆市经济和信息化委员会行政规范性文件.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -209,7 +208,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-509BB407AE.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-11_天津_天津市工业和信息化局_关于下达天津市2023-2024年度电力需求响应资金计划的通知_委局文件_政务公开.html",
       "text_path": "03_处理后文本/2025-12-11_天津_天津市工业和信息化局_关于下达天津市2023-2024年度电力需求响应资金计划的通知_委局文件_政务公开.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -221,7 +220,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-474CF655D0.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-30_四川_四川省发展和改革委员会_四川省发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-09-30_四川_四川省发展和改革委员会_四川省发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -233,7 +232,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-3D4A64C4C0.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-30_山东_国家能源局派出机构_关于公开征求《山东省电力并网运行管理实施细则(征求意见稿)》《山东省电力辅助服务管理实施细则(征求意见稿)》意见的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2025-09-30_山东_国家能源局派出机构_关于公开征求《山东省电力并网运行管理实施细则(征求意见稿)》《山东省电力辅助服务管理实施细则(征求意见稿)》意见的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -245,7 +244,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-2B6F6F94C5.jpg",
       "source_path": "01_原始资料/官方政策/2025-07-29_山东_国家能源局派出机构_关于公开征求《山东电力市场规则(试行)》(征求意见稿)意见的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2025-07-29_山东_国家能源局派出机构_关于公开征求《山东电力市场规则(试行)》(征求意见稿)意见的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -257,7 +256,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-0746AF99FD.jpg",
       "source_path": "01_原始资料/官方政策/2025-06-24_山东_国家能源局派出机构_关于征求《山东省新能源和新型并网主体涉网安全能力提升工作方案》意见的函_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2025-06-24_山东_国家能源局派出机构_关于征求《山东省新能源和新型并网主体涉网安全能力提升工作方案》意见的函_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -269,9 +268,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-E98D78E2BB.jpg",
       "source_path": "01_原始资料/交易规则/2025-05-16_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-05-16_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34495.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34495.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-B21BF48126",
@@ -281,9 +280,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-B21BF48126.jpg",
       "source_path": "01_原始资料/交易规则/2025-03-24_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-03-24_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34492.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34492.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-F965FCA4C5",
@@ -293,9 +292,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-F965FCA4C5.jpg",
       "source_path": "01_原始资料/交易规则/2025-04-28_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-04-28_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34491.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34491.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-8808868383",
@@ -305,9 +304,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-8808868383.jpg",
       "source_path": "01_原始资料/交易规则/2025-04-05_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-04-05_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34490.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34490.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-4ECBDBC2ED",
@@ -317,9 +316,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-4ECBDBC2ED.jpg",
       "source_path": "01_原始资料/官方政策/天津_天津市发展和改革委员会_W020251022356486089649.docx",
       "text_path": "",
-      "method": "text_fallback",
-      "status": "ok",
-      "message": "原始文件类型 .docx 暂不支持，使用处理后文本生成截图"
+      "method": "text_fallback_after_error",
+      "status": "fallback",
+      "message": "网页截图失败，已改用处理后文本：text_fallback 截图失败：Page.goto: Download is starting\nCall log:\n  - navigating to \"https://fzgg.tj.gov.cn/zwgk_47325/zcfg_47338/zcwjx/fgwj/202510/W020251022356486089649.docx\", waiting until \"domcontentloaded\"\n；本地文件截图失败：没有可用的本地 HTML/PDF 文件"
     },
     {
       "doc_id": "AUTO-20260425-53BB03C30D",
@@ -329,9 +328,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-53BB03C30D.jpg",
       "source_path": "01_原始资料/交易规则/2025-04-24_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-04-24_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202504/t20250424_34448.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202504/t20250424_34448.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-921C75C18D",
@@ -341,7 +340,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-921C75C18D.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-24_上海_上海市发展和改革委员会_关于我市开展气电价格联动调整有关事项的通知_价格管理.html",
       "text_path": "03_处理后文本/2026-04-24_上海_上海市发展和改革委员会_关于我市开展气电价格联动调整有关事项的通知_价格管理.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -353,7 +352,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-3BC0A77C4C.jpg",
       "source_path": "01_原始资料/官方政策/2026-02-26_上海_上海市发展和改革委员会_关于我市开展气电价格联动调整有关事项的通知_价格管理.html",
       "text_path": "03_处理后文本/2026-02-26_上海_上海市发展和改革委员会_关于我市开展气电价格联动调整有关事项的通知_价格管理.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -365,7 +364,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-981F2EE25A.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-17_全国_国家发展改革委_【关于建立全国统一电力市场评价制度的通知(发改办体改〔2025〕1032号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-12-17_全国_国家发展改革委_【关于建立全国统一电力市场评价制度的通知(发改办体改〔2025〕1032号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -377,7 +376,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-B3B8DDADB6.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-30_全国_国家发展改革委_【关于完善发电侧容量电价机制的通知(发改价格〔2026〕114号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2026-01-30_全国_国家发展改革委_【关于完善发电侧容量电价机制的通知(发改价格〔2026〕114号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -389,7 +388,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-7D4B7A7D59.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-27_全国_国家发展改革委_【关于印发输配电定价成本监审办法、省级电网输配电价定价办法、区域电网输电价格定价办法和跨省跨区专项工程输电价格定价办法的通知(发改价格规〔2025〕1490号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-11-27_全国_国家发展改革委_【关于印发输配电定价成本监审办法、省级电网输配电价定价办法、区域电网输电价格定价办法和跨省跨区专项工程输电价格定价办法的通知(发改价格规〔2025〕1490号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -401,9 +400,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-02AD665464.jpg",
       "source_path": "01_原始资料/交易规则/2024-11-14_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-11-14_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34019.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34019.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-8469367611",
@@ -413,7 +412,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-8469367611.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-06_全国_国家发展改革委_【关于印发《电力市场计量结算基本规则》的通知(发改能源规〔2025〕976号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-08-06_全国_国家发展改革委_【关于印发《电力市场计量结算基本规则》的通知(发改能源规〔2025〕976号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -425,7 +424,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-F67BBBF923.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-26_全国_国家发展改革委_【关于印发《电力中长期市场基本规则》的通知(发改能源规〔2025〕1656号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-12-26_全国_国家发展改革委_【关于印发《电力中长期市场基本规则》的通知(发改能源规〔2025〕1656号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -437,7 +436,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-6D1818F6CF.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-11_全国_国家发展改革委_【关于优化集中式新能源发电企业市场报价的通知(试行)(发改能源〔2025〕1476号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-12-11_全国_国家发展改革委_【关于优化集中式新能源发电企业市场报价的通知(试行)(发改能源〔2025〕1476号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -449,9 +448,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-19A93F32F1.jpg",
       "source_path": "01_原始资料/交易规则/2024-12-09_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-12-09_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34021.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34021.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-3CC677DBE5",
@@ -461,7 +460,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-3CC677DBE5.jpg",
       "source_path": "01_原始资料/官方政策/2026-03-09_北京_北京市发展和改革委员会_北京市发展和改革委员会关于公开征集市政府固定资产投资支持新能源供热项目的通知-本委其他文件-北京市发展和改革委员会.htm",
       "text_path": "03_处理后文本/2026-03-09_北京_北京市发展和改革委员会_北京市发展和改革委员会关于公开征集市政府固定资产投资支持新能源供热项目的通知-本委其他文件-北京市发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -473,7 +472,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-3D787AF073.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《重庆电力中长期市场实施细则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《重庆电力中长期市场实施细则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -485,7 +484,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-63755B61E4.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《西藏自治区电力中长期市场实施细则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《西藏自治区电力中长期市场实施细则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -497,7 +496,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-35BEAAF482.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《湖北省电力中长期市场实施细则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《湖北省电力中长期市场实施细则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -509,7 +508,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-1A6D55E163.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《江西电力中长期市场实施细则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《江西电力中长期市场实施细则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -521,7 +520,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-D8A4A0C9BE.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《华中区域省间电力中长期交易实施细则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2026-01-26_华中区域_国家能源局派出机构_关于公开征求《华中区域省间电力中长期交易实施细则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -533,7 +532,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-BD09FE2823.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-04_南方区域_国家能源局派出机构_关于印发《南方区域新能源参与电力市场交易实施方案（试行）》的通知.html",
       "text_path": "03_处理后文本/2026-01-04_南方区域_国家能源局派出机构_关于印发《南方区域新能源参与电力市场交易实施方案（试行）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -545,7 +544,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-991CDC4524.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-24_南方区域_国家能源局派出机构_关于印发《广东、广西、海南发电机组参与电力市场交易业务衔接暂行规定》的通知.html",
       "text_path": "03_处理后文本/2025-12-24_南方区域_国家能源局派出机构_关于印发《广东、广西、海南发电机组参与电力市场交易业务衔接暂行规定》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -557,7 +556,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-D5A6AA701E.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-16_南方区域_国家能源局派出机构_关于加强辖区中长期批发交易合同签约履约监管的通知.html",
       "text_path": "03_处理后文本/2025-12-16_南方区域_国家能源局派出机构_关于加强辖区中长期批发交易合同签约履约监管的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -569,7 +568,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-89CB5D262F.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-03_华中区域_国家能源局派出机构_国家能源局华中监管局关于征求《江西省电力市场规则4.0版》部分条款修订意见的通知.html",
       "text_path": "03_处理后文本/2025-12-03_华中区域_国家能源局派出机构_国家能源局华中监管局关于征求《江西省电力市场规则4.0版》部分条款修订意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -581,7 +580,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-82D40D1344.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-22_华中区域_国家能源局派出机构_关于公开征求《西藏自治区电力中长期交易实施细则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2025-11-22_华中区域_国家能源局派出机构_关于公开征求《西藏自治区电力中长期交易实施细则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -593,7 +592,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-F75ABE5310.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-23_华中区域_国家能源局派出机构_关于印发《江西省电力市场规则（试行4.0版）》的通知.html",
       "text_path": "03_处理后文本/2025-09-23_华中区域_国家能源局派出机构_关于印发《江西省电力市场规则（试行4.0版）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -605,7 +604,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-A3868601F8.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-17_华中区域_国家能源局派出机构_国家能源局华中监管局关于公开征求《重庆电力中长期交易实施细则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2025-09-17_华中区域_国家能源局派出机构_国家能源局华中监管局关于公开征求《重庆电力中长期交易实施细则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -617,7 +616,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-DEDA1D301C.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-01_华中区域_国家能源局派出机构_华中能源监管局关于公开征求《华中区域(东四省)省间电力互济市场交易规则》意见的通知.html",
       "text_path": "03_处理后文本/2025-08-01_华中区域_国家能源局派出机构_华中能源监管局关于公开征求《华中区域(东四省)省间电力互济市场交易规则》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -629,7 +628,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-482E9580D6.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-01_南方区域_国家能源局派出机构_关于提升海南省新能源和新型并网主体涉网安全能力的通知.html",
       "text_path": "03_处理后文本/2025-08-01_南方区域_国家能源局派出机构_关于提升海南省新能源和新型并网主体涉网安全能力的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -641,7 +640,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-DBC1C0D7C5.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-01_南方区域_国家能源局派出机构_关于提升广西壮族自治区新能源和新型并网主体涉网安全能力的通知.html",
       "text_path": "03_处理后文本/2025-08-01_南方区域_国家能源局派出机构_关于提升广西壮族自治区新能源和新型并网主体涉网安全能力的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -653,7 +652,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-5AA1473F8F.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-01_南方区域_国家能源局派出机构_关于提升广东省新能源和新型并网主体涉网安全能力的通知.html",
       "text_path": "03_处理后文本/2025-08-01_南方区域_国家能源局派出机构_关于提升广东省新能源和新型并网主体涉网安全能力的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -665,7 +664,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-A4374A2C3D.jpg",
       "source_path": "01_原始资料/官方政策/2025-06-17_南方区域_国家能源局派出机构_关于印发《南方区域电力市场运行规则（试行，2025年V1.0版）》的通知.html",
       "text_path": "03_处理后文本/2025-06-17_南方区域_国家能源局派出机构_关于印发《南方区域电力市场运行规则（试行，2025年V1.0版）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -677,7 +676,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-E51176BC68.jpg",
       "source_path": "01_原始资料/官方政策/2025-04-02_华中区域_国家能源局派出机构_国家能源局华中监管局关于印发《湖北、江西、重庆电力调频辅助服务市场运行规则》的通知.html",
       "text_path": "03_处理后文本/2025-04-02_华中区域_国家能源局派出机构_国家能源局华中监管局关于印发《湖北、江西、重庆电力调频辅助服务市场运行规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -689,7 +688,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-0D440B2FA1.jpg",
       "source_path": "01_原始资料/官方政策/2024-12-19_华中区域_国家能源局派出机构_关于印发《重庆市电力中长期交易规则》的通知.html",
       "text_path": "03_处理后文本/2024-12-19_华中区域_国家能源局派出机构_关于印发《重庆市电力中长期交易规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -701,7 +700,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-2321F82FD1.jpg",
       "source_path": "01_原始资料/官方政策/2024-06-17_山东_国家能源局派出机构_关于山东电力现货市场由试运行转正式运行的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2024-06-17_山东_国家能源局派出机构_关于山东电力现货市场由试运行转正式运行的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -713,7 +712,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-CAE77C6F94.jpg",
       "source_path": "01_原始资料/官方政策/2024-05-31_山东_国家能源局派出机构_关于印发《山东电力市场参数（试行）》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2024-05-31_山东_国家能源局派出机构_关于印发《山东电力市场参数（试行）》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -725,7 +724,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-0E5C62271F.jpg",
       "source_path": "01_原始资料/官方政策/2024-04-20_山东_国家能源局派出机构_《山东电力市场规则(试行)》编制说明_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2024-04-20_山东_国家能源局派出机构_《山东电力市场规则(试行)》编制说明_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -737,7 +736,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-0A6267C300.jpg",
       "source_path": "01_原始资料/官方政策/2024-04-19_山东_国家能源局派出机构_关于征求《山东电力市场参数(试行)》(征求意见稿)意见的公告_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2024-04-19_山东_国家能源局派出机构_关于征求《山东电力市场参数(试行)》(征求意见稿)意见的公告_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -749,7 +748,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-CB9FE0315E.jpg",
       "source_path": "01_原始资料/官方政策/2024-04-19_山东_国家能源局派出机构_关于印发《山东电力市场规则(试行)》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2024-04-19_山东_国家能源局派出机构_关于印发《山东电力市场规则(试行)》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -761,7 +760,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-A4B66C7278.jpg",
       "source_path": "01_原始资料/官方政策/2024-02-08_山东_国家能源局派出机构_关于印发《山东电力爬坡辅助服务市场交易规则(试行)》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2024-02-08_山东_国家能源局派出机构_关于印发《山东电力爬坡辅助服务市场交易规则(试行)》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -773,7 +772,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-09ACA5D018.jpg",
       "source_path": "01_原始资料/官方政策/2024-01-08_山东_国家能源局派出机构_关于公开征求《山东电力市场规则(试行)》(征求意见稿)意见的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2024-01-08_山东_国家能源局派出机构_关于公开征求《山东电力市场规则(试行)》(征求意见稿)意见的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -785,7 +784,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-400F4CEBB4.jpg",
       "source_path": "01_原始资料/官方政策/2023-08-08_山东_国家能源局派出机构_关于征求《山东电力爬坡辅助服务市场交易规则(征求意见稿)》意见的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2023-08-08_山东_国家能源局派出机构_关于征求《山东电力爬坡辅助服务市场交易规则(征求意见稿)》意见的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -797,7 +796,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-7DF0C00260.jpg",
       "source_path": "01_原始资料/官方政策/2023-07-24_山东_国家能源局派出机构_关于印发《山东省电力并网运行管理实施细则》、《山东省电力辅助服务管理实施细则》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2023-07-24_山东_国家能源局派出机构_关于印发《山东省电力并网运行管理实施细则》、《山东省电力辅助服务管理实施细则》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -809,7 +808,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-E982922381.jpg",
       "source_path": "01_原始资料/官方政策/2021-09-24_山东_国家能源局派出机构_关于修订《山东省电力中长期交易规则》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-09-24_山东_国家能源局派出机构_关于修订《山东省电力中长期交易规则》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -821,7 +820,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-2E651E50F1.jpg",
       "source_path": "01_原始资料/官方政策/2021-09-22_山东_国家能源局派出机构_关于公示新增电力中长期交易发电企业(机组)名单的通知_-_2021年3号_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-09-22_山东_国家能源局派出机构_关于公示新增电力中长期交易发电企业(机组)名单的通知_-_2021年3号_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -833,7 +832,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-65D5E02295.jpg",
       "source_path": "01_原始资料/官方政策/2021-09-03_山东_国家能源局派出机构_山东能源监管办关于《山东电力辅助服务市场运营规则(试行)(2021年修订版)(征求意见稿)》公开征求意见的公告_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-09-03_山东_国家能源局派出机构_山东能源监管办关于《山东电力辅助服务市场运营规则(试行)(2021年修订版)(征求意见稿)》公开征求意见的公告_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -845,7 +844,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-132F8B7686.jpg",
       "source_path": "01_原始资料/官方政策/2021-08-25_山东_国家能源局派出机构_关于简化山东电力中长期交易合同电量偏差免考核工作流程的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-08-25_山东_国家能源局派出机构_关于简化山东电力中长期交易合同电量偏差免考核工作流程的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -857,7 +856,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-259ADC9C14.jpg",
       "source_path": "01_原始资料/官方政策/2021-08-25_山东_国家能源局派出机构_关于简化山东电力中长期交易合同电量偏差免考核工作流程的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-08-25_山东_国家能源局派出机构_关于简化山东电力中长期交易合同电量偏差免考核工作流程的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -869,7 +868,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-B234995E67.jpg",
       "source_path": "01_原始资料/官方政策/2021-06-03_山东_国家能源局派出机构_关于公示新增电力中长期交易发电企业(机组)名单的通知_-_2021年2号_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-06-03_山东_国家能源局派出机构_关于公示新增电力中长期交易发电企业(机组)名单的通知_-_2021年2号_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -881,7 +880,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-46DA048C90.jpg",
       "source_path": "01_原始资料/官方政策/2021-05-20_山东_国家能源局派出机构_关于公示新增电力中长期交易发电企业(机组)名单的通知_-_2021年1号_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-05-20_山东_国家能源局派出机构_关于公示新增电力中长期交易发电企业(机组)名单的通知_-_2021年1号_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -893,7 +892,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260426-6EEB6D3357.jpg",
       "source_path": "01_原始资料/官方政策/2021-04-30_山东_国家能源局派出机构_关于印发《山东省电力中长期交易规则》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-04-30_山东_国家能源局派出机构_关于印发《山东省电力中长期交易规则》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -905,7 +904,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9D436454D6.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-17_华东区域_国家能源局派出机构_国家能源局华东监管局关于印发《长三角跨省电力中长期市场实..._2026-04-17.pdf",
       "text_path": "03_处理后文本/2026-04-17_华东区域_国家能源局派出机构_国家能源局华东监管局关于印发《长三角跨省电力中长期市场实..._2026-04-17.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -917,7 +916,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-0A34FA35E6.jpg",
       "source_path": "01_原始资料/官方政策/2026-03-31_华东区域_国家能源局派出机构_关于印发《安徽电力中长期市场实施细则》的通知_2026-03-31.pdf",
       "text_path": "03_处理后文本/2026-03-31_华东区域_国家能源局派出机构_关于印发《安徽电力中长期市场实施细则》的通知_2026-03-31.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -929,7 +928,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6A8B006887.jpg",
       "source_path": "01_原始资料/官方政策/2026-03-31_华东区域_国家能源局派出机构_关于印发《上海电力中长期市场实施细则》的通知_2026-03-31.pdf",
       "text_path": "03_处理后文本/2026-03-31_华东区域_国家能源局派出机构_关于印发《上海电力中长期市场实施细则》的通知_2026-03-31.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -941,7 +940,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-20313BD46F.jpg",
       "source_path": "01_原始资料/官方政策/2026-03-06_华北区域_国家能源局派出机构_华北能源监管局关于征求“蒙西电力调频辅助服务交易实施细则”意见的函.html",
       "text_path": "03_处理后文本/2026-03-06_华北区域_国家能源局派出机构_华北能源监管局关于征求“蒙西电力调频辅助服务交易实施细则”意见的函.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -953,7 +952,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9F7307C867.jpg",
       "source_path": "01_原始资料/官方政策/2026-02-28_西北区域_国家能源局派出机构_国家能源局西北监管局_陕西省发展和改革委员会关于印发《陕西省电力中长期市场实施细则》的通知.html",
       "text_path": "03_处理后文本/2026-02-28_西北区域_国家能源局派出机构_国家能源局西北监管局_陕西省发展和改革委员会关于印发《陕西省电力中长期市场实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -965,7 +964,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-8BA55D72F9.jpg",
       "source_path": "01_原始资料/官方政策/2026-02-14_西北区域_国家能源局派出机构_国家能源局西北监管局关于征求《西北区域省间电力中长期市场实施细则（2026年修订版）（征求意见稿）》意见建议的通知.html",
       "text_path": "03_处理后文本/2026-02-14_西北区域_国家能源局派出机构_国家能源局西北监管局关于征求《西北区域省间电力中长期市场实施细则（2026年修订版）（征求意见稿）》意见建议的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -977,7 +976,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-1C4703E1E9.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-26_西北区域_国家能源局派出机构_国家能源局西北监管局关于征求陕西、宁夏、青海电力中长期市场实施细则（征求意见稿）意见建议的通知.html",
       "text_path": "03_处理后文本/2026-01-26_西北区域_国家能源局派出机构_国家能源局西北监管局关于征求陕西、宁夏、青海电力中长期市场实施细则（征求意见稿）意见建议的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -989,7 +988,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-51AC1D580A.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-23_西北区域_国家能源局派出机构_国家能源局西北监管局关于公开征求《西北区域省间电力互济交易运营规则（试行）（征求意见稿）》意见建议的通知.html",
       "text_path": "03_处理后文本/2026-01-23_西北区域_国家能源局派出机构_国家能源局西北监管局关于公开征求《西北区域省间电力互济交易运营规则（试行）（征求意见稿）》意见建议的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1001,7 +1000,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B95E146723.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-17_华北区域_国家能源局派出机构_华北能源监管局关于征求京津唐电力调峰辅助服务市场运营规则_（征求意见稿）意见的通告.html",
       "text_path": "03_处理后文本/2025-11-17_华北区域_国家能源局派出机构_华北能源监管局关于征求京津唐电力调峰辅助服务市场运营规则_（征求意见稿）意见的通告.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1013,7 +1012,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-1806176B6C.jpg",
       "source_path": "01_原始资料/官方政策/2025-10-30_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域跨省电力中长期交易实施细则——新型储能交易专章》的通知.html",
       "text_path": "03_处理后文本/2025-10-30_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域跨省电力中长期交易实施细则——新型储能交易专章》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1025,7 +1024,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-4BE00C1720.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-25_西北区域_国家能源局派出机构_国家能源局西北监管局_青海省能源局关于印发《青海省电力中长期交易规则补充规定》的通知.html",
       "text_path": "03_处理后文本/2025-09-25_西北区域_国家能源局派出机构_国家能源局西北监管局_青海省能源局关于印发《青海省电力中长期交易规则补充规定》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1037,7 +1036,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5EF9021CE0.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-25_西北区域_国家能源局派出机构_国家能源局西北监管局关于征求《西北区域跨省电力中长期交易实施细则——新型储能交易专章（征求意见稿）》意见建议的通知.html",
       "text_path": "03_处理后文本/2025-08-25_西北区域_国家能源局派出机构_国家能源局西北监管局关于征求《西北区域跨省电力中长期交易实施细则——新型储能交易专章（征求意见稿）》意见建议的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1049,7 +1048,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6B0EF18171.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-13_西北区域_国家能源局派出机构_国家能源局西北监管局关于征求《青海省电力中长期交易规则补充规定（征求意见稿）》意见建议的通知.html",
       "text_path": "03_处理后文本/2025-08-13_西北区域_国家能源局派出机构_国家能源局西北监管局关于征求《青海省电力中长期交易规则补充规定（征求意见稿）》意见建议的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1061,7 +1060,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-2E09D15F4D.jpg",
       "source_path": "01_原始资料/官方政策/2025-07-01_西北区域_国家能源局派出机构_国家能源局西北监管局关于明确电力辅助服务市场价格机制等相关事项的通知.html",
       "text_path": "03_处理后文本/2025-07-01_西北区域_国家能源局派出机构_国家能源局西北监管局关于明确电力辅助服务市场价格机制等相关事项的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1073,7 +1072,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-CC8285BA8B.jpg",
       "source_path": "01_原始资料/官方政策/2024-11-20_华中区域_国家能源局派出机构_华中能源监管局关于征求《湖北、江西、重庆电力调频辅助服务市场运行规则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2024-11-20_华中区域_国家能源局派出机构_华中能源监管局关于征求《湖北、江西、重庆电力调频辅助服务市场运行规则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1085,7 +1084,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D5C34F91B8.jpg",
       "source_path": "01_原始资料/官方政策/2024-11-15_天津_天津市工业和信息化局_市工业和信息化局关于做好天津市2025年电力市场化交易工作的通知_委局文件_政务公开.html",
       "text_path": "03_处理后文本/2024-11-15_天津_天津市工业和信息化局_市工业和信息化局关于做好天津市2025年电力市场化交易工作的通知_委局文件_政务公开.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1097,7 +1096,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9549320EF2.jpg",
       "source_path": "01_原始资料/官方政策/2024-11-01_华中区域_国家能源局派出机构_华中能源监管局关于《重庆市电力中长期交易规则（修订稿）》公开征求意见的通知.html",
       "text_path": "03_处理后文本/2024-11-01_华中区域_国家能源局派出机构_华中能源监管局关于《重庆市电力中长期交易规则（修订稿）》公开征求意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1109,7 +1108,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-28574D8021.jpg",
       "source_path": "01_原始资料/官方政策/2024-04-30_华中区域_国家能源局派出机构_国家能源局华中监管局关于公开征求《川渝一体化电力调峰辅助服务市场交易规则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2024-04-30_华中区域_国家能源局派出机构_国家能源局华中监管局关于公开征求《川渝一体化电力调峰辅助服务市场交易规则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1121,7 +1120,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F77C27F149.jpg",
       "source_path": "01_原始资料/官方政策/2024-04-30_华中区域_国家能源局派出机构_国家能源局华中监管局关于公开征求《华中区域省间电力中长期交易规则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2024-04-30_华中区域_国家能源局派出机构_国家能源局华中监管局关于公开征求《华中区域省间电力中长期交易规则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1133,7 +1132,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-66F282BB0B.jpg",
       "source_path": "01_原始资料/官方政策/2021-02-11_山东_国家能源局派出机构_山东能源监管办关于《山东省电力中长期交易规则(征求意见稿)》公开征求意见的公告_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2021-02-11_山东_国家能源局派出机构_山东能源监管办关于《山东省电力中长期交易规则(征求意见稿)》公开征求意见的公告_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1145,7 +1144,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-0B7C65169B.jpg",
       "source_path": "01_原始资料/官方政策/2020-12-31_山东_国家能源局派出机构_关于修订《山东电力辅助服务市场运营规则（试行）（2020年修订版）》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2020-12-31_山东_国家能源局派出机构_关于修订《山东电力辅助服务市场运营规则（试行）（2020年修订版）》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1157,7 +1156,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D691BB80BC.jpg",
       "source_path": "01_原始资料/官方政策/2020-12-02_山东_国家能源局派出机构_关于简化新能源发电企业参与山东电力市场准入流程的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2020-12-02_山东_国家能源局派出机构_关于简化新能源发电企业参与山东电力市场准入流程的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1169,7 +1168,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3923155EE0.jpg",
       "source_path": "01_原始资料/官方政策/2020-10-20_山东_国家能源局派出机构_关于征求《山东电力辅助服务市场运营规则（试行）（2020年修订版）》（征求意见稿）意见的函_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2020-10-20_山东_国家能源局派出机构_关于征求《山东电力辅助服务市场运营规则（试行）（2020年修订版）》（征求意见稿）意见的函_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1181,7 +1180,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-E4EE7C8D82.jpg",
       "source_path": "01_原始资料/官方政策/2020-08-05_山东_国家能源局派出机构_关于公布山东电力现货市场结算试运行有关市场参数的通知(试行)_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2020-08-05_山东_国家能源局派出机构_关于公布山东电力现货市场结算试运行有关市场参数的通知(试行)_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1193,7 +1192,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-698A8D7E10.jpg",
       "source_path": "01_原始资料/官方政策/2020-07-31_山东_国家能源局派出机构_关于修订《山东省电力现货市场交易规则(试行)》《山东省电力中长期市场交易规则(试行)》《山东省电力零售市场交易规则(试行)》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2020-07-31_山东_国家能源局派出机构_关于修订《山东省电力现货市场交易规则(试行)》《山东省电力中长期市场交易规则(试行)》《山东省电力零售市场交易规则(试行)》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1205,9 +1204,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-FBC65BBD1E.jpg",
       "source_path": "01_原始资料/交易规则/2024-11-02_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-11-02_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34020.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34020.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-D81BDF16D0",
@@ -1217,9 +1216,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D81BDF16D0.jpg",
       "source_path": "01_原始资料/交易规则/2024-04-28_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-04-28_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34494.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34494.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-780DD684D9",
@@ -1229,9 +1228,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-780DD684D9.jpg",
       "source_path": "01_原始资料/交易规则/2024-04-25_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-04-25_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34096.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34096.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-AF700450D9",
@@ -1241,9 +1240,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-AF700450D9.jpg",
       "source_path": "01_原始资料/交易规则/2024-09-13_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-09-13_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34100.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34100.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-5DD9FFE71E",
@@ -1253,9 +1252,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5DD9FFE71E.jpg",
       "source_path": "01_原始资料/交易规则/2024-07-24_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-07-24_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34102.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34102.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-344B99BC3D",
@@ -1265,9 +1264,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-344B99BC3D.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-03_广东_广东省能源局_广东省发展和改革委员会_-_广东省能源局关于做好2026年电力市场年度交易工作的通知.html",
       "text_path": "03_处理后文本/2025-12-03_广东_广东省能源局_广东省发展和改革委员会_-_广东省能源局关于做好2026年电力市场年度交易工作的通知.txt",
-      "method": "text_fallback_after_error",
-      "status": "fallback",
-      "message": "原始文件截图失败，已改用处理后文本：Page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n"
+      "method": "online_full_page",
+      "status": "ok",
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-EF110663B6",
@@ -1277,7 +1276,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-EF110663B6.jpg",
       "source_path": "01_原始资料/官方政策/2025-10-28_广东_广东省能源局_广东省发展和改革委员会_-_广东省能源局_国家能源局南方监管局关于印发《广东电力市场常态化开展年度交易实施方案》的通知.html",
       "text_path": "03_处理后文本/2025-10-28_广东_广东省能源局_广东省发展和改革委员会_-_广东省能源局_国家能源局南方监管局关于印发《广东电力市场常态化开展年度交易实施方案》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1289,7 +1288,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-ED15D5C741.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-30_广东_广东省能源局_广东省发展和改革委员会_-_广东省发展改革委关于申报新能源可持续发展价格结算机制存量项目的通知.html",
       "text_path": "03_处理后文本/2025-09-30_广东_广东省能源局_广东省发展和改革委员会_-_广东省发展改革委关于申报新能源可持续发展价格结算机制存量项目的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1301,9 +1300,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-CA2DDC4243.jpg",
       "source_path": "01_原始资料/交易规则/2024-05-10_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-05-10_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34017.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34017.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-E24F3D75D9",
@@ -1313,9 +1312,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-E24F3D75D9.jpg",
       "source_path": "01_原始资料/交易规则/2020-06-14_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2020-06-14_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34493.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34493.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-890E791E0D",
@@ -1325,9 +1324,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-890E791E0D.jpg",
       "source_path": "01_原始资料/交易规则/2024-08-26_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-08-26_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34101.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34101.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-EE6D85F7E0",
@@ -1337,9 +1336,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-EE6D85F7E0.jpg",
       "source_path": "01_原始资料/交易规则/2023-09-10_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2023-09-10_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34120.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34120.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-6620523786",
@@ -1349,7 +1348,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6620523786.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-14_内蒙古自治区_内蒙古自治区能源局_四、交易与价格机制.html",
       "text_path": "03_处理后文本/2026-01-14_内蒙古自治区_内蒙古自治区能源局_四、交易与价格机制.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1361,7 +1360,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-2492100A42.jpg",
       "source_path": "01_原始资料/官方政策/2026-02-14_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2026-02-14_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1373,9 +1372,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-7F4BF875A3.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-30_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2025-12-30_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://nyj.nmg.gov.cn/slh/tz/202512/t20251230_2843227.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-543BC9B2A3",
@@ -1385,7 +1384,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-543BC9B2A3.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-30_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2025-12-30_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1397,7 +1396,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-502852DE5B.jpg",
       "source_path": "01_原始资料/官方政策/2025-05-29_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2025-05-29_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1409,7 +1408,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-A525045BF7.jpg",
       "source_path": "01_原始资料/官方政策/2025-05-29_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2025-05-29_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1421,7 +1420,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-1906B16212.jpg",
       "source_path": "01_原始资料/官方政策/2026-02-11_上海_上海市发展和改革委员会_关于进一步做好我市电力现货市场限价相关事项的通知_价格管理.html",
       "text_path": "03_处理后文本/2026-02-11_上海_上海市发展和改革委员会_关于进一步做好我市电力现货市场限价相关事项的通知_价格管理.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1433,7 +1432,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5ED24A4111.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-24_上海_上海市发展和改革委员会_关于调整我市煤电容量电价有关事项的通知_价格管理.html",
       "text_path": "03_处理后文本/2025-12-24_上海_上海市发展和改革委员会_关于调整我市煤电容量电价有关事项的通知_价格管理.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1445,7 +1444,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-1E20E600C3.jpg",
       "source_path": "01_原始资料/官方政策/2025-02-09_全国_国家发展改革委_【关于深化新能源上网电价市场化改革_促进新能源高质量发展的通知(发改价格〔2025〕136号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-02-09_全国_国家发展改革委_【关于深化新能源上网电价市场化改革_促进新能源高质量发展的通知(发改价格〔2025〕136号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1457,7 +1456,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-51C6A877DC.jpg",
       "source_path": "01_原始资料/官方政策/2025-05-30_全国_国家发展改革委_【关于有序推动绿电直连发展有关事项的通知(发改能源〔2025〕650号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-05-30_全国_国家发展改革委_【关于有序推动绿电直连发展有关事项的通知(发改能源〔2025〕650号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1469,7 +1468,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-851724B835.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-17_上海_上海市发展和改革委员会_关于明确我市应急备用煤电机组容量电价有关事项的通知_价格管理.html",
       "text_path": "03_处理后文本/2025-11-17_上海_上海市发展和改革委员会_关于明确我市应急备用煤电机组容量电价有关事项的通知_价格管理.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1481,7 +1480,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-257CE410F0.jpg",
       "source_path": "01_原始资料/官方政策/2021-03-05_全国_国家发展改革委_【关于推进电力源网荷储一体化和多能互补发展的指导意见(发改能源规〔2021〕280号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2021-03-05_全国_国家发展改革委_【关于推进电力源网荷储一体化和多能互补发展的指导意见(发改能源规〔2021〕280号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1493,7 +1492,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-257D529B27.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-12_全国_国家发展改革委_【关于完善价格机制促进新能源发电就近消纳的通知(发改价格〔2025〕1192号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-09-12_全国_国家发展改革委_【关于完善价格机制促进新能源发电就近消纳的通知(发改价格〔2025〕1192号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1505,7 +1504,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-2DD331A266.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-12_全国_国家发展改革委_【关于印发《电力现货连续运行地区市场建设指引》的通知(发改能源〔2025〕1171号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-09-12_全国_国家发展改革委_【关于印发《电力现货连续运行地区市场建设指引》的通知(发改能源〔2025〕1171号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1517,7 +1516,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B292F45571.jpg",
       "source_path": "01_原始资料/官方政策/2023-09-15_全国_国家发展改革委_【关于印发《电力现货市场基本规则（试行）》的通知(发改能源规〔2023〕1217号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2023-09-15_全国_国家发展改革委_【关于印发《电力现货市场基本规则（试行）》的通知(发改能源规〔2023〕1217号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1529,9 +1528,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F3E6DA37CB.jpg",
       "source_path": "01_原始资料/交易规则/2024-04-08_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-04-08_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34119.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34119.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-ED23AB24F7",
@@ -1541,9 +1540,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-ED23AB24F7.jpg",
       "source_path": "01_原始资料/交易规则/2022-01-28_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2022-01-28_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34121.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34121.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-F33CEF16E8",
@@ -1553,9 +1552,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F33CEF16E8.jpg",
       "source_path": "01_原始资料/交易规则/2024-11-02_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-11-02_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "browser_html_full_page",
+      "method": "local_html_full_page_after_online_error",
       "status": "ok",
-      "message": ""
+      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34022.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34022.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260427-CDA7AFEC1D",
@@ -1565,7 +1564,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-CDA7AFEC1D.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-19_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2025-11-19_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1577,7 +1576,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-03A84802A0.jpg",
       "source_path": "01_原始资料/官方政策/2025-04-29_全国_国家发展改革委_【关于全面加快电力现货市场建设工作的通知(发改办体改〔2025〕394号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-04-29_全国_国家发展改革委_【关于全面加快电力现货市场建设工作的通知(发改办体改〔2025〕394号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1589,7 +1588,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-0866006539.jpg",
       "source_path": "01_原始资料/官方政策/2020-04-03_全国_国家发展改革委_【关于做好电力现货市场试点连续试结算相关工作的通知(发改办能源规〔2020〕245号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2020-04-03_全国_国家发展改革委_【关于做好电力现货市场试点连续试结算相关工作的通知(发改办能源规〔2020〕245号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1601,7 +1600,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6FF22802C9.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-10_全国_国家发展改革委_【关于促进新能源消纳和调控的指导意见(发改能源〔2025〕1360号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-11-10_全国_国家发展改革委_【关于促进新能源消纳和调控的指导意见(发改能源〔2025〕1360号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1613,7 +1612,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-A739C746F8.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-03_上海_上海市发展和改革委员会_关于上海市2025年度新能源增量项目机制电价竞价结果的通知_价格管理.html",
       "text_path": "03_处理后文本/2025-12-03_上海_上海市发展和改革委员会_关于上海市2025年度新能源增量项目机制电价竞价结果的通知_价格管理.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1625,7 +1624,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-C45458E7FC.jpg",
       "source_path": "01_原始资料/官方政策/2024-10-18_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域跨省电力中长期交易实施细则》的通知（全文）.html",
       "text_path": "03_处理后文本/2024-10-18_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域跨省电力中长期交易实施细则》的通知（全文）.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1637,7 +1636,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-EC19F02593.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-27_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域省间电力互济交易实施细则(试行)》的通知.html",
       "text_path": "03_处理后文本/2026-04-27_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域省间电力互济交易实施细则(试行)》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1649,7 +1648,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-BAC94CD920.jpg",
       "source_path": "01_原始资料/官方政策/2020-06-16_山东_国家能源局派出机构_关于印发《山东省电力现货市场交易规则(试行)》《山东省电力中长期市场交易规则(试行)》《山东省电力零售市场交易规则(试行)》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2020-06-16_山东_国家能源局派出机构_关于印发《山东省电力现货市场交易规则(试行)》《山东省电力中长期市场交易规则(试行)》《山东省电力零售市场交易规则(试行)》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1661,7 +1660,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-E22FE01186.jpg",
       "source_path": "01_原始资料/官方政策/2022-10-11_华中区域_国家能源局派出机构_国家能源局华中监管局关于印发《华中省间电力调峰及备用辅助服务市场运营规则》的通知.html",
       "text_path": "03_处理后文本/2022-10-11_华中区域_国家能源局派出机构_国家能源局华中监管局关于印发《华中省间电力调峰及备用辅助服务市场运营规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1673,7 +1672,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5D8B9D2AA9.jpg",
       "source_path": "01_原始资料/官方政策/2023-05-18_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域备用辅助服务市场运营规则》的通知.html",
       "text_path": "03_处理后文本/2023-05-18_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域备用辅助服务市场运营规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1685,7 +1684,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-426F6E93C0.jpg",
       "source_path": "01_原始资料/官方政策/2023-11-21_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域省间调峰辅助服务市场运营规则》补充修订条款的通知.html",
       "text_path": "03_处理后文本/2023-11-21_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域省间调峰辅助服务市场运营规则》补充修订条款的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1697,7 +1696,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-A21BC5FA77.jpg",
       "source_path": "01_原始资料/官方政策/2024-01-03_华中区域_国家能源局派出机构_国家能源局华中监管局关于印发《湖北源网荷储电力调峰辅助服务市场运营规则》的通知.html",
       "text_path": "03_处理后文本/2024-01-03_华中区域_国家能源局派出机构_国家能源局华中监管局关于印发《湖北源网荷储电力调峰辅助服务市场运营规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1709,7 +1708,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-EDE85AAF9A.jpg",
       "source_path": "01_原始资料/官方政策/2025-02-21_华东区域_国家能源局派出机构_关于印发修订后的《上海电力中长期交易规则》的通知（华东监..._2025-02-21.pdf",
       "text_path": "03_处理后文本/2025-02-21_华东区域_国家能源局派出机构_关于印发修订后的《上海电力中长期交易规则》的通知（华东监..._2025-02-21.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1721,7 +1720,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-EC24CC36EA.jpg",
       "source_path": "01_原始资料/官方政策/2025-02-21_华东区域_国家能源局派出机构_关于印发修订后的《安徽电力中长期交易规则》的通知（华东监..._2025-02-21.pdf",
       "text_path": "03_处理后文本/2025-02-21_华东区域_国家能源局派出机构_关于印发修订后的《安徽电力中长期交易规则》的通知（华东监..._2025-02-21.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1733,7 +1732,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3ADCAA1520.jpg",
       "source_path": "01_原始资料/官方政策/2025-05-15_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域抽水蓄能电站参与跨省电力交易实施细则（试行）》的通知.html",
       "text_path": "03_处理后文本/2025-05-15_西北区域_国家能源局派出机构_国家能源局西北监管局关于印发《西北区域抽水蓄能电站参与跨省电力交易实施细则（试行）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1745,7 +1744,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-166CF8A8B5.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-23_华东区域_国家能源局派出机构_华东能源监管局关于加强电力中长期批发交易监管的通知_2025-12-23.pdf",
       "text_path": "03_处理后文本/2025-12-23_华东区域_国家能源局派出机构_华东能源监管局关于加强电力中长期批发交易监管的通知_2025-12-23.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1757,7 +1756,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-054169DB65.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-30_华中区域_国家能源局派出机构_华中能源监管局关于印发《华中区域（东四省）电力互济交易实施细则》的通知.html",
       "text_path": "03_处理后文本/2026-01-30_华中区域_国家能源局派出机构_华中能源监管局关于印发《华中区域（东四省）电力互济交易实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1769,7 +1768,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-2C79213C08.jpg",
       "source_path": "01_原始资料/官方政策/2019-12-20_山东_国家能源局派出机构_关于修订山东省电力中长期交易规则有关条款的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2019-12-20_山东_国家能源局派出机构_关于修订山东省电力中长期交易规则有关条款的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1781,7 +1780,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-E6623247A3.jpg",
       "source_path": "01_原始资料/官方政策/2020-02-03_山东_国家能源局派出机构_山东能源监管办_山东省发展改革委_山东省能源局关于征求《山东省电力现货市场交易规则》、《山东省电力中长期市场交易规则》、《山东省电力零售市场交易规则》(征求意见稿)意见的通知_国家能源局山东监.html",
       "text_path": "03_处理后文本/2020-02-03_山东_国家能源局派出机构_山东能源监管办_山东省发展改革委_山东省能源局关于征求《山东省电力现货市场交易规则》、《山东省电力中长期市场交易规则》、《山东省电力零售市场交易规则》(征求意见稿)意见的通知_国家能源局山东监.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1793,7 +1792,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-90D968B235.jpg",
       "source_path": "01_原始资料/官方政策/2020-06-09_华中区域_国家能源局派出机构_华中能源监管局关于印发《湖北电力调峰辅助服务市场运营规则（试行）》的通知.html",
       "text_path": "03_处理后文本/2020-06-09_华中区域_国家能源局派出机构_华中能源监管局关于印发《湖北电力调峰辅助服务市场运营规则（试行）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1805,7 +1804,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-A0DD00C851.jpg",
       "source_path": "01_原始资料/官方政策/2022-04-13_南方区域_国家能源局派出机构_关于组织开展南方区域跨省电力备用辅助服务市场模拟试运行的通知.html",
       "text_path": "03_处理后文本/2022-04-13_南方区域_国家能源局派出机构_关于组织开展南方区域跨省电力备用辅助服务市场模拟试运行的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1817,7 +1816,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6348CCF597.jpg",
       "source_path": "01_原始资料/官方政策/2022-04-18_南方区域_国家能源局派出机构_关于审定广西电力市场中长期电能量交易等实施细则的复函.html",
       "text_path": "03_处理后文本/2022-04-18_南方区域_国家能源局派出机构_关于审定广西电力市场中长期电能量交易等实施细则的复函.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1829,7 +1828,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-167238164B.jpg",
       "source_path": "01_原始资料/官方政策/2022-04-24_华中区域_国家能源局派出机构_国家能源局华中监管局关于《华中省间电力调峰及备用辅助服务市场运营规则（征求意见稿）》公开征求意见的通知.html",
       "text_path": "03_处理后文本/2022-04-24_华中区域_国家能源局派出机构_国家能源局华中监管局关于《华中省间电力调峰及备用辅助服务市场运营规则（征求意见稿）》公开征求意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1841,7 +1840,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3CFB9AC233.jpg",
       "source_path": "01_原始资料/官方政策/2022-08-01_南方区域_国家能源局派出机构_跨省跨区送电参与南方（以广东起步）现货市场偏差处理办法解读.html",
       "text_path": "03_处理后文本/2022-08-01_南方区域_国家能源局派出机构_跨省跨区送电参与南方（以广东起步）现货市场偏差处理办法解读.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1853,7 +1852,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-A21D2B578A.jpg",
       "source_path": "01_原始资料/官方政策/2022-08-18_华中区域_国家能源局派出机构_关于印发《江西省电力中长期交易实施细则》的通知.html",
       "text_path": "03_处理后文本/2022-08-18_华中区域_国家能源局派出机构_关于印发《江西省电力中长期交易实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1865,7 +1864,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F79895D50A.jpg",
       "source_path": "01_原始资料/官方政策/2022-09-28_华中区域_国家能源局派出机构_关于印发《重庆市电力中长期交易规则》的通知.html",
       "text_path": "03_处理后文本/2022-09-28_华中区域_国家能源局派出机构_关于印发《重庆市电力中长期交易规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1877,7 +1876,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D122E3E18C.jpg",
       "source_path": "01_原始资料/官方政策/2022-12-09_华中区域_国家能源局派出机构_关于印发《重庆电力调频辅助服务市场运营规则》的通知.html",
       "text_path": "03_处理后文本/2022-12-09_华中区域_国家能源局派出机构_关于印发《重庆电力调频辅助服务市场运营规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1889,7 +1888,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9347AA22F9.jpg",
       "source_path": "01_原始资料/官方政策/2022-12-29_华中区域_国家能源局派出机构_华中能源监管局关于印发《江西电力调频辅助服务市场运营规则》的通知.html",
       "text_path": "03_处理后文本/2022-12-29_华中区域_国家能源局派出机构_华中能源监管局关于印发《江西电力调频辅助服务市场运营规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1901,7 +1900,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-897D121E2E.jpg",
       "source_path": "01_原始资料/官方政策/2023-05-15_西北区域_国家能源局派出机构_国家能源局西北监管局_陕西省发展和改革委员会关于印发《陕西省电力中长期交易规则》的通知.html",
       "text_path": "03_处理后文本/2023-05-15_西北区域_国家能源局派出机构_国家能源局西北监管局_陕西省发展和改革委员会关于印发《陕西省电力中长期交易规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1913,7 +1912,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B436377657.jpg",
       "source_path": "01_原始资料/官方政策/2023-10-08_南方区域_国家能源局派出机构_关于印发《南方区域跨省（区）电力应急调度暂行规则》的通知.html",
       "text_path": "03_处理后文本/2023-10-08_南方区域_国家能源局派出机构_关于印发《南方区域跨省（区）电力应急调度暂行规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1925,7 +1924,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-4EB78C6B0F.jpg",
       "source_path": "01_原始资料/官方政策/2024-10-28_华东区域_国家能源局派出机构_上海电力中长期交易规则—绿色电力交易专章_2024-10-28.pdf",
       "text_path": "03_处理后文本/2024-10-28_华东区域_国家能源局派出机构_上海电力中长期交易规则—绿色电力交易专章_2024-10-28.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1937,7 +1936,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-075F05064A.jpg",
       "source_path": "01_原始资料/官方政策/2024-12-13_华东区域_国家能源局派出机构_华东能源监管局关于扩展华东电力调峰辅助服务市场交易至日内..._2024-12-13.pdf",
       "text_path": "03_处理后文本/2024-12-13_华东区域_国家能源局派出机构_华东能源监管局关于扩展华东电力调峰辅助服务市场交易至日内..._2024-12-13.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1949,7 +1948,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-C52ED507A1.jpg",
       "source_path": "01_原始资料/官方政策/2025-02-17_南方区域_国家能源局派出机构_国家能源局南方监管局_广东省能源局关于印发《广东电力市场运行规则》的通知.html",
       "text_path": "03_处理后文本/2025-02-17_南方区域_国家能源局派出机构_国家能源局南方监管局_广东省能源局关于印发《广东电力市场运行规则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1961,7 +1960,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-8C78A58B24.jpg",
       "source_path": "01_原始资料/官方政策/2018-01-03_全国_国家发展改革委_【关于印发《区域电网输电价格定价办法(试行)》《跨省跨区专项工程输电价格定价办法(试行)》和《关于制定地方电网和增量配电网配电价格的指导意见》的通知(发改价格规﹝2017﹞2269号)】-国家发展.html",
       "text_path": "03_处理后文本/2018-01-03_全国_国家发展改革委_【关于印发《区域电网输电价格定价办法(试行)》《跨省跨区专项工程输电价格定价办法(试行)》和《关于制定地方电网和增量配电网配电价格的指导意见》的通知(发改价格规﹝2017﹞2269号)】-国家发展.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1973,7 +1972,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-51EB30208F.jpg",
       "source_path": "01_原始资料/官方政策/2021-10-15_全国_国家发展改革委_【关于印发《跨省跨区专项工程输电价格定价办法》的通知(发改价格规〔2021〕1455号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2021-10-15_全国_国家发展改革委_【关于印发《跨省跨区专项工程输电价格定价办法》的通知(发改价格规〔2021〕1455号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1985,7 +1984,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-DCD3AEB88C.jpg",
       "source_path": "01_原始资料/官方政策/2025-10-13_全国_国家发展改革委_【关于印发《跨省跨区电力应急调度管理办法》的通知(发改运行规〔2025〕1193号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2025-10-13_全国_国家发展改革委_【关于印发《跨省跨区电力应急调度管理办法》的通知(发改运行规〔2025〕1193号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -1997,7 +1996,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B0F72F5007.jpg",
       "source_path": "01_原始资料/官方政策/2024-02-08_全国_国家发展改革委_【关于建立健全电力辅助服务市场价格机制的通知(发改价格〔2024〕196号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2024-02-08_全国_国家发展改革委_【关于建立健全电力辅助服务市场价格机制的通知(发改价格〔2024〕196号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2009,7 +2008,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-A0AD12B7E0.jpg",
       "source_path": "01_原始资料/官方政策/2023-11-01_全国_国家发展改革委_【关于进一步加快电力现货市场建设工作的通知(发改办体改〔2023〕813号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2023-11-01_全国_国家发展改革委_【关于进一步加快电力现货市场建设工作的通知(发改办体改〔2023〕813号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2021,7 +2020,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-49126C771F.jpg",
       "source_path": "01_原始资料/官方政策/2018-04-27_全国_国家发展改革委_【印发《关于加快储气设施建设和完善储气调峰辅助服务市场机制的意见》的通知(发改能源规〔2018〕637号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2018-04-27_全国_国家发展改革委_【印发《关于加快储气设施建设和完善储气调峰辅助服务市场机制的意见》的通知(发改能源规〔2018〕637号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2033,7 +2032,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-7BEF23BDDE.jpg",
       "source_path": "01_原始资料/官方政策/2019-08-07_全国_国家发展改革委_【印发《关于深化电力现货市场建设试点工作的意见》_的通知(发改办能源规〔2019〕828号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2019-08-07_全国_国家发展改革委_【印发《关于深化电力现货市场建设试点工作的意见》_的通知(发改办能源规〔2019〕828号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2045,7 +2044,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-11E67EF119.jpg",
       "source_path": "01_原始资料/官方政策/2024-12-27_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2024-12-27_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2057,7 +2056,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-33FCB0ED92.jpg",
       "source_path": "01_原始资料/官方政策/2024-12-19_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2024-12-19_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2069,7 +2068,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6861D688D2.jpg",
       "source_path": "01_原始资料/官方政策/2024-12-19_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2024-12-19_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2081,9 +2080,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D2550973DB.jpg",
       "source_path": "01_原始资料/官方政策/2024-11-18_广东_广东省能源局_广东省发展和改革委员会_-_广东省能源局_国家能源局南方监管局关于印发《广东省虚拟电厂参与电力市场交易实施方案》的通知.html",
       "text_path": "03_处理后文本/2024-11-18_广东_广东省能源局_广东省发展和改革委员会_-_广东省能源局_国家能源局南方监管局关于印发《广东省虚拟电厂参与电力市场交易实施方案》的通知.txt",
-      "method": "text_fallback_after_error",
-      "status": "fallback",
-      "message": "原始文件截图失败，已改用处理后文本：Page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n"
+      "method": "online_full_page",
+      "status": "ok",
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-8933E85058",
@@ -2093,7 +2092,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-8933E85058.jpg",
       "source_path": "01_原始资料/官方政策/2024-07-17_广东_广东省能源局_广东省发展和改革委员会_-_广东省能源局_国家能源局南方监管局关于印发广东省抽水蓄能参与电力市场交易实施方案的通知.html",
       "text_path": "03_处理后文本/2024-07-17_广东_广东省能源局_广东省发展和改革委员会_-_广东省能源局_国家能源局南方监管局关于印发广东省抽水蓄能参与电力市场交易实施方案的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2105,7 +2104,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-EC4C5789C9.jpg",
       "source_path": "01_原始资料/官方政策/2017-01-18_山东_国家能源局派出机构_国家发改委国家能源局关于印发《电力中长期交易基本规则（暂行）》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2017-01-18_山东_国家能源局派出机构_国家发改委国家能源局关于印发《电力中长期交易基本规则（暂行）》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2117,7 +2116,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-0A3E4D6579.jpg",
       "source_path": "01_原始资料/官方政策/2017-06-05_山东_国家能源局派出机构_关于印发《山东电力辅助服务市场运营规则（试行）》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2017-06-05_山东_国家能源局派出机构_关于印发《山东电力辅助服务市场运营规则（试行）》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2129,7 +2128,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-AD0E26D414.jpg",
       "source_path": "01_原始资料/官方政策/2017-08-30_山东_国家能源局派出机构_关于修订电力中长期交易规则的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2017-08-30_山东_国家能源局派出机构_关于修订电力中长期交易规则的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2141,7 +2140,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-0378DA9BD2.jpg",
       "source_path": "01_原始资料/官方政策/2017-12-08_山东_国家能源局派出机构_关于修订山东省电力中长期交易规则的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2017-12-08_山东_国家能源局派出机构_关于修订山东省电力中长期交易规则的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2153,7 +2152,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5F7D6C5FF5.jpg",
       "source_path": "01_原始资料/官方政策/2018-03-28_山东_国家能源局派出机构_关于征求《北京电力交易中心省间电力中长期交易实施细则（暂行）》意见的函_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2018-03-28_山东_国家能源局派出机构_关于征求《北京电力交易中心省间电力中长期交易实施细则（暂行）》意见的函_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2165,7 +2164,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-0276F5E7CC.jpg",
       "source_path": "01_原始资料/官方政策/2019-04-02_山东_国家能源局派出机构_关于修订《山东省电力市场监管办法(试行)》的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2019-04-02_山东_国家能源局派出机构_关于修订《山东省电力市场监管办法(试行)》的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2177,7 +2176,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9AE540E7CE.jpg",
       "source_path": "01_原始资料/官方政策/2019-06-12_山东_国家能源局派出机构_关于征求《山东省电力现货市场交易规则》《山东省电力中长期市场交易规则》(征求意见稿)意见的通知_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2019-06-12_山东_国家能源局派出机构_关于征求《山东省电力现货市场交易规则》《山东省电力中长期市场交易规则》(征求意见稿)意见的通知_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2189,7 +2188,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5D282BE538.jpg",
       "source_path": "01_原始资料/官方政策/2019-12-25_山东_国家能源局派出机构_关于对山东广能节能科技有限公司违反电力市场交易规则情况的通报_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2019-12-25_山东_国家能源局派出机构_关于对山东广能节能科技有限公司违反电力市场交易规则情况的通报_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2201,7 +2200,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D51C84C078.jpg",
       "source_path": "01_原始资料/官方政策/2020-07-17_山东_国家能源局派出机构_关于征求山东电力现货市场结算试运行有关市场参数意见的公告_国家能源局山东监管办公室.html",
       "text_path": "03_处理后文本/2020-07-17_山东_国家能源局派出机构_关于征求山东电力现货市场结算试运行有关市场参数意见的公告_国家能源局山东监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2213,7 +2212,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3CAEDBBD74.jpg",
       "source_path": "01_原始资料/官方政策/2020-11-05_华中区域_国家能源局派出机构_国家能源局华中监管局_江西省能源局关于印发《江西省电力辅助服务市场运营规则（试行）》的通知.html",
       "text_path": "03_处理后文本/2020-11-05_华中区域_国家能源局派出机构_国家能源局华中监管局_江西省能源局关于印发《江西省电力辅助服务市场运营规则（试行）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2225,7 +2224,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-FA91B2D801.jpg",
       "source_path": "01_原始资料/官方政策/2021-09-06_华北区域_国家能源局派出机构_华北能源监管局关于再次征求华北电力调峰容量市场运营规则意见通知.html",
       "text_path": "03_处理后文本/2021-09-06_华北区域_国家能源局派出机构_华北能源监管局关于再次征求华北电力调峰容量市场运营规则意见通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2237,7 +2236,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-12E862EC73.jpg",
       "source_path": "01_原始资料/官方政策/2021-09-10_华中区域_国家能源局派出机构_华中电力调峰辅助服务市场省间调峰辅助服_务河南电网售出电量分摊细则.html",
       "text_path": "03_处理后文本/2021-09-10_华中区域_国家能源局派出机构_华中电力调峰辅助服务市场省间调峰辅助服_务河南电网售出电量分摊细则.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2249,7 +2248,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D18D54C2E0.jpg",
       "source_path": "01_原始资料/官方政策/2021-11-23_华中区域_国家能源局派出机构_华中能源监管局关于印发《新型市场主体参与华中电力调峰辅助服务市场规则（试行）》的通知.html",
       "text_path": "03_处理后文本/2021-11-23_华中区域_国家能源局派出机构_华中能源监管局关于印发《新型市场主体参与华中电力调峰辅助服务市场规则（试行）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2261,7 +2260,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F61B124506.jpg",
       "source_path": "01_原始资料/官方政策/2021-11-25_华中区域_国家能源局派出机构_华中能源监管局_四川能源监管办关于印发《川渝一体化电力调峰辅助服务市场运营规则（试行）》的通知.html",
       "text_path": "03_处理后文本/2021-11-25_华中区域_国家能源局派出机构_华中能源监管局_四川能源监管办关于印发《川渝一体化电力调峰辅助服务市场运营规则（试行）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2273,7 +2272,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-20E8A38E78.jpg",
       "source_path": "01_原始资料/官方政策/2021-12-20_华北区域_国家能源局派出机构_华北能源监管局关于明确2022年京津唐电网电力中长期交易有关事项的通知.html",
       "text_path": "03_处理后文本/2021-12-20_华北区域_国家能源局派出机构_华北能源监管局关于明确2022年京津唐电网电力中长期交易有关事项的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2285,7 +2284,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-ACF967E65E.jpg",
       "source_path": "01_原始资料/官方政策/2022-04-01_华中区域_国家能源局派出机构_华中能源监管局关于印发《华中区域电力市场信息披露办法》的通知.html",
       "text_path": "03_处理后文本/2022-04-01_华中区域_国家能源局派出机构_华中能源监管局关于印发《华中区域电力市场信息披露办法》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2297,7 +2296,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-46701D6E76.jpg",
       "source_path": "01_原始资料/官方政策/2022-08-19_华中区域_国家能源局派出机构_国家能源局华中监管局_湖北省能源局_关于印发《湖北省电力中长期交易实施_细则》的通知.html",
       "text_path": "03_处理后文本/2022-08-19_华中区域_国家能源局派出机构_国家能源局华中监管局_湖北省能源局_关于印发《湖北省电力中长期交易实施_细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2309,7 +2308,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D747CE2B16.jpg",
       "source_path": "01_原始资料/官方政策/2022-12-29_华中区域_国家能源局派出机构_关于印发《西藏电力辅助服务管理实施细则》《西藏电力并网运行管理实施细则》的通知.html",
       "text_path": "03_处理后文本/2022-12-29_华中区域_国家能源局派出机构_关于印发《西藏电力辅助服务管理实施细则》《西藏电力并网运行管理实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2321,7 +2320,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9BE26E7413.jpg",
       "source_path": "01_原始资料/官方政策/2023-11-07_天津_天津市工业和信息化局_市工业和信息化局关于做好天津市2024年电力市场化交易工作的通知_委局文件_政务公开.html",
       "text_path": "03_处理后文本/2023-11-07_天津_天津市工业和信息化局_市工业和信息化局关于做好天津市2024年电力市场化交易工作的通知_委局文件_政务公开.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2333,7 +2332,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-EE7FE966EB.jpg",
       "source_path": "01_原始资料/官方政策/2023-11-24_南方区域_国家能源局派出机构_关于印发《广东、广西、海南发电机组进入及退出商业运营实施细则》的通知.html",
       "text_path": "03_处理后文本/2023-11-24_南方区域_国家能源局派出机构_关于印发《广东、广西、海南发电机组进入及退出商业运营实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2345,7 +2344,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6122A07CB6.jpg",
       "source_path": "01_原始资料/官方政策/2024-03-28_西北区域_国家能源局派出机构_国家能源局西北监管局关于公开征求《西北区域跨省电力中长期交易实施细则（征求意见稿）》意见建议的通知.html",
       "text_path": "03_处理后文本/2024-03-28_西北区域_国家能源局派出机构_国家能源局西北监管局关于公开征求《西北区域跨省电力中长期交易实施细则（征求意见稿）》意见建议的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2357,7 +2356,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3AAD7C60CC.jpg",
       "source_path": "01_原始资料/官方政策/2024-12-13_华东区域_国家能源局派出机构_长三角省市间富余新能源消纳互济交易规则（试行）_2024-12-13.pdf",
       "text_path": "03_处理后文本/2024-12-13_华东区域_国家能源局派出机构_长三角省市间富余新能源消纳互济交易规则（试行）_2024-12-13.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2369,7 +2368,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5E3CE632ED.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-25_天津_天津市工业和信息化局_市工业和信息化局等部门关于印发《天津市电力需求侧管理实施细则》的通知_委局文件_政务公开.html",
       "text_path": "03_处理后文本/2025-11-25_天津_天津市工业和信息化局_市工业和信息化局等部门关于印发《天津市电力需求侧管理实施细则》的通知_委局文件_政务公开.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2381,7 +2380,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-2C2D80BAFA.jpg",
       "source_path": "01_原始资料/官方政策/2020-12-02_全国_国家发展改革委_【关于做好2021年电力中长期合同签订工作的通知(发改运行〔2020〕1784号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2020-12-02_全国_国家发展改革委_【关于做好2021年电力中长期合同签订工作的通知(发改运行〔2020〕1784号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2393,7 +2392,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-BD45999335.jpg",
       "source_path": "01_原始资料/官方政策/2022-12-21_全国_国家发展改革委_【关于做好2023年电力中长期合同签订履约工作的通知(发改运行〔2022〕1861号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2022-12-21_全国_国家发展改革委_【关于做好2023年电力中长期合同签订履约工作的通知(发改运行〔2022〕1861号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2405,7 +2404,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B903E2C09B.jpg",
       "source_path": "01_原始资料/官方政策/2021-09-29_全国_国家发展改革委_【关于做好发电供热企业直保煤炭中长期合同全覆盖铁路运力保障有关工作的通知(发改办运行〔2021〕750号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2021-09-29_全国_国家发展改革委_【关于做好发电供热企业直保煤炭中长期合同全覆盖铁路运力保障有关工作的通知(发改办运行〔2021〕750号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2417,7 +2416,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-C2621C7DE7.jpg",
       "source_path": "01_原始资料/官方政策/2022-03-21_全国_国家发展改革委_【关于印发《“十四五”新型储能发展实施方案》的通知(发改能源〔2022〕209号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2022-03-21_全国_国家发展改革委_【关于印发《“十四五”新型储能发展实施方案》的通知(发改能源〔2022〕209号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2429,7 +2428,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-69BAE4E34E.jpg",
       "source_path": "01_原始资料/官方政策/2023-11-10_全国_国家发展改革委_【关于建立煤电容量电价机制的通知(发改价格〔2023〕1501号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2023-11-10_全国_国家发展改革委_【关于建立煤电容量电价机制的通知(发改价格〔2023〕1501号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2441,7 +2440,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-BCED5F5381.jpg",
       "source_path": "01_原始资料/官方政策/2023-05-15_全国_国家发展改革委_【关于抽水蓄能电站容量电价及有关事项的通知(发改价格〔2023〕533号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2023-05-15_全国_国家发展改革委_【关于抽水蓄能电站容量电价及有关事项的通知(发改价格〔2023〕533号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2453,7 +2452,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-0ABCD56E46.jpg",
       "source_path": "01_原始资料/官方政策/2022-06-07_全国_国家发展改革委_【关于进一步推动新型储能参与电力市场和调度运用的通知(发改办运行〔2022〕475号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2022-06-07_全国_国家发展改革委_【关于进一步推动新型储能参与电力市场和调度运用的通知(发改办运行〔2022〕475号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2465,7 +2464,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-42E984C2AA.jpg",
       "source_path": "01_原始资料/官方政策/2021-10-12_全国_国家发展改革委_【关于进一步深化燃煤发电上网电价市场化改革的通知(发改价格〔2021〕1439号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2021-10-12_全国_国家发展改革委_【关于进一步深化燃煤发电上网电价市场化改革的通知(发改价格〔2021〕1439号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2477,7 +2476,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6E98A81878.jpg",
       "source_path": "01_原始资料/官方政策/2021-11-16_全国_国家发展改革委_【关于国家电网有限公司省间电力现货交易规则的复函(发改办体改〔2021〕837号)】-国家发展和改革委员会.html",
       "text_path": "03_处理后文本/2021-11-16_全国_国家发展改革委_【关于国家电网有限公司省间电力现货交易规则的复函(发改办体改〔2021〕837号)】-国家发展和改革委员会.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2489,7 +2488,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B85C17304B.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-22_四川_国家能源局四川监管办公室_关于印发《四川电力辅助服务市场交易实施细则》的通知_2025-12-22.pdf",
       "text_path": "03_处理后文本/2025-12-22_四川_国家能源局四川监管办公室_关于印发《四川电力辅助服务市场交易实施细则》的通知_2025-12-22.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2501,7 +2500,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-C78A139FE6.jpg",
       "source_path": "01_原始资料/官方政策/2025-07-11_新疆_国家能源局新疆监管办公室_关于印发《部分条款修订稿》的通知.html",
       "text_path": "03_处理后文本/2025-07-11_新疆_国家能源局新疆监管办公室_关于印发《部分条款修订稿》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2513,7 +2512,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F447945296.jpg",
       "source_path": "01_原始资料/官方政策/2025-07-11_新疆_国家能源局新疆监管办公室_关于印发《新疆电力辅助服务市场实施细则》的通知.html",
       "text_path": "03_处理后文本/2025-07-11_新疆_国家能源局新疆监管办公室_关于印发《新疆电力辅助服务市场实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2525,7 +2524,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-AB6A507796.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-08_四川_四川省发展和改革委员会_关于印发《四川2026年电力市场交易总体方案》及《四川电力市场规则体系V4.0》的通知.html",
       "text_path": "03_处理后文本/2025-12-08_四川_四川省发展和改革委员会_关于印发《四川2026年电力市场交易总体方案》及《四川电力市场规则体系V4.0》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2537,7 +2536,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B587DC0124.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-06_四川_四川省发展和改革委员会_关于印发《四川电力市场结算细则V1.0）》的通知.html",
       "text_path": "03_处理后文本/2026-01-06_四川_四川省发展和改革委员会_关于印发《四川电力市场结算细则V1.0）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2549,7 +2548,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-E1D1006CB7.jpg",
       "source_path": "01_原始资料/官方政策/2026-03-06_江苏_国家能源局江苏监管办公室_关于印发《江苏省电力中长期市场实施细则（2026版）》的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2026-03-06_江苏_国家能源局江苏监管办公室_关于印发《江苏省电力中长期市场实施细则（2026版）》的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2561,7 +2560,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D816ADFC99.jpg",
       "source_path": "01_原始资料/官方政策/2026-03-30_新疆_国家能源局新疆监管办公室_关于印发《新疆电力中长期市场实施细则》_的通知.html",
       "text_path": "03_处理后文本/2026-03-30_新疆_国家能源局新疆监管办公室_关于印发《新疆电力中长期市场实施细则》_的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2573,7 +2572,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B23CD79013.jpg",
       "source_path": "01_原始资料/官方政策/2019-09-30_江苏_国家能源局江苏监管办公室_关于印发《江苏电力辅助服务（调峰）市场启停交易补充规则》的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2019-09-30_江苏_国家能源局江苏监管办公室_关于印发《江苏电力辅助服务（调峰）市场启停交易补充规则》的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2585,7 +2584,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-2C2684AFB7.jpg",
       "source_path": "01_原始资料/官方政策/2020-07-03_江苏_国家能源局江苏监管办公室_关于印发《江苏电力辅助服务（调频）市场交易规则（试行）》的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2020-07-03_江苏_国家能源局江苏监管办公室_关于印发《江苏电力辅助服务（调频）市场交易规则（试行）》的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2597,7 +2596,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-A83640585B.jpg",
       "source_path": "01_原始资料/官方政策/2020-11-10_江苏_国家能源局江苏监管办公室_关于印发《江苏电力市场用户可调负荷参与辅助服务市场交易规则（试行）》的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2020-11-10_江苏_国家能源局江苏监管办公室_关于印发《江苏电力市场用户可调负荷参与辅助服务市场交易规则（试行）》的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2609,7 +2608,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-56F605665F.jpg",
       "source_path": "01_原始资料/官方政策/2023-12-08_江苏_国家能源局江苏监管办公室_关于印发《江苏省电力中长期交易规则（2023版）》的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2023-12-08_江苏_国家能源局江苏监管办公室_关于印发《江苏省电力中长期交易规则（2023版）》的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2621,7 +2620,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3B4DEB2D95.jpg",
       "source_path": "01_原始资料/官方政策/2024-04-08_浙江_国家能源局浙江监管办公室_浙江能源监管办_省发展改革委_省能源局关于印发《浙江电力现货市场规则》的通知_2024-04-08.pdf",
       "text_path": "03_处理后文本/2024-04-08_浙江_国家能源局浙江监管办公室_浙江能源监管办_省发展改革委_省能源局关于印发《浙江电力现货市场规则》的通知_2024-04-08.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2633,7 +2632,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D808C3C69B.jpg",
       "source_path": "01_原始资料/官方政策/2025-06-30_浙江_国家能源局浙江监管办公室_浙江能源监管办关于征求《关于做好浙江省长三角“两个细则”结算试运行有关事项的通知（征求意见稿）》意见的函_国家能源局浙江监管办公室.html",
       "text_path": "03_处理后文本/2025-06-30_浙江_国家能源局浙江监管办公室_浙江能源监管办关于征求《关于做好浙江省长三角“两个细则”结算试运行有关事项的通知（征求意见稿）》意见的函_国家能源局浙江监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2645,7 +2644,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-0B5231DDC9.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-20_四川_国家能源局四川监管办公室_关于公开征求《四川电力辅助服务市场交易实施细则（征求意见稿）》意见的通知_2025-08-20.pdf",
       "text_path": "03_处理后文本/2025-08-20_四川_国家能源局四川监管办公室_关于公开征求《四川电力辅助服务市场交易实施细则（征求意见稿）》意见的通知_2025-08-20.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2657,7 +2656,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-AD1ACA65D0.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-25_四川_国家能源局四川监管办公室_关于公开征求《四川电力市场中长期交易规则（2024年修订版）补充修订条款》意见的通知_国家能源局四川监管办公室.html",
       "text_path": "03_处理后文本/2025-11-25_四川_国家能源局四川监管办公室_关于公开征求《四川电力市场中长期交易规则（2024年修订版）补充修订条款》意见的通知_国家能源局四川监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2669,7 +2668,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-04351EFDD0.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-12_浙江_国家能源局浙江监管办公室_关于印发2026年浙江省电力中长期交易合同示范文本的通知_国家能源局浙江监管办公室.html",
       "text_path": "03_处理后文本/2025-12-12_浙江_国家能源局浙江监管办公室_关于印发2026年浙江省电力中长期交易合同示范文本的通知_国家能源局浙江监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2681,7 +2680,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-E623436BEE.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-20_浙江_国家能源局浙江监管办公室_浙江能源监管办关于贯彻落实《电力市场信息披露基本规则》有关事项的通知_国家能源局浙江监管办公室.html",
       "text_path": "03_处理后文本/2025-12-20_浙江_国家能源局浙江监管办公室_浙江能源监管办关于贯彻落实《电力市场信息披露基本规则》有关事项的通知_国家能源局浙江监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2693,7 +2692,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3CBC11905B.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-29_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2025-12-29_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2705,7 +2704,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-8B8776AC2F.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-29_山西_山西省能源局_一、总体要求.html",
       "text_path": "03_处理后文本/2025-12-29_山西_山西省能源局_一、总体要求.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2717,7 +2716,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-1188644239.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-30_江苏_国家能源局江苏监管办公室_关于印发《江苏电力并网运行管理实施细则》《江苏电力辅助服务管理实施细则》的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2025-12-30_江苏_国家能源局江苏监管办公室_关于印发《江苏电力并网运行管理实施细则》《江苏电力辅助服务管理实施细则》的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2729,7 +2728,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D4EAEA6B13.jpg",
       "source_path": "01_原始资料/官方政策/2026-02-11_四川_国家能源局四川监管办公室_关于征求四川电力中长期市场实施细则有关意见的函_国家能源局四川监管办公室.html",
       "text_path": "03_处理后文本/2026-02-11_四川_国家能源局四川监管办公室_关于征求四川电力中长期市场实施细则有关意见的函_国家能源局四川监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2741,7 +2740,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3A34896615.jpg",
       "source_path": "01_原始资料/官方政策/2018-09-29_江苏_国家能源局江苏监管办公室_关于开展江苏售电企业电力市场交易规则执行情况专项监管工作的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2018-09-29_江苏_国家能源局江苏监管办公室_关于开展江苏售电企业电力市场交易规则执行情况专项监管工作的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2753,7 +2752,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-22A1964B41.jpg",
       "source_path": "01_原始资料/官方政策/2019-12-09_江苏_国家能源局江苏监管办公室_关于印发《江苏省分布式发电市场化交易规则（试行）》的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2019-12-09_江苏_国家能源局江苏监管办公室_关于印发《江苏省分布式发电市场化交易规则（试行）》的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2765,7 +2764,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9F3288D69E.jpg",
       "source_path": "01_原始资料/官方政策/2021-02-03_江苏_国家能源局江苏监管办公室_关于印发《江苏省电力中长期交易规则》的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2021-02-03_江苏_国家能源局江苏监管办公室_关于印发《江苏省电力中长期交易规则》的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2777,7 +2776,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-DD7C4546BF.jpg",
       "source_path": "01_原始资料/官方政策/2022-05-27_浙江_国家能源局浙江监管办公室_关于征求《华东区域跨省电力中长期交易规则（修订稿）》意见的函_国家能源局浙江监管办公室.html",
       "text_path": "03_处理后文本/2022-05-27_浙江_国家能源局浙江监管办公室_关于征求《华东区域跨省电力中长期交易规则（修订稿）》意见的函_国家能源局浙江监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2789,7 +2788,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-FB654119A3.jpg",
       "source_path": "01_原始资料/官方政策/2023-01-04_新疆_国家能源局新疆监管办公室_关于印发《新疆电力中长期市场实施细则》的通知.html",
       "text_path": "03_处理后文本/2023-01-04_新疆_国家能源局新疆监管办公室_关于印发《新疆电力中长期市场实施细则》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2801,7 +2800,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-C4E6EA0484.jpg",
       "source_path": "01_原始资料/官方政策/2023-10-20_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2023-10-20_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2813,7 +2812,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-C3DDFE1C05.jpg",
       "source_path": "01_原始资料/官方政策/2023-12-22_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2023-12-22_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2825,7 +2824,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-A5A96B278D.jpg",
       "source_path": "01_原始资料/官方政策/2024-01-24_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2024-01-24_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2837,7 +2836,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-98DA675CE3.jpg",
       "source_path": "01_原始资料/官方政策/2024-01-24_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2024-01-24_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2849,7 +2848,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-2A3ABE6092.jpg",
       "source_path": "01_原始资料/官方政策/2024-12-19_浙江_国家能源局浙江监管办公室_浙江能源监管办关于印发2025年浙江省电力中长期交易合同示范文本的通知_国家能源局浙江监管办公室.html",
       "text_path": "03_处理后文本/2024-12-19_浙江_国家能源局浙江监管办公室_浙江能源监管办关于印发2025年浙江省电力中长期交易合同示范文本的通知_国家能源局浙江监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2861,7 +2860,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5C3FEF8C0F.jpg",
       "source_path": "01_原始资料/官方政策/2024-12-30_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2024-12-30_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2873,7 +2872,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-002763E163.jpg",
       "source_path": "01_原始资料/官方政策/2025-03-21_新疆_国家能源局新疆监管办公室_关于印发《新疆电力市场监管实施办法》_的通知_新监能市场〔2025〕24号.html",
       "text_path": "03_处理后文本/2025-03-21_新疆_国家能源局新疆监管办公室_关于印发《新疆电力市场监管实施办法》_的通知_新监能市场〔2025〕24号.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2885,7 +2884,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-DB74AC69C2.jpg",
       "source_path": "01_原始资料/官方政策/2025-04-29_浙江_国家能源局浙江监管办公室_浙江能源监管办关于开展2025年电力市场秩序突出问题专项监管的通知_2025-04-29.pdf",
       "text_path": "03_处理后文本/2025-04-29_浙江_国家能源局浙江监管办公室_浙江能源监管办关于开展2025年电力市场秩序突出问题专项监管的通知_2025-04-29.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2897,7 +2896,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-B7B2A6455E.jpg",
       "source_path": "01_原始资料/官方政策/2025-05-08_四川_国家能源局四川监管办公室_关于开展四川省2025年电力市场秩序突出问题专项监管的通知_2025-05-08.pdf",
       "text_path": "03_处理后文本/2025-05-08_四川_国家能源局四川监管办公室_关于开展四川省2025年电力市场秩序突出问题专项监管的通知_2025-05-08.ocr.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2909,7 +2908,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-08350D960F.jpg",
       "source_path": "01_原始资料/官方政策/2025-05-23_江苏_国家能源局江苏监管办公室_关于进一步做好电力市场信息披露工作的通知_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2025-05-23_江苏_国家能源局江苏监管办公室_关于进一步做好电力市场信息披露工作的通知_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2921,7 +2920,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-4E8F5E6BB6.jpg",
       "source_path": "01_原始资料/官方政策/2025-06-24_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2025-06-24_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2933,7 +2932,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9DEF0F2D44.jpg",
       "source_path": "01_原始资料/官方政策/2025-06-24_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2025-06-24_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2945,7 +2944,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-7369F01D27.jpg",
       "source_path": "01_原始资料/官方政策/2025-08-26_浙江_国家能源局浙江监管办公室_浙江省发展和改革委员会_浙江省能源局_国家能源局浙江监管办公室关于浙江电力现货市场转正式..._2025-08-26.pdf",
       "text_path": "03_处理后文本/2025-08-26_浙江_国家能源局浙江监管办公室_浙江省发展和改革委员会_浙江省能源局_国家能源局浙江监管办公室关于浙江电力现货市场转正式..._2025-08-26.txt",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2957,7 +2956,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-6344CB4B08.jpg",
       "source_path": "01_原始资料/官方政策/2025-09-04_四川_四川省发展和改革委员会_关于公开征求《四川电力市场结算细则（征求意见稿）》意见的通知.html",
       "text_path": "03_处理后文本/2025-09-04_四川_四川省发展和改革委员会_关于公开征求《四川电力市场结算细则（征求意见稿）》意见的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2969,7 +2968,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-9AE8418A06.jpg",
       "source_path": "01_原始资料/官方政策/2025-10-31_江苏_国家能源局江苏监管办公室_江苏能源监管办关于公开征求《江苏电力调频辅助服务市场交易规则（征求意见稿）》意见的公告_国家能源局江苏监管办公室.html",
       "text_path": "03_处理后文本/2025-10-31_江苏_国家能源局江苏监管办公室_江苏能源监管办关于公开征求《江苏电力调频辅助服务市场交易规则（征求意见稿）》意见的公告_国家能源局江苏监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2981,7 +2980,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-790BD08DF9.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-10_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2025-11-10_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -2993,7 +2992,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-FDD3BF6D20.jpg",
       "source_path": "01_原始资料/官方政策/2025-11-11_四川_四川省发展和改革委员会_关于再次公开征求《四川电力市场结算细则（征求意见稿）》的通知.html",
       "text_path": "03_处理后文本/2025-11-11_四川_四川省发展和改革委员会_关于再次公开征求《四川电力市场结算细则（征求意见稿）》的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -3005,7 +3004,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F694D4BAAB.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-01_浙江_国家能源局浙江监管办公室_关于征求2026年浙江省电力中长期交易合同示范文本意见的函_国家能源局浙江监管办公室.html",
       "text_path": "03_处理后文本/2025-12-01_浙江_国家能源局浙江监管办公室_关于征求2026年浙江省电力中长期交易合同示范文本意见的函_国家能源局浙江监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -3017,7 +3016,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-87C8FAFF1E.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-05_福建_国家能源局福建监管办公室_国家能源局福建监管办公室_福建省发展和改革委员会关于印发《福建电力市场规则体系管理办法（试行）》的通知_国家能源局福建监管办公室.html",
       "text_path": "03_处理后文本/2025-12-05_福建_国家能源局福建监管办公室_国家能源局福建监管办公室_福建省发展和改革委员会关于印发《福建电力市场规则体系管理办法（试行）》的通知_国家能源局福建监管办公室.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -3029,7 +3028,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-8E9C5D7331.jpg",
       "source_path": "01_原始资料/官方政策/2026-01-23_新疆_国家能源局新疆监管办公室_关于公开征求《新疆电力中长期市场实施细则（征求意见稿）》意见建议的通知.html",
       "text_path": "03_处理后文本/2026-01-23_新疆_国家能源局新疆监管办公室_关于公开征求《新疆电力中长期市场实施细则（征求意见稿）》意见建议的通知.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -3041,7 +3040,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-175A83DAA9.jpg",
       "source_path": "01_原始资料/官方政策/2026-02-13_山西_山西省能源局_山西省能源局.html",
       "text_path": "03_处理后文本/2026-02-13_山西_山西省能源局_山西省能源局.txt",
-      "method": "browser_html_full_page",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     },
@@ -3053,7 +3052,7 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-3D2FA4A769.jpg",
       "source_path": "01_原始资料/官方政策/2026-04-13_四川_国家能源局四川监管办公室_关于印发《四川省电力辅助服务管理实施细则》和《四川省电力并网运行管理实施细则..._2026-04-13.pdf",
       "text_path": "",
-      "method": "pdf_render",
+      "method": "online_full_page",
       "status": "ok",
       "message": ""
     }

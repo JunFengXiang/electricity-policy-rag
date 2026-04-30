@@ -152,9 +152,18 @@ def launch_browser(browser_channel: str, browser_executable: str) -> tuple[Any |
         raise
 
 
-def render_html_screenshot(page: Any, source_path: Path, image_path: Path, args: argparse.Namespace) -> None:
+def is_http_url(value: str) -> bool:
+    return bool(re.match(r"^https?://", (value or "").strip(), flags=re.I))
+
+
+def render_page_screenshot(page: Any, target_url: str, image_path: Path, args: argparse.Namespace) -> None:
     page.set_viewport_size({"width": args.width, "height": args.viewport_height})
-    page.goto(source_path.resolve().as_uri(), wait_until="commit", timeout=args.timeout_ms)
+    page.goto(target_url, wait_until="domcontentloaded", timeout=args.timeout_ms)
+    if args.load_timeout_ms > 0:
+        try:
+            page.wait_for_load_state("load", timeout=args.load_timeout_ms)
+        except PlaywrightTimeoutError:
+            pass
     if args.idle_timeout_ms > 0:
         try:
             page.wait_for_load_state("networkidle", timeout=args.idle_timeout_ms)
@@ -165,8 +174,7 @@ def render_html_screenshot(page: Any, source_path: Path, image_path: Path, args:
 
     page.add_style_tag(
         content="""
-        html, body { background: #ffffff !important; font-family: "Microsoft YaHei", Arial, sans-serif !important; }
-        * { font-family: "Microsoft YaHei", Arial, sans-serif !important; }
+        html, body { background: #ffffff !important; }
         img, table { max-width: 100%; }
         """
     )
@@ -186,6 +194,10 @@ def render_html_screenshot(page: Any, source_path: Path, image_path: Path, args:
         full_page=args.full_page,
         timeout=args.timeout_ms,
     )
+
+
+def render_html_screenshot(page: Any, source_path: Path, image_path: Path, args: argparse.Namespace) -> None:
+    render_page_screenshot(page, source_path.resolve().as_uri(), image_path, args)
 
 
 def resize_to_width(image: Image.Image, width: int) -> Image.Image:
@@ -526,14 +538,23 @@ def build_snapshots(args: argparse.Namespace) -> dict[str, Any]:
     context = None
     page = None
     need_browser = any(
-        (choose_local_files(row)[0] and choose_local_files(row)[0].suffix.lower() in HTML_SUFFIXES)
+        (not args.offline_only and is_http_url(row.get("原文链接", "")))
+        or (choose_local_files(row)[0] and choose_local_files(row)[0].suffix.lower() in HTML_SUFFIXES)
         for row in rows
     )
 
     if need_browser and not args.no_browser:
         browser_manager, browser = launch_browser(args.browser_channel, args.browser_executable)
-        context = browser.new_context(device_scale_factor=args.device_scale_factor)
-        if not args.allow_external_assets:
+        context = browser.new_context(
+            device_scale_factor=args.device_scale_factor,
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/123.0.0.0 Safari/537.36"
+            ),
+            locale="zh-CN",
+        )
+        if args.block_external_assets:
             context.route("http://*/*", lambda route: route.abort())
             context.route("https://*/*", lambda route: route.abort())
         page = context.new_page()
@@ -553,14 +574,19 @@ def build_snapshots(args: argparse.Namespace) -> dict[str, Any]:
             status = "ok"
             message = ""
             suffix = raw_path.suffix.lower() if raw_path else ""
+            original_url = row.get("原文链接", "").strip()
 
             if image_path.exists() and not args.force:
                 method = "existing_image"
             else:
+                errors: list[str] = []
                 try:
-                    if raw_path and suffix in HTML_SUFFIXES and page is not None:
+                    if not args.offline_only and is_http_url(original_url) and page is not None:
+                        render_page_screenshot(page, original_url, image_path, args)
+                        method = "online_full_page" if args.full_page else "online_viewport"
+                    elif raw_path and suffix in HTML_SUFFIXES and page is not None:
                         render_html_screenshot(page, raw_path, image_path, args)
-                        method = "browser_html_full_page" if args.full_page else "browser_html_viewport"
+                        method = "local_html_full_page" if args.full_page else "local_html_viewport"
                     elif raw_path and suffix in PDF_SUFFIXES:
                         render_pdf_screenshot(raw_path, image_path, args)
                         method = "pdf_render"
@@ -572,10 +598,24 @@ def build_snapshots(args: argparse.Namespace) -> dict[str, Any]:
                         method = "text_fallback"
                         message = note
                 except Exception as exc:
-                    status = "fallback"
-                    message = f"原始文件截图失败，已改用处理后文本：{exc}"
-                    render_text_screenshot(row, text_path, image_path, generated_at, args, note=message)
-                    method = "text_fallback_after_error"
+                    errors.append(f"{method or 'online'} 截图失败：{exc}")
+                    try:
+                        if raw_path and suffix in HTML_SUFFIXES and page is not None:
+                            render_html_screenshot(page, raw_path, image_path, args)
+                            method = "local_html_full_page_after_online_error" if args.full_page else "local_html_viewport_after_online_error"
+                            message = "官网截图失败，已回退到本地 HTML 截图：" + "；".join(errors)
+                        elif raw_path and suffix in PDF_SUFFIXES:
+                            render_pdf_screenshot(raw_path, image_path, args)
+                            method = "pdf_render_after_online_error"
+                            message = "官网截图失败，已回退到 PDF 渲染截图：" + "；".join(errors)
+                        else:
+                            raise RuntimeError("没有可用的本地 HTML/PDF 文件")
+                    except Exception as fallback_exc:
+                        status = "fallback"
+                        errors.append(f"本地文件截图失败：{fallback_exc}")
+                        message = "网页截图失败，已改用处理后文本：" + "；".join(errors)
+                        render_text_screenshot(row, text_path, image_path, generated_at, args, note=message)
+                        method = "text_fallback_after_error"
 
             viewer_html = build_viewer_html(row, raw_path, text_path, image_path, viewer_path, generated_at, method, message)
             viewer_path.write_text(viewer_html, encoding="utf-8", newline="\n")
@@ -639,16 +679,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--limit", type=int, default=0, help="只处理前 N 条，便于试跑")
     parser.add_argument("--only-id", default="", help="只处理指定资料编号")
     parser.add_argument("--no-browser", action="store_true", help="不使用浏览器，HTML 也转为文本截图")
+    parser.add_argument("--offline-only", action="store_true", help="只截本地 HTML/PDF，不访问官网原文链接")
     parser.add_argument("--browser-channel", default="msedge", help="Playwright 浏览器 channel，默认使用本机 Edge")
     parser.add_argument("--browser-executable", default="", help="显式指定浏览器可执行文件路径")
     parser.add_argument("--width", type=int, default=1365, help="截图宽度")
     parser.add_argument("--viewport-height", type=int, default=1800, help="浏览器视口高度")
     parser.add_argument("--device-scale-factor", type=float, default=1.0, help="浏览器缩放倍率")
     parser.add_argument("--quality", type=int, default=82, help="JPEG 质量")
-    parser.add_argument("--timeout-ms", type=int, default=15000, help="页面加载和截图超时时间")
-    parser.add_argument("--idle-timeout-ms", type=int, default=0, help="等待网络空闲的补充时间")
-    parser.add_argument("--render-wait-ms", type=int, default=500, help="页面打开后的固定等待时间")
-    parser.add_argument("--allow-external-assets", action="store_true", help="允许本地 HTML 继续加载外部图片/CSS/脚本")
+    parser.add_argument("--timeout-ms", type=int, default=30000, help="页面加载和截图超时时间")
+    parser.add_argument("--load-timeout-ms", type=int, default=5000, help="等待网页资源加载的补充时间")
+    parser.add_argument("--idle-timeout-ms", type=int, default=2500, help="等待网络空闲的补充时间")
+    parser.add_argument("--render-wait-ms", type=int, default=1500, help="页面打开后的固定等待时间")
+    parser.add_argument("--block-external-assets", action="store_true", help="阻止外部图片/CSS/脚本，仅用于离线调试")
     parser.add_argument("--full-page", action=argparse.BooleanOptionalAction, default=True, help="是否截取完整网页")
     parser.add_argument("--pdf-pages", type=int, default=1, help="PDF 渲染前 N 页")
     parser.add_argument("--pdf-zoom", type=float, default=1.8, help="PDF 渲染清晰度")
