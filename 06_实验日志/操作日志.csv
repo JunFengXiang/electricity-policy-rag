@@ -87,3 +87,4 @@
 2026-04-28 16:43,搜索页展示优化,将搜索结果中的本地文本路径由完整路径展示改为 本地文本 入口，完整相对路径保留在悬停提示 title 中，并生成可点击的相对链接，避免卡片底部出现冗长路径。重新生成 search.html/search_index.json，09_build_search_page.py 和 07_search.py 自检通过。,,,,
 2026-04-28 17:25,代码注释完善,为 scripts 目录下 Python 脚本补充模块级说明和关键函数注释，覆盖采集、候选池、检索评测、Excel 同步、搜索页、文号规则清单、政策关联、PDF/OCR、知识切片和 RAG 查询等环节。已运行 compileall、搜索页生成自检和全文检索自检。,,,,
 2026-04-29 16:06,采集脚本回退,发现 scripts/01_fetch_seed_urls.py 的未提交改动会削弱采集能力，已按要求回退到上一次提交版本；恢复采集来源机构、文号、curl 兜底、ArticleTitle 标题识别、PDF 文本提取和文号抽取能力。已运行 py_compile 验证通过。,,,,
+2026-04-30 10:48,网页快照与阶段报告,新增网页快照机制：生成 254 个本地快照 HTML 和 snapshot_manifest.json；搜索页新增 snapshot_path，并将结果卡片中的本地文本入口替换为网页快照，缺快照时回退为处理后文本。同时在 06_实验日志 新增阶段进度报告_2026-04-30.md。已运行 19_build_web_snapshots.py、09_build_search_page.py、07_search.py --self-check-only 和 compileall 验证通过。,,,,

@@ -1,7 +1,7 @@
 """生成本地搜索页面和前端检索索引。
 
-该脚本把政策台账、处理后文本和政策关联关系打包成一个静态 HTML，方便像搜索引擎
-一样筛选政策，同时保留原文链接、本地文本和引用关系追溯。
+该脚本把政策台账、处理后文本、网页快照和政策关联关系打包成一个静态 HTML，
+方便像搜索引擎一样筛选政策，同时保留原文链接、本地快照和引用关系追溯。
 """
 
 from __future__ import annotations
@@ -21,6 +21,7 @@ RELATION_CSV = ROOT / "02_元数据" / "政策关联关系表.csv"
 OUTPUT_DIR = ROOT / "05_输出成果"
 INDEX_PATH = OUTPUT_DIR / "search_index.json"
 HTML_PATH = OUTPUT_DIR / "search.html"
+SNAPSHOT_DIR = OUTPUT_DIR / "网页快照"
 
 PROVINCE_ORDER = [
     "全国",
@@ -163,6 +164,16 @@ def read_text_file(row: dict[str, str], limit: int) -> tuple[str, str]:
     return "", text_path
 
 
+def snapshot_path(doc_id: str) -> str:
+    if not doc_id:
+        return ""
+    safe_doc_id = re.sub(r'[\\/:*?"<>|]+', "_", doc_id)
+    path = SNAPSHOT_DIR / f"{safe_doc_id}.html"
+    if not path.exists():
+        return ""
+    return path.relative_to(OUTPUT_DIR).as_posix()
+
+
 def text_snippet(text: str, limit: int = 220) -> str:
     compact = normalize_space(text)
     return compact[:limit] + ("..." if len(compact) > limit else "")
@@ -216,6 +227,7 @@ def build_index(text_limit: int) -> dict:
 
     for row in rows:
         full_text, text_path = read_text_file(row, limit=text_limit)
+        doc_id = row.get("资料编号", "")
         regions = split_values(row.get("适用地区", ""))
         provinces = derive_provinces(row, regions)
         topics = split_values(row.get("市场主题", ""))
@@ -235,7 +247,7 @@ def build_index(text_limit: int) -> dict:
 
         docs.append(
             {
-                "id": row.get("资料编号", ""),
+                "id": doc_id,
                 "title": row.get("文件标题", ""),
                 "department": row.get("发布部门", ""),
                 "collection_source": row.get("采集来源机构", ""),
@@ -254,6 +266,7 @@ def build_index(text_limit: int) -> dict:
                 "url": row.get("原文链接", ""),
                 "local_paths": row.get("本地文件路径", ""),
                 "text_path": text_path,
+                "snapshot_path": snapshot_path(doc_id),
                 "summary": row.get("摘要", ""),
                 "note": row.get("备注", ""),
                 "ingested_at": row.get("入库日期", ""),
@@ -761,8 +774,14 @@ def html_template(index: dict) -> str:
       return '';
     }}
 
-    // search.html 位于 05_输出成果，处理后文本在上一级目录下，所以这里生成相对链接。
-    function localTextHref(path) {{
+    // search.html 与网页快照都位于 05_输出成果 下；处理后文本则在上一级目录。
+    function outputHref(path) {{
+      if (!path) return '';
+      const normalized = String(path).replace(/\\\\/g, '/');
+      return encodeURI(normalized);
+    }}
+
+    function rootFileHref(path) {{
       if (!path) return '';
       const normalized = String(path).replace(/\\\\/g, '/');
       return encodeURI(`../${{normalized}}`);
@@ -811,7 +830,9 @@ def html_template(index: dict) -> str:
       const sourceTag = `<span class="tag">${{escapeHtml(doc.source_type || '来源未知')}}</span>`;
       const authTag = `<span class="tag authority-a">等级 ${{escapeHtml(doc.authority || '未标')}}</span>`;
       const statusTag = `<span class="tag ${{statusClass(doc.status)}}">${{escapeHtml(doc.status || '状态未知')}}</span>`;
-      const localText = doc.text_path ? `<a href="${{escapeHtml(localTextHref(doc.text_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.text_path)}}">本地文本</a>` : '';
+      const snapshotLink = doc.snapshot_path ? `<a href="${{escapeHtml(outputHref(doc.snapshot_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.snapshot_path)}}">网页快照</a>` : '';
+      const textFallback = !snapshotLink && doc.text_path ? `<a href="${{escapeHtml(rootFileHref(doc.text_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.text_path)}}">处理后文本</a>` : '';
+      const archiveLink = snapshotLink || textFallback;
       const note = doc.note ? `<span class="tag">${{escapeHtml(doc.note).slice(0, 60)}}</span>` : '';
       const sourceLine = [doc.department, doc.collection_source].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i).join(' / ') || '发布部门未知';
       const docNo = doc.document_number ? `<span class="mini-action">文号：${{escapeHtml(doc.document_number)}}</span>` : '';
@@ -834,7 +855,7 @@ def html_template(index: dict) -> str:
           ${{relationBlock}}
           <div class="links">
             <a href="${{escapeHtml(doc.url)}}" target="_blank" rel="noreferrer">原文链接</a>
-            ${{localText}}
+            ${{archiveLink}}
             ${{docNo}}
             <span class="mini-action">${{escapeHtml(sourceLine)}} · ${{escapeHtml(doc.publish_date || '日期未知')}}</span>
           </div>
