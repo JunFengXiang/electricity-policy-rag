@@ -22,6 +22,7 @@ OUTPUT_DIR = ROOT / "05_输出成果"
 INDEX_PATH = OUTPUT_DIR / "search_index.json"
 HTML_PATH = OUTPUT_DIR / "search.html"
 SNAPSHOT_DIR = OUTPUT_DIR / "网页快照"
+SNAPSHOT_MANIFEST = SNAPSHOT_DIR / "snapshot_manifest.json"
 
 PROVINCE_ORDER = [
     "全国",
@@ -174,6 +175,35 @@ def snapshot_path(doc_id: str) -> str:
     return path.relative_to(OUTPUT_DIR).as_posix()
 
 
+def read_snapshot_entries() -> dict[str, dict[str, str]]:
+    if not SNAPSHOT_MANIFEST.exists():
+        return {}
+    try:
+        data = json.loads(SNAPSHOT_MANIFEST.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    entries: dict[str, dict[str, str]] = {}
+    for entry in data.get("entries", []):
+        doc_id = entry.get("doc_id", "")
+        if doc_id:
+            entries[doc_id] = entry
+    return entries
+
+
+def snapshot_label(method: str) -> tuple[str, str]:
+    if method == "online_full_page":
+        return "官网长截图", "official"
+    if method.startswith("simulated_page"):
+        return "模拟截图", "simulated"
+    if method.startswith("local_html"):
+        return "本地长截图", "local"
+    if method.startswith("pdf_render"):
+        return "PDF截图", "pdf"
+    if method:
+        return "网页快照", "local"
+    return "", ""
+
+
 def text_snippet(text: str, limit: int = 220) -> str:
     compact = normalize_space(text)
     return compact[:limit] + ("..." if len(compact) > limit else "")
@@ -217,6 +247,7 @@ def relation_maps(valid_ids: set[str]) -> tuple[dict[str, list[dict]], dict[str,
 
 def build_index(text_limit: int) -> dict:
     rows = read_csv(LEDGER_CSV)
+    snapshot_entries = read_snapshot_entries()
     docs = []
     region_set: set[str] = set()
     province_set: set[str] = set()
@@ -234,6 +265,9 @@ def build_index(text_limit: int) -> dict:
         source_type = row.get("来源类型", "").strip()
         authority = row.get("权威等级", "").strip()
         status = row.get("有效状态", "").strip()
+        snapshot = snapshot_entries.get(doc_id, {})
+        snapshot_method = snapshot.get("method", "")
+        snapshot_text, snapshot_kind = snapshot_label(snapshot_method)
 
         region_set.update(regions)
         province_set.update(provinces)
@@ -267,6 +301,9 @@ def build_index(text_limit: int) -> dict:
                 "local_paths": row.get("本地文件路径", ""),
                 "text_path": text_path,
                 "snapshot_path": snapshot_path(doc_id),
+                "snapshot_method": snapshot_method,
+                "snapshot_label": snapshot_text,
+                "snapshot_kind": snapshot_kind,
                 "summary": row.get("摘要", ""),
                 "note": row.get("备注", ""),
                 "ingested_at": row.get("入库日期", ""),
@@ -477,6 +514,24 @@ def html_template(index: dict) -> str:
     .authority-a {{ color: var(--green); font-weight: 700; }}
     .status-warn {{ color: var(--amber); font-weight: 700; }}
     .status-bad {{ color: var(--red); font-weight: 700; }}
+    .snapshot-official {{
+      color: #0f766e;
+      border-color: #9ad5cb;
+      background: #ecfdf5;
+      font-weight: 700;
+    }}
+    .snapshot-simulated {{
+      color: #a16207;
+      border-color: #f3cf7a;
+      background: #fffbeb;
+      font-weight: 700;
+    }}
+    .snapshot-local, .snapshot-pdf {{
+      color: #1d4ed8;
+      border-color: #bfdbfe;
+      background: #eff6ff;
+      font-weight: 700;
+    }}
     .snippet {{
       color: #334155;
       margin: 8px 0 10px;
@@ -774,6 +829,14 @@ def html_template(index: dict) -> str:
       return '';
     }}
 
+    function snapshotClass(kind) {{
+      if (kind === 'official') return 'snapshot-official';
+      if (kind === 'simulated') return 'snapshot-simulated';
+      if (kind === 'pdf') return 'snapshot-pdf';
+      if (kind === 'local') return 'snapshot-local';
+      return '';
+    }}
+
     // search.html 与网页快照都位于 05_输出成果 下；处理后文本则在上一级目录。
     function outputHref(path) {{
       if (!path) return '';
@@ -830,9 +893,11 @@ def html_template(index: dict) -> str:
       const sourceTag = `<span class="tag">${{escapeHtml(doc.source_type || '来源未知')}}</span>`;
       const authTag = `<span class="tag authority-a">等级 ${{escapeHtml(doc.authority || '未标')}}</span>`;
       const statusTag = `<span class="tag ${{statusClass(doc.status)}}">${{escapeHtml(doc.status || '状态未知')}}</span>`;
-      const snapshotLink = doc.snapshot_path ? `<a href="${{escapeHtml(outputHref(doc.snapshot_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.snapshot_path)}}">网页快照</a>` : '';
+      const snapshotTitle = [doc.snapshot_path, doc.snapshot_label, doc.snapshot_method].filter(Boolean).join(' · ');
+      const snapshotLink = doc.snapshot_path ? `<a href="${{escapeHtml(outputHref(doc.snapshot_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(snapshotTitle)}}">网页快照</a>` : '';
       const textFallback = !snapshotLink && doc.text_path ? `<a href="${{escapeHtml(rootFileHref(doc.text_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.text_path)}}">处理后文本</a>` : '';
       const archiveLink = snapshotLink || textFallback;
+      const snapshotTag = doc.snapshot_label ? `<span class="tag ${{snapshotClass(doc.snapshot_kind)}}">快照：${{escapeHtml(doc.snapshot_label)}}</span>` : '';
       const note = doc.note ? `<span class="tag">${{escapeHtml(doc.note).slice(0, 60)}}</span>` : '';
       const sourceLine = [doc.department, doc.collection_source].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i).join(' / ') || '发布部门未知';
       const docNo = doc.document_number ? `<span class="mini-action">文号：${{escapeHtml(doc.document_number)}}</span>` : '';
@@ -849,7 +914,7 @@ def html_template(index: dict) -> str:
           </div>
           ${{hitDetail}}
           <div class="fields">
-            ${{provinceTags}}${{scopeTags}}${{topicTags}}${{sourceTag}}${{authTag}}${{statusTag}}${{note}}
+            ${{provinceTags}}${{scopeTags}}${{topicTags}}${{sourceTag}}${{authTag}}${{statusTag}}${{snapshotTag}}${{note}}
           </div>
           <div class="snippet">${{highlight(doc.snippet || doc.summary || doc.department || '', queryTerms)}}</div>
           ${{relationBlock}}
