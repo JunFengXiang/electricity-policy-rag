@@ -18,6 +18,8 @@ import os
 import re
 import shutil
 import urllib.parse
+import zipfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any
 
@@ -100,9 +102,31 @@ def read_text_preview(path: Path | None, limit: int) -> str:
     if not path:
         return ""
     try:
+        if path.suffix.lower() == ".docx":
+            return read_docx_preview(path, limit)
         return path.read_text(encoding="utf-8", errors="ignore")[:limit]
     except OSError:
         return ""
+
+
+def read_docx_preview(path: Path, limit: int) -> str:
+    try:
+        with zipfile.ZipFile(path) as archive:
+            xml_bytes = archive.read("word/document.xml")
+    except (OSError, KeyError, zipfile.BadZipFile):
+        return ""
+
+    root = ET.fromstring(xml_bytes)
+    namespace = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
+    paragraphs: list[str] = []
+    for paragraph in root.findall(".//w:p", namespace):
+        texts = [node.text or "" for node in paragraph.findall(".//w:t", namespace)]
+        line = "".join(texts).strip()
+        if line:
+            paragraphs.append(line)
+        if sum(len(item) for item in paragraphs) >= limit:
+            break
+    return "\n".join(paragraphs)[:limit]
 
 
 def doc_id_for(row: dict[str, str]) -> str:
@@ -336,6 +360,139 @@ def render_text_screenshot(
     for line in body_lines:
         draw.text((margin, y), line, fill="#1f2933", font=body_font)
         y += line_height
+
+    image.save(image_path, "JPEG", quality=args.quality, optimize=True)
+
+
+def site_label(row: dict[str, str]) -> tuple[str, str]:
+    source = row.get("采集来源机构", "") or row.get("发布部门", "") or "政策发布机构"
+    url = row.get("原文链接", "")
+    host = urllib.parse.urlparse(url).netloc if url else ""
+    if host:
+        return source, host
+    return source, "本地留存资料"
+
+
+def render_simulated_web_screenshot(
+    row: dict[str, str],
+    text_path: Path | None,
+    image_path: Path,
+    generated_at: str,
+    args: argparse.Namespace,
+    note: str = "",
+) -> None:
+    width = args.width
+    page_margin = 76
+    content_width = width - page_margin * 2
+    title_font = load_font(30, bold=True)
+    site_font = load_font(32, bold=True)
+    en_font = load_font(17)
+    nav_font = load_font(20)
+    meta_font = load_font(18)
+    body_font = load_font(20)
+    small_font = load_font(15)
+
+    scratch = Image.new("RGB", (width, 800), "#ffffff")
+    draw = ImageDraw.Draw(scratch)
+    title = row.get("文件标题", "") or "未命名政策"
+    body = read_text_preview(text_path, args.text_limit) or "未找到可渲染的网页/PDF，且处理后文本为空。"
+    source_name, host = site_label(row)
+    title_lines = wrap_text(draw, title, title_font, content_width - 120)
+    body_lines = wrap_text(draw, body, body_font, content_width - 130)
+    if len(body_lines) > args.text_max_lines:
+        body_lines = body_lines[: args.text_max_lines] + ["……"]
+
+    meta_parts = [
+        row.get("发布日期", "") or "发布日期缺失",
+        f"来源：{source_name}",
+    ]
+    doc_number = row.get("文号", "")
+    if doc_number:
+        meta_parts.append(f"文号：{doc_number}")
+    if note:
+        note_text = "【模拟快照说明】原网页无法自动截图，以下根据本地留存文本生成模拟网页快照。"
+        if "原始文件类型" in note:
+            note_text = "【模拟快照说明】原始文件暂不支持直接网页截图，以下根据本地留存文本生成模拟网页快照。"
+        body_lines = wrap_text(draw, note_text, meta_font, content_width - 130) + [""] + body_lines
+
+    header_height = 220
+    nav_height = 62
+    article_top = header_height + nav_height + 36
+    article_padding = 54
+    title_height = len(title_lines) * 42 + 44
+    meta_height = 48
+    body_height = len(body_lines) * 35 + 90
+    footer_height = 105
+    article_height = article_padding * 2 + title_height + meta_height + body_height
+    height = max(article_top + article_height + footer_height + 34, 920)
+
+    image = Image.new("RGB", (width, height), "#eef7ff")
+    draw = ImageDraw.Draw(image)
+
+    # Header band
+    draw.rectangle((0, 0, width, header_height), fill="#dff1ff")
+    draw.rectangle((0, 0, width, 48), fill="#f7fbff")
+    draw.text((page_margin, 17), "设为首页  |  工作邮箱", fill="#4d6478", font=small_font)
+    draw.rounded_rectangle((width - page_margin - 340, 13, width - page_margin, 43), radius=16, fill="#ffffff", outline="#d9e7f3")
+    draw.text((width - page_margin - 316, 19), "请输入关键字", fill="#9aa8b3", font=small_font)
+    draw.rounded_rectangle((width - page_margin - 82, 13, width - page_margin, 43), radius=16, fill="#1677d2")
+    draw.text((width - page_margin - 56, 18), "搜索", fill="#ffffff", font=small_font)
+
+    emblem_x, emblem_y = page_margin, 82
+    draw.ellipse((emblem_x, emblem_y, emblem_x + 76, emblem_y + 76), fill="#d71920", outline="#f5c542", width=5)
+    draw.text((emblem_x + 22, emblem_y + 21), "政", fill="#ffd56a", font=load_font(30, bold=True))
+    draw.text((emblem_x + 98, emblem_y + 2), source_name, fill="#c41414", font=site_font)
+    draw.text((emblem_x + 101, emblem_y + 44), host, fill="#2167a9", font=en_font)
+    draw.text((emblem_x + 101, emblem_y + 70), "模拟网页快照 · 原网页不可直接截图时生成", fill="#60758a", font=small_font)
+
+    # Navigation
+    nav_y = header_height
+    draw.rounded_rectangle((page_margin, nav_y, width - page_margin, nav_y + nav_height), radius=6, fill="#ffffff", outline="#dae5ef")
+    navs = ["首页", "机构概览", "动态要闻", "信息公开", "在线办事", "互动回应", "专题专栏"]
+    nav_w = (width - page_margin * 2) // len(navs)
+    for index, nav in enumerate(navs):
+        x0 = page_margin + index * nav_w
+        x1 = page_margin + (index + 1) * nav_w
+        if index == 3:
+            draw.rounded_rectangle((x0 + 2, nav_y + 2, x1 - 2, nav_y + nav_height - 2), radius=6, fill="#1769e0")
+            fill = "#ffffff"
+        else:
+            fill = "#334155"
+        bbox = draw.textbbox((0, 0), nav, font=nav_font)
+        draw.text((x0 + (nav_w - (bbox[2] - bbox[0])) / 2, nav_y + 19), nav, fill=fill, font=nav_font)
+
+    # Article card
+    x0, y0 = page_margin, article_top
+    x1 = width - page_margin
+    y1 = y0 + article_height
+    draw.rectangle((x0, y0, x1, y1), fill="#ffffff", outline="#e5edf5")
+    y = y0 + article_padding
+    for line in title_lines:
+        bbox = draw.textbbox((0, 0), line, font=title_font)
+        draw.text((x0 + (content_width - (bbox[2] - bbox[0])) / 2, y), line, fill="#0f172a", font=title_font)
+        y += 42
+    y += 12
+    meta_text = "    ".join(meta_parts)
+    bbox = draw.textbbox((0, 0), meta_text, font=meta_font)
+    draw.text((x0 + (content_width - (bbox[2] - bbox[0])) / 2, y), meta_text, fill="#475569", font=meta_font)
+    y += meta_height
+    draw.line((x0, y, x1, y), fill="#d7dee8", width=1)
+    y += 46
+    for line in body_lines:
+        if line.startswith("【模拟快照说明】"):
+            draw.text((x0 + 58, y), line, fill="#a33a00", font=meta_font)
+            y += 36
+            continue
+        draw.text((x0 + 58, y), line, fill="#111827", font=body_font)
+        y += 35
+
+    # Footer
+    footer_y = y1 + 28
+    draw.rectangle((0, footer_y, width, height), fill="#0969b6")
+    footer_text = f"截图生成：{generated_at}    资料编号：{row.get('资料编号', '-') or '-'}"
+    bbox = draw.textbbox((0, 0), footer_text, font=small_font)
+    draw.text(((width - (bbox[2] - bbox[0])) / 2, footer_y + 34), footer_text, fill="#ffffff", font=small_font)
+    draw.text((page_margin, footer_y + 66), "说明：此图为模拟网页快照，用于官网页面无法自动截图时保留可读证据入口。", fill="#dceeff", font=small_font)
 
     image.save(image_path, "JPEG", quality=args.quality, optimize=True)
 
@@ -594,9 +751,9 @@ def build_snapshots(args: argparse.Namespace) -> dict[str, Any]:
                     else:
                         note = "使用处理后文本生成截图"
                         if raw_path:
-                            note = f"原始文件类型 {suffix or '未知'} 暂不支持，使用处理后文本生成截图"
-                        render_text_screenshot(row, text_path, image_path, generated_at, args, note=note)
-                        method = "text_fallback"
+                            note = f"原始文件类型 {suffix or '未知'} 暂不支持，使用模拟网页快照兜底"
+                        render_simulated_web_screenshot(row, text_path or raw_path, image_path, generated_at, args, note=note)
+                        method = "simulated_page"
                         message = note
                 except Exception as exc:
                     errors.append(f"{method or 'online'} 截图失败：{exc}")
@@ -614,9 +771,9 @@ def build_snapshots(args: argparse.Namespace) -> dict[str, Any]:
                     except Exception as fallback_exc:
                         status = "fallback"
                         errors.append(f"本地文件截图失败：{fallback_exc}")
-                        message = "网页截图失败，已改用处理后文本：" + "；".join(errors)
-                        render_text_screenshot(row, text_path, image_path, generated_at, args, note=message)
-                        method = "text_fallback_after_error"
+                        message = "网页截图失败，已改用模拟网页快照：" + "；".join(errors)
+                        render_simulated_web_screenshot(row, text_path or raw_path, image_path, generated_at, args, note=message)
+                        method = "simulated_page_after_error"
 
             viewer_html = build_viewer_html(row, raw_path, text_path, image_path, viewer_path, generated_at, method, message)
             viewer_path.write_text(viewer_html, encoding="utf-8", newline="\n")
@@ -653,6 +810,27 @@ def build_snapshots(args: argparse.Namespace) -> dict[str, Any]:
         "stats": stats,
         "entries": entries,
     }
+    if args.update_existing_manifest and MANIFEST_PATH.exists():
+        existing = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        by_id = {entry.get("doc_id", ""): entry for entry in existing.get("entries", []) if entry.get("doc_id")}
+        order = [entry.get("doc_id", "") for entry in existing.get("entries", []) if entry.get("doc_id")]
+        for entry in entries:
+            doc_id = entry.get("doc_id", "")
+            by_id[doc_id] = entry
+            if doc_id not in order:
+                order.append(doc_id)
+        merged_entries = [by_id[doc_id] for doc_id in order if doc_id in by_id]
+        merged_stats: dict[str, int] = {}
+        for entry in merged_entries:
+            method = entry.get("method", "")
+            merged_stats[method] = merged_stats.get(method, 0) + 1
+        manifest = {
+            "mode": "screenshot",
+            "generated_at": generated_at,
+            "count": len(merged_entries),
+            "stats": merged_stats,
+            "entries": merged_entries,
+        }
     MANIFEST_PATH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     return manifest
 
@@ -679,6 +857,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--force", action="store_true", help="覆盖既有截图图片")
     parser.add_argument("--limit", type=int, default=0, help="只处理前 N 条，便于试跑")
     parser.add_argument("--only-id", default="", help="只处理指定资料编号")
+    parser.add_argument("--update-existing-manifest", action="store_true", help="只重建部分资料时合并更新既有快照清单")
     parser.add_argument("--no-browser", action="store_true", help="不使用浏览器，HTML 也转为文本截图")
     parser.add_argument("--offline-only", action="store_true", help="只截本地 HTML/PDF，不访问官网原文链接")
     parser.add_argument("--browser-channel", default="msedge", help="Playwright 浏览器 channel，默认使用本机 Edge")

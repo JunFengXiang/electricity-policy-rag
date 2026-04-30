@@ -1,10 +1,10 @@
 {
   "mode": "screenshot",
-  "generated_at": "2026-04-30 13:58:11",
+  "generated_at": "2026-04-30 14:22:53",
   "count": 254,
   "stats": {
-    "online_full_page": 252,
-    "text_fallback_after_error": 2
+    "online_full_page": 253,
+    "simulated_page_after_error": 1
   },
   "entries": [
     {
@@ -111,9 +111,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-E89DAD0775.jpg",
       "source_path": "01_原始资料/交易规则/2025-06-22_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-06-22_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "text_fallback_after_error",
-      "status": "fallback",
-      "message": "网页截图失败，已改用处理后文本：text_fallback 截图失败：Page.goto: net::ERR_CONNECTION_RESET at https://www.gzpec.cn/law/jygz/202506/t20250624_34712.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202506/t20250624_34712.html\", waiting until \"domcontentloaded\"\n；本地文件截图失败：Page.goto: Navigation to \"file:///D:/python%E4%BB%A3%E7%A0%81/%E7%94%B5%E5%8A%9B%E6%94%BF%E7%AD%96%E7%9F%A5%E8%AF%86%E5%BA%93/01_%E5%8E%9F%E5%A7%8B%E8%B5%84%E6%96%99/%E4%BA%A4%E6%98%93%E8%A7%84%E5%88%99/2025-06-22_%E5%8D%97%E6%96%B9%E5%8C%BA%E5%9F%9F_%E5%B9%BF%E5%B7%9E%E7%94%B5%E5%8A%9B%E4%BA%A4%E6%98%93%E4%B8%AD%E5%BF%83_%E5%B9%BF%E5%B7%9E%E7%94%B5%E5%8A%9B%E4%BA%A4%E6%98%93%E4%B8%AD%E5%BF%83.html\" is interrupted by another navigation to \"chrome-error://chromewebdata/\"\nCall log:\n  - navigating to \"file:///D:/python%E4%BB%A3%E7%A0%81/%E7%94%B5%E5%8A%9B%E6%94%BF%E7%AD%96%E7%9F%A5%E8%AF%86%E5%BA%93/01_%E5%8E%9F%E5%A7%8B%E8%B5%84%E6%96%99/%E4%BA%A4%E6%98%93%E8%A7%84%E5%88%99/2025-06-22_%E5%8D%97%E6%96%B9%E5%8C%BA%E5%9F%9F_%E5%B9%BF%E5%B7%9E%E7%94%B5%E5%8A%9B%E4%BA%A4%E6%98%93%E4%B8%AD%E5%BF%83_%E5%B9%BF%E5%B7%9E%E7%94%B5%E5%8A%9B%E4%BA%A4%E6%98%93%E4%B8%AD%E5%BF%83.html\", waiting until \"domcontentloaded\"\n"
+      "method": "online_full_page",
+      "status": "ok",
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260425-54244C417B",
@@ -315,9 +315,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-4ECBDBC2ED.jpg",
       "source_path": "01_原始资料/官方政策/天津_天津市发展和改革委员会_W020251022356486089649.docx",
       "text_path": "",
-      "method": "text_fallback_after_error",
+      "method": "simulated_page_after_error",
       "status": "fallback",
-      "message": "网页截图失败，已改用处理后文本：text_fallback 截图失败：Page.goto: Download is starting\nCall log:\n  - navigating to \"https://fzgg.tj.gov.cn/zwgk_47325/zcfg_47338/zcwjx/fgwj/202510/W020251022356486089649.docx\", waiting until \"domcontentloaded\"\n；本地文件截图失败：没有可用的本地 HTML/PDF 文件"
+      "message": "网页截图失败，已改用模拟网页快照：text_fallback 截图失败：Page.goto: Download is starting\nCall log:\n  - navigating to \"https://fzgg.tj.gov.cn/zwgk_47325/zcfg_47338/zcwjx/fgwj/202510/W020251022356486089649.docx\", waiting until \"domcontentloaded\"\n；本地文件截图失败：没有可用的本地 HTML/PDF 文件"
     },
     {
       "doc_id": "AUTO-20260425-53BB03C30D",
