@@ -23,6 +23,7 @@ INDEX_PATH = OUTPUT_DIR / "search_index.json"
 HTML_PATH = OUTPUT_DIR / "search.html"
 SNAPSHOT_DIR = OUTPUT_DIR / "网页快照"
 SNAPSHOT_MANIFEST = SNAPSHOT_DIR / "snapshot_manifest.json"
+PDF_ATTACHMENT_JSON = OUTPUT_DIR / "pdf_attachments.json"
 
 PROVINCE_ORDER = [
     "全国",
@@ -190,6 +191,61 @@ def read_snapshot_entries() -> dict[str, dict[str, str]]:
     return entries
 
 
+def read_pdf_attachments() -> dict[str, list[dict[str, str]]]:
+    if not PDF_ATTACHMENT_JSON.exists():
+        return {}
+    try:
+        data = json.loads(PDF_ATTACHMENT_JSON.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    attachments: dict[str, list[dict[str, str]]] = {}
+    for entry in data.get("entries", []):
+        doc_id = entry.get("资料编号", "")
+        path = entry.get("本地PDF路径", "")
+        if doc_id and path and (ROOT / path).exists():
+            attachments.setdefault(doc_id, []).append(
+                {
+                    "title": entry.get("附件标题", "") or "PDF附件",
+                    "path": path,
+                    "url": entry.get("附件URL", ""),
+                    "status": entry.get("下载状态", ""),
+                    "size": entry.get("文件大小", ""),
+                }
+            )
+    return attachments
+
+
+def local_pdf_attachments(row: dict[str, str]) -> list[dict[str, str]]:
+    attachments: list[dict[str, str]] = []
+    for item in row.get("本地文件路径", "").split(";"):
+        path = item.strip()
+        if path.lower().endswith(".pdf"):
+            attachments.append(
+                {
+                    "title": Path(path).name,
+                    "path": path,
+                    "url": row.get("原文链接", "") if row.get("原文链接", "").lower().endswith(".pdf") else "",
+                    "status": "local_pdf",
+                    "size": "",
+                }
+            )
+    return attachments
+
+
+def merge_pdf_attachments(row: dict[str, str], manifest_items: list[dict[str, str]]) -> list[dict[str, str]]:
+    merged: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for item in [*manifest_items, *local_pdf_attachments(row)]:
+        path = item.get("path", "").replace("\\", "/")
+        if not path or path in seen:
+            continue
+        seen.add(path)
+        item = dict(item)
+        item["path"] = path
+        merged.append(item)
+    return merged
+
+
 def snapshot_label(method: str) -> tuple[str, str]:
     if method == "online_full_page":
         return "官网长截图", "official"
@@ -248,6 +304,7 @@ def relation_maps(valid_ids: set[str]) -> tuple[dict[str, list[dict]], dict[str,
 def build_index(text_limit: int) -> dict:
     rows = read_csv(LEDGER_CSV)
     snapshot_entries = read_snapshot_entries()
+    pdf_attachment_entries = read_pdf_attachments()
     docs = []
     region_set: set[str] = set()
     province_set: set[str] = set()
@@ -268,6 +325,7 @@ def build_index(text_limit: int) -> dict:
         snapshot = snapshot_entries.get(doc_id, {})
         snapshot_method = snapshot.get("method", "")
         snapshot_text, snapshot_kind = snapshot_label(snapshot_method)
+        pdf_attachments = merge_pdf_attachments(row, pdf_attachment_entries.get(doc_id, []))
 
         region_set.update(regions)
         province_set.update(provinces)
@@ -304,6 +362,7 @@ def build_index(text_limit: int) -> dict:
                 "snapshot_method": snapshot_method,
                 "snapshot_label": snapshot_text,
                 "snapshot_kind": snapshot_kind,
+                "pdf_attachments": pdf_attachments,
                 "summary": row.get("摘要", ""),
                 "note": row.get("备注", ""),
                 "ingested_at": row.get("入库日期", ""),
@@ -770,6 +829,7 @@ def html_template(index: dict) -> str:
         regions: {{ label: '范围', value: (doc.regions || []).join(';'), weight: 3 }},
         department: {{ label: '发布部门', value: doc.department, weight: 4 }},
         collection_source: {{ label: '来源机构', value: doc.collection_source, weight: 4 }},
+        pdf_attachments: {{ label: 'PDF附件', value: (doc.pdf_attachments || []).map(item => item.title || item.path || '').join(';'), weight: 4 }},
         note: {{ label: '备注', value: doc.note, weight: 4 }},
         snippet: {{ label: '摘要', value: doc.snippet, weight: 3 }},
         text: {{ label: '正文', value: doc.text, weight: 1.2 }}
@@ -897,6 +957,12 @@ def html_template(index: dict) -> str:
       const snapshotLink = doc.snapshot_path ? `<a href="${{escapeHtml(outputHref(doc.snapshot_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(snapshotTitle)}}">网页快照</a>` : '';
       const textFallback = !snapshotLink && doc.text_path ? `<a href="${{escapeHtml(rootFileHref(doc.text_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.text_path)}}">处理后文本</a>` : '';
       const archiveLink = snapshotLink || textFallback;
+      const pdfLinks = (doc.pdf_attachments || []).map((item, idx) => {{
+        const label = (doc.pdf_attachments || []).length > 1 ? `PDF附件${{idx + 1}}` : 'PDF附件';
+        const title = [item.title, item.path, item.url].filter(Boolean).join(' · ');
+        const href = item.path ? rootFileHref(item.path) : item.url;
+        return href ? `<a href="${{escapeHtml(href)}}" target="_blank" rel="noreferrer" title="${{escapeHtml(title)}}">${{label}}</a>` : '';
+      }}).filter(Boolean).join('');
       const snapshotTag = doc.snapshot_label ? `<span class="tag ${{snapshotClass(doc.snapshot_kind)}}">快照：${{escapeHtml(doc.snapshot_label)}}</span>` : '';
       const note = doc.note ? `<span class="tag">${{escapeHtml(doc.note).slice(0, 60)}}</span>` : '';
       const sourceLine = [doc.department, doc.collection_source].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i).join(' / ') || '发布部门未知';
@@ -921,6 +987,7 @@ def html_template(index: dict) -> str:
           <div class="links">
             <a href="${{escapeHtml(doc.url)}}" target="_blank" rel="noreferrer">原文链接</a>
             ${{archiveLink}}
+            ${{pdfLinks}}
             ${{docNo}}
             <span class="mini-action">${{escapeHtml(sourceLine)}} · ${{escapeHtml(doc.publish_date || '日期未知')}}</span>
           </div>
