@@ -4,3 +4,4 @@ pymupdf
 rapidocr-onnxruntime
 scikit-learn
 scipy
+playwright
