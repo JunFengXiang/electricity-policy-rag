@@ -1,11 +1,10 @@
 {
   "mode": "screenshot",
-  "generated_at": "2026-04-30 13:38:32",
+  "generated_at": "2026-04-30 13:58:11",
   "count": 254,
   "stats": {
-    "online_full_page": 232,
-    "local_html_full_page_after_online_error": 21,
-    "text_fallback_after_error": 1
+    "online_full_page": 252,
+    "text_fallback_after_error": 2
   },
   "entries": [
     {
@@ -112,9 +111,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260424-E89DAD0775.jpg",
       "source_path": "01_原始资料/交易规则/2025-06-22_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-06-22_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
-      "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202506/t20250624_34712.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202506/t20250624_34712.html\", waiting until \"domcontentloaded\"\n"
+      "method": "text_fallback_after_error",
+      "status": "fallback",
+      "message": "网页截图失败，已改用处理后文本：text_fallback 截图失败：Page.goto: net::ERR_CONNECTION_RESET at https://www.gzpec.cn/law/jygz/202506/t20250624_34712.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202506/t20250624_34712.html\", waiting until \"domcontentloaded\"\n；本地文件截图失败：Page.goto: Navigation to \"file:///D:/python%E4%BB%A3%E7%A0%81/%E7%94%B5%E5%8A%9B%E6%94%BF%E7%AD%96%E7%9F%A5%E8%AF%86%E5%BA%93/01_%E5%8E%9F%E5%A7%8B%E8%B5%84%E6%96%99/%E4%BA%A4%E6%98%93%E8%A7%84%E5%88%99/2025-06-22_%E5%8D%97%E6%96%B9%E5%8C%BA%E5%9F%9F_%E5%B9%BF%E5%B7%9E%E7%94%B5%E5%8A%9B%E4%BA%A4%E6%98%93%E4%B8%AD%E5%BF%83_%E5%B9%BF%E5%B7%9E%E7%94%B5%E5%8A%9B%E4%BA%A4%E6%98%93%E4%B8%AD%E5%BF%83.html\" is interrupted by another navigation to \"chrome-error://chromewebdata/\"\nCall log:\n  - navigating to \"file:///D:/python%E4%BB%A3%E7%A0%81/%E7%94%B5%E5%8A%9B%E6%94%BF%E7%AD%96%E7%9F%A5%E8%AF%86%E5%BA%93/01_%E5%8E%9F%E5%A7%8B%E8%B5%84%E6%96%99/%E4%BA%A4%E6%98%93%E8%A7%84%E5%88%99/2025-06-22_%E5%8D%97%E6%96%B9%E5%8C%BA%E5%9F%9F_%E5%B9%BF%E5%B7%9E%E7%94%B5%E5%8A%9B%E4%BA%A4%E6%98%93%E4%B8%AD%E5%BF%83_%E5%B9%BF%E5%B7%9E%E7%94%B5%E5%8A%9B%E4%BA%A4%E6%98%93%E4%B8%AD%E5%BF%83.html\", waiting until \"domcontentloaded\"\n"
     },
     {
       "doc_id": "AUTO-20260425-54244C417B",
@@ -268,9 +267,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-E98D78E2BB.jpg",
       "source_path": "01_原始资料/交易规则/2025-05-16_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-05-16_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34495.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34495.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260425-B21BF48126",
@@ -280,9 +279,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-B21BF48126.jpg",
       "source_path": "01_原始资料/交易规则/2025-03-24_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-03-24_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34492.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34492.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260425-F965FCA4C5",
@@ -292,9 +291,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-F965FCA4C5.jpg",
       "source_path": "01_原始资料/交易规则/2025-04-28_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-04-28_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34491.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34491.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260425-8808868383",
@@ -304,9 +303,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-8808868383.jpg",
       "source_path": "01_原始资料/交易规则/2025-04-05_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-04-05_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34490.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34490.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260425-4ECBDBC2ED",
@@ -328,9 +327,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-53BB03C30D.jpg",
       "source_path": "01_原始资料/交易规则/2025-04-24_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2025-04-24_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202504/t20250424_34448.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202504/t20250424_34448.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260425-921C75C18D",
@@ -400,9 +399,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-02AD665464.jpg",
       "source_path": "01_原始资料/交易规则/2024-11-14_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-11-14_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34019.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34019.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260425-8469367611",
@@ -448,9 +447,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260425-19A93F32F1.jpg",
       "source_path": "01_原始资料/交易规则/2024-12-09_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-12-09_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34021.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34021.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260425-3CC677DBE5",
@@ -1204,9 +1203,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-FBC65BBD1E.jpg",
       "source_path": "01_原始资料/交易规则/2024-11-02_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-11-02_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34020.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34020.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-D81BDF16D0",
@@ -1216,9 +1215,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-D81BDF16D0.jpg",
       "source_path": "01_原始资料/交易规则/2024-04-28_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-04-28_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34494.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34494.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-780DD684D9",
@@ -1228,9 +1227,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-780DD684D9.jpg",
       "source_path": "01_原始资料/交易规则/2024-04-25_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-04-25_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34096.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34096.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-AF700450D9",
@@ -1240,9 +1239,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-AF700450D9.jpg",
       "source_path": "01_原始资料/交易规则/2024-09-13_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-09-13_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34100.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34100.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-5DD9FFE71E",
@@ -1252,9 +1251,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-5DD9FFE71E.jpg",
       "source_path": "01_原始资料/交易规则/2024-07-24_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-07-24_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34102.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34102.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-344B99BC3D",
@@ -1300,9 +1299,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-CA2DDC4243.jpg",
       "source_path": "01_原始资料/交易规则/2024-05-10_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-05-10_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34017.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34017.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-E24F3D75D9",
@@ -1312,9 +1311,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-E24F3D75D9.jpg",
       "source_path": "01_原始资料/交易规则/2020-06-14_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2020-06-14_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202505/t20250516_34493.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202505/t20250516_34493.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-890E791E0D",
@@ -1324,9 +1323,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-890E791E0D.jpg",
       "source_path": "01_原始资料/交易规则/2024-08-26_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-08-26_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34101.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34101.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-EE6D85F7E0",
@@ -1336,9 +1335,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-EE6D85F7E0.jpg",
       "source_path": "01_原始资料/交易规则/2023-09-10_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2023-09-10_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34120.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34120.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-6620523786",
@@ -1372,9 +1371,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-7F4BF875A3.jpg",
       "source_path": "01_原始资料/官方政策/2025-12-30_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.html",
       "text_path": "03_处理后文本/2025-12-30_内蒙古自治区_内蒙古自治区能源局_通知公告__内蒙古自治区能源局.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://nyj.nmg.gov.cn/slh/tz/202512/t20251230_2843227.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-543BC9B2A3",
@@ -1528,9 +1527,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F3E6DA37CB.jpg",
       "source_path": "01_原始资料/交易规则/2024-04-08_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-04-08_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34119.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34119.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-ED23AB24F7",
@@ -1540,9 +1539,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-ED23AB24F7.jpg",
       "source_path": "01_原始资料/交易规则/2022-01-28_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2022-01-28_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250226_34121.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250226_34121.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-F33CEF16E8",
@@ -1552,9 +1551,9 @@
       "snapshot_image_path": "05_输出成果/网页快照/images/AUTO-20260427-F33CEF16E8.jpg",
       "source_path": "01_原始资料/交易规则/2024-11-02_南方区域_广州电力交易中心_广州电力交易中心.html",
       "text_path": "03_处理后文本/2024-11-02_南方区域_广州电力交易中心_广州电力交易中心.txt",
-      "method": "local_html_full_page_after_online_error",
+      "method": "online_full_page",
       "status": "ok",
-      "message": "官网截图失败，已回退到本地 HTML 截图：text_fallback 截图失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.gzpec.cn/law/jygz/202502/t20250214_34022.html\nCall log:\n  - navigating to \"https://www.gzpec.cn/law/jygz/202502/t20250214_34022.html\", waiting until \"domcontentloaded\"\n"
+      "message": ""
     },
     {
       "doc_id": "AUTO-20260427-CDA7AFEC1D",

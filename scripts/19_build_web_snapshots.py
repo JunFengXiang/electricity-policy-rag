@@ -547,6 +547,7 @@ def build_snapshots(args: argparse.Namespace) -> dict[str, Any]:
         browser_manager, browser = launch_browser(args.browser_channel, args.browser_executable)
         context = browser.new_context(
             device_scale_factor=args.device_scale_factor,
+            ignore_https_errors=True,
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
