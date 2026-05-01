@@ -16,6 +16,12 @@ import re
 import sys
 from pathlib import Path
 
+from domain_terms import (
+    DEFAULT_CANDIDATE_KEYWORDS,
+    HIGH_VALUE_TERMS,
+    POWER_RELEVANCE_TERMS,
+    is_official_interpretation,
+)
 from log_action import append_log
 
 
@@ -46,40 +52,7 @@ OUTPUT_FIELDS = [
     "来源列表页",
 ]
 
-BROAD_KEYWORDS = [
-    "电力市场",
-    "电力交易",
-    "交易规则",
-    "规则体系",
-    "实施细则",
-    "运营规则",
-    "市场监管",
-    "市场化交易",
-    "年度交易",
-    "月度交易",
-    "中长期",
-    "现货",
-    "辅助服务",
-    "调峰",
-    "调频",
-    "备用",
-    "省内",
-    "省间",
-    "跨省",
-    "跨区",
-    "电能量",
-    "容量电价",
-    "机制电价",
-    "上网电价",
-    "计量结算",
-    "结算",
-    "绿电",
-    "绿证",
-    "源网荷储",
-    "新型储能",
-    "新能源上网",
-    "注册",
-]
+BROAD_KEYWORDS = DEFAULT_CANDIDATE_KEYWORDS
 
 NEGATIVE_TITLE_TERMS = [
     "节能报告",
@@ -107,46 +80,6 @@ NEGATIVE_TITLE_TERMS = [
     "数据清单",
     "结算数据清单",
 ]
-
-HIGH_VALUE_TERMS = [
-    "规则",
-    "细则",
-    "办法",
-    "通知",
-    "实施方案",
-    "市场",
-    "交易",
-    "现货",
-    "中长期",
-    "辅助服务",
-    "省间",
-    "跨省",
-    "容量电价",
-    "绿电",
-    "结算",
-]
-
-POWER_RELEVANCE_TERMS = [
-    "电力",
-    "电价",
-    "发电",
-    "电网",
-    "电能量",
-    "新能源",
-    "储能",
-    "绿电",
-    "绿证",
-    "辅助服务",
-    "调峰",
-    "调频",
-    "容量",
-    "需求响应",
-    "源网荷储",
-    "售电",
-    "购电",
-    "用电",
-]
-
 
 def load_collector():
     """动态加载候选发现脚本，避免复制一份 HTML/JSON 解析逻辑。"""
@@ -222,6 +155,8 @@ def quality_score(row: dict[str, str]) -> int:
     score += min(25, sum(4 for term in HIGH_VALUE_TERMS if term in title))
     if "征求意见" in title or "公开征求" in title:
         score -= 8
+    if is_official_interpretation(title, source_name):
+        score -= 5
     if any(term in title for term in NEGATIVE_TITLE_TERMS):
         score -= 35
 

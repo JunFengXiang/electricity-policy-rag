@@ -21,6 +21,7 @@ import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
 
+from domain_terms import DEFAULT_CANDIDATE_KEYWORDS
 from log_action import append_log
 
 
@@ -29,22 +30,7 @@ OUTPUT_DIR = ROOT / "05_输出成果"
 SOURCE_CSV = ROOT / "02_元数据" / "来源清单.csv"
 
 # 默认关键词只用于“候选发现”，不是最终分类依据；最终主题仍由后续清洗脚本确认。
-DEFAULT_KEYWORDS = [
-    "电力市场",
-    "交易规则",
-    "中长期",
-    "现货",
-    "辅助服务",
-    "省内",
-    "省间",
-    "容量电价",
-    "计量结算",
-    "结算",
-    "绿电",
-    "源网荷储",
-    "新能源",
-    "获得电力",
-]
+DEFAULT_KEYWORDS = DEFAULT_CANDIDATE_KEYWORDS
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -81,9 +67,6 @@ NAV_TITLES = {
 }
 
 COMMON_TITLE_SKIP = [
-    "答记者问",
-    "一图读懂",
-    "专家解读",
     "新闻发言人",
     "媒体解读",
     "媒体聚焦",

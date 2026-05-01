@@ -470,7 +470,7 @@ def html_template(index: dict) -> str:
       gap: 10px;
       margin-bottom: 12px;
     }}
-    input, select, button {{
+    input, select, button, textarea {{
       width: 100%;
       border: 1px solid var(--line);
       background: #fff;
@@ -479,6 +479,11 @@ def html_template(index: dict) -> str:
       min-height: 38px;
       padding: 8px 10px;
       font: inherit;
+    }}
+    textarea {{
+      min-height: 92px;
+      resize: vertical;
+      line-height: 1.5;
     }}
     button {{
       background: var(--blue);
@@ -510,6 +515,34 @@ def html_template(index: dict) -> str:
       padding: 0 0 10px;
       margin-bottom: 12px;
       color: var(--muted);
+    }}
+    .qa-panel {{
+      background: #f8fbff;
+      border: 1px solid #dbe8ff;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }}
+    .qa-actions {{
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      margin-top: 8px;
+    }}
+    .qa-status {{
+      color: var(--muted);
+      font-size: 12px;
+    }}
+    .qa-answer {{
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-top: 10px;
+      padding: 10px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      display: none;
     }}
     .results {{
       display: grid;
@@ -665,6 +698,9 @@ def html_template(index: dict) -> str:
       .toolbar {{
         grid-template-columns: 1fr;
       }}
+      .qa-actions {{
+        grid-template-columns: 1fr;
+      }}
     }}
   </style>
 </head>
@@ -707,6 +743,15 @@ def html_template(index: dict) -> str:
         </select>
         <button id="searchBtn" type="button">搜索</button>
       </div>
+      <div class="qa-panel">
+        <label for="qaInput">问答</label>
+        <textarea id="qaInput" placeholder="输入政策问题，例如：高质量发展相关电力政策有哪些？"></textarea>
+        <div class="qa-actions">
+          <button id="askBtn" type="button">问答</button>
+          <span class="qa-status" id="qaStatus">本地问答服务默认地址：http://127.0.0.1:8000</span>
+        </div>
+        <div class="qa-answer" id="qaAnswer"></div>
+      </div>
       <div class="counts">
         <span id="resultCount">0 条结果</span>
         <span id="activeHint"></span>
@@ -731,7 +776,11 @@ def html_template(index: dict) -> str:
       count: document.getElementById('resultCount'),
       hint: document.getElementById('activeHint'),
       search: document.getElementById('searchBtn'),
-      reset: document.getElementById('resetBtn')
+      reset: document.getElementById('resetBtn'),
+      qaInput: document.getElementById('qaInput'),
+      ask: document.getElementById('askBtn'),
+      qaStatus: document.getElementById('qaStatus'),
+      qaAnswer: document.getElementById('qaAnswer')
     }};
 
     function fillSelect(select, values, label) {{
@@ -883,6 +932,54 @@ def html_template(index: dict) -> str:
       return String(value || '').replace(/[&<>"']/g, ch => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[ch]));
     }}
 
+    function renderQaPayload(payload) {{
+      const lines = [];
+      lines.push(payload.answer || '未返回答案');
+      if (payload.citations && payload.citations.length) {{
+        lines.push('', '引用来源：');
+        payload.citations.slice(0, 8).forEach(item => {{
+          const docNo = item.document_number ? `，${{item.document_number}}` : '';
+          lines.push(`[${{item.rank}}] ${{item.title}}（${{item.department || '机构未知'}}，${{item.publish_date || '日期未知'}}${{docNo}}）`);
+          if (item.url) lines.push(`    ${{item.url}}`);
+        }});
+      }}
+      if (payload.warnings && payload.warnings.length) {{
+        lines.push('', `提示：${{payload.warnings.join('；')}}`);
+      }}
+      return lines.join('\\n');
+    }}
+
+    async function askQuestion() {{
+      const query = els.qaInput.value.trim() || els.query.value.trim();
+      if (!query) {{
+        els.qaStatus.textContent = '请先输入问题';
+        return;
+      }}
+      els.qaStatus.textContent = '正在检索并生成回答...';
+      els.qaAnswer.style.display = 'block';
+      els.qaAnswer.textContent = '';
+      try {{
+        const response = await fetch('http://127.0.0.1:8000/api/ask', {{
+          method: 'POST',
+          headers: {{ 'Content-Type': 'application/json' }},
+          body: JSON.stringify({{
+            query,
+            region: els.province.value,
+            source_type: els.source.value,
+            official_only: true,
+            top_k: 8
+          }})
+        }});
+        if (!response.ok) throw new Error(`HTTP ${{response.status}}`);
+        const payload = await response.json();
+        els.qaAnswer.textContent = renderQaPayload(payload);
+        els.qaStatus.textContent = payload.warnings && payload.warnings.length ? '已返回检索草稿或降级答案' : '已返回问答结果';
+      }} catch (error) {{
+        els.qaAnswer.textContent = `无法连接本地问答服务。请先运行：python scripts/22_qa_service.py\\n错误：${{error}}`;
+        els.qaStatus.textContent = '本地问答服务不可用';
+      }}
+    }}
+
     function statusClass(value) {{
       if ((value || '').includes('征求')) return 'status-warn';
       if ((value || '').includes('废止')) return 'status-bad';
@@ -1018,6 +1115,7 @@ def html_template(index: dict) -> str:
 
     [els.province, els.topic, els.source, els.authority, els.status, els.sort].forEach(el => el.addEventListener('change', render));
     els.search.addEventListener('click', render);
+    els.ask.addEventListener('click', askQuestion);
     els.query.addEventListener('input', () => render());
     els.query.addEventListener('keydown', event => {{
       if (event.key === 'Enter') render();

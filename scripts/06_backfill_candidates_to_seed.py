@@ -10,6 +10,8 @@ import argparse
 import csv
 from pathlib import Path
 
+from domain_terms import infer_topics_from_text, is_official_interpretation
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SEED_CSV = ROOT / "02_元数据" / "待采集链接.csv"
@@ -58,6 +60,9 @@ def infer_source_type(row: dict[str, str]) -> str:
     """根据来源栏目和标题粗判来源类型，后续仍可在台账中人工修正。"""
     source_level = row.get("来源层级", "")
     source_name = row.get("来源栏目", "")
+    title = row.get("文件标题", "")
+    if is_official_interpretation(title, source_name):
+        return "官方解读"
     if "交易" in source_level or "交易中心" in source_name:
         return "交易规则"
     if "监管" in source_level or "监管" in source_name:
@@ -67,6 +72,8 @@ def infer_source_type(row: dict[str, str]) -> str:
 
 def infer_authority(row: dict[str, str], source_type: str) -> str:
     source_level = row.get("来源层级", "")
+    if source_type == "官方解读":
+        return "C"
     if "国家级" in source_level or source_type == "官方政策":
         return "A"
     if source_type in {"监管规则", "交易规则"}:
@@ -75,6 +82,8 @@ def infer_authority(row: dict[str, str], source_type: str) -> str:
 
 
 def infer_time_type(title: str, source_type: str) -> str:
+    if source_type == "官方解读":
+        return "中期参考型"
     if "征求意见" in title or "公开征求" in title:
         return "中期参考型"
     if source_type in {"监管规则", "交易规则"}:
@@ -91,26 +100,7 @@ def infer_status(title: str) -> str:
 
 
 def infer_topics(title: str, hits: str) -> str:
-    text = f"{title};{hits}"
-    topics: list[str] = []
-    rules = [
-        ("电力市场", ["电力市场", "市场规则", "市场监管"]),
-        ("中长期", ["中长期"]),
-        ("现货", ["现货"]),
-        ("辅助服务", ["辅助服务"]),
-        ("省间交易", ["省间"]),
-        ("省内交易", ["省内"]),
-        ("绿电", ["绿电", "绿证"]),
-        ("容量电价", ["容量电价"]),
-        ("需求响应", ["需求响应"]),
-        ("储能", ["储能"]),
-        ("新能源", ["新能源"]),
-        ("计量结算", ["计量结算", "结算"]),
-    ]
-    for topic, keys in rules:
-        if any(key in text for key in keys):
-            topics.append(topic)
-    return ";".join(topics or ["电力市场"])
+    return infer_topics_from_text(title, hits)
 
 
 def candidate_to_seed(row: dict[str, str]) -> dict[str, str]:
@@ -129,7 +119,7 @@ def candidate_to_seed(row: dict[str, str]) -> dict[str, str]:
         "权威等级": infer_authority(row, source_type),
         "时间敏感类型": infer_time_type(title, source_type),
         "有效状态": infer_status(title),
-        "是否原文": "是",
+        "是否原文": "否" if source_type == "官方解读" else "是",
         "备注": title,
     }
 

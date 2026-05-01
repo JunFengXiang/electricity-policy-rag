@@ -16,6 +16,7 @@
 - Git remote：`https://github.com/JunFengXiang/electricity-policy-rag.git`
 - 依赖文件：`requirements.txt`
 - 当前重要提交：
+  - `1c59597 Add agent handoff guide`：扩库前基线，远端 tag `baseline-20260501`
   - `0dc262e Add PDF attachment entries to search`
   - `373047c Show snapshot type in search results`
   - `886f140 Add simulated page fallback for snapshots`
@@ -23,25 +24,30 @@
 
 ## 当前数据状态
 
-截至 2026-05-01：
+截至 2026-05-02：
 
-- 台账资料：254 条
+- 基线 tag：`baseline-20260501`，指向扩库前提交 `1c59597`
+- 台账资料：321 条
+- 知识切片：39710 条
+- RAG 索引特征数：80000
 - 网页快照：254 个
   - 官网长截图：253 个
   - 模拟截图：1 个
-- PDF 附件入口：253 个
-- 有 PDF 附件的资料：173 条
+- PDF 附件入口：313 个
+- PDF 附件下载失败：1 个，见 `05_输出成果/pdf_attachments.json`
 - 搜索页：`05_输出成果/search.html`
 - 搜索索引：`05_输出成果/search_index.json`
 - PDF 附件清单：`02_元数据/PDF附件清单.csv`
 - PDF 附件索引：`05_输出成果/pdf_attachments.json`
 - 网页快照清单：`05_输出成果/网页快照/snapshot_manifest.json`
+- 15天更新报告：`06_实验日志/更新报告_20260502.md`
 
 ## 目录说明
 
 - `00_说明`：项目说明文档。
 - `01_原始资料`：下载的网页、PDF、DOCX 等原始文件。
 - `01_原始资料/PDF附件`：从网页正文中发现并下载的 PDF 附件。
+- `01_原始资料/解读资料`：官方解读、公众号/媒体解读等辅助解释资料；第三方资料先进入人工复核，不直接进入主问答索引。
 - `02_元数据`：核心 CSV 台账、来源清单、规则清单、关联关系、附件清单。
 - `03_处理后文本`：从 HTML/PDF/DOCX 提取出的文本。
 - `04_标签与权重`：标签、权重相关资料。
@@ -143,6 +149,18 @@ RAG 查询：
 D:\miniconda\envs\py311\python.exe scripts\18_rag_query.py "四川电力辅助服务市场交易实施细则有哪些主要依据"
 ```
 
+15天自动更新周期：
+
+```powershell
+D:\miniconda\envs\py311\python.exe scripts\21_run_update_cycle.py --full-auto --strict-gate --target-count 600 --pages 25 --timeout 20 --delay 0.5 --min-score 55 --skip-snapshots --skip-ocr
+```
+
+本地问答 API：
+
+```powershell
+D:\miniconda\envs\py311\python.exe scripts\22_qa_service.py
+```
+
 ## 主要脚本速查
 
 - `01_fetch_seed_urls.py`：按 `02_元数据/待采集链接.csv` 定点采集入库。
@@ -165,6 +183,10 @@ D:\miniconda\envs\py311\python.exe scripts\18_rag_query.py "四川电力辅助�
 - `18_rag_query.py`：RAG 问答。
 - `19_build_web_snapshots.py`：生成截图式网页快照。
 - `20_download_pdf_attachments.py`：发现并下载网页中的 PDF 附件。
+- `21_run_update_cycle.py`：15天全链路更新周期，输出更新报告。
+- `22_qa_service.py`：FastAPI 本地问答服务，提供 `/api/health` 和 `/api/ask`。
+- `domain_terms.py`：统一主题词、候选关键词、RAG 已知词和主题推断规则。
+- `llm_client.py`：OpenAI-compatible 大模型接口适配层。
 - `log_action.py`：写实验日志。
 
 ## 标准流水线
@@ -179,8 +201,10 @@ D:\miniconda\envs\py311\python.exe scripts\18_rag_query.py "四川电力辅助�
 8. 生成网页快照：运行 `19_build_web_snapshots.py`。
 9. 生成搜索页：运行 `09_build_search_page.py`。
 10. 生成知识切片和 RAG 索引：运行 `16_build_knowledge_chunks.py`、`17_build_rag_index.py`。
-11. 验证：运行 `compileall`、`07_search.py --self-check-only`，必要时做 RAG 查询。
+11. 验证：运行 `compileall`、`07_search.py --self-check-only`、`18_rag_query.py --self-check`，必要时做 RAG 查询。
 12. 记录日志并提交推送。
+
+自动化场景优先运行 `21_run_update_cycle.py`，它会串联候选发现、严格分流、入库、附件、文本抽取、切片、索引、搜索页和自检，并生成 `06_实验日志/更新报告_YYYYMMDD.md`。
 
 ## 搜索页现状
 
@@ -204,11 +228,11 @@ D:\miniconda\envs\py311\python.exe scripts\18_rag_query.py "四川电力辅助�
 
 建议下一步优先做：
 
-1. 对新下载的 PDF 附件批量抽文本/OCR，并纳入全文检索和 RAG。
-2. 增加搜索页筛选：只看有 PDF 附件、只看官网长截图、只看模拟截图。
-3. 做 PDF 附件质检表：检查重复附件、纯图片 PDF、未抽文本 PDF、标题过短附件。
-4. 扩大来源和政策爬取量，但仍按来源清单控制范围，不要乱爬。
-5. 后续再考虑公众号、财经新闻、咨询机构解读资料入库；这类资料要和官方政策分层标识。
+1. 继续扩源并把台账稳定扩到 500-600 条；低分、重复、状态不明资料留在候选池或人工复核队列。
+2. 对剩余 PDF 附件失败项做人工核验，确认是否为历史坏链或需替换来源。
+3. 接入真实 `LLM_API_KEY` 后，用 `22_qa_service.py` 做问答验收。
+4. 公众号、财经新闻、咨询机构解读资料只放辅助层，需和官方政策分层标识，默认不进入主问答索引。
+5. 增加搜索页筛选：只看有 PDF 附件、只看官网长截图、只看模拟截图。
 
 ## Git 提交流程
 
@@ -227,4 +251,3 @@ git push origin main
 - 单个文件不要超过 GitHub 100MB 限制。
 - PDF、截图这类大文件会显著增加仓库体积，提交前先看大小。
 - 如果只是 dry-run 产物，不要提交。
-

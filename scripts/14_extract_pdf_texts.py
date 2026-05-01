@@ -1,7 +1,8 @@
-"""为 PDF 原始资料提取或 OCR 处理后文本。
+"""为 PDF/DOCX 原始资料和附件提取或 OCR 处理后文本。
 
-脚本优先使用 PDF 内置文本；如果文本为空或质量不足，再尝试 OCR，最后把生成的 txt
-路径回填到政策台账的本地文件路径中。
+脚本会逐条扫描台账中的 PDF/DOCX 路径。PDF 优先读取内嵌文本；如果文本为空或
+质量不足，可选择 OCR。DOCX 直接读取正文。生成的 txt 路径会回填到政策台账的
+本地文件路径中，让网页正文、PDF 附件和 DOCX 都能进入后续切片。
 """
 
 from __future__ import annotations
@@ -10,7 +11,9 @@ import csv
 import datetime as dt
 import re
 import shutil
+import zipfile
 from pathlib import Path
+import xml.etree.ElementTree as ET
 
 from pypdf import PdfReader
 
@@ -21,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LEDGER_CSV = ROOT / "02_元数据" / "政策资料台账.csv"
 TEXT_ROOT = ROOT / "03_处理后文本"
 BACKUP_DIR = ROOT / "02_元数据" / "备份"
+DOCUMENT_SUFFIXES = {".pdf", ".docx"}
 
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -48,17 +52,13 @@ def split_paths(value: str) -> list[str]:
     return [item.strip() for item in (value or "").split(";") if item.strip()]
 
 
-def pdf_path(row: dict[str, str]) -> Path | None:
+def document_paths(row: dict[str, str]) -> list[Path]:
+    paths: list[Path] = []
     for item in split_paths(row.get("本地文件路径", "")):
-        if item.lower().endswith(".pdf"):
-            path = ROOT / item
-            if path.exists():
-                return path
-    return None
-
-
-def has_text_path(row: dict[str, str]) -> bool:
-    return any(item.lower().endswith(".txt") for item in split_paths(row.get("本地文件路径", "")))
+        path = ROOT / item
+        if path.exists() and path.suffix.lower() in DOCUMENT_SUFFIXES:
+            paths.append(path)
+    return paths
 
 
 def has_path(row: dict[str, str], rel_path: str) -> bool:
@@ -66,7 +66,7 @@ def has_path(row: dict[str, str], rel_path: str) -> bool:
     return any(item.replace("/", "\\") == normalized for item in split_paths(row.get("本地文件路径", "")))
 
 
-def existing_text_for_pdf(path: Path) -> Path | None:
+def existing_text_for_document(path: Path) -> Path | None:
     for suffix in [".ocr.txt", ".txt"]:
         text_path = TEXT_ROOT / f"{path.stem}{suffix}"
         if text_path.exists() and text_path.stat().st_size > 0:
@@ -119,6 +119,33 @@ def ocr_pdf_text(path: Path, dpi: int = 160, max_pages: int | None = None) -> tu
     return "\n\n".join(parts), page_count
 
 
+def extract_docx_text(path: Path) -> str:
+    """Extract paragraph text from a DOCX without adding another runtime dependency."""
+    try:
+        with zipfile.ZipFile(path) as archive:
+            xml_bytes = archive.read("word/document.xml")
+    except (KeyError, OSError, zipfile.BadZipFile):
+        return ""
+
+    try:
+        root = ET.fromstring(xml_bytes)
+    except ET.ParseError:
+        return ""
+
+    namespace = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
+    paragraphs: list[str] = []
+    for paragraph in root.findall(".//w:p", namespace):
+        parts = [node.text or "" for node in paragraph.findall(".//w:t", namespace)]
+        text = "".join(parts).strip()
+        if text:
+            paragraphs.append(text)
+    return "\n".join(paragraphs)
+
+
+def clean_text_for_write(text: str) -> str:
+    return text.encode("utf-8", errors="ignore").decode("utf-8")
+
+
 def infer_title(text: str) -> str:
     compact = re.sub(r"\s+", "", text or "")
     patterns = [
@@ -141,16 +168,17 @@ def append_note(row: dict[str, str], note: str) -> None:
 
 
 def main() -> int:
-    """遍历台账中的 PDF，必要时生成 txt 并把路径写回本地文件路径字段。"""
+    """遍历台账中的 PDF/DOCX，必要时生成 txt 并把路径写回本地文件路径字段。"""
     import argparse
 
-    parser = argparse.ArgumentParser(description="Extract text from local PDF files and optionally OCR scanned PDFs.")
+    parser = argparse.ArgumentParser(description="Extract text from local PDF/DOCX files and optionally OCR scanned PDFs.")
     parser.add_argument("--ocr", action="store_true", help="Run OCR when embedded PDF text is missing or too short.")
     parser.add_argument("--force-ocr", action="store_true", help="Run OCR even when a text path already exists.")
     parser.add_argument("--max-pages", type=int, default=0, help="Limit pages per PDF for testing. 0 means all pages.")
     parser.add_argument("--ocr-dpi", type=int, default=160, help="OCR render DPI.")
     parser.add_argument("--min-text-chars", type=int, default=120, help="OCR threshold for embedded text length.")
     parser.add_argument("--sync-existing", action="store_true", help="Only attach existing .txt/.ocr.txt files to ledger.")
+    parser.add_argument("--only-id", default="", help="Only process one 资料编号.")
     args = parser.parse_args()
 
     rows = read_rows(LEDGER_CSV)
@@ -158,6 +186,7 @@ def main() -> int:
     TEXT_ROOT.mkdir(parents=True, exist_ok=True)
 
     extracted = 0
+    docx_extracted = 0
     ocr_extracted = 0
     ocr_pages = 0
     title_fixed = 0
@@ -165,74 +194,78 @@ def main() -> int:
     max_pages = args.max_pages or None
 
     for row in rows:
-        path = pdf_path(row)
-        if not path:
+        if args.only_id and row.get("资料编号") != args.only_id:
             continue
-        existing_text = existing_text_for_pdf(path)
-        if existing_text and not args.force_ocr:
-            rel_text = str(existing_text.relative_to(ROOT))
+        paths = document_paths(row)
+        if not paths:
+            continue
+        for path in paths:
+            existing_text = existing_text_for_document(path)
+            if existing_text and not args.force_ocr:
+                rel_text = str(existing_text.relative_to(ROOT))
+                if not has_path(row, rel_text):
+                    row["本地文件路径"] = "; ".join([*split_paths(row.get("本地文件路径", "")), rel_text])
+                    changed = True
+                if existing_text.name.endswith(".ocr.txt"):
+                    append_note(row, "OCR文本待人工复核")
+                    changed = True
+                continue
+            if args.sync_existing:
+                continue
+
+            used_ocr = False
+            if path.suffix.lower() == ".pdf":
+                text = extract_pdf_text(path, max_pages=max_pages)
+                if args.ocr and (args.force_ocr or len(text.strip()) < args.min_text_chars):
+                    ocr_text, page_count = ocr_pdf_text(path, dpi=args.ocr_dpi, max_pages=max_pages)
+                    if ocr_text.strip():
+                        text = ocr_text
+                        used_ocr = True
+                        ocr_pages += page_count
+            elif path.suffix.lower() == ".docx":
+                text = extract_docx_text(path)
+            else:
+                text = ""
+
+            if not text.strip():
+                continue
+
+            suffix = ".ocr.txt" if used_ocr else ".txt"
+            text_path = TEXT_ROOT / f"{path.stem}{suffix}"
+            text_path.write_text(clean_text_for_write(text), encoding="utf-8")
+            extracted += 1
+            if path.suffix.lower() == ".docx":
+                docx_extracted += 1
+            if used_ocr:
+                ocr_extracted += 1
+
+            rel_text = str(text_path.relative_to(ROOT))
             if not has_path(row, rel_text):
                 row["本地文件路径"] = "; ".join([*split_paths(row.get("本地文件路径", "")), rel_text])
                 changed = True
-            if existing_text.name.endswith(".ocr.txt"):
+            if used_ocr:
                 append_note(row, "OCR文本待人工复核")
                 changed = True
-            if args.sync_existing or has_text_path(row):
-                continue
-        if args.sync_existing:
-            continue
-        if has_text_path(row) and not args.force_ocr:
-            continue
 
-        text = extract_pdf_text(path, max_pages=max_pages)
-        used_ocr = False
-        if args.ocr and (args.force_ocr or len(text.strip()) < args.min_text_chars):
-            ocr_text, page_count = ocr_pdf_text(path, dpi=args.ocr_dpi, max_pages=max_pages)
-            if ocr_text.strip():
-                text = ocr_text
-                used_ocr = True
-                ocr_pages += page_count
-
-        if not text.strip():
-            continue
-
-        suffix = ".ocr.txt" if used_ocr else ".txt"
-        text_path = TEXT_ROOT / f"{path.stem}{suffix}"
-        text_path.write_text(text, encoding="utf-8")
-        extracted += 1
-        if used_ocr:
-            ocr_extracted += 1
-
-        rel_text = str(text_path.relative_to(ROOT))
-        existing_paths = split_paths(row.get("本地文件路径", ""))
-        if used_ocr:
-            if not has_path(row, rel_text):
-                row["本地文件路径"] = "; ".join([*existing_paths, rel_text])
+            suggested_title = infer_title(text)
+            current_title = row.get("文件标题", "")
+            if suggested_title and ("..." in current_title or len(current_title.strip()) < 12):
+                row["文件标题"] = suggested_title
+                title_fixed += 1
                 changed = True
-            append_note(row, "OCR文本待人工复核")
-            changed = True
-        elif not has_text_path(row):
-            row["本地文件路径"] = "; ".join([*existing_paths, rel_text])
-            changed = True
-
-        suggested_title = infer_title(text)
-        current_title = row.get("文件标题", "")
-        if suggested_title and ("..." in current_title or len(current_title.strip()) < 12):
-            row["文件标题"] = suggested_title
-            title_fixed += 1
-            changed = True
 
     if changed:
         backup_path = backup(LEDGER_CSV)
         write_rows(LEDGER_CSV, rows, fields)
         print(f"备份文件：{backup_path}")
 
-    print(f"PDF抽取：{extracted} 个")
+    print(f"文档抽取：{extracted} 个")
+    print(f"DOCX抽取：{docx_extracted} 个")
     print(f"OCR抽取：{ocr_extracted} 个，OCR页数：{ocr_pages}")
     print(f"标题修正：{title_fixed} 条")
     append_log(
-        action_type="PDF文本抽取",
-        content=f"抽取PDF文本 {extracted} 个，其中OCR {ocr_extracted} 个",
+        action_type="文档文本抽取",
+        content=f"抽取PDF/DOCX文本 {extracted} 个，其中DOCX {docx_extracted} 个、OCR {ocr_extracted} 个",
         files=f"{TEXT_ROOT.relative_to(ROOT)}; {LEDGER_CSV.relative_to(ROOT)}",
         command=f"{Path(__file__).name} --ocr={args.ocr} --force-ocr={args.force_ocr} --max-pages={args.max_pages}",
         result="完成",

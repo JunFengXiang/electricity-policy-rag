@@ -2,6 +2,7 @@
 *.md text eol=lf
 *.csv text eol=lf
 *.json text eol=lf
+*.jsonl text eol=lf
 *.html text eol=lf
 *.htm text eol=lf
 *.txt text eol=lf
@@ -11,3 +12,8 @@
 *.doc binary
 *.pdf binary
 *.png binary
+
+# Crawled source pages and extracted texts are archival data; do not run
+# source-code whitespace checks on their diffs.
+01_原始资料/** -diff
+03_处理后文本/** -diff

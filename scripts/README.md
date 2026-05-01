@@ -98,6 +98,32 @@ log_action.py
   查询本地 RAG 索引
   按向量相似度、关键词命中、权威等级、检索权重重排
   生成带来源标题、机构、日期、文号、原文链接的回答草稿
+
+19_build_web_snapshots.py
+  为已入库网页生成离线快照索引
+  用于后续复核、归档和离线查看
+
+20_download_pdf_attachments.py
+  扫描台账中的政策网页附件
+  下载 PDF 到 01_原始资料/PDF附件
+  同步生成 PDF附件清单.csv 和 pdf_attachments.json
+
+21_run_update_cycle.py
+  15 天更新周期入口
+  串联候选发现、严格分流、自动入库、附件下载、文本抽取、切片、索引、搜索页和自检
+  生成 06_实验日志/更新报告_YYYYMMDD.md
+
+22_qa_service.py
+  本地问答 API 服务
+  提供 GET /api/health 和 POST /api/ask
+  使用 OpenAI-compatible 大模型接口生成带引用回答；未配置 API Key 时回退到本地 RAG 草稿
+
+domain_terms.py
+  统一维护主题词、候选发现关键词、RAG 已知词和主题推断规则
+
+llm_client.py
+  读取 .env / 环境变量
+  调用 OpenAI-compatible chat completions 接口
 ```
 
 常用命令：
@@ -121,8 +147,10 @@ D:\miniconda\envs\py311\python.exe .\scripts\15_mass_crawl_candidates.py --pages
 D:\miniconda\envs\py311\python.exe .\scripts\16_build_knowledge_chunks.py --max-chars 450 --overlap 60
 D:\miniconda\envs\py311\python.exe .\scripts\17_build_rag_index.py
 D:\miniconda\envs\py311\python.exe .\scripts\18_rag_query.py --query "四川电力辅助服务市场交易实施细则有哪些主要依据" --region 四川 --write
+D:\miniconda\envs\py311\python.exe .\scripts\21_run_update_cycle.py --full-auto --strict-gate --target-count 600 --pages 25 --timeout 20 --delay 0.5 --min-score 55 --skip-snapshots --skip-ocr
+D:\miniconda\envs\py311\python.exe .\scripts\22_qa_service.py
 ```
 
 注意：不要在 `04_export_excel_workbook.py` 仍在生成工作簿时同时运行 `05_sync_excel_to_csv.py`，否则同步脚本可能读到未写完的 Excel 文件。
 
-后续建议继续补：接入可选大模型生成层，并让回答强制引用 `18_rag_query.py` 返回的证据。
+问答服务启动后，打开 `05_输出成果/search.html`，右侧问答区会调用 `http://127.0.0.1:8000/api/ask`。大模型参数从 `.env` 或环境变量读取：`LLM_PROVIDER`、`LLM_BASE_URL`、`LLM_API_KEY`、`LLM_MODEL`、`LLM_TEMPERATURE`、`LLM_MAX_CONTEXT_CHUNKS`。

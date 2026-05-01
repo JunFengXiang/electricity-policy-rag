@@ -84,13 +84,14 @@ def split_paths(value: str) -> list[str]:
     return [item.strip() for item in (value or "").split(";") if item.strip()]
 
 
-def text_path(row: dict[str, str]) -> Path | None:
+def text_paths(row: dict[str, str]) -> list[Path]:
+    paths: list[Path] = []
     for item in split_paths(row.get("本地文件路径", "")):
         if item.lower().endswith(".txt"):
             candidate = ROOT / item
             if candidate.exists():
-                return candidate
-    return None
+                paths.append(candidate)
+    return paths
 
 
 def normalize_line(line: str) -> str:
@@ -220,55 +221,58 @@ def build_chunks(max_chars: int, overlap: int, min_chars: int, per_doc_limit: in
     rows = read_csv(LEDGER_CSV)
     chunks: list[dict[str, str]] = []
     for row in rows:
-        path = text_path(row)
-        if not path:
+        paths = text_paths(row)
+        if not paths:
             continue
-        try:
-            text = path.read_text(encoding="utf-8", errors="ignore")
-        except OSError:
-            continue
-
-        pieces = paragraph_chunks(text, max_chars=max_chars, overlap=overlap, min_chars=min_chars)
-        if per_doc_limit:
-            pieces = pieces[:per_doc_limit]
         doc_id = row.get("资料编号", "")
         level = time_weight_level(row.get("发布日期", ""))
         weight = retrieval_weight(row, level)
-        rel_path = str(path.relative_to(ROOT))
+        chunk_index = 1
+        for path in paths:
+            try:
+                text = path.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
 
-        for index, (section, chunk_type, body) in enumerate(pieces, start=1):
-            chunks.append(
-                {
-                    "切片编号": chunk_id(doc_id, index, body),
-                    "资料编号": doc_id,
-                    "切片序号": str(index),
-                    "文件标题": row.get("文件标题", ""),
-                    "发布机构": row.get("发布部门", ""),
-                    "采集来源机构": row.get("采集来源机构", ""),
-                    "发布日期": row.get("发布日期", ""),
-                    "文号": row.get("文号", ""),
-                    "适用地区": row.get("适用地区", ""),
-                    "市场主题": row.get("市场主题", ""),
-                    "来源类型": row.get("来源类型", ""),
-                    "权威等级": row.get("权威等级", ""),
-                    "有效状态": row.get("有效状态", ""),
-                    "时间权重等级": level,
-                    "检索权重": weight,
-                    "切片类型": chunk_type,
-                    "章节标题": section,
-                    "正文片段": body,
-                    "字符数": str(len(body)),
-                    "原文链接": row.get("原文链接", ""),
-                    "本地文本路径": rel_path,
-                    "向量入库状态": "待入库",
-                }
-            )
+            pieces = paragraph_chunks(text, max_chars=max_chars, overlap=overlap, min_chars=min_chars)
+            if per_doc_limit:
+                pieces = pieces[:per_doc_limit]
+            rel_path = str(path.relative_to(ROOT))
+
+            for section, chunk_type, body in pieces:
+                chunks.append(
+                    {
+                        "切片编号": chunk_id(doc_id, chunk_index, body),
+                        "资料编号": doc_id,
+                        "切片序号": str(chunk_index),
+                        "文件标题": row.get("文件标题", ""),
+                        "发布机构": row.get("发布部门", ""),
+                        "采集来源机构": row.get("采集来源机构", ""),
+                        "发布日期": row.get("发布日期", ""),
+                        "文号": row.get("文号", ""),
+                        "适用地区": row.get("适用地区", ""),
+                        "市场主题": row.get("市场主题", ""),
+                        "来源类型": row.get("来源类型", ""),
+                        "权威等级": row.get("权威等级", ""),
+                        "有效状态": row.get("有效状态", ""),
+                        "时间权重等级": level,
+                        "检索权重": weight,
+                        "切片类型": chunk_type,
+                        "章节标题": section,
+                        "正文片段": body,
+                        "字符数": str(len(body)),
+                        "原文链接": row.get("原文链接", ""),
+                        "本地文本路径": rel_path,
+                        "向量入库状态": "待入库",
+                    }
+                )
+                chunk_index += 1
     return chunks
 
 
 def write_jsonl(path: Path, rows: list[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as f:
+    with path.open("w", encoding="utf-8", newline="\n") as f:
         for row in rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 

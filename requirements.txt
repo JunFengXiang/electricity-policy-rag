@@ -5,3 +5,8 @@ rapidocr-onnxruntime
 scikit-learn
 scipy
 playwright
+pillow
+fastapi
+uvicorn
+httpx
+python-dotenv

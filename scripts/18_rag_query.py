@@ -15,6 +15,7 @@ import pickle
 import re
 from pathlib import Path
 
+from domain_terms import RAG_KNOWN_TERMS
 from log_action import append_log
 
 
@@ -22,32 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "05_输出成果"
 INDEX_PATH = OUTPUT_DIR / "rag_index.pkl.gz"
 
-KNOWN_TERMS = [
-    "电力市场",
-    "电力交易",
-    "交易规则",
-    "规则体系",
-    "实施细则",
-    "中长期",
-    "现货",
-    "辅助服务",
-    "调峰",
-    "调频",
-    "备用",
-    "省内",
-    "省间",
-    "跨省",
-    "跨区",
-    "绿电",
-    "绿证",
-    "结算",
-    "计量结算",
-    "注册",
-    "信息披露",
-    "容量电价",
-    "需求响应",
-    "储能",
-    "新能源",
+KNOWN_TERMS = RAG_KNOWN_TERMS + [
     "山西",
     "山东",
     "江苏",
