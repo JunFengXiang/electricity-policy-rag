@@ -156,3 +156,4 @@
 2026-05-02 02:08,RAG索引构建,基于知识切片表构建本地RAG检索索引，切片 48270 条,02_元数据\知识切片表.csv; 05_输出成果\rag_index.pkl.gz; 05_输出成果\rag_index.summary.json,17_build_rag_index.py --max-features=80000,完成,TF-IDF char 2-4gram，本地离线检索索引
 2026-05-02 02:10,候选人工复核队列,从候选池生成 50-54 分人工复核队列 614 条,05_输出成果\大规模候选池_20260502.csv; 05_输出成果\候选人工复核队列_20260502.csv,python scripts/24_prepare_candidate_review_queue.py,完成,低分候选不进入主索引，人工复核后再回填
 2026-05-02 02:10,数据验收,检查台账、路径、附件和切片覆盖，台账 419 条,05_输出成果\数据验收报告_20260502_021031.md,python scripts/23_validate_knowledge_base.py,有提醒,errors=0; warnings=2
+2026-05-02 02:15,Git收口,创建当前扩建与无大模型检索优化提交 e341d99；补记收口信息，随后推送 origin/main,.git; 06_实验日志/操作日志.csv; 06_实验日志/实验日志.md,git commit -m 'Expand no-LLM retrieval and validation'; git push origin main,待推送,baseline-20260501 和 expansion-v1-20260502 保留不动
