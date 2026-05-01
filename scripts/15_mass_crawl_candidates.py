@@ -81,6 +81,33 @@ NEGATIVE_TITLE_TERMS = [
     "结算数据清单",
 ]
 
+FORMAL_ACTION_TERMS = [
+    "印发",
+    "修订",
+    "发布",
+    "转入正式运行",
+    "转发《国家发展改革委",
+    "转发《国家能源局",
+]
+
+FORMAL_POLICY_TERMS = [
+    "交易规则",
+    "市场规则",
+    "实施细则",
+    "运营规则",
+    "实施方案",
+    "管理办法",
+    "定价办法",
+    "输配电价",
+    "现货市场",
+    "中长期交易",
+    "绿色电力交易",
+    "需求侧响应",
+    "新型储能参与电力市场",
+    "电网规划",
+    "配电网",
+]
+
 def load_collector():
     """动态加载候选发现脚本，避免复制一份 HTML/JSON 解析逻辑。"""
     spec = importlib.util.spec_from_file_location("official_candidate_collector", COLLECTOR_PATH)
@@ -159,6 +186,12 @@ def quality_score(row: dict[str, str]) -> int:
         score -= 5
     if any(term in title for term in NEGATIVE_TITLE_TERMS):
         score -= 35
+    if (
+        not any(term in title for term in ["征求意见", "公开征求", "公示", "解读"])
+        and any(term in title for term in FORMAL_ACTION_TERMS)
+        and any(term in title for term in FORMAL_POLICY_TERMS)
+    ):
+        score += 4
 
     publish_date = parse_date(row.get("发布日期", ""))
     if publish_date:

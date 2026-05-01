@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>市工业和信息化局关于印发2021年春节期间电力需求响应实施细则的通知_委局文件_政务公开</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+
+<meta name="SiteName" content="天津市粮食和物资储备局" />
+<meta name="SiteDomain" content="http://lswz.tj.gov.cn" />
+<meta name="SiteIDCode" content="1200000079" />
+<meta name="ColumnName" content="委局文件" />
+<meta name="ColumnDescription" content="委局文件" />
+<meta name="ColumnKeywords" content="政务公开,委局文件" />
+<meta name="ColumnType" content="政务公开" />
+<meta name="PubTime" content="2026-02-02 19:21:18" random="138" />
+
+<meta name="ArticleTitle" content="市工业和信息化局关于印发2021年春节期间电力需求响应实施细则的通知" />
+
+
+
+<meta name="PubDate" content="2021-02-05" />
+
+
+
+<meta name="ContentSource" content="天津市工业和信息化局" />
+
+
+    <!--资源引用脚本-->
+    <link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/N_common.css">
+
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/jquery-migrate-3.4.0.min.js"></script>
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/N_common.js"></script>
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/N_new_mixin.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../images/N_new_mixin.css">
+
+<link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/N-QT.css">
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/N-QT.js"></script>
+<link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/N_new_mixin-index-b.css">
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/N_new_mixin-index-b.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/N39-2-xl-style.css">
+    <script type="text/javascript">
+        //处理日期方法
+        function GetDateStr(timeStr) {
+            var yearStr = '', monthStr = '', dayStr = '';
+            if (timeStr.length >= 10) {
+                yearStr = timeStr.substr(0, 4);
+                monthStr = timeStr.substr(5, 2);
+                dayStr = timeStr.substr(8, 2);
+            }
+            return yearStr + '年' + monthStr + '月' + dayStr + '日';
+        }
+
+        $(function () {
+            //原模板去掉样式逻辑
+            //$(".TRS_PreAppend").removeAttr("style");
+            //处理段落两端对齐逻辑
+            $('.TRS_UEDITOR p').each(function () {
+                if ($(this).css('text-align') != 'right' && $(this).css('text-align') != 'center') {
+                    $(this).css('text-align', 'justify');
+                }
+            });
+
+            //处理主题分类
+            var ztValue = $('#content_zt').text();
+            ztValue = ztValue.replace(/\;/g, '；');
+            ztValue = ztValue.replace(/\-/g, '');
+            if (ztValue.lastIndexOf('\\') == (ztValue.length - 1)) {
+                ztValue = ztValue.substr(0, (ztValue.length - 1));
+            }
+            $('#content_zt').text(ztValue);
+            //处理成文日期
+            var cwrqValue = '2021-02-02 15:00';
+            cwrqValue = GetDateStr(cwrqValue);
+            $('#content_cwrq').text(cwrqValue);
+
+            //处理发文日期
+            var fbrqValue = '2021-02-05 10:50';
+            fbrqValue = GetDateStr(fbrqValue);
+            $('#content_fbrq').text(fbrqValue);
+
+			var hasRelated = false;
+			var zcjd = $('.xl-rl-zcjd').find('ul').find('li').length;
+			var xgzc = $('.xl-rl-xgzc').find('ul').find('li').length;
+			var xgbd = $('.xl-rl-xgbd').find('ul').find('li').length;
+
+            if ($('.xl-rl-zcjd').find('ul').find('li').length == 0) {
+                $('.xl-rl-zcjd').hide();
+            }
+			if ($('.xl-rl-xgzc').find('ul').find('li').length == 0) {
+                $('.xl-rl-xgzc').hide();
+            }
+			if ($('.xl-rl-xgbd').find('ul').find('li').length == 0) {
+                $('.xl-rl-xgbd').hide();
+            }
+			if((zcjd+xgzc+xgbd)==0){
+			    $("#xlrllt").removeClass("xl-w71 xl-fll xl-br-fg xl-zw-cons-lf").addClass("xl-w100");
+				$("#xlrlrt").removeClass("xl-w29 xl-fll");
+				$('.xl-zw-cons-rt').hide();
+			}else{
+				hasRelated = true;
+			}
+
+			//根据时间判断
+			var isQian = '',isPic=0;
+
+			isQian = '';
+			isPic = $('.xl-zw-info').find('img').length;
+			console.log("时间之前：" +isQian + "|包含图片："+isPic);
+
+			//就是如果有图片，则政策的宽度为606；如果没图片，判断日期，如果在日期时间点之前，606，如果时间点后，直接正常宽度。
+			//if (maxWidth != "" && maxWidth != null && maxWidth != undefined)
+			if (!ismobile()) {
+			    if (isQian != "" && isQian != null && isQian != undefined) {
+			        $(".xl-zw-info").css('width', '606px').css('margin', '0 auto');
+			    }
+				//if (isPic) {//有图片
+
+				//	$(".xl-zw-info").css('width','606px').css('margin','0 auto');
+
+				//} else {
+				//	if (isQian != "" && isQian != null && isQian != undefined){
+				//			$(".xl-zw-info").css('width','606px').css('margin','0 auto');
+				//	}
+				//}
+			}
+			if (ismobile()) {
+			    $(".xl-zw-info *").css('width', 'unset');
+                            $(".xl-zw-info img").css('height', 'unset');
+
+				//字体大小转换
+				var $box = $('.TRS_PreAppend');
+				pt2px($box);
+			}
+
+        });
+
+        function pt2px(box){
+		  if (box.children()&&box.children().length>0) {
+		    box.children().each(function(index,item) {
+		      var $item = $(item)
+		      pt2px($item);
+		      $.each(['fontSize','lineHeight','textIndent'],function(j,cur){
+		        var computed = parseFloat($item.css(cur));
+		        var computed = parseFloat(computed*0.22/16);
+		        if(computed>3 && cur=="textIndent"){
+		        	computed = 3;
+		        }
+		        if(computed){
+		          computed=computed+'rem';
+		          $item.css(cur,computed);
+		        }
+		      })
+
+		    });
+		  }
+		}
+    </script>
+    <style type="text/css">
+        /* 原编辑器样式，勿删勿注释！！！ Generator: eWebEditor */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            font-size: 10.5pt;
+            font-family: "Times New Roman";
+        }
+
+        p.MsoHeader, li.MsoHeader, div.MsoHeader {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: center;
+            tab-stops: center 207.65pt right 415.3pt;
+            layout-grid-mode: char;
+            border: none;
+            padding: 0cm;
+            font-size: 9.0pt;
+            font-family: "Times New Roman";
+        }
+
+        p.MsoFooter, li.MsoFooter, div.MsoFooter {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            tab-stops: center 207.65pt right 415.3pt;
+            layout-grid-mode: char;
+            font-size: 9.0pt;
+            font-family: "Times New Roman";
+        }
+
+        p.MsoBodyText, li.MsoBodyText, div.MsoBodyText {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            font-size: 16.0pt;
+            font-family: "Times New Roman";
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /*内容区域默认行高*/
+        .xl-zw-info {
+            line-height: 40px;
+            color: rgb(61,61,61);
+        }
+
+        .article_content {
+            /*width: 606px;*/
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0;
+            border: none;
+            line-height: 40px;
+            font-size: 16pt;
+            margin-top: 0px;
+            min-height: 400px;
+            font-family: "仿宋_GB2312";
+            background-color: #ffffff;
+        }
+
+            .article_content p {
+                text-justify:newspaper;
+                word-break: break-all;
+                word-wrap:break-word;
+            }
+   table{
+margin: 0 auto;
+}
+.qt-current-location{
+            font-size: 20px;;
+        }
+.qt-current-location a, 
+.qt-current-location a:hover,
+.qt-current-location a:visited, 
+.qt-current-location a:active
+{
+font-size:20px;
+}
+        .xl-zw-rtlist > li {
+            font-size: 14px;
+            height: auto;
+            line-height: 21px;
+        }
+        .xl-zw-rtlist > li > a:hover, 
+        .xl-zw-rtlist > li:hover:before {
+            color: rgb(70,129,175);
+        }
+    </style>
+</head>
+<body>
+    <!--公用common-head-政府信息公开.html-->
+    <style>
+        .head-zfxxgk-title {
+            width: 620px;
+            height: 100px;
+            left: 290px;
+        }
+.head-top img{
+margin-right: .05rem;
+}
+  #zzmsbtn,.zzzq_item{
+             border-left: none;
+    background: rgb(244, 186, 47);
+    padding: 0 10px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 9px;
+    margin-right: 10px;
+   font-weight: bold;
+    font-size: 14px;
+  display: inline-block !important;
+       }
+        @media screen and (max-device-width: 768px){
+            .head-zfxxgk-title {
+                width: 4.4rem;
+                height: unset;
+            }
+        }    
+    </style>
+<!-- 公用common-head-top.html -->
+<div class="head-top">
+  <div class="main clear">
+    <a href="https://www.tj.gov.cn/" target="_blank">
+      <img src="https://jyhpt.tj.gov.cn/images/DOCUMENT20200927635977932964.png" UrlIsAbs=TRUE />
+      天津政务网
+    </a>
+    <span class="current-now">2019年12月3日星期二</span>
+  <p>
+        <a id="simplifiedLink">简体</a><span class="jgline">|</span>
+      <a id="translateLink">繁体</a>
+<!--切换时注意更新无障碍-->
+     <a href="javascript:void(0);"  id="toolbarSwitch" onclick="EsdToolbarInit.openClickFunc();" onkeydown="EsdToolbarInit.openKeydownFunc(event);">无障碍</a>
+       <a href="javascript:void(0);"  id="zzmsbtn"><img class="wza-img" src="https://gyxxh.tj.gov.cn/images/zzmslogo.png" /><span>长者模式</span></a>
+    </p>
+  </div>
+</div>
+
+<!--公用common-head-政府信息公开.html-->
+<div class="head-zfxxgk-bg">
+  <div class="main">
+    <a id="logo-link" href='https://gyxxh.tj.gov.cn/' ><img class="head-zfxxgk-logo" src="https://gyxxh.tj.gov.cn/LSLMYZ5238/ZFXXGK9556/images/P020210107341730821238.png" /></a>
+    <img class="head-zfxxgk-title" src="https://gyxxh.tj.gov.cn/glllm/QDFY/xxgktb/202005/P020200903570449669625.png" />
+  </div>
+  <p class="head-line-blue"></p>
+</div>
+    <!--End 公用common-head-政府信息公开.html-->
+    <!--Center中间-->
+    <div class="xl-zw-main">
+        <div class="xl-mcon">
+            <!-- 面包屑 -->
+            <style>
+  .qt-current-location{
+             font-size: 20px;
+         }
+ .qt-current-location a, 
+ .qt-current-location a:hover,
+ .qt-current-location a:visited, 
+ .qt-current-location a:active
+ {
+ font-size:20px;
+ }
+ @media screen and (max-device-width: 768px){
+  .qt-current-location{
+             font-size: 0.24rem;
+         }
+ .qt-current-location a, 
+ .qt-current-location a:hover,
+ .qt-current-location a:visited, 
+ .qt-current-location a:active
+ {
+ font-size:0.24rem;
+ }
+  }    
+</style>
+<div class="qt-current-location">
+    <img class="qt-pcicon" src="https://jyhpt.tj.gov.cn/images/bread.png" />
+    <a href="../../../" target="_blank" title="政务公开" class="CurrChnlCls">政务公开</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="../../" target="_blank" title="政策法规" class="CurrChnlCls">政策法规</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="../" target="_blank" title="委局文件" class="CurrChnlCls">委局文件</a>
+</div>
+            <div class="xl-zw-con">
+                <div class="xl-zw-top">
+                    <div class="top-container">
+                        <div class="sx-item item-all">
+                            <div class="sx-title">名&#12288;&#12288;&#12288;&#8194;称&#8194;：</div>
+                            <div class="sx-con">市工业和信息化局关于印发2021年春节期间电力需求响应实施细则的通知 </div>
+                            <div class="xl-clear"></div>
+                        </div>
+                        <div class="sx-item">
+                            <div class="sx-title">索&#8194;&#8194;&#8194;引&#8194;&#8194;号&#8194;：</div>
+                            <div class="sx-con">11120000MB1896646L/2021-00073</div>
+                            <div class="xl-clear"></div>
+                        </div>
+                        <div class="sx-item">
+                            <div class="sx-title">发&#8194;布&#8194;机&#8194;构&#8194;：</div>
+                            <div class="sx-con">天津市工业和信息化局</div>
+                            <div class="xl-clear"></div>
+                        </div>
+                        
+                            
+                        
+                        
+                            
+                                <div class="sx-item">
+                                    <div class="sx-title">发&#8194;文&#8194;字&#8194;号&#8194;：</div>
+                                    <div class="sx-con">津工信电力〔2021〕3号</div>
+                                    <div class="xl-clear"></div>
+                                </div>
+                            
+                        
+                        <div class="sx-item">
+                            <div class="sx-title">主&#12288;&#12288;&#12288;&#8194;题&#8194;：</div>
+                            <div id="content_zt" class="sx-con">科技工业信息化\工业;科技工业信息化\信息化</div>
+                            <div class="xl-clear"></div>
+                        </div>
+                        
+                            
+                                <div class="sx-item">
+                                    <div class="sx-title">成&#8194;文&#8194;日&#8194;期&#8194;：</div>
+                                    <div id="content_cwrq" class="sx-con"></div>
+                                    <div class="xl-clear"></div>
+                                </div>
+                            
+                        
+                        <div class="sx-item">
+                            <div class="sx-title">发&#8194;文&#8194;日&#8194;期&#8194;：</div>
+                            <div id="content_fbrq" class="sx-con"></div>
+                            <div class="xl-clear"></div>
+                        </div>
+						
+                           
+                                <div class="sx-item">
+                                    <div class="sx-title">有&#8194;&#8194;&#8194;效&#8194;&#8194;性&#8194;：</div>
+                                    <div id="content_yxx" class="sx-con">有效</div>
+                                    <div class="xl-clear"></div>
+                                </div>
+                            
+                        
+                        
+                            
+                        
+                        <div class="xl-clear"></div>
+                    </div>
+                    <!--<ul class="xl-zwtop-sy">
+                        <li class="xl-zwtop-w100">名　　称：<p>市工业和信息化局关于印发2021年春节期间电力需求响应实施细则的通知</p></li>
+                        <li class="xl-zwtop-w50">索&nbsp;&nbsp;引&nbsp;&nbsp;号：<p>11120000MB1896646L/2021-00073</p></li>
+                        <li class="xl-zwtop-w50">发布机构：<p>天津市工业和信息化局</p></li>
+                        <li class="xl-zwtop-w50">联合发文单位：<p></p></li>
+                        <li class="xl-zwtop-w50">文　　号：<p>津工信电力〔2021〕3号</p></li>
+                        <li class="xl-zwtop-w50">主　　题：<p>工业;信息化</p></li>
+                        <li class="xl-zwtop-w50">成文日期：<p>2021年02月02日</p></li>
+                        <li class="xl-zwtop-w50">发文日期：<p>2021年02月05日</p></li>
+                        <li class="xl-zwtop-w50">废止依据：<p></p></li>
+                    </ul>
+                    <div class="xl-clear"></div>-->
+                </div>
+                <!--Center中间 Cont-->
+                <div class="xl-zw-cons">
+
+                    <div id="xlrllt" class="xl-zw-cons-lf xl-w71 xl-fll xl-br-fg">
+                        <!-- <div class="xl-zw-cons-lf xl-w71 xl-fll" class="xl-zw-cons-lf xl-w100">   原来正文样式：   -->
+                        <div class="article_content xl-zw-info" style="word-break:normal!important;">
+                            <div class="view TRS_UEDITOR trs_paper_default"><p class="cjk" style="text-align: center; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><a name="_GoBack"></a><span style="font-family: 方正小标宋简体; font-size: 22pt;">市工业和信息化局关于印发</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 22pt;">2021</span><span style="font-family: 方正小标宋简体; font-size: 22pt;">年春节期间</span></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><span style="font-family: 方正小标宋简体; font-size: 22pt;">电力需求响应实施细则的通知</span></p><p class="cjk" style="margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">国网天津市电力公司，有关单位：</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">为落实国家和我市关于春节期间能源保供工作部署要求，充分保障群众用电用热需求，依据《市工业和信息化局关于开展</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年电力需求响应工作的通知》（津工信电力〔</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">〕</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">号）等文件，我局组织编制了《天津市</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间电力需求响应实施细则》，现予以印发，请遵照执行。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">特此通知。</span></p><p class="cjk" style="text-indent: 5.05cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><br/></p><p class="cjk" style="text-indent: 5.05cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><br/></p><p class="cjk" style="text-indent: 5.05cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-right: 2.22cm; text-indent: 6.16cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: center;"><span style="color:#000000"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">　　　　　                     </span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">月</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">日</span></span></p><p class="cjk" style="margin-left: 2.82cm; text-indent: -1.69cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（联系人：市工业和信息化局电力处　章建新</span></p><p class="cjk" style="margin-left: 4.07cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">联系电话：</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">83608057</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">；</span></p><p class="cjk" style="margin-left: 4.07cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">国网天津市电力公司营销部　李野</span></p><p class="cjk" style="margin-left: 4.07cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">联系电话：</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">24408856</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">；</span></p><p class="cjk" style="margin-left: 4.07cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">系统平台技术支持负责人　于龙</span></p><p class="cjk" style="margin-left: 4.07cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">联系电话：</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">18522843986</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">、</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">18202253661</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（此件主动公开）</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><br/></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-right: 0.37cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-right: 0.37cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-right: 0.37cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-right: 0.37cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-right: 0.37cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><span style="font-family: 黑体; font-size: 16pt;">津工信电力</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">〔</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">〕</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 黑体; font-size: 16pt;">号附件</span></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; letter-spacing: 0.2pt; line-height: 125%; font-size: 13px;"><br/></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; letter-spacing: 0.2pt; line-height: 125%; font-size: 13px;"><br/></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; letter-spacing: 0.2pt; line-height: 125%; font-size: 13px;"><br/></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px;"><a name="_Toc503453679"></a><a name="_Toc532483494"></a><a name="_Toc503457985"></a><a name="_Toc531639831"></a><a name="_Toc503385847"></a><a name="_Hlk503193431"></a><a name="_Toc503457927"></a><a name="_Toc503954566"></a><span style="font-family: 方正小标宋简体; font-size: 22pt;">天津市</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 22pt;">2021</span><span style="font-family: 方正小标宋简体; font-size: 22pt;">年春节期间电力需求响应</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 22pt;"><br/></span><span style="font-family: 方正小标宋简体; font-size: 22pt;">实施细则</span></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; font-size: 13px;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 14pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 14pt;">年</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 14pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 14pt;">月</span></p><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><p class="cjk" style="margin-bottom: 0cm; break-before: page; font-size: 13px;"><a name="_Toc532483495"></a><span style="font-family: 黑体; font-size: 16pt;"></span></p><p style="text-align: center;"><span style=";font-family:黑体;font-size:21px"><span style="font-family:黑体">目</span>  <span style="font-family:黑体">录</span></span></p><p class="cjk" style="margin-bottom: 0cm; break-before: page; font-size: 13px;"><span style="font-family: 黑体; font-size: 16pt;"></span><br/></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; font-size: 13px;"><br/></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312;">一、实施背景........................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>...................................</span><span style="font-family: &quot;Times New Roman&quot;, serif;">-
+1 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">二、实施方式<span style="font-family: 仿宋_GB2312; font-size: 21px;">....................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>.......................................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+1 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">三、实施流程<span style="font-family: 仿宋_GB2312; font-size: 21px;">.........................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>..................................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+2 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">四、补贴价格<span style="font-family: 仿宋_GB2312; font-size: 21px;">..........................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>.................................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+3 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">五、基线负荷<span style="font-family: 仿宋_GB2312; font-size: 21px;">.............................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>..............................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+4 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">六、效果评估和补贴发放<span style="font-family: 仿宋_GB2312; font-size: 21px;">..................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>...............................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+5 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">七、保障措施<span style="font-family: 仿宋_GB2312; font-size: 21px;">..........................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>.................................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+5 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">附录</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">1</span><span style="font-family: 仿宋_GB2312; font-size: 21px;">：方案实施流程图<span style="font-family: 仿宋_GB2312; font-size: 21px;">.................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>.................................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+7 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">附录</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">2</span><span style="font-family: 仿宋_GB2312; font-size: 21px;">：竞价指引<span style="font-family: 仿宋_GB2312; font-size: 21px;">........................<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>................................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+8 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0.18cm; line-height: 0.99cm; orphans: 2; widows: 2"><span data-index="6" style="font-size: 21px;"><span style="font-family: 仿宋_GB2312; font-size: 21px;">附录</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">3</span><span style="font-family: 仿宋_GB2312; font-size: 21px;">：效果评估与补贴发放流程图<span style="font-family: 仿宋_GB2312; font-size: 21px;">........<span style="color: rgb(51, 51, 51);font-family: 仿宋_GB2312;font-size: 21px;background-color: rgb(255, 255, 255)">...................</span>................................</span></span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 21px;">-
+10 -</span></span></p><p style="text-align:left;margin-left: 0.39cm; margin-bottom: 0cm; orphans: 2; widows: 2"><br/></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; break-before: page; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">根据《电力需求侧管理办法（修订版）》（发改运行规〔</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2017</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">〕</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1690</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">号）等文件要求，为组织做好</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间电力需求响应工作，结合天津市实际，特制订本实施细则。</span></p><h2 class="cjk" style="text-indent: 1.13cm; line-height: 0.92cm"><a name="_Toc60045864"></a><span data-index="6" style="font-weight: normal; font-family: 黑体, SimHei; font-size: 21px;">一、实施背景</span></h2><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2018~2020</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年，我市连续在春节期间实施了填谷电力需求响应试点，从实施效果来看，负荷水平显著提升，保障了天津地区</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">台供热机组连续稳定运行，满足了超过</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1000</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">万平米居民采暖需求。结合</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间电力供需形势预测，为落实国家和我市关于春节期间能源保供工作部署要求，充分保障民生用热需求，将在春节期间继续组织开展电力需求响应，提高低谷用电负荷，同时，探索将居民侧电动汽车纳入响应范围，支持电动汽车消费，引导电动汽车优化用电方式。</span></p><h2 class="cjk" style="text-indent: 1.13cm; line-height: 0.92cm"><a name="_Toc60045865"></a><span data-index="6" style="font-weight: normal; font-family: 黑体, SimHei; font-size: 21px;">二、实施方式</span></h2><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 楷体_GB2312; font-size: 16pt;">（一）实施时间及规模</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">本次需求响应实施时间为</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">月</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">13</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">日至</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">月</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">15</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">日（农历正月初二至农历正月初四），每日</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">0:00</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">至</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">6:00</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">，预计填谷响应总规模为</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt; letter-spacing: 0.2pt;">50</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">万千瓦，其中采用需求侧竞价模式填谷的规模为</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt; letter-spacing: 0.2pt;">20</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">万千瓦，仅限于符合条件的用户参与；采用固定补贴价格模式填谷的规模为</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt; letter-spacing: 0.2pt;">30</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">万千瓦。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 楷体_GB2312; font-size: 16pt;">（二）用户参与条件</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="color: rgb(0, 0, 0); font-family: 仿宋_GB2312; font-size: 16pt;">具备一定负荷响应能力的工商业用户、负荷集成商等用户，且电力用户、负荷集成商的信用良好，未被列入失信联合惩戒黑名单（参与主体自行承诺，如不符合将取消补贴资格）。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;"><strong>参与固定补贴价格模式</strong>的用户以固定补贴价格进行补贴，参与用户需符合以下条件：</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt; letter-spacing: 0.2pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间需求响应日申报量不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt; letter-spacing: 0.2pt;">3000</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦时（平均响应功率不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt; letter-spacing: 0.2pt;">500</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦）。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;"><strong>参与需求侧竞价模式</strong>的用户所获得补贴价格采用用户自主申报并竞价成功的价格，参与用户需符合以下条件：</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）对于连续参与过天津市历年春节期间需求响应的用户，历年农历正月初二的实际响应量与申报响应量的比值均不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">70%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">，且</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间需求响应日申报量不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">4800</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦时（平均响应功率不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">800</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦）。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><a name="_Hlk531679312"></a><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）对于仅参与过一次或两次天津市</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2018~2020</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间需求响应的用户，其正月初二的实际响应量与申报响应量的比值不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">70%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">，且</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间需求响应日申报量不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">6000</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦时（平均响应功率不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1000</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦）。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">3</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）对于此前未参与天津市春节期间需求响应的用户，</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间需求响应日申报量不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">7200</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦时（平均响应功率不低于</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1200</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦）。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">4</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）</span><span style="color: rgb(0, 0, 0); font-family: 仿宋_GB2312; font-size: 16pt;">居民侧</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">电动汽车用户参与需求响应无需满足响应容量要求，由负荷集成商代理</span><span style="color: rgb(0, 0, 0); background: rgb(255, 255, 255); font-family: 仿宋_GB2312; font-size: 15pt;">以集中形式参与</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">，鼓励中小型用户通过负荷集成商参与。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">5</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）</span><span style="color: rgb(0, 0, 0); font-family: 仿宋_GB2312; font-size: 16pt;">用电数据接入市级需求响应系统平台，保证数据可监测、可核查。</span></p><h2 class="cjk" style="text-indent: 1.13cm; line-height: 0.92cm"><a name="_Toc60045866"></a><span data-index="6" style="font-weight: normal; font-family: 黑体, SimHei; font-size: 21px;">三、实施流程</span></h2><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">方案实施流程图见附录</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;"><strong>申报参与固定补贴价格模式的用户</strong>，需在规定时间内登录平台填写日申报响应量，经系统校验确认响应能力符合条件后，申报成功。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><a name="_Hlk531637382"></a><span style="font-family: 仿宋_GB2312; font-size: 16pt;"><strong>申报参与需求侧竞价模式的用户，首先，</strong>需在规定的竞价时间内登录平台填写日申报响应量及竞价价格等信息；<strong>其次，</strong>经系统校验确认响应能力符合条件后，由平台进行竞价结果评定，<strong>竞价原则为“先价格，后容量”</strong>，即优先选择竞价价格低的用户参与，如竞价价格一致，则优先挑选日申报响应量高的用户；<strong>最后，</strong>竞价成功的用户按竞价价格进行补贴，竞价未成功的用户按照固定补贴价格进行补贴。用户可具体参照竞价指引（见附录</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）进行竞价。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">用户应按照系统填报内容执行需求响应。未安装能效监测终端的用户需配合国网天津市电力公司提前安装。</span></p><h2 class="cjk" style="text-indent: 1.13cm; line-height: 0.92cm"><a name="_Toc60045867"></a><span data-index="6" style="font-weight: normal; font-family: 黑体, SimHei; font-size: 21px;">四、补贴价格</span></h2><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: center;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">天津市</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间需求响应固定补贴价格模式的补贴价格为</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1.2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">元</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">/</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦时，竞价模式的补贴价格上限为</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2.0</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">元</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">/</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">千瓦时。补贴价格及响应时间如表</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">所示。</span></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; line-height: 150%; font-size: 13px;">表<span style="font-family:Times New Roman, serif">1 </span>天津市<span style="font-family:Times New Roman, serif">2021</span>年春节期间需求响应补贴价格</p><table width="598" cellpadding="7" cellspacing="0" style="width: 597px;">
+<tbody>
+<tr class="firstRow">
+<td width="247" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;">响应日期</p></td>
+<td width="79" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;">响应时段</p></td>
+<td width="111" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; margin-bottom: 0cm; font-size: 13px;">固定补贴价格</p>
+<p class="cjk" style="text-align: center; font-size: 13px;">（元<span style="font-family: 宋体, serif;">/kWh</span>）</p></td>
+<td width="103" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; margin-bottom: 0cm; font-size: 13px;">竞价补贴上限</p>
+<p class="cjk" style="text-align: center; font-size: 13px;">（元<span style="font-family: 宋体, serif;">/kWh</span>）</p></td></tr>
+<tr>
+<td width="247" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; margin-bottom: 0cm; font-size: 13px;"><span style="font-family: &quot;Times New Roman&quot;, serif; letter-spacing: -1pt;">2021</span><span style="font-family:仿宋_GB2312">年</span><span style="font-family:Times New Roman, serif">2</span><span style="font-family:仿宋_GB2312">月</span><span style="font-family:Times New Roman, serif">13</span><span style="font-family:仿宋_GB2312">日至</span><span style="font-family:Times New Roman, serif">2021</span><span style="font-family:仿宋_GB2312">年</span><span style="font-family:Times New Roman, serif">2</span><span style="font-family:仿宋_GB2312">月</span><span style="font-family:Times New Roman, serif">15</span><span style="font-family:仿宋_GB2312">日</span></p>
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:仿宋_GB2312">（农历正月初二至农历正月初四）</span></p></td>
+<td width="79" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">0:00-06:00</span></p></td>
+<td width="111" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">1.2</span></p></td>
+<td width="103" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">2.0</span></p></td></tr></tbody></table><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">为提高申报响应量准确性，提升需求响应实际效果，特制订如下规则：</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）若初二的日实际响应量低于日申报响应量的</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">50%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">，则此次需求响应补贴按</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">0</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">计算；</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）对于不同完成情况的用户将在补贴价格基础上乘以补贴价格系数：若日实际响应量低于日申报响应量的</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">80%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">，按照补贴价格的</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">20%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">进行补贴；若日实际响应量在日申报响应量的</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">80%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">至</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">120%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">，按照补贴价格进行补贴；若日实际响应量高于日申报响应量的</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">120%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">，高出日申报响应量</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">120%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">的部分按照补贴价格的</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">10%</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">进行补贴（见表</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">3</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）原则上，居民侧电动汽车用户参与电力需求响应时，按照实际响应量进行补贴核算，不受补贴价格系数的考核。</span></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; line-height: 150%; font-size: 13px;">表<span style="font-family:Times New Roman, serif">2 
+2021</span>年春节期间需求响应补贴价格系数</p><center><table width="585" cellpadding="7" cellspacing="0" style="width: 584px;">
+<tbody>
+<tr class="firstRow">
+<td width="243" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;">实际响应量与申报响应量的比值<span style="font-family: 宋体, serif;"><em>k</em></span></p></td>
+<td width="312" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;">补贴价格系数</p></td></tr>
+<tr>
+<td width="243" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif"><em>k</em>&lt;80%</span></p></td>
+<td width="312" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">0.2</span></p></td></tr>
+<tr>
+<td width="243" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">80%≤<em>k</em>≤120%</span></p></td>
+<td width="312" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">1</span></p></td></tr>
+<tr>
+<td width="243" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif"><em>k</em>&gt;120%</span></p></td>
+<td width="312" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><a name="_Hlk24403696"></a><a name="_Hlk532503750"></a><span style="font-family:Times New Roman, serif">0.1</span></p></td></tr></tbody></table></center><h2 class="cjk" style="text-indent: 1.13cm; margin-top: 0.28cm; line-height: 0.92cm"><a name="_Toc60045868"></a><span data-index="6" style="font-weight: normal; font-family: 黑体, SimHei; font-size: 21px;">五、基线负荷</span></h2><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">用户基线负荷是需求响应事件期间，假设用户不参与需求响应的情况下，经计算得出的用户用电负荷，是响应效果评估的重要依据，本次需求响应采用的基线负荷计算方法如下：</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）对于未参与天津市</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2020</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间需求响应的用户，以</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2020</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间对应时段用电量作为该用户基线负荷。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）对于参与过天津市历年春节期间需求响应的用户，以考虑调整系数的该用户第一次参与春节期间电力需求响应的用电基荷，作为该用户</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年的基线负荷。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">调整系数为</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节假期前</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">60-30</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">个正常生产工作日与该用户第一年参与需求响应的对应年份前</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">60-30</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">个正常生产工作日的日均用电量的比值。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">（</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">3</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">）原则上，若用户在立户第一年参与电力需求响应，应按照其立户后的</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">30</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">个正常生产工作日对应时段用电量的平均值为基荷。</span></p><h2 class="cjk" style="text-indent: 1.13cm; line-height: 0.92cm"><a name="_Toc60045869"></a><span data-index="6" style="font-weight: normal; font-family: 黑体, SimHei; font-size: 21px;">六、效果评估和补贴发放</span></h2><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">响应效果评估与补贴发放流程图见附录</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">3</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．需求响应结束后，国网天津市电力公司对用户响应时段监测负荷进行冻结，对用户实际响应量进行计算。用户的实际响应量为同一时段的实际用电量与对应基线负荷用电量的差。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．国网天津市电力公司汇总需求响应结果，并计算各用户补贴金额，用户补贴金额为实际响应量与补贴价格以及补贴价格系数的乘积。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">3</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．如电力公司电能表计终端采集数据有误，用户需要提供相关证明材料，并加盖公司公章，市工业和信息化局协同国网天津市电力公司进行核定，若认定相关材料真实合理，则采纳并进行公示。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">4</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．市工业和信息化局协调落实补贴资金后，按市级电力需求侧管理专项资金使用计划以年度发放补贴。</span></p><h2 class="cjk" style="text-indent: 1.13cm; line-height: 0.92cm"><a name="_Toc60045870"></a><span data-index="6" style="font-weight: normal; font-family: 黑体, SimHei; font-size: 21px;">七、保障措施</span></h2><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">1</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．落实需求响应应急措施，保障响应量满足指标要求。确定参与用户的负荷总响应量不能达到响应指标时，国网天津市电力公司需将情况报送至市工业和信息化局，市工业和信息化局应根据实际情况判定是否启动后备响应方案。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．国网天津市电力公司调控中心应提升负荷预测准确性，协同市工业和信息化局、各区供电公司开展春节期间用户需求响应填谷支撑工作。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">3</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．国网天津市电力公司组织各区供电公司充分做好春节期间的需求响应用户调研工作，深入挖掘用户填谷潜力，不断提高用户参与积极性和配合度。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">4</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．国网天津市电力公司建立用户参与需求响应信用评价体系，评估结果将对用户参与后续需求响应产生影响。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.92cm; font-size: 13px; text-align: justify;"><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">5</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">．当用户预计实际响应量与申报响应量将出现较大偏差时，需及时上报给国网天津市电力公司。</span></p><h2 class="cjk" style="text-indent: 0cm; page-break-before: always"><a name="_Toc60045871"></a><span data-index="" style="font-size: 12pt; font-weight: normal; font-family: 黑体, SimHei;">附录1：方案实施流程图</span></h2><p style="text-align: center"><img src="./W020210713511681977560.png" title="" alt="" picname="" OLDSRC="W020210713511681977560.png" /></p><h2 class="cjk" style="text-indent: 0cm; page-break-before: always"><a name="_Toc60045872"></a><span data-index="" style="font-size: 12pt; font-weight: normal; font-family: 黑体, SimHei;">附录2：竞价指引</span></h2><p class="cjk" style="text-align: center; margin-top: 0.28cm; margin-bottom: 0.28cm; line-height: 150%; font-size: 13px;"><span style="font-family: 黑体; font-size: 20pt;">天津市</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 20pt;">2021</span><span style="font-family: 黑体; font-size: 20pt;">年春节期间电力需求响应竞价指引</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">国网天津天津市电力公司受天津市工业和信息化局委托组织实施本次需求侧竞价活动，为确保竞价活动的公开、公平、公正，特制定本《竞价指引》。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">参与竞价的用户在竞价活动开始前，必须认真阅读本《竞价指引》，并依此对自己在竞价活动中的行为负责。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">一、竞价目的</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">需求侧竞价是需求侧资源参与电力市场竞争的一种实施模式，使用户能够通过改变自身用电方式，以竞价的形式主动参与市场竞争并获得相应的经济利益。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">二、参与用户资格</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">参与本次需求侧竞价的用户需符合《天津市</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">2021</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">年春节期间电力需求响应实施细则》中规定的条件。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">三、竞价规则</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">国网天津天津市电力公司发布竞价信息后，用户需在规定的竞价时间内登陆天津市能源供需互动服务平台填报和提交相关申报信息，包括日申报响应量和补贴价格等信息，申报的补贴价格应以价格上限为基准向下浮动，不得高于上限。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">竞价结束后，市工业和信息化局和国网天津市电力公司将在同等条件下优先选择申报补贴价格低的用户参与响应，如申报补贴价格一致，则优先挑选日申报响应量高的用户。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">竞价成功的用户按竞价价格进行补贴，竞价未成功的用户按照固定补贴价格进行补贴，竞价未成功的用户按照固定补贴价格模式执行。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">四、竞价总量</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">本次需求侧竞价的规模为</span><span style="font-family: &quot;Times New Roman&quot;, serif; font-size: 16pt;">20</span><span style="font-family: 仿宋_GB2312; font-size: 16pt;">万千瓦。</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">五、竞价补贴上限</span></p><p class="cjk" style="text-indent: 1.13cm; margin-bottom: 0cm; line-height: 0.99cm; font-size: 13px; text-align: justify;"><span style="font-family: 仿宋_GB2312; font-size: 16pt;">竞价补贴上限及固定补贴价格如下表所示。</span></p><p class="cjk" style="text-align: center; margin-bottom: 0cm; line-height: 150%; font-size: 13px;">天津市<span style="font-family:Times New Roman, serif">2021</span>年春节期间需求响应补贴价格</p><center><table width="575" cellpadding="7" cellspacing="0" style="width: 574px;">
+<tbody>
+<tr class="firstRow">
+<td width="248" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;">响应日期</p></td>
+<td width="71" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;">响应时段</p></td>
+<td width="99" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; margin-bottom: 0cm; font-size: 13px;">固定补贴价格</p>
+<p class="cjk" style="text-align: center; font-size: 13px;">（元<span style="font-family:Times New Roman, serif">/kWh</span>）</p></td>
+<td width="98" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; margin-bottom: 0cm; font-size: 13px;">竞价补贴上限</p>
+<p class="cjk" style="text-align: center; font-size: 13px;">（元<span style="font-family:Times New Roman, serif">/kWh</span>）</p></td></tr>
+<tr>
+<td width="248" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; margin-bottom: 0cm; font-size: 13px;"><span style="font-family: &quot;Times New Roman&quot;, serif; letter-spacing: -1pt;">2021</span><span style="font-family:黑体">年</span><span style="font-family:Times New Roman, serif">2</span><span style="font-family:黑体">月</span><span style="font-family:Times New Roman, serif">13</span><span style="font-family:黑体">日至</span><span style="font-family:Times New Roman, serif">2021</span><span style="font-family:黑体">年</span><span style="font-family:Times New Roman, serif">2</span><span style="font-family:黑体">月</span><span style="font-family:Times New Roman, serif">15</span><span style="font-family:黑体">日</span></p>
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:黑体">（农历正月初二至农历正月初四）</span></p></td>
+<td width="71" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">0:00-06:00</span></p></td>
+<td width="99" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">1.2</span></p></td>
+<td width="98" style="border: 1px solid #00000a; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.2cm; padding-right: 0.19cm">
+<p class="cjk" style="text-align: center; font-size: 13px;"><span style="font-family:Times New Roman, serif">2.0</span></p></td></tr></tbody></table></center><p class="cjk" style="margin-bottom: 0cm; font-size: 13px;"><br/></p><h2 class="cjk" style="text-indent: 0cm; page-break-before: always"><a name="_Toc60045873"></a><span data-index="" style="font-size: 12pt; font-weight: normal; font-family: 黑体, SimHei;">附录3：效果评估与补贴发放流程图</span></h2><p style="text-align: center"><img src="./W020210713511682345826.png" title="" alt="" picname="" OLDSRC="W020210713511682345826.png" /></p><p class="cjk" style="text-indent: 0.81cm; margin-bottom: 0cm; line-height: 1.06cm; font-size: 13px;"><br/></p><p class="cjk" style="text-indent: 1.1cm; margin-bottom: 0cm; line-height: 1.06cm; font-size: 13px;"><br/></p><p class="cjk" style="text-indent: 1.1cm; margin-bottom: 0cm; line-height: 1.06cm; font-size: 13px;"><br/></p><p class="cjk" style="text-indent: 1.1cm; margin-bottom: 0cm; line-height: 1.06cm; font-size: 13px;"><br/></p><p class="cjk" style="text-indent: 1.1cm; margin-bottom: 0cm; line-height: 1.06cm; font-size: 13px;"><br/></p><p style="text-align:center;margin-top: 1.65cm; margin-bottom: 0cm"><br/></p><p><br/></p></div>
+                            <link rel="stylesheet" type="text/css" href="https://jyhpt.tj.gov.cn/images/attachments.css">
+<div class="qt-attachments">
+    <table>
+        <tr>
+            <td class="first"><p class="qt-attachments-title">附件：</p></td>
+            <td>
+                <ul class="qt-attachments-list">
+                    <li><a href="./W020210713512561000325.wps">附件----天津市2021年春节期间电力需求响应.wps</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+                        </div>
+                    </div>
+                    <!-- hide right-->
+                    <div id="xlrlrt" class="xl-zw-cons-rt xl-w29 xl-fll">
+                        <div class="xl-zw-rtpl xl-rl-zcjd">
+                            <div class="xl-zw-rttlt">
+                                | 政策解读
+                            </div>
+                            <ul class="xl-zw-rtlist">
+                                
+                            </ul>
+                        </div>
+                        <div class="xl-zw-rtpl xl-rl-xgzc">
+                            <div class="xl-zw-rttlt">
+                                | 相关政策
+                            </div>
+                            <ul class="xl-zw-rtlist">
+                                
+                            </ul>
+                        </div>
+                        <div class="xl-zw-rtpl xl-rl-xgbd">
+                            <div class="xl-zw-rttlt">
+                                | 相关报道
+                            </div>
+                            <ul class="xl-zw-rtlist">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End hide right-->
+                    <div class="xl-clear"></div>
+                </div>
+
+                <!--End Center中间 Cont-->
+            </div>
+        </div>
+
+    </div>
+    <!--End Center中间-->
+    <!-- 公用底部common-footer.html -->
+    <div class="pc-footer-body">
+  <div class="bottom">
+      <div class="btn">
+          <div class="left wzjc">
+             <a class="fiind-error-box"><script id="_jiucuo_" sitecode='1200000032' src='https://zfwzgl.www.gov.cn/exposure/jiucuo.js'></script></a>
+          </div>
+          <div class="left dt" style="text-align: center;">
+              <p class="gywm">
+              <span>
+                  <a href='https://gyxxh.tj.gov.cn/sitemap/' target="_blank">网站地图
+                  </a>
+              </span>|<span>
+                  <a href='https://gyxxh.tj.gov.cn/about/202007/t20200731_3293700.html' target="_blank">联系我们
+                  </a>
+              </span>
+          </p>
+              <p>主办：天津市工业和信息化局 版权所有©</p>
+              <p>编辑部客服信箱jwxxc@tjec.gov.cn</p>
+              <p>
+                网站标识码：1200000032 津ICP备19003166号
+                  <a target="_blank" href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12010302000967'
+                     style="color:#B0B0B0;">
+                      <img src="https://gyxxh.tj.gov.cn/glllm/QDFY/mhdb/202005/P020200903570326761060.png" />
+                      津公网安备 12010302000967号
+                  </a>
+              </p>
+              <p class="h-warning" style="display:none;">
+                  系统检测到您正在使用ie11以下内核的浏览器，不能实现完美体验，请更换或升级浏览器访问！
+              </p>
+          </div>
+           <div class="dzjg">
+               <a href='http://bszs.conac.cn/sitename?method=show&id=0A739228E6326485E053022819ACDD4E'
+         title=''
+         target="_blank">
+        <img class="fl" src='https://gyxxh.tj.gov.cn/glllm/QDFY/TYDB/202008/W020200822346009636252.png' alt="党政机关" />
+      </a>
+           </div>
+      </div>
+  </div>
+</div>
+<div class="m-footer-body">
+  <!-- m-bottom s -->
+  <div class="m-bottom">
+      <div class="m-btm2">
+          <p class="m-btm-links">
+          <a href='https://gyxxh.tj.gov.cn/sitemap/' target="_blank">网站地图</a>|<a href='https://gyxxh.tj.gov.cn/about/202007/t20200731_3293700.html' target="_blank">联系我们</a>
+      </p>
+          <div class="m-btm-info">
+                
+              <div class="m-infodetail">
+                  <p>主办：天津市工业和信息化局 版权所有©</p>
+                  <p>编辑部客服信箱jwxxc@tjec.gov.cn</p>
+                  <p>  网站标识码：1200000032 津ICP备19003166号</p>
+                  <p>
+                      <a href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12010302000967'>
+                          <img src="https://gyxxh.tj.gov.cn/glllm/QDFY/mhdb/202005/P020200903570326761060.png" />
+                          津公网安备 12010302000967号
+                      </a>
+                  </p>
+              </div>
+              <a class="fiind-error-mbox"></a>
+              <a href='http://bszs.conac.cn/sitename?method=show&id=0A739228E6326485E053022819ACDD4E'
+       title=''
+       target="_blank">
+      <img class="fl" src='https://gyxxh.tj.gov.cn/glllm/QDFY/TYDB/202008/W020200822346009636252.png' alt="党政机关" />
+    </a>
+          </div>
+      </div>
+  </div>
+  <!-- m-bottom e -->
+</div>
+<div id="alert-f">
+  <div class="footer-alert">
+      <div class="footer-alert-bd"></div>
+  </div>
+</div>
+<div  id="zzmsMobileBtn"><div class="ghbClose"></div><div class="ghbBtn"></div></div>
+<script>
+ var tpldClass=[".detail-article .view.TRS_UEDITOR",".article-detail .view.TRS_UEDITOR",".right-content-inf .view.TRS_UEDITOR",".article_content .view.TRS_UEDITOR",".xw-txt .view.TRS_UEDITOR",".zw .view.TRS_UEDITOR"];
+        $.each(tpldClass,function(n,value){
+            if($(value).length != 0){
+          window.esdArOption = {contentDom: value};
+                return true 
+            }
+        })
+</script>
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/articleReader.js"></script>
+<!--网脉-->	 
+<script src="https://jyhpt.tj.gov.cn/images/ta_Info.js" async="async" defer="defer"></script>
+
+<script type="text/javascript" src="https://gyxxh.tj.gov.cn/images/RoleSetInit.js"></script>
+<script type="text/javascript" src="https://gyxxh.tj.gov.cn/images/esdToolsInit.js"></script>
+<script type="text/javascript" src="https://gyxxh.tj.gov.cn/images/ElderModelTool.js"></script>
+<link rel="stylesheet" type="text/css" href="https://gyxxh.tj.gov.cn/images/ZZMS_change.css">
+<!--非党政机关链接跳转提示脚本-->	 
+<script type="text/javascript" src="https://jyhpt.tj.gov.cn/images/offSiteLinkRedirectionPrompt.js" charset="UTF-8" defer="defer"></script>
+<script src="https://gyxxh.tj.gov.cn/images/jquery.qrcode.min.js"></script>
+
+<style>
+/* 长者模式s */
+.ztzl_panel .float_card_title .card_title_view{
+width:100%;
+}
+body.useOldFixed{
+background: none;
+}
+.useOldFixed .head-top p{
+display:block;
+}
+.useOldFixed .head-top p #simplifiedLink{
+display:none;
+}
+.useOldFixed .head-top p #translateLink{
+display:none;
+}
+.useOldFixed .head-top p #toolbarSwitch{
+display:none;
+}
+.useOldFixed .head-top p #toolbarCtrl{
+display:none;
+}
+.useOldFixed .jgline{
+display:none;
+}
+.useOldFixed .head-top img{
+height:0.2rem;
+width:0.2rem
+}
+.useOldFixed #zzmsbtn{
+margin-top:10px;
+}
+#zzmsMobileBtn{
+display:none;
+/*background-color: #4a82b0c7;*/
+    height: 1.7rem;
+   
+    position: fixed;
+    bottom: 100px;
+    right: 0;
+    z-index: 1000;
+    width: 140px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 20px;
+background-image:url(https://csgl.tj.gov.cn/images/mobile_zzms.png);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+}
+.ghbClose{
+height: 20px;
+    width: 20px;
+    float: right;
+    margin: 5px 5px 0 0;
+    display: none;
+    cursor: pointer;
+}
+.ghbBtn{
+height: 40px;
+    width: 140px;
+    float: right;
+    margin: 0px 5px 0 0;
+    display: none;
+    cursor: pointer;
+}
+/* 分享 */
+  #share-qrcode {
+    border: 1px solid #ddd;
+    width: 170px;
+    padding: 14px;
+    position: absolute;
+    display: none;
+    z-index: 99;
+    bottom: 30px;
+    right: 0px;
+    background: #fff;
+    border-radius: 3px;
+  }
+  #share_container {
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+  }
+@media screen and (max-width: 1200px){
+#zzmsbtn{
+display:none;
+}
+#zzmsMobileBtn{
+display:block;
+}
+.ghbClose, .ghbBtn{
+  display: block;
+}
+}
+
+/* 长者模式e */
+</style>
+<script>
+  function showTips() {
+    var dom = document.createElement("div");
+    var t = '/images/tipImg-ioswx.png';
+    dom.style.cssText = "position:fixed;z-index:100;top:0;left:0;width:100%;height:100%;background:url(" + t + ") top right no-repeat;background-size:150px 125px;background-color:rgba(0,0,0,0.7);";
+    dom.onclick = function() {
+      document.body.removeChild(dom);
+    };
+    document.body.appendChild(dom);
+  }
+  function changeHref() {
+    var agent = navigator.userAgent.match(/MicroMessenger/i);
+    if (Boolean(agent)) {
+      $('a').each(function(index,item){
+        if (/\.doc|\.docx|\.rar|\.zip|\.xls|\.xlsx|\.pdf|\.ppt|\.ppts|\.cab$/.test(item.href)) {
+          item.href='javascript:;';
+          $(item).on('click',showTips);
+        }
+      })
+    }
+  }
+
+  $(function(){
+    setTimeout(function(){
+      changeHref();
+//适老化新增s
+var zzmsword1 = getCookie('TjElderModelFlag');
+if (zzmsword1 == 2) {
+    let str = $('.fiind-error-box').html()
+    $('.fiind-error-mbox').html(str)
+    $("html").css("font-size", "100px");
+    $(".m-footer-body").css("display", "block");
+} else {
+
+}
+    },500)
+  })
+//关闭移动端按钮
+$('.ghbClose').click(function () {
+$("#zzmsMobileBtn").hide();
+})
+  // 长者模式设置字号
+    var TjElderModelFlag = getCookie('TjElderModelFlag');
+    if(TjElderModelFlag === "2"){
+        $('html').css('font-size','100px')
+        $('.pc-footer-body').hide()
+        $('.m-footer-body').show()
+    }else{
+        $('.pc-footer-body').show()
+        $('.m-footer-body').hide()
+    }
+// 判断是否是手机端
+function ismobile () {
+ var TjElderModelFlag = getCookie('TjElderModelFlag');
+    if(TjElderModelFlag === "2"){
+return true
+}
+var mobileArry = ["iPhone", "iPad", "Android", "Windows Phone", "BB10; Touch", "BB10; Touch", "PlayBook", "Nokia"];
+var ua = navigator.userAgent;
+var res = [];
+for (var i = 0; i < mobileArry.length; i++) {
+  if (mobileArry[i] && ua.indexOf(mobileArry[i]) > 0) {
+    res.push(mobileArry[i]);
+  }
+}
+return res.length > 0;
+}
+// 把纠错标签从pc端的dom移到移动端
+$(function(){
+  if (ismobile ()){
+     let str = $('.fiind-error-box').html()
+     $('.fiind-error-mbox').html(str)
+  } 
+})
+</script>
+<script>
+
+var zzmsword = getCookie('TjElderModelFlag');
+ if (zzmsword !== "2") {
+ $('#zzmsbtn span').text("长者模式");
+}else{
+ $('#zzmsbtn span').text("退出长者模式");
+ $('html').css("font-size","100px");
+ if (ismobile ()){
+     let str = $('.fiind-error-box').html()
+     $('.fiind-error-mbox').html(str)
+  } 
+}
+    $('#zzmsbtn').click(function () {
+    var zzmsword = getCookie('TjElderModelFlag');
+       if (zzmsword !== "2") {//如果当前不是长者模式，打开工具条，进入长者模式 
+         addCookie('wzalsOn', 'true', 0);
+if(typeof(EsdToolbarInit.openClickFunc)=='function'){
+       EsdToolbarInit.openClickFunc();
+}
+if(typeof(EsdToolbar)=="object"&&EsdToolbar.isOpen){
+	jq_t("#toolbar_Div").css("overflow","hidden");
+	jq_t("body").css("padding-top", "98px");
+	if(EsdToolbar.defalt.browser.mozilla){
+		jq_t("body")[0].style.setProperty("transform","unset","important");
+		jq_t("body")[0].style.setProperty("transform-origin","unset","important");
+		jq_t("#toolbar_Div").css({"-moz-transform":"scale(1.5)","-moz-transform-origin":"center -64px 0px"});
+		jq_t("#toolbarHtml").css({"-moz-transform":"scale(1)","-moz-transform-origin":"top"});
+	}
+	
+	jq_t("#toolbarHtml").show("fast",function(){
+		if(!EsdToolbar.defalt.browser.msie){
+			jq_t("#toolbarHtml").css("zoom","0.67");
+			jq_t("body").css({"max-width":"100%","min-width":"100%","padding-top":"65px"});
+		}else{
+			jq_t("#toolbarHtml").css("left","0");
+			jq_t("body").css({"max-width":"100%","padding-top":"65px"});
+		}
+		if(EsdToolbar.pageZoom.zoom>=1.3){
+			jq_t("body").css({"max-width": "170%", "min-width": "170%"});
+		}
+		jq_t("#toolbarPage2").hide();
+		jq_t("#toolbar").show();
+		//jq_t("body").css({"max-width":"100%","min-width":"100%","padding-top":"65px"});
+		jq_t("#toolbar_Div").css({"width":"750px","margin":"0 auto"});
+		setTimeout(function(){jq_t("#toolbar").show();},500);
+	});
+}
+	
+         $('html').css("font-size","100px");
+          $('body').addClass("useOldFixed");
+          $('#zzmsbtn span').text("退出长者模式");
+    $('.pc-footer-body').hide()
+        $('.m-footer-body').show()
+if (IEVersion()) {
+        $("body").css({
+            transform: "scale(1.5)",
+            "-moz-transform": "scale(1.5)",
+            "-ms-filter": "scale(1.5)",
+            "transform-origin": "center top",
+            "-ms-transform-origin": "center top",
+        });
+        $("body").css("zoom", "1");
+    }
+
+      
+       } else {//如果当前是长者模式，关闭工具条，退出长者模式
+           addCookie('wzalsOn', 'false', 0);
+            $('body').removeClass("useOldFixed");
+            $('#zzmsbtn span').text("长者模式");
+          try{
+            EsdToolbar.close();
+           }catch(error){
+                // console.log("捕获异常");
+           }
+        }
+        ElderModeTool.changeElderMode();
+    });
+  
+
+//关怀版切换
+$("#zzmsMobileBtn  .ghbBtn").bind("click",function(){
+    if(getCookie('TjElderMobileFlag') === "2"){
+        addCookie('TjElderMobileFlag',"1",0);
+           addCookie('wzalsOn', 'false', 0);
+          try{
+            EsdToolbar.close();
+           }catch(error){
+                // console.log("捕获异常");
+           }
+
+$("#zzmsMobileBtn").css("display","block");
+    } else{
+        addCookie('TjElderMobileFlag',"2",0);
+         addCookie('wzalsOn', 'true', 0);
+if(typeof(EsdToolbarInit.openClickFunc)=='function'){
+         EsdToolbarInit.openClickFunc();
+}
+
+$("#zzmsMobileBtn").css("display","none");
+    }
+    location.reload();
+})
+// 进入关怀版
+var MzjGhbFlag = getCookie('TjElderMobileFlag');
+if(ismobile()&&zzmsword != 2){
+if(MzjGhbFlag === "2"){
+    var cssFileUrl = "https://gyxxh.tj.gov.cn/images/SetMobileElder.css";
+    if (cssFileUrl) {
+        $("<link>").attr({
+            rel: "stylesheet",
+            type: "text/css",
+            href: cssFileUrl,
+        }).appendTo("head");
+    }
+$("#zzmsMobileBtn").css("display","none");
+
+
+}else{
+removejscssfile("SetMobileElder", "css");
+
+$("#zzmsMobileBtn").css("display","block");
+}
+}
+  //关闭工具条按钮
+    $('#toolbar_exit').bind("click",function(){
+        //关闭工具条，判断当前是否处于长者模式，如果是则退出长者模式
+        var zzmsword = getCookie("TjElderModelFlag");
+        if (zzmsword === "2") {
+            addCookie("TjElderModelFlag", "1", 0);
+        }
+if(getCookie('TjElderMobileFlag') === "2"){
+        addCookie('TjElderMobileFlag',"1",0);
+           addCookie('wzalsOn', 'false', 0);
+          try{
+            EsdToolbar.close();
+           }catch(error){
+                // console.log("捕获异常");
+           }
+
+
+    } 
+    });
+
+// 分享
+  var weixinHtml = '<div id="share-qrcode"><h3 id="share_container">微信分享“扫一扫”</h3><dd id="share_div"></dd></div>';
+  if ($('.gwds_weixin').lenght != 0) {
+    $('.gwds_weixin').append(weixinHtml);
+    jQuery('#share_div').qrcode(window.location.href);
+  }
+  $(".gwds_weixin").click(function (event) {
+    event.preventDefault()
+    return false
+  })
+
+</script>
+
+</body>
+</html>

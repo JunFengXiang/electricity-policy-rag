@@ -17,6 +17,7 @@
 - 依赖文件：`requirements.txt`
 - 当前重要提交：
   - `1c59597 Add agent handoff guide`：扩库前基线，远端 tag `baseline-20260501`
+  - `e262d39 Expand policy knowledge base v1`：扩库、15天更新和本地问答 V1，远端 tag `expansion-v1-20260502`
   - `0dc262e Add PDF attachment entries to search`
   - `373047c Show snapshot type in search results`
   - `886f140 Add simulated page fallback for snapshots`
@@ -27,14 +28,17 @@
 截至 2026-05-02：
 
 - 基线 tag：`baseline-20260501`，指向扩库前提交 `1c59597`
-- 台账资料：321 条
-- 知识切片：39710 条
+- 扩库 V1 tag：`expansion-v1-20260502`，指向 `e262d39`
+- 台账资料：419 条
+- 知识切片：48270 条
 - RAG 索引特征数：80000
 - 网页快照：254 个
   - 官网长截图：253 个
   - 模拟截图：1 个
-- PDF 附件入口：313 个
-- PDF 附件下载失败：1 个，见 `05_输出成果/pdf_attachments.json`
+- PDF 附件入口：411 个
+- PDF 附件下载失败：4 个，见 `05_输出成果/pdf_attachments.json`
+- 数据验收报告：`05_输出成果/数据验收报告_20260502_021031.md`
+- 候选人工复核队列：`05_输出成果/候选人工复核队列_20260502.csv`，614 条 50-54 分候选，不进入主索引
 - 搜索页：`05_输出成果/search.html`
 - 搜索索引：`05_输出成果/search_index.json`
 - PDF 附件清单：`02_元数据/PDF附件清单.csv`
@@ -185,6 +189,8 @@ D:\miniconda\envs\py311\python.exe scripts\22_qa_service.py
 - `20_download_pdf_attachments.py`：发现并下载网页中的 PDF 附件。
 - `21_run_update_cycle.py`：15天全链路更新周期，输出更新报告。
 - `22_qa_service.py`：FastAPI 本地问答服务，提供 `/api/health` 和 `/api/ask`。
+- `23_validate_knowledge_base.py`：数据验收，检查台账规模、路径、文本、切片覆盖和附件失败项。
+- `24_prepare_candidate_review_queue.py`：把 50-54 分低分候选输出到人工复核队列。
 - `domain_terms.py`：统一主题词、候选关键词、RAG 已知词和主题推断规则。
 - `llm_client.py`：OpenAI-compatible 大模型接口适配层。
 - `log_action.py`：写实验日志。
@@ -228,11 +234,11 @@ D:\miniconda\envs\py311\python.exe scripts\22_qa_service.py
 
 建议下一步优先做：
 
-1. 继续扩源并把台账稳定扩到 500-600 条；低分、重复、状态不明资料留在候选池或人工复核队列。
-2. 对剩余 PDF 附件失败项做人工核验，确认是否为历史坏链或需替换来源。
-3. 接入真实 `LLM_API_KEY` 后，用 `22_qa_service.py` 做问答验收。
-4. 公众号、财经新闻、咨询机构解读资料只放辅助层，需和官方政策分层标识，默认不进入主问答索引。
-5. 增加搜索页筛选：只看有 PDF 附件、只看官网长截图、只看模拟截图。
+1. 从 `05_输出成果/候选人工复核队列_20260502.csv` 人工确认一批 50-54 分正式规则，确认后再回填入库，把主库推进到 500-600 条。
+2. 继续扩源，优先补国家能源局政府信息公开、各省能源局/发改委稳定列表页、交易中心公开规则页。
+3. 对剩余 4 个 PDF 附件失败项做人工核验，确认是否为历史坏链或需替换来源。
+4. 接入真实 `LLM_API_KEY` 后，用 `22_qa_service.py` 做问答验收。
+5. 公众号、财经新闻、咨询机构解读资料只放辅助层，需和官方政策分层标识，默认不进入主问答索引。
 
 ## Git 提交流程
 

@@ -1,0 +1,429 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>山西省能源局</title>
+		<!--<script src="js/pace.min.js"></script>-->
+		<!--<link href="css/pace-theme-flash.min.css" rel="stylesheet" />-->
+		<link rel="stylesheet" href="../../../../images/nyj_newhome_style1.css">
+		<script type="text/javascript" src="../../../../images/jquery.min.js"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	</head>
+
+	<body>
+		<div class="sxnyj clearfix">
+
+			<style> @media screen and (max-width: 1700px) {
+    html {
+        zoom: 0.8;
+    }
+}
+</style>
+
+<div class="sxnytop clearfix">
+    <div class="nytop clearfix">
+        <div class="content">
+            <div class="nytop_left clearfix">
+                <a href="http://www.nea.gov.cn/">国家能源局</a>|<a href="https://www.shanxi.gov.cn/">山西省人民政府</a>
+            </div>
+            <div class="nytop_right clearfix">
+                <a href="javascript:StranBody()" title="點擊切換到繁體中文網站" id="StranLink" name="StranLink">切換到繁體</a>|<a
+                    id="toolbarSwitch" href="javascript:void(0);">无障碍浏览</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../images/jQuery-3.2.1.min.js"></script>
+    <script src="../../../../images/esdToolsInit.js" charset="UTF-8"></script>
+    <div class="nyjnav clearfix">
+        <div class="content">
+            <ul>
+
+                <li><a href="../../../../">首 页</a></li>
+
+
+                
+                    <li ><a href="../../../../zwgk_230510/">政务公开</a></li>
+                
+
+                
+                    <li><a href="../../../../zwfw_230510/">政务服务</a></li>
+                
+
+                <li><a href="../../../../jgdj_230510/" target="_Blank">机关党建</a></li>
+                
+                    <li ><a href="../../../../hdjl_0531/">互动交流</a></li>
+                
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="nyj_banner clearfix">
+        <div class="content">
+            <div class="nyjlogo clearfix"><a href="../../../../"><!--<img src="../../../../images/sxsnyj3.png" />-->
+                <img src="../../../../images/能源局头部logo.png" alt="能源局头部logo.png" title="能源局头部logo.png" />
+            </a></div>
+            <div class="retrieval clearfix">
+                <input type="text" id="HeaderSearchInput" value="请输入检索词" autocomplete="off" onblur="if(this.value==''){this.value='请输入检索词';}" onfocus="javascript:if(this.value=='请输入检索词')this.value=''" />
+
+                <a href="#"><img id="search_btn" src="../../../../images/sxsnyj2.png" /></a>
+            </div>
+        </div>
+    </div>
+    <div class="nyjbanner_fot clearfix"></div>
+</div><!-- 头部结束 -->
+
+<script>
+    //检索
+    $('#search_btn').click(function() {
+        var siteTag = 1
+        var siteid = 60 ;
+        if (!$('#HeaderSearchInput').val()) {
+            alert('请输入搜索内容')
+            return
+        }
+        //if($('.logo .logoR1 button span').text() == '搜本站') {
+        // siteTag = 1
+        //}
+        window.open("/dept_search/#/Door?keywords=" + $('#HeaderSearchInput').val() + "&siteTag=" + siteTag +
+            "&siteid=" + siteid);
+    })
+    //按下回车键搜索
+    $('#HeaderSearchInput').bind('keyup', function(event) {
+        if (event.keyCode == "13") {
+            $('#search_btn').click();
+        }
+    });
+</script>
+<script language="JavaScript" type="text/javascript">
+    var Default_isFT = 0 //默认是否繁体，0-简体，1-繁体
+    var StranIt_Delay = 50 //翻译延时毫秒（设这个的目的是让网页先流畅的显现出来）－－
+    //转换文本
+    function StranText(txt, toFT, chgTxt) {
+        if (txt == "" || txt == null) return ""
+        toFT = toFT == null ? BodyIsFt : toFT
+        if (chgTxt) txt = txt.replace((toFT ? "简" : "繁"), (toFT ? "繁" : "简"))
+        if (toFT) {
+            return Traditionalized(txt)
+        } else {
+            return Simplized(txt)
+        }
+    }
+    //转换对象，使用递归，逐层剥到文本
+    function StranBody(fobj) {
+        if (typeof(fobj) == "object") {
+            var obj = fobj.childNodes
+        } else {
+            var tmptxt = StranLink_Obj.innerHTML.toString()
+            if (tmptxt.indexOf("简") < 0) {
+                BodyIsFt = 1
+                StranLink_Obj.innerHTML = StranText(tmptxt, 0, 1)
+                StranLink.title = StranText(StranLink.title, 0, 1)
+            } else {
+                BodyIsFt = 0
+                StranLink_Obj.innerHTML = StranText(tmptxt, 1, 1)
+                StranLink.title = StranText(StranLink.title, 1, 1)
+            }
+            setCookie(JF_cn, BodyIsFt, 7)
+            var obj = document.body.childNodes
+        }
+        for (var i = 0; i < obj.length; i++) {
+            var OO = obj.item(i)
+            if ("||BR|HR|TEXTAREA|".indexOf("|" + OO.tagName + "|") > 0 || OO == StranLink_Obj) continue;
+            if (OO.title != "" && OO.title != null) OO.title = StranText(OO.title);
+            if (OO.alt != "" && OO.alt != null) OO.alt = StranText(OO.alt);
+            if (OO.tagName == "INPUT" && OO.value != "" && OO.type != "text" && OO.type != "hidden") OO.value = StranText(
+                OO.value);
+            if (OO.nodeType == 3) {
+                OO.data = StranText(OO.data)
+            } else StranBody(OO)
+        }
+    } //trs-silentblue
+    function JTPYStr() {
+        return '万与丑专业丛东丝丢两严丧个丬丰临为丽举么义乌乐乔习乡书买乱争于亏云亘亚产亩亲亵亸亿仅从仑仓仪们价众优伙会伛伞伟传伤伥伦伧伪伫体余佣佥侠侣侥侦侧侨侩侪侬俣俦俨俩俪俭债倾偬偻偾偿傥傧储傩儿兑兖党兰关兴兹养兽冁内冈册写军农冢冯冲决况冻净凄凉凌减凑凛几凤凫凭凯击凼凿刍划刘则刚创删别刬刭刽刿剀剂剐剑剥剧劝办务劢动励劲劳势勋勐勚匀匦匮区医华协单卖卢卤卧卫却卺厂厅历厉压厌厍厕厢厣厦厨厩厮县参叆叇双发变叙叠叶号叹叽吁后吓吕吗吣吨听启吴呒呓呕呖呗员呙呛呜咏咔咙咛咝咤咴咸哌响哑哒哓哔哕哗哙哜哝哟唛唝唠唡唢唣唤唿啧啬啭啮啰啴啸喷喽喾嗫呵嗳嘘嘤嘱噜噼嚣嚯团园囱围囵国图圆圣圹场坂坏块坚坛坜坝坞坟坠垄垅垆垒垦垧垩垫垭垯垱垲垴埘埙埚埝埯堑堕塆墙壮声壳壶壸处备复够头夸夹夺奁奂奋奖奥妆妇妈妩妪妫姗姜娄娅娆娇娈娱娲娴婳婴婵婶媪嫒嫔嫱嬷孙学孪宁宝实宠审宪宫宽宾寝对寻导寿将尔尘尧尴尸尽层屃屉届属屡屦屿岁岂岖岗岘岙岚岛岭岳岽岿峃峄峡峣峤峥峦崂崃崄崭嵘嵚嵛嵝嵴巅巩巯币帅师帏帐帘帜带帧帮帱帻帼幂幞干并广庄庆庐庑库应庙庞废庼廪开异弃张弥弪弯弹强归当录彟彦彻径徕御忆忏忧忾怀态怂怃怄怅怆怜总怼怿恋恳恶恸恹恺恻恼恽悦悫悬悭悯惊惧惨惩惫惬惭惮惯愍愠愤愦愿慑慭憷懑懒懔戆戋戏戗战戬户扎扑扦执扩扪扫扬扰抚抛抟抠抡抢护报担拟拢拣拥拦拧拨择挂挚挛挜挝挞挟挠挡挢挣挤挥挦捞损捡换捣据捻掳掴掷掸掺掼揸揽揿搀搁搂搅携摄摅摆摇摈摊撄撑撵撷撸撺擞攒敌敛数斋斓斗斩断无旧时旷旸昙昼昽显晋晒晓晔晕晖暂暧札术朴机杀杂权条来杨杩杰极构枞枢枣枥枧枨枪枫枭柜柠柽栀栅标栈栉栊栋栌栎栏树栖样栾桊桠桡桢档桤桥桦桧桨桩梦梼梾检棂椁椟椠椤椭楼榄榇榈榉槚槛槟槠横樯樱橥橱橹橼檐檩欢欤欧歼殁殇残殒殓殚殡殴毁毂毕毙毡毵氇气氢氩氲汇汉污汤汹沓沟没沣沤沥沦沧沨沩沪沵泞泪泶泷泸泺泻泼泽泾洁洒洼浃浅浆浇浈浉浊测浍济浏浐浑浒浓浔浕涂涌涛涝涞涟涠涡涢涣涤润涧涨涩淀渊渌渍渎渐渑渔渖渗温游湾湿溃溅溆溇滗滚滞滟滠满滢滤滥滦滨滩滪漤潆潇潋潍潜潴澜濑濒灏灭灯灵灾灿炀炉炖炜炝点炼炽烁烂烃烛烟烦烧烨烩烫烬热焕焖焘煅煳熘爱爷牍牦牵牺犊犟状犷犸犹狈狍狝狞独狭狮狯狰狱狲猃猎猕猡猪猫猬献獭玑玙玚玛玮环现玱玺珉珏珐珑珰珲琎琏琐琼瑶瑷璇璎瓒瓮瓯电画畅畲畴疖疗疟疠疡疬疮疯疱疴痈痉痒痖痨痪痫痴瘅瘆瘗瘘瘪瘫瘾瘿癞癣癫癯皑皱皲盏盐监盖盗盘眍眦眬着睁睐睑瞒瞩矫矶矾矿砀码砖砗砚砜砺砻砾础硁硅硕硖硗硙硚确硷碍碛碜碱碹磙礼祎祢祯祷祸禀禄禅离秃秆种积称秽秾稆税稣稳穑穷窃窍窑窜窝窥窦窭竖竞笃笋笔笕笺笼笾筑筚筛筜筝筹签简箓箦箧箨箩箪箫篑篓篮篱簖籁籴类籼粜粝粤粪粮糁糇紧絷纟纠纡红纣纤纥约级纨纩纪纫纬纭纮纯纰纱纲纳纴纵纶纷纸纹纺纻纼纽纾线绀绁绂练组绅细织终绉绊绋绌绍绎经绐绑绒结绔绕绖绗绘给绚绛络绝绞统绠绡绢绣绤绥绦继绨绩绪绫绬续绮绯绰绱绲绳维绵绶绷绸绹绺绻综绽绾绿缀缁缂缃缄缅缆缇缈缉缊缋缌缍缎缏缐缑缒缓缔缕编缗缘缙缚缛缜缝缞缟缠缡缢缣缤缥缦缧缨缩缪缫缬缭缮缯缰缱缲缳缴缵罂网罗罚罢罴羁羟羡翘翙翚耢耧耸耻聂聋职聍联聩聪肃肠肤肷肾肿胀胁胆胜胧胨胪胫胶脉脍脏脐脑脓脔脚脱脶脸腊腌腘腭腻腼腽腾膑臜舆舣舰舱舻艰艳艹艺节芈芗芜芦苁苇苈苋苌苍苎苏苘苹茎茏茑茔茕茧荆荐荙荚荛荜荞荟荠荡荣荤荥荦荧荨荩荪荫荬荭荮药莅莜莱莲莳莴莶获莸莹莺莼萚萝萤营萦萧萨葱蒇蒉蒋蒌蓝蓟蓠蓣蓥蓦蔷蔹蔺蔼蕲蕴薮藁藓虏虑虚虫虬虮虽虾虿蚀蚁蚂蚕蚝蚬蛊蛎蛏蛮蛰蛱蛲蛳蛴蜕蜗蜡蝇蝈蝉蝎蝼蝾螀螨蟏衅衔补衬衮袄袅袆袜袭袯装裆裈裢裣裤裥褛褴襁襕见观觃规觅视觇览觉觊觋觌觍觎觏觐觑觞触觯詟誉誊讠计订讣认讥讦讧讨让讪讫训议讯记讱讲讳讴讵讶讷许讹论讻讼讽设访诀证诂诃评诅识诇诈诉诊诋诌词诎诏诐译诒诓诔试诖诗诘诙诚诛诜话诞诟诠诡询诣诤该详诧诨诩诪诫诬语诮误诰诱诲诳说诵诶请诸诹诺读诼诽课诿谀谁谂调谄谅谆谇谈谊谋谌谍谎谏谐谑谒谓谔谕谖谗谘谙谚谛谜谝谞谟谠谡谢谣谤谥谦谧谨谩谪谫谬谭谮谯谰谱谲谳谴谵谶谷豮贝贞负贠贡财责贤败账货质贩贪贫贬购贮贯贰贱贲贳贴贵贶贷贸费贺贻贼贽贾贿赀赁赂赃资赅赆赇赈赉赊赋赌赍赎赏赐赑赒赓赔赕赖赗赘赙赚赛赜赝赞赟赠赡赢赣赪赵赶趋趱趸跃跄跖跞践跶跷跸跹跻踊踌踪踬踯蹑蹒蹰蹿躏躜躯车轧轨轩轪轫转轭轮软轰轱轲轳轴轵轶轷轸轹轺轻轼载轾轿辀辁辂较辄辅辆辇辈辉辊辋辌辍辎辏辐辑辒输辔辕辖辗辘辙辚辞辩辫边辽达迁过迈运还这进远违连迟迩迳迹适选逊递逦逻遗遥邓邝邬邮邹邺邻郁郄郏郐郑郓郦郧郸酝酦酱酽酾酿释里鉅鉴銮錾钆钇针钉钊钋钌钍钎钏钐钑钒钓钔钕钖钗钘钙钚钛钝钞钟钠钡钢钣钤钥钦钧钨钩钪钫钬钭钮钯钰钱钲钳钴钵钶钷钸钹钺钻钼钽钾钿铀铁铂铃铄铅铆铈铉铊铋铍铎铏铐铑铒铕铗铘铙铚铛铜铝铞铟铠铡铢铣铤铥铦铧铨铪铫铬铭铮铯铰铱铲铳铴铵银铷铸铹铺铻铼铽链铿销锁锂锃锄锅锆锇锈锉锊锋锌锍锎锏锐锑锒锓锔锕锖锗错锚锜锞锟锠锡锢锣锤锥锦锨锩锫锬锭键锯锰锱锲锳锴锵锶锷锸锹锺锻锼锽锾锿镀镁镂镃镆镇镈镉镊镌镍镎镏镐镑镒镕镖镗镙镚镛镜镝镞镟镠镡镢镣镤镥镦镧镨镩镪镫镬镭镮镯镰镱镲镳镴镶长门闩闪闫闬闭问闯闰闱闲闳间闵闶闷闸闹闺闻闼闽闾闿阀阁阂阃阄阅阆阇阈阉阊阋阌阍阎阏阐阑阒阓阔阕阖阗阘阙阚阛队阳阴阵阶际陆陇陈陉陕陧陨险随隐隶隽难雏雠雳雾霁霉霭靓静靥鞑鞒鞯鞴韦韧韨韩韪韫韬韵页顶顷顸项顺须顼顽顾顿颀颁颂颃预颅领颇颈颉颊颋颌颍颎颏颐频颒颓颔颕颖颗题颙颚颛颜额颞颟颠颡颢颣颤颥颦颧风飏飐飑飒飓飔飕飖飗飘飙飚飞飨餍饤饥饦饧饨饩饪饫饬饭饮饯饰饱饲饳饴饵饶饷饸饹饺饻饼饽饾饿馀馁馂馃馄馅馆馇馈馉馊馋馌馍馎馏馐馑馒馓馔馕马驭驮驯驰驱驲驳驴驵驶驷驸驹驺驻驼驽驾驿骀骁骂骃骄骅骆骇骈骉骊骋验骍骎骏骐骑骒骓骔骕骖骗骘骙骚骛骜骝骞骟骠骡骢骣骤骥骦骧髅髋髌鬓魇魉鱼鱽鱾鱿鲀鲁鲂鲄鲅鲆鲇鲈鲉鲊鲋鲌鲍鲎鲏鲐鲑鲒鲓鲔鲕鲖鲗鲘鲙鲚鲛鲜鲝鲞鲟鲠鲡鲢鲣鲤鲥鲦鲧鲨鲩鲪鲫鲬鲭鲮鲯鲰鲱鲲鲳鲴鲵鲶鲷鲸鲹鲺鲻鲼鲽鲾鲿鳀鳁鳂鳃鳄鳅鳆鳇鳈鳉鳊鳋鳌鳍鳎鳏鳐鳑鳒鳓鳔鳕鳖鳗鳘鳙鳛鳜鳝鳞鳟鳠鳡鳢鳣鸟鸠鸡鸢鸣鸤鸥鸦鸧鸨鸩鸪鸫鸬鸭鸮鸯鸰鸱鸲鸳鸴鸵鸶鸷鸸鸹鸺鸻鸼鸽鸾鸿鹀鹁鹂鹃鹄鹅鹆鹇鹈鹉鹊鹋鹌鹍鹎鹏鹐鹑鹒鹓鹔鹕鹖鹗鹘鹚鹛鹜鹝鹞鹟鹠鹡鹢鹣鹤鹥鹦鹧鹨鹩鹪鹫鹬鹭鹯鹰鹱鹲鹳鹴鹾麦麸黄黉黡黩黪黾鼋鼌鼍鼗鼹齄齐齑齿龀龁龂龃龄龅龆龇龈龉龊龋龌龙龚龛龟志制咨只里系范松没尝尝闹面准钟别闲干尽脏';
+    }
+
+    function FTPYStr() {
+        return '萬與醜專業叢東絲丟兩嚴喪個爿豐臨為麗舉麼義烏樂喬習鄉書買亂爭於虧雲亙亞產畝親褻嚲億僅從侖倉儀們價眾優夥會傴傘偉傳傷倀倫傖偽佇體餘傭僉俠侶僥偵側僑儈儕儂俁儔儼倆儷儉債傾傯僂僨償儻儐儲儺兒兌兗黨蘭關興茲養獸囅內岡冊寫軍農塚馮衝決況凍淨淒涼淩減湊凜幾鳳鳧憑凱擊氹鑿芻劃劉則剛創刪別剗剄劊劌剴劑剮劍剝劇勸辦務勱動勵勁勞勢勳猛勩勻匭匱區醫華協單賣盧鹵臥衛卻巹廠廳曆厲壓厭厙廁廂厴廈廚廄廝縣參靉靆雙發變敘疊葉號歎嘰籲後嚇呂嗎唚噸聽啟吳嘸囈嘔嚦唄員咼嗆嗚詠哢嚨嚀噝吒噅鹹呱響啞噠嘵嗶噦嘩噲嚌噥喲嘜嗊嘮啢嗩唕喚呼嘖嗇囀齧囉嘽嘯噴嘍嚳囁嗬噯噓嚶囑嚕劈囂謔團園囪圍圇國圖圓聖壙場阪壞塊堅壇壢壩塢墳墜壟壟壚壘墾坰堊墊埡墶壋塏堖塒塤堝墊垵塹墮壪牆壯聲殼壺壼處備複夠頭誇夾奪奩奐奮獎奧妝婦媽嫵嫗媯姍薑婁婭嬈嬌孌娛媧嫻嫿嬰嬋嬸媼嬡嬪嬙嬤孫學孿寧寶實寵審憲宮寬賓寢對尋導壽將爾塵堯尷屍盡層屭屜屆屬屢屨嶼歲豈嶇崗峴嶴嵐島嶺嶽崠巋嶨嶧峽嶢嶠崢巒嶗崍嶮嶄嶸嶔崳嶁脊巔鞏巰幣帥師幃帳簾幟帶幀幫幬幘幗冪襆幹並廣莊慶廬廡庫應廟龐廢廎廩開異棄張彌弳彎彈強歸當錄彠彥徹徑徠禦憶懺憂愾懷態慫憮慪悵愴憐總懟懌戀懇惡慟懨愷惻惱惲悅愨懸慳憫驚懼慘懲憊愜慚憚慣湣慍憤憒願懾憖怵懣懶懍戇戔戲戧戰戩戶紮撲扡執擴捫掃揚擾撫拋摶摳掄搶護報擔擬攏揀擁攔擰撥擇掛摯攣掗撾撻挾撓擋撟掙擠揮撏撈損撿換搗據撚擄摑擲撣摻摜摣攬撳攙擱摟攪攜攝攄擺搖擯攤攖撐攆擷擼攛擻攢敵斂數齋斕鬥斬斷無舊時曠暘曇晝曨顯晉曬曉曄暈暉暫曖劄術樸機殺雜權條來楊榪傑極構樅樞棗櫪梘棖槍楓梟櫃檸檉梔柵標棧櫛櫳棟櫨櫟欄樹棲樣欒棬椏橈楨檔榿橋樺檜槳樁夢檮棶檢欞槨櫝槧欏橢樓欖櫬櫚櫸檟檻檳櫧橫檣櫻櫫櫥櫓櫞簷檁歡歟歐殲歿殤殘殞殮殫殯毆毀轂畢斃氈毿氌氣氫氬氳彙漢汙湯洶遝溝沒灃漚瀝淪滄渢溈滬濔濘淚澩瀧瀘濼瀉潑澤涇潔灑窪浹淺漿澆湞溮濁測澮濟瀏滻渾滸濃潯濜塗湧濤澇淶漣潿渦溳渙滌潤澗漲澀澱淵淥漬瀆漸澠漁瀋滲溫遊灣濕潰濺漵漊潷滾滯灩灄滿瀅濾濫灤濱灘澦濫瀠瀟瀲濰潛瀦瀾瀨瀕灝滅燈靈災燦煬爐燉煒熗點煉熾爍爛烴燭煙煩燒燁燴燙燼熱煥燜燾煆糊溜愛爺牘犛牽犧犢強狀獷獁猶狽麅獮獰獨狹獅獪猙獄猻獫獵獼玀豬貓蝟獻獺璣璵瑒瑪瑋環現瑲璽瑉玨琺瓏璫琿璡璉瑣瓊瑤璦璿瓔瓚甕甌電畫暢佘疇癤療瘧癘瘍鬁瘡瘋皰屙癰痙癢瘂癆瘓癇癡癉瘮瘞瘺癟癱癮癭癩癬癲臒皚皺皸盞鹽監蓋盜盤瞘眥矓著睜睞瞼瞞矚矯磯礬礦碭碼磚硨硯碸礪礱礫礎硜矽碩硤磽磑礄確鹼礙磧磣堿镟滾禮禕禰禎禱禍稟祿禪離禿稈種積稱穢穠穭稅穌穩穡窮竊竅窯竄窩窺竇窶豎競篤筍筆筧箋籠籩築篳篩簹箏籌簽簡籙簀篋籜籮簞簫簣簍籃籬籪籟糴類秈糶糲粵糞糧糝餱緊縶糸糾紆紅紂纖紇約級紈纊紀紉緯紜紘純紕紗綱納紝縱綸紛紙紋紡紵紖紐紓線紺絏紱練組紳細織終縐絆紼絀紹繹經紿綁絨結絝繞絰絎繪給絢絳絡絕絞統綆綃絹繡綌綏絛繼綈績緒綾緓續綺緋綽緔緄繩維綿綬繃綢綯綹綣綜綻綰綠綴緇緙緗緘緬纜緹緲緝縕繢緦綞緞緶線緱縋緩締縷編緡緣縉縛縟縝縫縗縞纏縭縊縑繽縹縵縲纓縮繆繅纈繚繕繒韁繾繰繯繳纘罌網羅罰罷羆羈羥羨翹翽翬耮耬聳恥聶聾職聹聯聵聰肅腸膚膁腎腫脹脅膽勝朧腖臚脛膠脈膾髒臍腦膿臠腳脫腡臉臘醃膕齶膩靦膃騰臏臢輿艤艦艙艫艱豔艸藝節羋薌蕪蘆蓯葦藶莧萇蒼苧蘇檾蘋莖蘢蔦塋煢繭荊薦薘莢蕘蓽蕎薈薺蕩榮葷滎犖熒蕁藎蓀蔭蕒葒葤藥蒞蓧萊蓮蒔萵薟獲蕕瑩鶯蓴蘀蘿螢營縈蕭薩蔥蕆蕢蔣蔞藍薊蘺蕷鎣驀薔蘞藺藹蘄蘊藪槁蘚虜慮虛蟲虯蟣雖蝦蠆蝕蟻螞蠶蠔蜆蠱蠣蟶蠻蟄蛺蟯螄蠐蛻蝸蠟蠅蟈蟬蠍螻蠑螿蟎蠨釁銜補襯袞襖嫋褘襪襲襏裝襠褌褳襝褲襇褸襤繈襴見觀覎規覓視覘覽覺覬覡覿覥覦覯覲覷觴觸觶讋譽謄訁計訂訃認譏訐訌討讓訕訖訓議訊記訒講諱謳詎訝訥許訛論訩訟諷設訪訣證詁訶評詛識詗詐訴診詆謅詞詘詔詖譯詒誆誄試詿詩詰詼誠誅詵話誕詬詮詭詢詣諍該詳詫諢詡譸誡誣語誚誤誥誘誨誑說誦誒請諸諏諾讀諑誹課諉諛誰諗調諂諒諄誶談誼謀諶諜謊諫諧謔謁謂諤諭諼讒諮諳諺諦謎諞諝謨讜謖謝謠謗諡謙謐謹謾謫譾謬譚譖譙讕譜譎讞譴譫讖穀豶貝貞負貟貢財責賢敗賬貨質販貪貧貶購貯貫貳賤賁貰貼貴貺貸貿費賀貽賊贄賈賄貲賃賂贓資賅贐賕賑賚賒賦賭齎贖賞賜贔賙賡賠賧賴賵贅賻賺賽賾贗讚贇贈贍贏贛赬趙趕趨趲躉躍蹌蹠躒踐躂蹺蹕躚躋踴躊蹤躓躑躡蹣躕躥躪躦軀車軋軌軒軑軔轉軛輪軟轟軲軻轤軸軹軼軤軫轢軺輕軾載輊轎輈輇輅較輒輔輛輦輩輝輥輞輬輟輜輳輻輯轀輸轡轅轄輾轆轍轔辭辯辮邊遼達遷過邁運還這進遠違連遲邇逕跡適選遜遞邐邏遺遙鄧鄺鄔郵鄒鄴鄰鬱郤郟鄶鄭鄆酈鄖鄲醞醱醬釅釃釀釋裏钜鑒鑾鏨釓釔針釘釗釙釕釷釺釧釤鈒釩釣鍆釹鍚釵鈃鈣鈈鈦鈍鈔鍾鈉鋇鋼鈑鈐鑰欽鈞鎢鉤鈧鈁鈥鈄鈕鈀鈺錢鉦鉗鈷缽鈳鉕鈽鈸鉞鑽鉬鉭鉀鈿鈾鐵鉑鈴鑠鉛鉚鈰鉉鉈鉍鈹鐸鉶銬銠鉺銪鋏鋣鐃銍鐺銅鋁銱銦鎧鍘銖銑鋌銩銛鏵銓鉿銚鉻銘錚銫鉸銥鏟銃鐋銨銀銣鑄鐒鋪鋙錸鋱鏈鏗銷鎖鋰鋥鋤鍋鋯鋨鏽銼鋝鋒鋅鋶鐦鐧銳銻鋃鋟鋦錒錆鍺錯錨錡錁錕錩錫錮鑼錘錐錦鍁錈錇錟錠鍵鋸錳錙鍥鍈鍇鏘鍶鍔鍤鍬鍾鍛鎪鍠鍰鎄鍍鎂鏤鎡鏌鎮鎛鎘鑷鐫鎳鎿鎦鎬鎊鎰鎔鏢鏜鏍鏰鏞鏡鏑鏃鏇鏐鐔钁鐐鏷鑥鐓鑭鐠鑹鏹鐙鑊鐳鐶鐲鐮鐿鑔鑣鑞鑲長門閂閃閆閈閉問闖閏闈閑閎間閔閌悶閘鬧閨聞闥閩閭闓閥閣閡閫鬮閱閬闍閾閹閶鬩閿閽閻閼闡闌闃闠闊闋闔闐闒闕闞闤隊陽陰陣階際陸隴陳陘陝隉隕險隨隱隸雋難雛讎靂霧霽黴靄靚靜靨韃鞽韉韝韋韌韍韓韙韞韜韻頁頂頃頇項順須頊頑顧頓頎頒頌頏預顱領頗頸頡頰頲頜潁熲頦頤頻頮頹頷頴穎顆題顒顎顓顏額顳顢顛顙顥纇顫顬顰顴風颺颭颮颯颶颸颼颻飀飄飆飆飛饗饜飣饑飥餳飩餼飪飫飭飯飲餞飾飽飼飿飴餌饒餉餄餎餃餏餅餑餖餓餘餒餕餜餛餡館餷饋餶餿饞饁饃餺餾饈饉饅饊饌饢馬馭馱馴馳驅馹駁驢駔駛駟駙駒騶駐駝駑駕驛駘驍罵駰驕驊駱駭駢驫驪騁驗騂駸駿騏騎騍騅騌驌驂騙騭騤騷騖驁騮騫騸驃騾驄驏驟驥驦驤髏髖髕鬢魘魎魚魛魢魷魨魯魴魺鮁鮃鯰鱸鮋鮓鮒鮊鮑鱟鮍鮐鮭鮚鮳鮪鮞鮦鰂鮜鱠鱭鮫鮮鮺鯗鱘鯁鱺鰱鰹鯉鰣鰷鯀鯊鯇鮶鯽鯒鯖鯪鯕鯫鯡鯤鯧鯝鯢鯰鯛鯨鯵鯴鯔鱝鰈鰏鱨鯷鰮鰃鰓鱷鰍鰒鰉鰁鱂鯿鰠鼇鰭鰨鰥鰩鰟鰜鰳鰾鱈鱉鰻鰵鱅鰼鱖鱔鱗鱒鱯鱤鱧鱣鳥鳩雞鳶鳴鳲鷗鴉鶬鴇鴆鴣鶇鸕鴨鴞鴦鴒鴟鴝鴛鴬鴕鷥鷙鴯鴰鵂鴴鵃鴿鸞鴻鵐鵓鸝鵑鵠鵝鵒鷳鵜鵡鵲鶓鵪鶤鵯鵬鵮鶉鶊鵷鷫鶘鶡鶚鶻鶿鶥鶩鷊鷂鶲鶹鶺鷁鶼鶴鷖鸚鷓鷚鷯鷦鷲鷸鷺鸇鷹鸌鸏鸛鸘鹺麥麩黃黌黶黷黲黽黿鼂鼉鞀鼴齇齊齏齒齔齕齗齟齡齙齠齜齦齬齪齲齷龍龔龕龜誌製谘隻裡係範鬆冇嚐嘗鬨麵準鐘彆閒乾儘臟';
+    }
+
+    function Traditionalized(cc) {
+        var str = '',
+            ss = JTPYStr(),
+            tt = FTPYStr();
+        for (var i = 0; i < cc.length; i++) {
+            if (cc.charCodeAt(i) > 10000 && ss.indexOf(cc.charAt(i)) != -1) str += tt.charAt(ss.indexOf(cc.charAt(i)));
+            else str += cc.charAt(i);
+        }
+        return str;
+    } //trs-silentblue
+    function Simplized(cc) {
+        var str = '',
+            ss = JTPYStr(),
+            tt = FTPYStr();
+        for (var i = 0; i < cc.length; i++) {
+            if (cc.charCodeAt(i) > 10000 && tt.indexOf(cc.charAt(i)) != -1) str += ss.charAt(tt.indexOf(cc.charAt(i)));
+            else str += cc.charAt(i);
+        }
+        return str;
+    } //trs-silentblue
+    function setCookie(name, value) //cookies设置
+    {
+        var argv = setCookie.arguments;
+        var argc = setCookie.arguments.length;
+        var expires = (argc > 2) ? argv[2] : null;
+        if (expires != null) {
+            var LargeExpDate = new Date();
+            LargeExpDate.setTime(LargeExpDate.getTime() + (expires * 1000 * 3600 * 24));
+        }
+        document.cookie = name + "=" + escape(value) + ((expires == null) ? "" : ("; expires=" + LargeExpDate
+            .toGMTString()));
+    } //trs-silentblue
+    function getCookie(Name) //cookies读取
+    {
+        var search = Name + "="
+        if (document.cookie.length > 0) {
+            offset = document.cookie.indexOf(search)
+            if (offset != -1) {
+                offset += search.length
+                end = document.cookie.indexOf(";", offset)
+                if (end == -1) end = document.cookie.length
+                return unescape(document.cookie.substring(offset, end))
+            } else return ""
+        }
+    }
+    var StranLink_Obj = document.getElementById("StranLink")
+    if (StranLink_Obj) {
+        var JF_cn = "ft" + self.location.hostname.toString().replace(/\./g, "")
+        var BodyIsFt = getCookie(JF_cn)
+        if (BodyIsFt != "1") BodyIsFt = Default_isFT
+        with(StranLink_Obj) {
+            if (typeof(document.all) != "object") //非IE浏览器
+            {
+                href = "javascript:StranBody()"
+            } else {
+                href = "#";
+                onclick = new Function("StranBody();return false")
+            }
+            title = StranText("点击切换到繁体中文网站", 1, 1)
+            innerHTML = StranText(innerHTML, 1, 1)
+        }
+        if (BodyIsFt == "1") {
+            setTimeout("StranBody()", StranIt_Delay)
+        }
+    } //trs-silentblue
+</script>
+<style>
+    .kjtab_box .wyk ul li a i {
+        border-radius:20px;
+    }
+    .retrieval a {
+
+        width: 65px;
+
+    }
+    .content .foot_foot{
+        width:1000px;
+    }
+    .czwz_right{
+        float:left;
+        margin-left: 60px;
+    }
+    .wwzxg .tzxx h1{
+        background-position: left;
+        width:215px;
+    }
+</style>
+			<!--  -->
+			<div class="nyj3c_1 clearfix">
+				<div class="nyj_content">
+					<div class="dcwz clearfix">当前位置：<a href="../../../../" target="_blank" title="首页" class="CurrChnlCls">首页</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../../../" target="_blank" title="政府信息公开" class="CurrChnlCls">政府信息公开</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../../" target="_blank" title="法定主动公开目录" class="CurrChnlCls">法定主动公开目录</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../" target="_blank" title="最新文件" class="CurrChnlCls">最新文件</a>
+					</div>
+					<div class="gwy_xqy clearfix">
+						<div class="nyjxqy clearfix">
+							<div class="wrap" style="font-family:宋体;">
+								<table border="0" cellpadding="0" cellspacing="0" class="bd1" style="margin:0 auto;">
+									<tbody>
+										<tr>
+											<td width="75"><b>标　　题：</b></td>
+											<td colspan="3" width="907" style="text-align:left">
+												山西省能源局关于印发《“十四五”新型储能  发展实施方案》的通知
+											</td>
+										</tr>
+										<tr>
+
+											<td co width="75"><b>发文字号：</b></td>
+											<td width="533">
+												晋能源新能源发〔2022〕353号
+											</td>
+											<td width="75"><b>主题分类：</b></td>
+											<td width="300">
+												新能源和可再生能源
+											</td>
+										</tr>
+										<tr>
+											<td><b>成文日期：</b></td>
+											<td>
+												2022年09月30日
+											</td>
+											<td><b>发布日期：</b></td>
+											<td>
+												2022年09月30日
+											</td>
+										</tr>
+										<tr>
+											<td><b>是否有效：</b></td>
+											<td colspan="3" width="907" style="text-align:left">是</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="zfwjjd clearfix">
+								<div class="zfwjjd_left clearfix" id="main_content" style="width: 100%;border-right: 0;">
+									<!--<h3>
+										山西省能源局关于印发《“十四五”新型储能  发展实施方案》的通知
+									</h3>
+									<h2>
+										
+									</h2>
+-->
+									<div class="article-body clearfix">
+
+										<!--<script language="javascript" type="text/javascript">
+											var pdfurl = '';
+											var pdfwidth = 730; //定义pdf单页宽度
+											var pdfheight = 800; //定义pdf单页高度
+											if (pdfurl.indexOf(".pdf") >= 0) { //判断是否为PDF，是就显示，不是就不显示 
+												document.write(
+													"<div style='width:730px;margin:0 auto;'><object classid='clsid:CA8A9780-280D-11CF-A24D-444553540000' width='" +
+													pdfwidth + "' height='" + pdfheight + "' border='0' top='-10' name='pdf'> ");
+												document.write("<param name='toolbar' value='true'>");
+												document.write("<param name='_Version' value='65539'>");
+												document.write("<param name='_ExtentX' value='20108'>");
+												document.write("<param name='_ExtentY' value='10866'>");
+												document.write("<param name='_StockProps' value='0'>");
+												document.write("<param name='SRC' value=''>");
+												document.write("<embed name='plugin' src='" + pdfurl + "' type='application/pdf' width='" + pdfwidth +
+													"' height='" + pdfheight + "'>");
+												document.write("</object></div>")
+											}; 
+										</script>-->
+										<div class="view TRS_UEDITOR trs_paper_default trs_web"><p style="line-height: 48px;margin-top: 0px;white-space: normal;text-align: center;text-indent: 58px"><strong><span data-index="" style="font-size: 29px; font-family: 宋体, SimSun;">山西省能源局关于印发《“十四五”新型储能</span></strong></p><p style="line-height: 48px;white-space: normal;text-align: center;text-indent: 58px"><strong><span data-index="" style="font-size: 29px; font-family: 宋体, SimSun;">发展实施方案》的通知</span></strong></p><p style="white-space: normal; text-align: center; text-indent: 42px; line-height: 2em;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">晋能源新能源发〔2022〕353号</span></p><p style="white-space: normal; margin-top: 0px; margin-bottom: 0px; line-height: 2em; text-align: justify; text-indent: 0em;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">各市能源局，省电力公司、各有关能源企业：</span></p><p style="white-space: normal; text-align: justify; margin-top: 0px; margin-bottom: 0px; text-indent: 42px; line-height: 2em;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">为加快推进我省新型储能技术与产业健康发展，根据《国家发展改革委 国家能源局关于加快推动新型储能发展的指导意见》（发改能源规〔2021〕1051号）、《国家发展改革委 国家能源局关于印发“十四五”新型储能发展实施方案的通知》（发改能源发〔2022〕209号）等相关要求，我们组织制定了《“十四五”新型储能发展实施方案》，现印发给你们，请遵照执行。</span></p><p style="line-height: 48px; white-space: normal; text-align: justify; margin-top: 0px; margin-bottom: 0px; text-indent: 32px;"><br/></p><p style="white-space: normal; text-indent: 32px; text-align: right; line-height: 2em;"><span data-index="" style="font-family: 仿宋, FangSong;">        <span style="font-size: 21px; font-family: 仿宋, FangSong;">山西省能源局</span></span></p><p style="white-space: normal; text-indent: 42px; text-align: right; line-height: 2em;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">2022年9月5日</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">（此件主动公开）</span></p><p style="white-space: normal;text-indent: 32px"><br/></p><p style="white-space: normal; text-align: center; text-indent: 48px; line-height: 2em;"><strong><span data-index="" style="font-size: 24px; font-family: 宋体, SimSun;">“十四五”新型储能发展实施方案</span></strong></p><p style="white-space: normal; text-align: justify; text-indent: 32px; line-height: 2em;"><span data-index="" style="font-family: 仿宋, FangSong;"> </span></p><p style="white-space: normal; text-indent: 42px; text-align: justify; line-height: 2em;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">根据国家发展改革委、国家能源局《关于加快推动新型储能发展的指导意见》（发改能源〔2021〕1051号）、《“十四五”新型储能发展实施方案》（发改能源〔2022〕209号）、国家能源局《关于印发&lt;新型储能项目管理规范（暂行）&gt;的通知》（国能发科技规〔2021〕47号）精神，为支持构建新型电力系统，助力山西实现碳达峰碳中和战略目标，进一步推进我省新型储能技术与产业健康发展，特制定本方案。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 黑体, SimHei;">一、总体要求</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（一）指导思想</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">以习近平新时代中国特色社会主义思想为指导，全面贯彻党的十九大和十九届历次全会精神，深入落实“四个革命、一个合作”能源安全新战略，以碳达峰碳中和为目标，坚持以技术创新为内生动力、以市场机制为根本依托、以政策环境为有力保障，积极开创技术、市场、政策多轮驱动良好局面，提升电力系统安全保障能力、调节能力和综合效率，以稳中求进的思路推动新型储能市场化、产业化、规模化发展，为加快构建清洁低碳、安全高效的能源体系提供有力支撑，推动我省由传统能源大省向新型综合能源大省转型发展。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（二）基本原则</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 仿宋, FangSong;"><strong><span style="font-size: 21px; font-family: 仿宋, FangSong;">科学统筹规划。</span></strong><span style="font-size: 21px; font-family: 仿宋, FangSong;">强化顶层设计，突出规划科学引领作用，统筹做好新型储能与新型电力系统各环节的有机融合；针对各类应用场景，鼓励因地制宜多元化发展，不断优化新型储能建设布局。</span></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 仿宋, FangSong;"><strong><span style="font-size: 21px; font-family: 仿宋, FangSong;">积极创新示范。</span></strong><span style="font-size: 21px; font-family: 仿宋, FangSong;">加强关键技术装备攻关研发，分类开展示范应用。加快推动商业模式和体制机制创新，鼓励重点地区先行先试。推动技术革新、产业升级、成本下降，有效支撑新型储能产业市场化可持续发展。</span></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 仿宋, FangSong;"><strong><span style="font-size: 21px; font-family: 仿宋, FangSong;">坚持市场主导。</span></strong><span style="font-size: 21px; font-family: 仿宋, FangSong;">明确新型储能独立市场地位，充分发挥市场在资源配置中的决定性作用，完善市场化交易机制，丰富新型储能参与的交易品种，健全配套市场规则和监督规范，推动新型储能有序发展。</span></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 仿宋, FangSong;"><strong><span style="font-size: 21px; font-family: 仿宋, FangSong;">强化规范管理。</span></strong><span style="font-size: 21px; font-family: 仿宋, FangSong;">加强新型储能项目管理，明确新型储能产业链各环节安全责任主体，建立健全新型储能技术标准、管理、监测、评估体系，提升行业建设运行水平，保障新型储能项目建设运行的全过程安全。</span></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（三）发展目标</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">“十四五”时期，立足我省国家新型储能重点示范区域定位，推动多元化技术和产业发展。到2025年，新型储能技术创新能力显著提高，技术装备水平大幅提升，在高安全、低成本、高可靠、长寿命等方面取得长足进步，标准体系初步建立，市场环境和商业模式基本成熟,实现从商业化初期向规模化发展转变，规划容量达到600万千瓦，新型储能在促进电力系统安全高效运行中发挥重要作用。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">到2030年，新型储能全面市场化发展，标准体系、市场机制、商业模式成熟健全，与电力系统各环节深度融合，装机规模基本满足新型电力系统相应需求。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 黑体, SimHei;">二、加强新型储能技术研发和产业体系建设</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（一）加强新型储能先进技术研发</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">按照“前瞻设计、突破瓶颈、示范引领”的原则，从电池材料、储能系统、示范应用单个层次，依托高性能电池材料与器件等5个省部级以上重点实验室，开展压缩空气、液流电池、锂离子电池、钠离子电池、超级电容等关键技术、装备和集成优化设计技术研究。加快新型储能智能调控技术研发，大力推广云计算、大数据、人工智能等新型技术在可再生能源及储能发展中的应用，推进全生命周期数字化智慧型新能源电站建设。加速储能技术落地转化和成果应用推广，延伸新型储能产业链，推进多元化新型储能技术应用示范，促进产学研用结合。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（二）加大新型储能技术创新力度</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">以建设怀柔实验室山西基地为契机，完善新型储能领域省重点实验室、技术创新中心、产业技术创新战略联盟等建设布局，积极培育新型研发机构，逐步完善基础研究、关键技术攻关、产业化应用的全链条科技创新平台体系。加强科创实力建设，积极推进新型储能技术创新和产业发展。深化科技体制机制改革，实现产业链、要素链与创新链的深度融合，打造支撑储能技术加快发展的创新生态。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（三）构建完整的新型储能产业体系</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">依托山西转型综合改革示范区千吨级钠离子正负极材料项目、阳泉铝板材生产线（铝箔等电池原材料）等产业基础构建山西新型储能产业体系。深化华阳集团与中科院物理研究所钠离子电池团队、中科海钠钠离子电池材料团队的合作模式，培育壮大具有自主知识产权和核心竞争力的骨干企业。鼓励省属装备制造企业、能源企业与电池生产及系统集成企业、系统方案提供商、综合能源服务商等各方市场主体创新商业模式，实现资源有效整合，共建投资平台，联合促进储能项目系统化、集约化开发落地。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 黑体, SimHei;">三、强化新型储能项目统筹规划</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（一）</span></strong><strong><span style="font-size: 21px;">鼓励新能源场站合理配置新型储能系统</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">充分结合电力系统运行和新能源开发需求，围绕晋北风光火储一体化基地、忻朔多能互补综合能源基地、晋西沿黄百里风光基地、晋东“新能源+”融合发展基地、晋南源网荷储一体化示范基地等五大基地规划布局一批配置储能的系统友好型新能源电站项目，实现储能系统与新能源项目深度融合、联合参与电网调度运行与电力市场交易，保障电力系统安全稳定运行。鼓励现役风电场、光伏电站通过共享、租赁等方式合理配置储能系统，提升系统消纳能力。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（二）因地制宜发展电网侧新型储能</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">统筹考虑全省新能源装机容量、分布情况、发展规划及消纳趋势等因素，结合煤电机组灵活性改造进度、抽水蓄能电站规划建设情况、用户侧调节能力挖掘等情况，在优先挖掘发电侧和用户侧等低成本调节资源的基础上，合理确定电网侧新型储能项目规模及布局。考虑在主变严重过载的500千伏变电站周边区域和新能源集中区域，重点在阳高县、天镇县、浑源县、新荣区、云冈区、平鲁区、右玉县、朔城区、山阴县、怀仁县、原平县、代县、宁武县等地区，结合网架结构等实际情况集中布局大容量集中式新型储能电站；在太原、运城等负荷密集区域等布局集中式新型储能电站，提高系统调峰能力。围绕政府、医院和数据中心等重要负荷用户需求，在安全可靠前提下，建设一批移动式或固定式储能作为应急备用电源，提升系统应急保供能力。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（三）鼓励工商业用户建设用户侧新型储能项目</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">鼓励大数据中心、工业园区、5G基站等终端用户，依托分布式新能源、微电网、增量配网等配置新型储能。围绕不间断电源、充换电设施等用户侧分散式储能设施建设，探索推广电动汽车、智慧用电设施等双向互动智能充放电技术应用，提升用户灵活调节能力。围绕工业类开发区或园区，立足拓展分布式新能源发电空间和降低开发区能耗水平，以储能、大数据、人工智能等技术为依托，通过优化整合本地电源侧、电网侧、负荷侧资源，合理配置各类储能，实现源网荷储各环节间协调互动，提高电力系统功率动态平衡能力，通过虚拟电厂一体化聚合，作为独立市场主体参与电力市场，开展源网荷储一体化项目示范。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 黑体, SimHei;">四、推动新型储能技术及多元化应用示范</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（一）开展各类新型储能技术示范</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">以新型储能示范项目建设为牵引，以系统需求为导向，大力开展多种储能技术、装备和系统集成技术研发。加快飞轮储能、压缩空气储能、钠离子电池、超级电容器、热储能、氢储能等技术规模化试验示范。开展大规模储能用钠离子电池关键技术与示范、长时储能百兆瓦级全钒液流电池系统、100MW/200MWh飞轮-液流-锂电混合储能关键技术研发与示范、大功率磁悬浮飞轮储能电池AGC辅助调频关键技术示范，加大攻关支持力度，推动新型储能与新能源产业协同发展。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（二）推动多元化</span></strong><strong><span style="font-size: 21px; background: rgb(255, 255, 255);">应用场景示范</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">围绕不同场景应用，大力推动各应用场景示范。针对新能源消纳和系统调峰问题，推动建设液流电池、压缩空气储能等大容量和中长时间尺度新型储能试点示范；推动针对负荷跟踪、系统调频、惯量支撑、爬坡、无功支持及机械能回收等秒级和分钟级应用需求的短时高频储能技术示范；利用大同云冈煤矿废弃巷道开展压缩空气储能技术示范应用；发挥山西煤电优势，围绕退役火电机组既有厂址和输变电设施、工业园区光储网充一体化应用、增量配电业务改革试点、能源互联网试点等场景，积极开展多场景融合示范。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（三）开展不同区域</span></strong><strong><span style="font-size: 21px;">试点</span></strong><strong><span style="font-size: 21px;">示范</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">围绕大同采煤沉陷区可再生能源基地，开展“风光水火储一体化”多能互补模式示范，推动晋北风光火储一体化外送示范应用。落实黄河“几”字湾清洁能源基地战略，在晋西沿黄百里风光基地规划布局新型储能，提高区域高载能产业用能绿色化水平，推进我省黄河流域生态保护和高质量发展。围绕太忻一体化经济区建设“源网荷储一体化”示范基地，通过优化整合太忻一体化经济区电源侧、电网侧、用户侧资源，合理配置各类储能，通过虚拟电厂一体化聚合技术，探索不同技术路径和发展模式。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（四）加快新型储能商业模式示范</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">鼓励开展共享储能、云储能等创新商业模式的应用示范，探索共享储能与电力市场交易融合，支持将共享储能容量租赁纳入省内电力市场交易体系，统一平台交易，公平监管。支持共享储能电站建设，充分发挥新型储能“一站多用”的共享作用，探索共享储能电站参与电力现货市场的交易机制、成本分摊、价格补偿及结算规则。鼓励开展用户侧分散式储能聚合利用，参与需求侧响应，创新源荷互动模式。鼓励发电企业、储能运营商联合投资新型储能项目，通过市场化方式合理分配收益。探索建立“源网荷储”一体化和多能互补项目协调运营、利益共享机制。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 黑体, SimHei;">五、建立促进新型储能发展的体制机制</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（一）建立合理反映储能价值的价格机制</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">鼓励探索同一新型储能主体可以按照部分容量独立、部分容量联合两种方式同时参与的市场模式。鼓励独立储能签订顶峰时段和低谷时段市场合约，发挥移峰填谷和顶峰发电作用。独立储能电站向电网送电的，其相应充电电量不承担输配电价和政府性基金及附加。结合电力体制改革和电力市场化进程，进一步完善新型储能参与电力市场的技术标准、交易机制和结算细则,探索建立促进新型储能可持续发展的市场和价格机制。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（二）持续完善电力辅助服务市场</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">完善适合新型储能的辅助服务市场机制，推动新型储能以独立电站、储能聚合商、虚拟电厂等多种形式按照辅助服务市场规则参与电网顶峰、调频、爬坡、黑启动、惯量支持等辅助服务。鼓励辅助服务市场费用按照“谁提供、谁获利，谁受益、谁承担”的原则，由相关发电侧并网主体、电力用户合理分摊。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（三）推动新型储能参与跨省跨区电力市场</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">充分发挥跨省跨区电力市场对促进区域电力资源配置，保障区域电力平衡等方面的突出作用。结合跨省跨区电力市场建设情况，推动新型储能参与省间现货市场和绿色电力交易，参与调频、备用等辅助服务交易，优化区域电力资源配置。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 黑体, SimHei;">六、健全新型储能管理体系</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（一）规范项目管理</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">健全新型储能项目管理体系，实施规划引领，新型储能项目需纳入省级规划项目库管理，规划项目库实行年度滚动；省电力公司根据新型储能省级规划项目库受理项目接入系统事宜办理。完善新型储能建设、运行、检测认证单位资质资格，提升新型储能管理水平；严格履行储能发展的土地、环保、安全、消防等方面管理程序，落实安全责任。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（二）完善支持政策</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">鼓励各地市根据实际需要对新型储能项目用地、融资等方面给予政策支持。有效利用现有资金渠道，积极支持新型储能关键技术装备产业化及应用项目。支持将新型储能纳入绿色金融体系，健全社会资本融资手段。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（三）健全标准体系</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">在国家已有技术标准的基础上，加强现行标准与储能应用的统筹衔接，聚焦新能源配套新型储能，开展不同应用场景和多元化应用的技术标准研究，规范新增风电、光伏配置新型储能要求，提高新型储能运行效率和系统价值。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（四）强化安全风险管控</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">明确项目及产业上下游各环节的安全责任主体，强化安全责任落实，严格落实新型储能电站建设、并网、运营环节的安全管理要求，加强消防安全管控。加强储能项目运行状态监测，实时监控储能系统运行工况，对新型储能运行数据进行监测和分析，实现对新型储能项目运营情况的全面监督，确保安全发展。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 黑体, SimHei;">七、保障措施</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（一）加强规划衔接</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">强化新型储能发展与能源、电网、城乡建设等相关规划的衔接，严格落实新型储能项目规范，统筹协调新型储能开发规模、布局、时序与并网线路建设，确保项目落地实施。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（二）细化任务落实</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">省级能源主管部门会同有关部门牵头构建新型储能高质量发展体制机制，协调有关部门共同解决重大问题；省级能源主管部门负责组织开展全省关系电力系统安全高效运行的新型储能发展规模与布局研究，分解落实新型储能发展目标，有序推进新型储能项目建设；山西能源监管办加强事中事后监管，健全完善新型储能参与市场交易、安全管理等监管机制；省电力公司建立和完善新型储能项目接网程序，优化调度运行机制，发挥新型储能系统效益。</span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-family: 楷体, SimKai;"><strong><span style="font-size: 21px;">（三）加强监测评估</span></strong></span></p><p style="white-space: normal; text-indent: 42px; line-height: 2em; text-align: justify;"><span data-index="" style="font-size: 21px; font-family: 仿宋, FangSong;">依托国家能源局组织建设的全国新型储能大数据平台对新型储能项目实施情况进行动态监测、中期评估和总结评估的管理体系，根据新型储能项目备案、建设、运行和市场交易情况，研究并定期公布新型储能发展规模、建设布局、调度运行等情况，引导新型储能项目科学合理投资和建设。</span></p><p style="text-indent: 32px;"><br/></p></div>
+
+										 
+									</div>
+								</div>
+								<div class="zfwjjd_right clearfix" id="unscramble" style="display: none;">
+									<ul>
+										<li>
+											<h6 class="bt11"
+												style="font-size: 16px; font-family: 宋体; line-height: 35px;">关联文件</h6>
+										</li>
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script>
+				
+			</script>
+			<!-- 底部 -->
+			<div class="nyjfoot clearfix">
+	<div class="foot_yqlj clearfix" style="display:none; background-color: #ececec">
+		<div class="content">
+			<h6><img src="../../../../images/sxsnyj52.png" />公共服务</h6>
+			<p><a href="">山西省煤炭经营监督管理系统</a></p>
+		</div>
+	</div>
+	<div class="nyfoot_ft clearfix" style="background-color: white;">
+<div style= "width:100%; line-height: 65px; background-color: #1f4e83; margin-top:-35px;"   >
+<div class="ftyqlj clearfix" >
+				<form method="post">
+					<ul>
+						<li>
+							<select onchange="window.open(this.options[this.selectedIndex].value)" id="select">
+								<option>各市能源局网站</option>
+								<option value="http://nyj.taiyuan.gov.cn/">太原市能源局网站</option>
+								<option value="http://www.dt.gov.cn/dtzww/bumdtgg/dept_xxgk_list.shtml">大同市能源局网站
+								</option>
+								<option value="http://mtj.shuozhou.gov.cn">朔州市能源局网站</option>
+								<option value="http://nyj.sxxz.gov.cn/">忻州市能源局网站</option>
+								<option value="http://nyj.yq.gov.cn/">阳泉市能源局网站</option>
+								<option value="http://nyj.sxjz.gov.cn/">晋中市能源局网站</option>
+								<option value="http://www.lvliang.gov.cn/zfjgzd/llmtgy/">吕梁市能源局网站</option>
+								<option
+									value="https://www.changzhi.gov.cn/xxgkml/zfxxgkml/szfgzbm/czsnyj/gkzn_201/index.shtml">
+									长治市能源局网站</option>
+								<option value="http://nyj.jcgov.gov.cn/">晋城市能源局网站</option>
+								<option value="http://nyj.linfen.gov.cn/">临汾市能源局网站</option>
+								<option value="https://www.yuncheng.gov.cn/bmzt/snyjzl/mhlist.shtml">运城市能源局网站</option>
+							</select>
+						</li>
+							<script>
+							    $(function(){
+							        $("#select").change(function(){
+							            var op=$("#select").find('option');
+							            op.get(0).selected=true;
+							        });
+							    })
+							</script>
+						<li>
+							<select onchange="window.open(this.options[this.selectedIndex].value)" id="select1">
+								<option>能源行业相关网站</option>
+								<option value="http://www.ndrc.gov.cn/">国家发改委</option>
+								<option value="http://www.nea.gov.cn/">国家能源局</option>
+								<option value="https://www.mem.gov.cn/">中华人民共和国应急管理部</option>
+								<option value="http://www.coalchina.org.cn/">国家煤炭工业网</option>
+								<!--<option value="http://www.chinacoal.gov.cn/">中国煤炭工业网</option>-->
+								<option value="http://www.sxsmtgyxh.com/">山西省煤炭工业协会</option>
+								<option value="https://sxepa.org/">山西省电力行业协会</option>
+							</select>
+						</li>
+							<script>
+							    $(function(){
+							        $("#select1").change(function(){
+							            var op1=$("#select1").find('option');
+							            op1.get(0).selected=true;
+							        });
+							    })
+							</script>
+					</ul>
+				</form>
+			</div>
+</div>
+		<div class="content">
+			
+			<div class="foot_foot clearfix" >
+				<div class="czwz_left clearfix">
+					<a href="http://bszs.conac.cn/sitename?method=show&id=86283A653758B39BE05310291AACDD87"><img src="../../../../images/sxsnyj53.png" alt="sxsnyj53.png" title="sxsnyj53.png" /></a>
+					<a href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=1400000063&url=https%3A%2F%2Fnyj.shanxi.gov.cn%2Findex.html"><img src="../../../../images/sxsnyj54.png" alt="sxsnyj54.png" title="sxsnyj54.png" style="margin-top: 12px;" /></a>
+				</div>
+				<div class="czwz_right clearfix" >
+
+					<P style="color:black" >
+						主办单位：山西省能源局<br/>© 山西省能源局版权所有,如需转载，请注明来源 <br/>地址：山西省太原市并州北路67号 &nbsp;&nbsp;&nbsp;邮编：030012 <br/> <a style="color:black" 
+							href="#">网站地图</a> &nbsp;&nbsp;&nbsp; 联系方式：4117512，4117555<br><a style="color:black" href= 
+							"https://beian.miit.gov.cn/">晋ICP备：12000773 号</a> &nbsp;&nbsp;&nbsp; <a href="#" style="color:black" ><img class="gx" src="../../../../images/sxsnyj55.png" />晋公网安备
+							14010602060577号</a><br>网站标识码：1400000063
+					</P>
+
+
+
+
+				</div>
+<img style = "height:150px; margin-left: 40px;" src="../../../../images/微信公众号.jpg" alt="微信公众号.jpg" title="微信公众号.jpg" />
+<div>
+
+</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script id="_trs_ta_js" src="//ta.trs.cn/c/js/ta.js?mpid=5387" async="async" defer="defer"></script>
+		</div>
+	</body>
+</html>

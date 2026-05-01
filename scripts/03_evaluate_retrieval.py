@@ -18,6 +18,15 @@ QUESTION_FILE = ROOT / "02_元数据" / "问题评测表.csv"
 LEDGER_FILE = ROOT / "02_元数据" / "政策资料台账.csv"
 OUTPUT_DIR = ROOT / "05_输出成果"
 
+REGIONAL_PROVINCES = {
+    "南方区域": ["广东", "广西", "云南", "贵州", "海南"],
+    "华中区域": ["湖北", "湖南", "河南", "江西", "重庆", "四川", "西藏"],
+    "华北区域": ["北京", "天津", "河北", "山西", "内蒙古"],
+    "东北区域": ["辽宁", "吉林", "黑龙江", "内蒙古"],
+    "西北区域": ["陕西", "甘肃", "青海", "宁夏", "新疆"],
+    "华东区域": ["上海", "江苏", "浙江", "安徽", "福建", "山东"],
+}
+
 QUESTION_FIELDS = [
     "评测编号",
     "问题",
@@ -71,8 +80,12 @@ RESULT_FIELDS = [
     "Top1资料编号",
     "Top1标题",
     "Top1得分",
+    "Top1命中",
     "Top3标题",
     "Top3命中",
+    "Top5标题",
+    "Top5命中",
+    "命中排名",
     "标准文件是否已入库",
     "说明",
 ]
@@ -122,6 +135,75 @@ def title_matches(title: str, expected: str) -> bool:
     return False
 
 
+def region_matches(doc_region: str, term: str) -> bool:
+    doc_norm = normalize_text(doc_region)
+    term_norm = normalize_text(term)
+    if term_norm and doc_norm and (term_norm in doc_norm or doc_norm in term_norm):
+        return True
+    doc_regions = split_terms(doc_region)
+    for region, provinces in REGIONAL_PROVINCES.items():
+        if term in provinces and any(region == item for item in doc_regions):
+            return True
+        if term == region and any(province in doc_regions for province in provinces):
+            return True
+    return False
+
+
+def parse_date(value: str) -> dt.date | None:
+    match = re.search(r"(20\d{2})-(\d{2})-(\d{2})", value or "")
+    if not match:
+        return None
+    try:
+        return dt.date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+    except ValueError:
+        return None
+
+
+def recency_score(question: dict[str, str], row: dict[str, str]) -> float:
+    query_text = question.get("问题", "") + question.get("时间范围", "")
+    if not any(term in query_text for term in ["近期", "最近", "十五天", "15天"]):
+        return 0.0
+    parsed = parse_date(row.get("发布日期", ""))
+    if not parsed:
+        return 0.0
+    days = max(0, (dt.date.today() - parsed).days)
+    if days <= 15:
+        return 12.0
+    if days <= 30:
+        return 9.0
+    if days <= 90:
+        return 5.0
+    if days <= 180:
+        return 3.0
+    if days <= 365:
+        return 1.0
+    return 0.0
+
+
+def expected_titles(question: dict[str, str]) -> str:
+    return ";".join(
+        item
+        for item in [
+            question.get("标准依据文件", ""),
+            question.get("期望Top3结果", ""),
+        ]
+        if item
+    )
+
+
+def core_title_phrases(title: str) -> list[str]:
+    phrases = re.findall(r"《([^》]{4,80})》", title or "")
+    if not phrases and title:
+        cleaned = re.sub(r"^关于(印发|修订|发布|审定|贯彻落实)", "", title)
+        cleaned = re.sub(r"的通知.*$|的复函.*$|意见的通知.*$", "", cleaned)
+        phrases.append(cleaned)
+    return phrases
+
+
+def is_expected_doc(doc: dict[str, str], expected: str) -> bool:
+    return title_matches(doc.get("文件标题", "") + ";" + doc.get("备注", ""), expected)
+
+
 def load_processed_text(row: dict[str, str], include_text: bool) -> str:
     if not include_text:
         return ""
@@ -164,6 +246,7 @@ def document_text(row: dict[str, str], include_text: bool) -> str:
 def authority_score(row: dict[str, str]) -> float:
     authority = row.get("权威等级", "")
     source_type = row.get("来源类型", "")
+    status = row.get("有效状态", "")
     score = 0.0
     if "A" in authority:
         score += 4.0
@@ -175,6 +258,10 @@ def authority_score(row: dict[str, str]) -> float:
         score += 2.0
     elif "交易规则" in source_type:
         score += 1.5
+    if "征求" in status:
+        score -= 4.0
+    elif "废止" in status:
+        score -= 8.0
     return score
 
 
@@ -188,22 +275,26 @@ def score_document(question: dict[str, str], doc: dict[str, str], include_text: 
     )
     text = normalize_text(document_text(doc, include_text))
     title = normalize_text(doc.get("文件标题", ""))
+    question_norm = normalize_text(question.get("问题", ""))
     score = authority_score(doc)
+
+    for phrase in core_title_phrases(doc.get("文件标题", "")):
+        phrase_norm = normalize_text(phrase)
+        if len(phrase_norm) >= 6 and phrase_norm in question_norm:
+            score += 22.0
 
     for term in question_terms:
         term_norm = normalize_text(term)
         if not term_norm:
             continue
         if term_norm in title:
-            score += 8.0
+            score += 14.0 if len(term_norm) >= 6 else 8.0
         elif term_norm in text:
             score += 2.0
 
     region_terms = split_terms(question.get("地区", ""))
-    region_text = normalize_text(doc.get("适用地区", ""))
     for term in region_terms:
-        term_norm = normalize_text(term)
-        if term_norm and (term_norm in region_text or region_text in term_norm):
+        if region_matches(doc.get("适用地区", ""), term):
             score += 5.0
 
     topic_terms = split_terms(question.get("市场主题", ""))
@@ -215,6 +306,7 @@ def score_document(question: dict[str, str], doc: dict[str, str], include_text: 
 
     if "现行有效" in doc.get("有效状态", ""):
         score += 2.0
+    score += recency_score(question, doc)
     return score
 
 
@@ -231,11 +323,7 @@ def rank_documents(
         filtered_docs = [
             doc
             for doc in docs
-            if any(
-                normalize_text(term) in normalize_text(doc.get("适用地区", ""))
-                or normalize_text(doc.get("适用地区", "")) in normalize_text(term)
-                for term in region_terms
-            )
+            if any(region_matches(doc.get("适用地区", ""), term) for term in region_terms)
         ]
         docs = filtered_docs or docs
 
@@ -325,26 +413,28 @@ def evaluate(limit: int, top_k: int, include_text: bool) -> tuple[Path, list[dic
     for question in questions:
         ranked = rank_documents(question, docs, include_text=include_text, top_k=top_k)
         top_docs = [doc for _, doc in ranked]
-        expected = question.get("标准依据文件", "")
-        standard_in_ledger = any(
-            title_matches(doc.get("文件标题", "") + ";" + doc.get("备注", ""), expected)
-            for doc in docs
-        )
-        hit_top3 = any(
-            title_matches(doc.get("文件标题", "") + ";" + doc.get("备注", ""), expected)
-            for doc in top_docs[:3]
-        )
+        expected = expected_titles(question)
+        standard = question.get("标准依据文件", "")
+        standard_in_ledger = any(is_expected_doc(doc, standard) for doc in docs)
+        hit_rank = next((index for index, doc in enumerate(top_docs, start=1) if is_expected_doc(doc, expected)), 0)
+        hit_top1 = hit_rank == 1
+        hit_top3 = bool(hit_rank and hit_rank <= 3)
+        hit_top5 = bool(hit_rank and hit_rank <= 5)
         top1_score = f"{ranked[0][0]:.2f}" if ranked else ""
         rows.append(
             {
                 "评测编号": question.get("评测编号", ""),
                 "问题": question.get("问题", ""),
-                "标准依据文件": expected,
+                "标准依据文件": standard,
                 "Top1资料编号": top_docs[0].get("资料编号", "") if top_docs else "",
                 "Top1标题": top_docs[0].get("文件标题", "") if top_docs else "",
                 "Top1得分": top1_score,
+                "Top1命中": "是" if hit_top1 else "否",
                 "Top3标题": " | ".join(doc.get("文件标题", "") for doc in top_docs[:3]),
                 "Top3命中": "是" if hit_top3 else "否",
+                "Top5标题": " | ".join(doc.get("文件标题", "") for doc in top_docs[:5]),
+                "Top5命中": "是" if hit_top5 else "否",
+                "命中排名": str(hit_rank) if hit_rank else "",
                 "标准文件是否已入库": "是" if standard_in_ledger else "否",
                 "说明": "" if hit_top3 else "需检查检索词、标题抽取或补充标准文件",
             }
@@ -386,12 +476,15 @@ def main() -> int:
 
     output_path, rows = evaluate(limit=args.limit, top_k=args.top_k, include_text=not args.no_text)
     total = len(rows)
-    hits = sum(1 for row in rows if row["Top3命中"] == "是")
+    top1_hits = sum(1 for row in rows if row["Top1命中"] == "是")
+    top3_hits = sum(1 for row in rows if row["Top3命中"] == "是")
+    top5_hits = sum(1 for row in rows if row["Top5命中"] == "是")
     in_ledger = sum(1 for row in rows if row["标准文件是否已入库"] == "是")
-    hit_rate = hits / total if total else 0
     print(f"评测完成：{total} 个问题")
     print(f"标准文件已入库：{in_ledger}/{total}")
-    print(f"Top3命中：{hits}/{total} ({hit_rate:.0%})")
+    print(f"Top1命中：{top1_hits}/{total} ({(top1_hits / total if total else 0):.0%})")
+    print(f"Top3命中：{top3_hits}/{total} ({(top3_hits / total if total else 0):.0%})")
+    print(f"Top5命中：{top5_hits}/{total} ({(top5_hits / total if total else 0):.0%})")
     print(f"结果文件：{output_path}")
     return 0
 

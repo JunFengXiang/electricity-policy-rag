@@ -118,6 +118,14 @@ log_action.py
   提供 GET /api/health 和 POST /api/ask
   使用 OpenAI-compatible 大模型接口生成带引用回答；未配置 API Key 时回退到本地 RAG 草稿
 
+23_validate_knowledge_base.py
+  验收台账规模、本地路径、PDF/DOCX 文本抽取、知识切片覆盖和 PDF 失败附件
+  可输出 数据验收报告_YYYYMMDD_HHMMSS.md，供每轮 15 天更新报告引用
+
+24_prepare_candidate_review_queue.py
+  从大规模候选池中筛出 50-54 分候选，生成候选人工复核队列
+  低分候选不进入主台账和主问答索引，人工确认后再回填
+
 domain_terms.py
   统一维护主题词、候选发现关键词、RAG 已知词和主题推断规则
 
@@ -149,6 +157,8 @@ D:\miniconda\envs\py311\python.exe .\scripts\17_build_rag_index.py
 D:\miniconda\envs\py311\python.exe .\scripts\18_rag_query.py --query "四川电力辅助服务市场交易实施细则有哪些主要依据" --region 四川 --write
 D:\miniconda\envs\py311\python.exe .\scripts\21_run_update_cycle.py --full-auto --strict-gate --target-count 600 --pages 25 --timeout 20 --delay 0.5 --min-score 55 --skip-snapshots --skip-ocr
 D:\miniconda\envs\py311\python.exe .\scripts\22_qa_service.py
+D:\miniconda\envs\py311\python.exe .\scripts\23_validate_knowledge_base.py --min-ledger-count 500 --max-ledger-count 600 --write-report
+D:\miniconda\envs\py311\python.exe .\scripts\24_prepare_candidate_review_queue.py --min-score 50 --max-score 54
 ```
 
 注意：不要在 `04_export_excel_workbook.py` 仍在生成工作簿时同时运行 `05_sync_excel_to_csv.py`，否则同步脚本可能读到未写完的 Excel 文件。

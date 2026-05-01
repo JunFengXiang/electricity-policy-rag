@@ -1,0 +1,429 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>山西省能源局</title>
+		<!--<script src="js/pace.min.js"></script>-->
+		<!--<link href="css/pace-theme-flash.min.css" rel="stylesheet" />-->
+		<link rel="stylesheet" href="../../../../images/nyj_newhome_style1.css">
+		<script type="text/javascript" src="../../../../images/jquery.min.js"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	</head>
+
+	<body>
+		<div class="sxnyj clearfix">
+
+			<style> @media screen and (max-width: 1700px) {
+    html {
+        zoom: 0.8;
+    }
+}
+</style>
+
+<div class="sxnytop clearfix">
+    <div class="nytop clearfix">
+        <div class="content">
+            <div class="nytop_left clearfix">
+                <a href="http://www.nea.gov.cn/">国家能源局</a>|<a href="https://www.shanxi.gov.cn/">山西省人民政府</a>
+            </div>
+            <div class="nytop_right clearfix">
+                <a href="javascript:StranBody()" title="點擊切換到繁體中文網站" id="StranLink" name="StranLink">切換到繁體</a>|<a
+                    id="toolbarSwitch" href="javascript:void(0);">无障碍浏览</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../images/jQuery-3.2.1.min.js"></script>
+    <script src="../../../../images/esdToolsInit.js" charset="UTF-8"></script>
+    <div class="nyjnav clearfix">
+        <div class="content">
+            <ul>
+
+                <li><a href="../../../../">首 页</a></li>
+
+
+                
+                    <li ><a href="../../../../zwgk_230510/">政务公开</a></li>
+                
+
+                
+                    <li><a href="../../../../zwfw_230510/">政务服务</a></li>
+                
+
+                <li><a href="../../../../jgdj_230510/" target="_Blank">机关党建</a></li>
+                
+                    <li ><a href="../../../../hdjl_0531/">互动交流</a></li>
+                
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="nyj_banner clearfix">
+        <div class="content">
+            <div class="nyjlogo clearfix"><a href="../../../../"><!--<img src="../../../../images/sxsnyj3.png" />-->
+                <img src="../../../../images/能源局头部logo.png" alt="能源局头部logo.png" title="能源局头部logo.png" />
+            </a></div>
+            <div class="retrieval clearfix">
+                <input type="text" id="HeaderSearchInput" value="请输入检索词" autocomplete="off" onblur="if(this.value==''){this.value='请输入检索词';}" onfocus="javascript:if(this.value=='请输入检索词')this.value=''" />
+
+                <a href="#"><img id="search_btn" src="../../../../images/sxsnyj2.png" /></a>
+            </div>
+        </div>
+    </div>
+    <div class="nyjbanner_fot clearfix"></div>
+</div><!-- 头部结束 -->
+
+<script>
+    //检索
+    $('#search_btn').click(function() {
+        var siteTag = 1
+        var siteid = 60 ;
+        if (!$('#HeaderSearchInput').val()) {
+            alert('请输入搜索内容')
+            return
+        }
+        //if($('.logo .logoR1 button span').text() == '搜本站') {
+        // siteTag = 1
+        //}
+        window.open("/dept_search/#/Door?keywords=" + $('#HeaderSearchInput').val() + "&siteTag=" + siteTag +
+            "&siteid=" + siteid);
+    })
+    //按下回车键搜索
+    $('#HeaderSearchInput').bind('keyup', function(event) {
+        if (event.keyCode == "13") {
+            $('#search_btn').click();
+        }
+    });
+</script>
+<script language="JavaScript" type="text/javascript">
+    var Default_isFT = 0 //默认是否繁体，0-简体，1-繁体
+    var StranIt_Delay = 50 //翻译延时毫秒（设这个的目的是让网页先流畅的显现出来）－－
+    //转换文本
+    function StranText(txt, toFT, chgTxt) {
+        if (txt == "" || txt == null) return ""
+        toFT = toFT == null ? BodyIsFt : toFT
+        if (chgTxt) txt = txt.replace((toFT ? "简" : "繁"), (toFT ? "繁" : "简"))
+        if (toFT) {
+            return Traditionalized(txt)
+        } else {
+            return Simplized(txt)
+        }
+    }
+    //转换对象，使用递归，逐层剥到文本
+    function StranBody(fobj) {
+        if (typeof(fobj) == "object") {
+            var obj = fobj.childNodes
+        } else {
+            var tmptxt = StranLink_Obj.innerHTML.toString()
+            if (tmptxt.indexOf("简") < 0) {
+                BodyIsFt = 1
+                StranLink_Obj.innerHTML = StranText(tmptxt, 0, 1)
+                StranLink.title = StranText(StranLink.title, 0, 1)
+            } else {
+                BodyIsFt = 0
+                StranLink_Obj.innerHTML = StranText(tmptxt, 1, 1)
+                StranLink.title = StranText(StranLink.title, 1, 1)
+            }
+            setCookie(JF_cn, BodyIsFt, 7)
+            var obj = document.body.childNodes
+        }
+        for (var i = 0; i < obj.length; i++) {
+            var OO = obj.item(i)
+            if ("||BR|HR|TEXTAREA|".indexOf("|" + OO.tagName + "|") > 0 || OO == StranLink_Obj) continue;
+            if (OO.title != "" && OO.title != null) OO.title = StranText(OO.title);
+            if (OO.alt != "" && OO.alt != null) OO.alt = StranText(OO.alt);
+            if (OO.tagName == "INPUT" && OO.value != "" && OO.type != "text" && OO.type != "hidden") OO.value = StranText(
+                OO.value);
+            if (OO.nodeType == 3) {
+                OO.data = StranText(OO.data)
+            } else StranBody(OO)
+        }
+    } //trs-silentblue
+    function JTPYStr() {
+        return '万与丑专业丛东丝丢两严丧个丬丰临为丽举么义乌乐乔习乡书买乱争于亏云亘亚产亩亲亵亸亿仅从仑仓仪们价众优伙会伛伞伟传伤伥伦伧伪伫体余佣佥侠侣侥侦侧侨侩侪侬俣俦俨俩俪俭债倾偬偻偾偿傥傧储傩儿兑兖党兰关兴兹养兽冁内冈册写军农冢冯冲决况冻净凄凉凌减凑凛几凤凫凭凯击凼凿刍划刘则刚创删别刬刭刽刿剀剂剐剑剥剧劝办务劢动励劲劳势勋勐勚匀匦匮区医华协单卖卢卤卧卫却卺厂厅历厉压厌厍厕厢厣厦厨厩厮县参叆叇双发变叙叠叶号叹叽吁后吓吕吗吣吨听启吴呒呓呕呖呗员呙呛呜咏咔咙咛咝咤咴咸哌响哑哒哓哔哕哗哙哜哝哟唛唝唠唡唢唣唤唿啧啬啭啮啰啴啸喷喽喾嗫呵嗳嘘嘤嘱噜噼嚣嚯团园囱围囵国图圆圣圹场坂坏块坚坛坜坝坞坟坠垄垅垆垒垦垧垩垫垭垯垱垲垴埘埙埚埝埯堑堕塆墙壮声壳壶壸处备复够头夸夹夺奁奂奋奖奥妆妇妈妩妪妫姗姜娄娅娆娇娈娱娲娴婳婴婵婶媪嫒嫔嫱嬷孙学孪宁宝实宠审宪宫宽宾寝对寻导寿将尔尘尧尴尸尽层屃屉届属屡屦屿岁岂岖岗岘岙岚岛岭岳岽岿峃峄峡峣峤峥峦崂崃崄崭嵘嵚嵛嵝嵴巅巩巯币帅师帏帐帘帜带帧帮帱帻帼幂幞干并广庄庆庐庑库应庙庞废庼廪开异弃张弥弪弯弹强归当录彟彦彻径徕御忆忏忧忾怀态怂怃怄怅怆怜总怼怿恋恳恶恸恹恺恻恼恽悦悫悬悭悯惊惧惨惩惫惬惭惮惯愍愠愤愦愿慑慭憷懑懒懔戆戋戏戗战戬户扎扑扦执扩扪扫扬扰抚抛抟抠抡抢护报担拟拢拣拥拦拧拨择挂挚挛挜挝挞挟挠挡挢挣挤挥挦捞损捡换捣据捻掳掴掷掸掺掼揸揽揿搀搁搂搅携摄摅摆摇摈摊撄撑撵撷撸撺擞攒敌敛数斋斓斗斩断无旧时旷旸昙昼昽显晋晒晓晔晕晖暂暧札术朴机杀杂权条来杨杩杰极构枞枢枣枥枧枨枪枫枭柜柠柽栀栅标栈栉栊栋栌栎栏树栖样栾桊桠桡桢档桤桥桦桧桨桩梦梼梾检棂椁椟椠椤椭楼榄榇榈榉槚槛槟槠横樯樱橥橱橹橼檐檩欢欤欧歼殁殇残殒殓殚殡殴毁毂毕毙毡毵氇气氢氩氲汇汉污汤汹沓沟没沣沤沥沦沧沨沩沪沵泞泪泶泷泸泺泻泼泽泾洁洒洼浃浅浆浇浈浉浊测浍济浏浐浑浒浓浔浕涂涌涛涝涞涟涠涡涢涣涤润涧涨涩淀渊渌渍渎渐渑渔渖渗温游湾湿溃溅溆溇滗滚滞滟滠满滢滤滥滦滨滩滪漤潆潇潋潍潜潴澜濑濒灏灭灯灵灾灿炀炉炖炜炝点炼炽烁烂烃烛烟烦烧烨烩烫烬热焕焖焘煅煳熘爱爷牍牦牵牺犊犟状犷犸犹狈狍狝狞独狭狮狯狰狱狲猃猎猕猡猪猫猬献獭玑玙玚玛玮环现玱玺珉珏珐珑珰珲琎琏琐琼瑶瑷璇璎瓒瓮瓯电画畅畲畴疖疗疟疠疡疬疮疯疱疴痈痉痒痖痨痪痫痴瘅瘆瘗瘘瘪瘫瘾瘿癞癣癫癯皑皱皲盏盐监盖盗盘眍眦眬着睁睐睑瞒瞩矫矶矾矿砀码砖砗砚砜砺砻砾础硁硅硕硖硗硙硚确硷碍碛碜碱碹磙礼祎祢祯祷祸禀禄禅离秃秆种积称秽秾稆税稣稳穑穷窃窍窑窜窝窥窦窭竖竞笃笋笔笕笺笼笾筑筚筛筜筝筹签简箓箦箧箨箩箪箫篑篓篮篱簖籁籴类籼粜粝粤粪粮糁糇紧絷纟纠纡红纣纤纥约级纨纩纪纫纬纭纮纯纰纱纲纳纴纵纶纷纸纹纺纻纼纽纾线绀绁绂练组绅细织终绉绊绋绌绍绎经绐绑绒结绔绕绖绗绘给绚绛络绝绞统绠绡绢绣绤绥绦继绨绩绪绫绬续绮绯绰绱绲绳维绵绶绷绸绹绺绻综绽绾绿缀缁缂缃缄缅缆缇缈缉缊缋缌缍缎缏缐缑缒缓缔缕编缗缘缙缚缛缜缝缞缟缠缡缢缣缤缥缦缧缨缩缪缫缬缭缮缯缰缱缲缳缴缵罂网罗罚罢罴羁羟羡翘翙翚耢耧耸耻聂聋职聍联聩聪肃肠肤肷肾肿胀胁胆胜胧胨胪胫胶脉脍脏脐脑脓脔脚脱脶脸腊腌腘腭腻腼腽腾膑臜舆舣舰舱舻艰艳艹艺节芈芗芜芦苁苇苈苋苌苍苎苏苘苹茎茏茑茔茕茧荆荐荙荚荛荜荞荟荠荡荣荤荥荦荧荨荩荪荫荬荭荮药莅莜莱莲莳莴莶获莸莹莺莼萚萝萤营萦萧萨葱蒇蒉蒋蒌蓝蓟蓠蓣蓥蓦蔷蔹蔺蔼蕲蕴薮藁藓虏虑虚虫虬虮虽虾虿蚀蚁蚂蚕蚝蚬蛊蛎蛏蛮蛰蛱蛲蛳蛴蜕蜗蜡蝇蝈蝉蝎蝼蝾螀螨蟏衅衔补衬衮袄袅袆袜袭袯装裆裈裢裣裤裥褛褴襁襕见观觃规觅视觇览觉觊觋觌觍觎觏觐觑觞触觯詟誉誊讠计订讣认讥讦讧讨让讪讫训议讯记讱讲讳讴讵讶讷许讹论讻讼讽设访诀证诂诃评诅识诇诈诉诊诋诌词诎诏诐译诒诓诔试诖诗诘诙诚诛诜话诞诟诠诡询诣诤该详诧诨诩诪诫诬语诮误诰诱诲诳说诵诶请诸诹诺读诼诽课诿谀谁谂调谄谅谆谇谈谊谋谌谍谎谏谐谑谒谓谔谕谖谗谘谙谚谛谜谝谞谟谠谡谢谣谤谥谦谧谨谩谪谫谬谭谮谯谰谱谲谳谴谵谶谷豮贝贞负贠贡财责贤败账货质贩贪贫贬购贮贯贰贱贲贳贴贵贶贷贸费贺贻贼贽贾贿赀赁赂赃资赅赆赇赈赉赊赋赌赍赎赏赐赑赒赓赔赕赖赗赘赙赚赛赜赝赞赟赠赡赢赣赪赵赶趋趱趸跃跄跖跞践跶跷跸跹跻踊踌踪踬踯蹑蹒蹰蹿躏躜躯车轧轨轩轪轫转轭轮软轰轱轲轳轴轵轶轷轸轹轺轻轼载轾轿辀辁辂较辄辅辆辇辈辉辊辋辌辍辎辏辐辑辒输辔辕辖辗辘辙辚辞辩辫边辽达迁过迈运还这进远违连迟迩迳迹适选逊递逦逻遗遥邓邝邬邮邹邺邻郁郄郏郐郑郓郦郧郸酝酦酱酽酾酿释里鉅鉴銮錾钆钇针钉钊钋钌钍钎钏钐钑钒钓钔钕钖钗钘钙钚钛钝钞钟钠钡钢钣钤钥钦钧钨钩钪钫钬钭钮钯钰钱钲钳钴钵钶钷钸钹钺钻钼钽钾钿铀铁铂铃铄铅铆铈铉铊铋铍铎铏铐铑铒铕铗铘铙铚铛铜铝铞铟铠铡铢铣铤铥铦铧铨铪铫铬铭铮铯铰铱铲铳铴铵银铷铸铹铺铻铼铽链铿销锁锂锃锄锅锆锇锈锉锊锋锌锍锎锏锐锑锒锓锔锕锖锗错锚锜锞锟锠锡锢锣锤锥锦锨锩锫锬锭键锯锰锱锲锳锴锵锶锷锸锹锺锻锼锽锾锿镀镁镂镃镆镇镈镉镊镌镍镎镏镐镑镒镕镖镗镙镚镛镜镝镞镟镠镡镢镣镤镥镦镧镨镩镪镫镬镭镮镯镰镱镲镳镴镶长门闩闪闫闬闭问闯闰闱闲闳间闵闶闷闸闹闺闻闼闽闾闿阀阁阂阃阄阅阆阇阈阉阊阋阌阍阎阏阐阑阒阓阔阕阖阗阘阙阚阛队阳阴阵阶际陆陇陈陉陕陧陨险随隐隶隽难雏雠雳雾霁霉霭靓静靥鞑鞒鞯鞴韦韧韨韩韪韫韬韵页顶顷顸项顺须顼顽顾顿颀颁颂颃预颅领颇颈颉颊颋颌颍颎颏颐频颒颓颔颕颖颗题颙颚颛颜额颞颟颠颡颢颣颤颥颦颧风飏飐飑飒飓飔飕飖飗飘飙飚飞飨餍饤饥饦饧饨饩饪饫饬饭饮饯饰饱饲饳饴饵饶饷饸饹饺饻饼饽饾饿馀馁馂馃馄馅馆馇馈馉馊馋馌馍馎馏馐馑馒馓馔馕马驭驮驯驰驱驲驳驴驵驶驷驸驹驺驻驼驽驾驿骀骁骂骃骄骅骆骇骈骉骊骋验骍骎骏骐骑骒骓骔骕骖骗骘骙骚骛骜骝骞骟骠骡骢骣骤骥骦骧髅髋髌鬓魇魉鱼鱽鱾鱿鲀鲁鲂鲄鲅鲆鲇鲈鲉鲊鲋鲌鲍鲎鲏鲐鲑鲒鲓鲔鲕鲖鲗鲘鲙鲚鲛鲜鲝鲞鲟鲠鲡鲢鲣鲤鲥鲦鲧鲨鲩鲪鲫鲬鲭鲮鲯鲰鲱鲲鲳鲴鲵鲶鲷鲸鲹鲺鲻鲼鲽鲾鲿鳀鳁鳂鳃鳄鳅鳆鳇鳈鳉鳊鳋鳌鳍鳎鳏鳐鳑鳒鳓鳔鳕鳖鳗鳘鳙鳛鳜鳝鳞鳟鳠鳡鳢鳣鸟鸠鸡鸢鸣鸤鸥鸦鸧鸨鸩鸪鸫鸬鸭鸮鸯鸰鸱鸲鸳鸴鸵鸶鸷鸸鸹鸺鸻鸼鸽鸾鸿鹀鹁鹂鹃鹄鹅鹆鹇鹈鹉鹊鹋鹌鹍鹎鹏鹐鹑鹒鹓鹔鹕鹖鹗鹘鹚鹛鹜鹝鹞鹟鹠鹡鹢鹣鹤鹥鹦鹧鹨鹩鹪鹫鹬鹭鹯鹰鹱鹲鹳鹴鹾麦麸黄黉黡黩黪黾鼋鼌鼍鼗鼹齄齐齑齿龀龁龂龃龄龅龆龇龈龉龊龋龌龙龚龛龟志制咨只里系范松没尝尝闹面准钟别闲干尽脏';
+    }
+
+    function FTPYStr() {
+        return '萬與醜專業叢東絲丟兩嚴喪個爿豐臨為麗舉麼義烏樂喬習鄉書買亂爭於虧雲亙亞產畝親褻嚲億僅從侖倉儀們價眾優夥會傴傘偉傳傷倀倫傖偽佇體餘傭僉俠侶僥偵側僑儈儕儂俁儔儼倆儷儉債傾傯僂僨償儻儐儲儺兒兌兗黨蘭關興茲養獸囅內岡冊寫軍農塚馮衝決況凍淨淒涼淩減湊凜幾鳳鳧憑凱擊氹鑿芻劃劉則剛創刪別剗剄劊劌剴劑剮劍剝劇勸辦務勱動勵勁勞勢勳猛勩勻匭匱區醫華協單賣盧鹵臥衛卻巹廠廳曆厲壓厭厙廁廂厴廈廚廄廝縣參靉靆雙發變敘疊葉號歎嘰籲後嚇呂嗎唚噸聽啟吳嘸囈嘔嚦唄員咼嗆嗚詠哢嚨嚀噝吒噅鹹呱響啞噠嘵嗶噦嘩噲嚌噥喲嘜嗊嘮啢嗩唕喚呼嘖嗇囀齧囉嘽嘯噴嘍嚳囁嗬噯噓嚶囑嚕劈囂謔團園囪圍圇國圖圓聖壙場阪壞塊堅壇壢壩塢墳墜壟壟壚壘墾坰堊墊埡墶壋塏堖塒塤堝墊垵塹墮壪牆壯聲殼壺壼處備複夠頭誇夾奪奩奐奮獎奧妝婦媽嫵嫗媯姍薑婁婭嬈嬌孌娛媧嫻嫿嬰嬋嬸媼嬡嬪嬙嬤孫學孿寧寶實寵審憲宮寬賓寢對尋導壽將爾塵堯尷屍盡層屭屜屆屬屢屨嶼歲豈嶇崗峴嶴嵐島嶺嶽崠巋嶨嶧峽嶢嶠崢巒嶗崍嶮嶄嶸嶔崳嶁脊巔鞏巰幣帥師幃帳簾幟帶幀幫幬幘幗冪襆幹並廣莊慶廬廡庫應廟龐廢廎廩開異棄張彌弳彎彈強歸當錄彠彥徹徑徠禦憶懺憂愾懷態慫憮慪悵愴憐總懟懌戀懇惡慟懨愷惻惱惲悅愨懸慳憫驚懼慘懲憊愜慚憚慣湣慍憤憒願懾憖怵懣懶懍戇戔戲戧戰戩戶紮撲扡執擴捫掃揚擾撫拋摶摳掄搶護報擔擬攏揀擁攔擰撥擇掛摯攣掗撾撻挾撓擋撟掙擠揮撏撈損撿換搗據撚擄摑擲撣摻摜摣攬撳攙擱摟攪攜攝攄擺搖擯攤攖撐攆擷擼攛擻攢敵斂數齋斕鬥斬斷無舊時曠暘曇晝曨顯晉曬曉曄暈暉暫曖劄術樸機殺雜權條來楊榪傑極構樅樞棗櫪梘棖槍楓梟櫃檸檉梔柵標棧櫛櫳棟櫨櫟欄樹棲樣欒棬椏橈楨檔榿橋樺檜槳樁夢檮棶檢欞槨櫝槧欏橢樓欖櫬櫚櫸檟檻檳櫧橫檣櫻櫫櫥櫓櫞簷檁歡歟歐殲歿殤殘殞殮殫殯毆毀轂畢斃氈毿氌氣氫氬氳彙漢汙湯洶遝溝沒灃漚瀝淪滄渢溈滬濔濘淚澩瀧瀘濼瀉潑澤涇潔灑窪浹淺漿澆湞溮濁測澮濟瀏滻渾滸濃潯濜塗湧濤澇淶漣潿渦溳渙滌潤澗漲澀澱淵淥漬瀆漸澠漁瀋滲溫遊灣濕潰濺漵漊潷滾滯灩灄滿瀅濾濫灤濱灘澦濫瀠瀟瀲濰潛瀦瀾瀨瀕灝滅燈靈災燦煬爐燉煒熗點煉熾爍爛烴燭煙煩燒燁燴燙燼熱煥燜燾煆糊溜愛爺牘犛牽犧犢強狀獷獁猶狽麅獮獰獨狹獅獪猙獄猻獫獵獼玀豬貓蝟獻獺璣璵瑒瑪瑋環現瑲璽瑉玨琺瓏璫琿璡璉瑣瓊瑤璦璿瓔瓚甕甌電畫暢佘疇癤療瘧癘瘍鬁瘡瘋皰屙癰痙癢瘂癆瘓癇癡癉瘮瘞瘺癟癱癮癭癩癬癲臒皚皺皸盞鹽監蓋盜盤瞘眥矓著睜睞瞼瞞矚矯磯礬礦碭碼磚硨硯碸礪礱礫礎硜矽碩硤磽磑礄確鹼礙磧磣堿镟滾禮禕禰禎禱禍稟祿禪離禿稈種積稱穢穠穭稅穌穩穡窮竊竅窯竄窩窺竇窶豎競篤筍筆筧箋籠籩築篳篩簹箏籌簽簡籙簀篋籜籮簞簫簣簍籃籬籪籟糴類秈糶糲粵糞糧糝餱緊縶糸糾紆紅紂纖紇約級紈纊紀紉緯紜紘純紕紗綱納紝縱綸紛紙紋紡紵紖紐紓線紺絏紱練組紳細織終縐絆紼絀紹繹經紿綁絨結絝繞絰絎繪給絢絳絡絕絞統綆綃絹繡綌綏絛繼綈績緒綾緓續綺緋綽緔緄繩維綿綬繃綢綯綹綣綜綻綰綠綴緇緙緗緘緬纜緹緲緝縕繢緦綞緞緶線緱縋緩締縷編緡緣縉縛縟縝縫縗縞纏縭縊縑繽縹縵縲纓縮繆繅纈繚繕繒韁繾繰繯繳纘罌網羅罰罷羆羈羥羨翹翽翬耮耬聳恥聶聾職聹聯聵聰肅腸膚膁腎腫脹脅膽勝朧腖臚脛膠脈膾髒臍腦膿臠腳脫腡臉臘醃膕齶膩靦膃騰臏臢輿艤艦艙艫艱豔艸藝節羋薌蕪蘆蓯葦藶莧萇蒼苧蘇檾蘋莖蘢蔦塋煢繭荊薦薘莢蕘蓽蕎薈薺蕩榮葷滎犖熒蕁藎蓀蔭蕒葒葤藥蒞蓧萊蓮蒔萵薟獲蕕瑩鶯蓴蘀蘿螢營縈蕭薩蔥蕆蕢蔣蔞藍薊蘺蕷鎣驀薔蘞藺藹蘄蘊藪槁蘚虜慮虛蟲虯蟣雖蝦蠆蝕蟻螞蠶蠔蜆蠱蠣蟶蠻蟄蛺蟯螄蠐蛻蝸蠟蠅蟈蟬蠍螻蠑螿蟎蠨釁銜補襯袞襖嫋褘襪襲襏裝襠褌褳襝褲襇褸襤繈襴見觀覎規覓視覘覽覺覬覡覿覥覦覯覲覷觴觸觶讋譽謄訁計訂訃認譏訐訌討讓訕訖訓議訊記訒講諱謳詎訝訥許訛論訩訟諷設訪訣證詁訶評詛識詗詐訴診詆謅詞詘詔詖譯詒誆誄試詿詩詰詼誠誅詵話誕詬詮詭詢詣諍該詳詫諢詡譸誡誣語誚誤誥誘誨誑說誦誒請諸諏諾讀諑誹課諉諛誰諗調諂諒諄誶談誼謀諶諜謊諫諧謔謁謂諤諭諼讒諮諳諺諦謎諞諝謨讜謖謝謠謗諡謙謐謹謾謫譾謬譚譖譙讕譜譎讞譴譫讖穀豶貝貞負貟貢財責賢敗賬貨質販貪貧貶購貯貫貳賤賁貰貼貴貺貸貿費賀貽賊贄賈賄貲賃賂贓資賅贐賕賑賚賒賦賭齎贖賞賜贔賙賡賠賧賴賵贅賻賺賽賾贗讚贇贈贍贏贛赬趙趕趨趲躉躍蹌蹠躒踐躂蹺蹕躚躋踴躊蹤躓躑躡蹣躕躥躪躦軀車軋軌軒軑軔轉軛輪軟轟軲軻轤軸軹軼軤軫轢軺輕軾載輊轎輈輇輅較輒輔輛輦輩輝輥輞輬輟輜輳輻輯轀輸轡轅轄輾轆轍轔辭辯辮邊遼達遷過邁運還這進遠違連遲邇逕跡適選遜遞邐邏遺遙鄧鄺鄔郵鄒鄴鄰鬱郤郟鄶鄭鄆酈鄖鄲醞醱醬釅釃釀釋裏钜鑒鑾鏨釓釔針釘釗釙釕釷釺釧釤鈒釩釣鍆釹鍚釵鈃鈣鈈鈦鈍鈔鍾鈉鋇鋼鈑鈐鑰欽鈞鎢鉤鈧鈁鈥鈄鈕鈀鈺錢鉦鉗鈷缽鈳鉕鈽鈸鉞鑽鉬鉭鉀鈿鈾鐵鉑鈴鑠鉛鉚鈰鉉鉈鉍鈹鐸鉶銬銠鉺銪鋏鋣鐃銍鐺銅鋁銱銦鎧鍘銖銑鋌銩銛鏵銓鉿銚鉻銘錚銫鉸銥鏟銃鐋銨銀銣鑄鐒鋪鋙錸鋱鏈鏗銷鎖鋰鋥鋤鍋鋯鋨鏽銼鋝鋒鋅鋶鐦鐧銳銻鋃鋟鋦錒錆鍺錯錨錡錁錕錩錫錮鑼錘錐錦鍁錈錇錟錠鍵鋸錳錙鍥鍈鍇鏘鍶鍔鍤鍬鍾鍛鎪鍠鍰鎄鍍鎂鏤鎡鏌鎮鎛鎘鑷鐫鎳鎿鎦鎬鎊鎰鎔鏢鏜鏍鏰鏞鏡鏑鏃鏇鏐鐔钁鐐鏷鑥鐓鑭鐠鑹鏹鐙鑊鐳鐶鐲鐮鐿鑔鑣鑞鑲長門閂閃閆閈閉問闖閏闈閑閎間閔閌悶閘鬧閨聞闥閩閭闓閥閣閡閫鬮閱閬闍閾閹閶鬩閿閽閻閼闡闌闃闠闊闋闔闐闒闕闞闤隊陽陰陣階際陸隴陳陘陝隉隕險隨隱隸雋難雛讎靂霧霽黴靄靚靜靨韃鞽韉韝韋韌韍韓韙韞韜韻頁頂頃頇項順須頊頑顧頓頎頒頌頏預顱領頗頸頡頰頲頜潁熲頦頤頻頮頹頷頴穎顆題顒顎顓顏額顳顢顛顙顥纇顫顬顰顴風颺颭颮颯颶颸颼颻飀飄飆飆飛饗饜飣饑飥餳飩餼飪飫飭飯飲餞飾飽飼飿飴餌饒餉餄餎餃餏餅餑餖餓餘餒餕餜餛餡館餷饋餶餿饞饁饃餺餾饈饉饅饊饌饢馬馭馱馴馳驅馹駁驢駔駛駟駙駒騶駐駝駑駕驛駘驍罵駰驕驊駱駭駢驫驪騁驗騂駸駿騏騎騍騅騌驌驂騙騭騤騷騖驁騮騫騸驃騾驄驏驟驥驦驤髏髖髕鬢魘魎魚魛魢魷魨魯魴魺鮁鮃鯰鱸鮋鮓鮒鮊鮑鱟鮍鮐鮭鮚鮳鮪鮞鮦鰂鮜鱠鱭鮫鮮鮺鯗鱘鯁鱺鰱鰹鯉鰣鰷鯀鯊鯇鮶鯽鯒鯖鯪鯕鯫鯡鯤鯧鯝鯢鯰鯛鯨鯵鯴鯔鱝鰈鰏鱨鯷鰮鰃鰓鱷鰍鰒鰉鰁鱂鯿鰠鼇鰭鰨鰥鰩鰟鰜鰳鰾鱈鱉鰻鰵鱅鰼鱖鱔鱗鱒鱯鱤鱧鱣鳥鳩雞鳶鳴鳲鷗鴉鶬鴇鴆鴣鶇鸕鴨鴞鴦鴒鴟鴝鴛鴬鴕鷥鷙鴯鴰鵂鴴鵃鴿鸞鴻鵐鵓鸝鵑鵠鵝鵒鷳鵜鵡鵲鶓鵪鶤鵯鵬鵮鶉鶊鵷鷫鶘鶡鶚鶻鶿鶥鶩鷊鷂鶲鶹鶺鷁鶼鶴鷖鸚鷓鷚鷯鷦鷲鷸鷺鸇鷹鸌鸏鸛鸘鹺麥麩黃黌黶黷黲黽黿鼂鼉鞀鼴齇齊齏齒齔齕齗齟齡齙齠齜齦齬齪齲齷龍龔龕龜誌製谘隻裡係範鬆冇嚐嘗鬨麵準鐘彆閒乾儘臟';
+    }
+
+    function Traditionalized(cc) {
+        var str = '',
+            ss = JTPYStr(),
+            tt = FTPYStr();
+        for (var i = 0; i < cc.length; i++) {
+            if (cc.charCodeAt(i) > 10000 && ss.indexOf(cc.charAt(i)) != -1) str += tt.charAt(ss.indexOf(cc.charAt(i)));
+            else str += cc.charAt(i);
+        }
+        return str;
+    } //trs-silentblue
+    function Simplized(cc) {
+        var str = '',
+            ss = JTPYStr(),
+            tt = FTPYStr();
+        for (var i = 0; i < cc.length; i++) {
+            if (cc.charCodeAt(i) > 10000 && tt.indexOf(cc.charAt(i)) != -1) str += ss.charAt(tt.indexOf(cc.charAt(i)));
+            else str += cc.charAt(i);
+        }
+        return str;
+    } //trs-silentblue
+    function setCookie(name, value) //cookies设置
+    {
+        var argv = setCookie.arguments;
+        var argc = setCookie.arguments.length;
+        var expires = (argc > 2) ? argv[2] : null;
+        if (expires != null) {
+            var LargeExpDate = new Date();
+            LargeExpDate.setTime(LargeExpDate.getTime() + (expires * 1000 * 3600 * 24));
+        }
+        document.cookie = name + "=" + escape(value) + ((expires == null) ? "" : ("; expires=" + LargeExpDate
+            .toGMTString()));
+    } //trs-silentblue
+    function getCookie(Name) //cookies读取
+    {
+        var search = Name + "="
+        if (document.cookie.length > 0) {
+            offset = document.cookie.indexOf(search)
+            if (offset != -1) {
+                offset += search.length
+                end = document.cookie.indexOf(";", offset)
+                if (end == -1) end = document.cookie.length
+                return unescape(document.cookie.substring(offset, end))
+            } else return ""
+        }
+    }
+    var StranLink_Obj = document.getElementById("StranLink")
+    if (StranLink_Obj) {
+        var JF_cn = "ft" + self.location.hostname.toString().replace(/\./g, "")
+        var BodyIsFt = getCookie(JF_cn)
+        if (BodyIsFt != "1") BodyIsFt = Default_isFT
+        with(StranLink_Obj) {
+            if (typeof(document.all) != "object") //非IE浏览器
+            {
+                href = "javascript:StranBody()"
+            } else {
+                href = "#";
+                onclick = new Function("StranBody();return false")
+            }
+            title = StranText("点击切换到繁体中文网站", 1, 1)
+            innerHTML = StranText(innerHTML, 1, 1)
+        }
+        if (BodyIsFt == "1") {
+            setTimeout("StranBody()", StranIt_Delay)
+        }
+    } //trs-silentblue
+</script>
+<style>
+    .kjtab_box .wyk ul li a i {
+        border-radius:20px;
+    }
+    .retrieval a {
+
+        width: 65px;
+
+    }
+    .content .foot_foot{
+        width:1000px;
+    }
+    .czwz_right{
+        float:left;
+        margin-left: 60px;
+    }
+    .wwzxg .tzxx h1{
+        background-position: left;
+        width:215px;
+    }
+</style>
+			<!--  -->
+			<div class="nyj3c_1 clearfix">
+				<div class="nyj_content">
+					<div class="dcwz clearfix">当前位置：<a href="../../../../" target="_blank" title="首页" class="CurrChnlCls">首页</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../../../" target="_blank" title="政府信息公开" class="CurrChnlCls">政府信息公开</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../../" target="_blank" title="法定主动公开目录" class="CurrChnlCls">法定主动公开目录</a>&nbsp;<span>&gt;</span>&nbsp;<a href="../" target="_blank" title="最新文件" class="CurrChnlCls">最新文件</a>
+					</div>
+					<div class="gwy_xqy clearfix">
+						<div class="nyjxqy clearfix">
+							<div class="wrap" style="font-family:宋体;">
+								<table border="0" cellpadding="0" cellspacing="0" class="bd1" style="margin:0 auto;">
+									<tbody>
+										<tr>
+											<td width="75"><b>标　　题：</b></td>
+											<td colspan="3" width="907" style="text-align:left">
+												山西省发展和改革委员会  山西省能源局关于印发《山西省煤炭行业碳达峰实施方案》的通知
+											</td>
+										</tr>
+										<tr>
+
+											<td co width="75"><b>发文字号：</b></td>
+											<td width="533">
+												晋能源规发〔2023〕251号
+											</td>
+											<td width="75"><b>主题分类：</b></td>
+											<td width="300">
+												发展规划
+											</td>
+										</tr>
+										<tr>
+											<td><b>成文日期：</b></td>
+											<td>
+												2023年10月19日
+											</td>
+											<td><b>发布日期：</b></td>
+											<td>
+												2023年10月19日
+											</td>
+										</tr>
+										<tr>
+											<td><b>是否有效：</b></td>
+											<td colspan="3" width="907" style="text-align:left">是</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="zfwjjd clearfix">
+								<div class="zfwjjd_left clearfix" id="main_content" style="width: 100%;border-right: 0;">
+									<!--<h3>
+										山西省发展和改革委员会  山西省能源局关于印发《山西省煤炭行业碳达峰实施方案》的通知
+									</h3>
+									<h2>
+										
+									</h2>
+-->
+									<div class="article-body clearfix">
+
+										<!--<script language="javascript" type="text/javascript">
+											var pdfurl = '';
+											var pdfwidth = 730; //定义pdf单页宽度
+											var pdfheight = 800; //定义pdf单页高度
+											if (pdfurl.indexOf(".pdf") >= 0) { //判断是否为PDF，是就显示，不是就不显示 
+												document.write(
+													"<div style='width:730px;margin:0 auto;'><object classid='clsid:CA8A9780-280D-11CF-A24D-444553540000' width='" +
+													pdfwidth + "' height='" + pdfheight + "' border='0' top='-10' name='pdf'> ");
+												document.write("<param name='toolbar' value='true'>");
+												document.write("<param name='_Version' value='65539'>");
+												document.write("<param name='_ExtentX' value='20108'>");
+												document.write("<param name='_ExtentY' value='10866'>");
+												document.write("<param name='_StockProps' value='0'>");
+												document.write("<param name='SRC' value=''>");
+												document.write("<embed name='plugin' src='" + pdfurl + "' type='application/pdf' width='" + pdfwidth +
+													"' height='" + pdfheight + "'>");
+												document.write("</object></div>")
+											}; 
+										</script>-->
+										<div class="view TRS_UEDITOR trs_paper_default trs_word trs_web"><p style="margin: 0px; text-align: center; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; line-height: 43px;"><strong><span data-index="4" style="font-family: 宋体, SimSun; font-size: 29px;">山西省发展和改革委员会&nbsp; 山西省能源局</span></strong></p><p style="margin: 0px; text-align: center; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; line-height: 43px;"><strong><span data-index="4" style="font-family: 宋体, SimSun; font-size: 29px;">关于印发《山西省煤炭行业碳达峰实施方案》的通知</span></strong></p><p style="margin: 0px; text-align: center; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; line-height: 43px;"></p><p style="text-align:center;margin: 0 0 0;font-family: &#39;Times New Roman&#39;;font-size: 14px;white-space: normal;line-height: 44px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><br/></span></p><p style="text-align:center;margin: 0 0 0;font-family: &#39;Times New Roman&#39;;font-size: 14px;white-space: normal;line-height: 44px"><span style="font-family: 仿宋_GB2312;font-size: 21px">晋能源规发〔</span><span style="font-size: 21px">2023</span><span style="font-family: 仿宋_GB2312;font-size: 21px">〕</span><span style="font-size: 21px">251</span><span style="font-family: 仿宋_GB2312;font-size: 21px">号</span></p><p style="margin: 0px; text-align: center; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; line-height: 43px;"><strong><span data-index="4" style="font-family: 宋体, SimSun; font-size: 29px;"></span></strong><br/></p><p style="margin: 0 0 0;text-align: justify;font-family: &#39;Times New Roman&#39;;font-size: 14px;white-space: normal;line-height: 43px"><span style="font-family: 仿宋_GB2312;font-size: 21px">省直各有关单位，各市发展改革委、能源局，各有关企业：</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 43px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">为深入贯彻落实党中央、国务院关于碳达峰、碳中和工作的决策部署和省委、省人民政府工作安排，促进煤炭行业绿色低碳转型发展，省发展和改革委员会、省能源局制定了《山西省煤炭行业碳达峰实施方案》，现印发给你们，请结合实际组织实施。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 42px;"><span style="font-family: 仿宋_GB2312;font-size: 21px"> </span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 42px;"><span style="font-family: 仿宋_GB2312;font-size: 21px"> </span></p><p style="margin: 0px; text-align: right; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 42px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">山西省发展和改革委员会 </span><span style="font-size: 21px">         </span><span style="font-family: 仿宋_GB2312;font-size: 21px">山西省能源局</span></p><p style="margin: 0px; text-align: right; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 42px;"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">20</span></span><span style="font-size: 21px">23</span><span style="font-family: 仿宋_GB2312;font-size: 21px">年</span><span style="font-size: 21px">10</span><span style="font-family: 仿宋_GB2312;font-size: 21px">月</span><span style="font-size: 21px">19</span><span style="font-family: 仿宋_GB2312;font-size: 21px">日</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 42px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">（此件主动</span><span style="font-size: 21px"><span style="font-family:仿宋_GB2312">公开</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; line-height: 40px; text-indent: 42px;"><span style="font-size: 21px"><br/></span></p><p style="text-align: center; margin: 0px; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; line-height: 40px; text-indent: 48px;"><strong><span data-index="" style="font-size: 24px; font-family: 宋体, SimSun;">山西省煤炭行业碳达峰实施方案</span></strong></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-size: 21px"> </span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">为深入贯彻落实党中央、国务院关于碳达峰、碳中和工作决策部署和山西省委、省政府工作安排，促进煤炭行业绿色低碳转型发展，结合山西实际，制定本实施方案。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 黑体;font-size: 21px">一、总体要求</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（一）指导思想</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">以习近平新时代中国特色社会主义思想为指导，深入贯彻落实习近平总书记考察调研山西重要指示精神，全面落实党的二十大精神，坚持稳中求进工作总基调，立足新发展阶段，完整、准确、全面贯彻新发展理念，立足以煤为主的基本国情和省情，守牢煤炭供应安全底线，充分发挥煤炭的“压舱石”作用，以煤炭清洁高效利用为方向，以科技创新为根本动力，提升全产业链碳减排水平，推动煤炭产业绿色低碳转型，助力全省如期实现碳达峰目标。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（二）基本原则</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">坚持系统谋划。</span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">立足国家煤炭供应保障基地的战略定位，坚决兜住能源安全底线，煤炭逐步退出必须建立在新能源安全可靠的替代基础上。统筹发展与减排、整体和局部、短期目标与长期目标、政府和市场的关系，将“双碳”目标任务贯穿落实到煤炭生产供应利用产业链全过程。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">坚持绿色发展。</span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">实施煤炭产业绿色化、智能化改造，深化煤炭生产洗选节能降碳行动，有序推进煤炭与新能源优化组合，提升煤炭伴生资源和固体废物综合利用水平，实现煤炭行业绿色转型发展。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">坚持清洁利用。</span></strong><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">持续优化煤炭消费结构，提升煤炭供给质量，积极推进散煤替代，提高燃煤发电用煤比重，转变煤炭利用方式，推进煤炭由燃料向燃料原料材料并重转变，促进煤炭消费转型升级。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">坚持科技创新。</span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">坚持创新在煤炭绿色低碳转型发展中的核心地位，加大煤炭领域科技创新支持力度，推动山西从煤炭大省向煤炭科技强省转变。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 黑体;font-size: 21px">二、主要目标</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">“十四五”时期，煤炭稳定供应能力显著增强，绿色低碳发展水平持续提高，单位产品能耗有效降低，煤炭清洁高效利用取得积极进展，资源综合利用水平进一步提升。到</span><span style="font-family:Times New Roman">2025</span><span style="font-family:仿宋_GB2312">年，矿井吨原煤生产综合能耗比</span><span style="font-family:Times New Roman">2020</span><span style="font-family:仿宋_GB2312">年下降</span><span style="font-family:Times New Roman">10%</span><span style="font-family:仿宋_GB2312">以上，煤矿瓦斯抽采利用率力争达到</span><span style="font-family:Times New Roman">50%</span><span style="font-family:仿宋_GB2312">。</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">“十五五”时期，煤炭安全保障基础更加坚实，煤炭绿色低碳开发体系逐步建立，全产业链降碳提效创新能力显著增强，清洁高效利用水平不断提高，资源综合利用率进一步提高。到</span><span style="font-family:Times New Roman">2030</span><span style="font-family:仿宋_GB2312">年，矿井吨原煤生产综合能耗在</span><span style="font-family:Times New Roman">2025</span><span style="font-family:仿宋_GB2312">年的基础上持续下降，煤矿瓦斯抽采利用率力争达到</span><span style="font-family:Times New Roman">60%</span><span style="font-family:仿宋_GB2312">。</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 黑体;font-size: 21px">三、重点任务</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（一）建设国家煤炭供应保障基地</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">1.</span><span style="font-family:仿宋_GB2312">持续优化升级煤炭生产结构。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">坚持“上大压小、增优汰劣”，持续倒逼落后产能关闭退出，有序释放先进产能，提高供给体系质量。停止核准新建和改扩建后产能低于<span style="font-family:Times New Roman">120</span><span style="font-family:仿宋_GB2312">万吨</span><span style="font-family:Times New Roman">/</span><span style="font-family:仿宋_GB2312">年的煤矿和不符合产业政策的煤矿。禁止在生态敏感区域内规划布局新建煤矿项目，严格禁止开采处于黄河流域禁采区煤炭资源。运用市场化法治化手段分类处置长期停产停建煤矿，确保开采范围与生态敏感区域重叠且矿业权设置在前的煤矿做到应退尽退。加快推进新建接续煤矿项目核准，有序开展煤矿产能核增。（省能源局、省发展改革委等按职责分工负责）</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">2.</span><span style="font-family:仿宋_GB2312">建设煤炭清洁运输储备体系。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">全面推进大型矿区煤炭企业、大型物流园区和交易集散基地铁路专用线建设，优化煤炭物流网络，提升铁路等清洁运输比例。创新多式联运、集装箱运输等方式，支持企业推广智慧低碳仓储和物流，鼓励具备条件的地区新（改扩）建煤矿开采项目采取清洁运输方式。在省内煤炭产地、消费重点区域和铁路交通枢纽统筹布局煤炭产品储备设施和项目，逐步完善煤炭产能储备体系建设。鼓励和支持有条件的企业在省外煤炭消费集中地、铁路交通枢纽和主要中转港口，以“产销联动、共建共享”的方式建设储煤基地，形成布局合理、保障有效的煤炭产品储备能力。统筹考虑煤炭资源赋存、特高压通道能力、外送电力受端需求等，科学推进跨区域输电替代输煤。（省工信厅、省交通厅、省发展改革委、省能源局、省国资委、中国铁路太原局、国网山西省电力公司等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">3.</span><span style="font-family:仿宋_GB2312">健全煤炭高效应急保供机制。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">强化煤炭企业项目建设和生产经营监测，及时组织煤炭企业启动稳产保供应急工作。充分考虑各类不确定性情况，坚持底线思维，制定稳产保供应急预案，确保紧急情况快速启动预案，有效保障经济发展和民生用煤的可靠供应。建立健全运行监测制度，开展煤炭调度和监测预警，动态掌握煤炭产运需及价格走势情况，及时发现供需缺口和价格异常波动，针对性采取措施加以解决。（省能源局、省发展改革委、省交通厅、省应急管理厅、省国资委等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（二）强化煤炭资源绿色开发</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">4.</span><span style="font-family:仿宋_GB2312">推进全域绿色矿山建设工作。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">全面推进绿色矿山建设，新建煤矿全部按照绿色矿山标准规划、设计、建设和运营管理；推动生产煤矿结合实际加快改造升级，达到绿色矿山标准。鼓励引导具备基础的县（市、区）开展绿色矿业发展示范区建设。到<span style="font-family:Times New Roman">2025</span><span style="font-family:仿宋_GB2312">年，大型煤矿全部达到绿色矿山标准，建成</span><span style="font-family:Times New Roman">3</span><span style="font-family:仿宋_GB2312">个国家级绿色矿业发展示范区。到</span><span style="font-family:Times New Roman">2030</span><span style="font-family:仿宋_GB2312">年，生产煤矿全部达到绿色矿山标准。（省自然资源厅、省财政厅、省生态环境厅等按职责分工负责）</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">5.</span><span style="font-family:仿宋_GB2312">推动煤炭开采方式变革。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">结合绿色开采试点和工作实际，研究制定我省煤炭绿色开采技术标准。强化技术创新，加强煤炭资源绿色开发前沿理论研究和装备、材料、工艺、技术攻关，促进产学研用相结合。在确保安全、环保的前提下，在我省发展出更加成熟稳妥的多种类型、各类场景的煤炭资源绿色开发技术体系。（省能源局、省市场监管局、省科技厅等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">6.</span><span style="font-family:仿宋_GB2312">加快绿色开采技术应用推广。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">开展煤炭绿色开采试点示范，因地制宜推广应用充填开采、保水开采、煤与瓦斯共采及无煤柱开采等绿色开采技术及装备。稳妥开展新建煤矿井下矸石智能分选系统和不可利用矸石全部返井试点示范工程建设。鼓励煤矿企业采用先进技术回收非永久保护煤柱等边角残煤，提高煤炭资源回收率。（省能源局、省科技厅等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（三）深入推进煤炭生产节能降碳</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">7.</span><span style="font-family:仿宋_GB2312">开展存量电机节能改造。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">引导煤炭企业实施电机等重点用能设备更新升级，优先选用高效节能电机，加快淘汰不符合现行国家能效标准要求的落后低效电机。鼓励企业对低效运行的风机、泵、压缩机等电机系统开展匹配性节能改造和运行控制优化等。加大高效节能电机应用力度，对负荷变化大的机电设备，推广<span style="font-family:Times New Roman">2</span><span style="font-family:仿宋_GB2312">级能效及以上的变频调速永磁电机；对使用变速箱、耦合器的传动系统，鼓励采用低速直驱和高速直驱式永磁电机；对主通风系统，鼓励应用电机变频调节、风叶液压调节和通风智能调节技术。（省能源局、省工信厅、省科技厅、省应急管理厅、国家矿监局山西局等按职责分工负责）</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">8.</span><span style="font-family:仿宋_GB2312">提高余热资源利用水平。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">开展乏风氧化、低浓瓦斯氧化供热工程，加强瓦斯电厂余热、空压风机余热回收利用。支持煤炭生产企业合理利用矿井（坑）水、洗浴废水及回风井回风余热等低温废热资源。推广应用污水源热泵技术、空压机余热利用技术和空气源热泵技术，实施矿区清洁取暖。强化煤矿余热供热系统自动化与智能化控制水平，提升余热能源利用效率。（省能源局、国家矿监局山西局、省科技厅等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">9.</span><span style="font-family:仿宋_GB2312">强化企业节能低碳管理。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">推动煤炭企业强化能源计量器具配备和使用管理，定期对煤矿提升、运输、压风和排水系统开展能耗测定，对主提升设备、风机、水泵、空气压缩机等开展性能测试，达不到有关规定要求的，按照国家规定限期实施改造。推动列入能耗重点监管单位的煤炭企业开展节能诊断和能源管理体系认证，建立能效管理信息系统，对能耗实施动态监控。支持煤炭企业结合自身实际，建立用能预算管理工作机制，编制用能预算管理方案。鼓励煤炭企业建立碳排放信息评价管理系统，建立碳排放台账。（省能源局、省生态环境厅、省应急管理厅等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（四）促进矿区低碳供能与增汇</span></p><p style="margin: 0 0 0;text-align: justify;font-family: &#39;Times New Roman&#39;;font-size: 14px;white-space: normal;text-indent: 42px;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"><span style="font-family:Times New Roman">10.</span><span style="font-family:仿宋_GB2312">推动煤炭与新能源融合发展。</span></span></strong><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">推动矿区充分利用采煤沉陷区、关闭退出煤矿、工业场地、排矸场等空间资源和配套设施，积极发展有规模有效益的风能、太阳能、生物质能、地热能、氢能等新能源；鼓励煤炭企业利用废弃矿井因地制宜发展抽水蓄能和压缩空气储能，合理配置新型储能。推动煤炭企业和矿区绿色低碳用能，逐步提高绿色用能比重，优化用能结构，降低吨煤生产的二氧化碳排放量。（省能源局、省发展改革委等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">11.</span><span style="font-family:仿宋_GB2312">提升矿区生态环境增汇能力。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">完善关闭退出煤矿生态修复机制，持续推进黄河流域重点城市历史遗留废弃矿山生态修复；严格落实煤矿企业主体责任，扎实开展矿山环境治理修复，露天矿植被恢复，矸石山治理和利用，扩大土地复垦面积。推进适合自然恢复的采区，通过保护、恢复、增汇以及改善植被恢复条件等方式，实现自我修复，巩固和提升矿区碳汇规模。支持矿区与现代农业、文化旅游、生态林业等产业有机结合，科学发展开采区林业碳汇、土壤碳汇和地质碳汇。（省生态环境厅、省自然资源厅、省能源局、省农业农村厅、省文旅厅、省林业和草原局等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（五）实施资源循环利用减碳</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">12.</span><span style="font-family:仿宋_GB2312">加强矿井水治理与综合利用。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">按照国家和我省矿井水管理要求，科学推进矿井水处理利用系统优化升级，降低矿井水处理物耗、能耗。鼓励开展采空区、废弃工作面、周边废弃矿井等老窑水现状调查，推进老窑水治理试点示范。积极拓展矿井水综合利用途径，全面优化矿区供排水系统，提高矿井水回用综合效益，提高矿井水利用率。（省生态环境厅、省工信厅、省能源局等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">13.</span><span style="font-family:仿宋_GB2312">强化煤矸石资源综合利用。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">因地制宜推广“煤矸石井下充填<span style="font-family:Times New Roman">+</span><span style="font-family:仿宋_GB2312">地面回填”，促进矸石减量。推进煤矸石在工程建设、塌陷区治理、矿井充填、土地复垦以及盐碱地、沙漠化土地生态修复等领域的利用。有序引导利用煤矸石生产新型墙体材料、装饰装修材料等绿色建材。在风险可控前提下深入推动农业领域应用和有价组分提取，加强大掺量和高附加值产品应用推广。加快制定相关领域地方标准和技术规范，支持相关领域技术研发推广应用。（省工信厅、省发展改革委、省生态环境厅、省自然资源厅、省能源局、省市场监管局等按职责分工负责）</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（六）推动瓦斯综合利用减碳</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">14.</span><span style="font-family:仿宋_GB2312">加快完善煤矿瓦斯数据管理。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">加强煤炭生产甲烷排放的监测、核算、报告和核查体系建设。规范瓦斯抽采、排放和利用数据计量、完善瓦斯统计、分析制度，试点开展重点企业甲烷减排成效评估。逐步开展煤矿甲烷排放数据报送工作，完善煤矿甲烷排放数据报送制度。加强部门间联动，推动建立甲烷信息共享制度。（省应急管理厅、省能源局、省生态环境厅、国家矿监局山西局等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">15.</span><span style="font-family:仿宋_GB2312">推进煤矿瓦斯治理和综合利用。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">严格落实高瓦斯、突出矿井配套建设瓦斯利用设施要求。推广应用定向钻机、煤层瓦斯增透技术、井上下联合瓦斯抽采等瓦斯抽采先进装备、工艺和技术，提高煤矿瓦斯抽采率。鼓励煤矿通过浓缩、发电、瓦斯氧化等方式开展低浓度瓦斯及乏风综合利用，建设低浓度瓦斯利用技术示范工程。推动煤矿瓦斯梯级利用技术研发和推广应用，建设煤矿瓦斯“零排放”技术示范工程。开展煤矿瓦斯直燃，在条件适宜矿井探索开展煤矿瓦斯提纯制管输气后进入天然气管网，推动瓦斯在发电、周边居民生活、锅炉燃料、分布式能源领域的多元化利用，提高瓦斯利用率。（省能源局、省应急管理厅、省发展改革委、国家矿监局山西局等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">16.</span><span style="font-family:仿宋_GB2312">开展关闭煤矿瓦斯治理与利用。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">开展关闭煤矿和计划关闭煤矿的煤炭和瓦斯资源摸底调查，推动关闭煤矿瓦斯治理与利用试点项目建设。开展废弃矿井甲烷排放研究，建立废弃矿井甲烷排放清单。推进煤炭采空区（废弃矿井）煤层气抽采，促进资源综合利用，以瓦斯灾害严重、残存资源量大、利用价值高的关闭煤矿和计划关闭煤矿为重点，优先开展瓦斯治理与利用试点项目建设，推进关闭煤矿瓦斯治理与利用工作。（省自然资源厅、省能源局、省应急管理厅、省生态环境厅等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（七）推动煤炭清洁高效利用</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">17.</span><span style="font-family:仿宋_GB2312">加快促进煤炭使用提质增效。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">发展高精度煤炭洗选加工，鼓励新建煤矿配套建设高效选煤厂或群矿选煤厂，正常生产经营的洗选企业进行产业升级，达到标准化管理规范最低等级，探索开展井下选煤示范工程。提高洗选加工水平，精准适配供应符合终端用户需求、品质稳定的优质煤炭产品。完善商品煤质量管理政策，建立商品煤生产、加工、销售、使用的全过程质量监督管理体系、商品煤追溯体系和信用评价及发布体系。合理建设煤炭优质化加工和配送中心，实施煤炭精细化加工配送。开展低阶煤利用试点示范，探索中低温热解产品高质化利用途径，推进煤炭分质分级梯级利用。（省能源局、省市场监管局、省工信厅等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">18.</span><span style="font-family:仿宋_GB2312">持续提升电力热力用煤效率。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">加强新增煤电项目煤耗水平管控，新建高效燃煤机组供电煤耗达到国家规定的标杆水平。因地制宜开展供电煤耗<span style="font-family:Times New Roman">300</span><span style="font-family:仿宋_GB2312">克标准煤</span><span style="font-family:Times New Roman">/</span><span style="font-family:仿宋_GB2312">千瓦时以上的机组实施分类改造，持续降低供电煤耗。积极推进供热改造，推广热电联产改造和工业余热余压综合利用，逐步淘汰供热管网覆盖范围内的燃煤小锅炉和散煤。推动企业强化用煤管理，提高用煤质量，因地制宜推广燃煤耦合农林废弃物、市政污泥、生活垃圾等，鼓励实施非煤燃料替代。（省能源局、省生态环境厅等按职责分工负责）</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">19.</span><span style="font-family:仿宋_GB2312">推动非电燃料用煤有序替代。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">在钢铁行业鼓励发展电炉炼钢，鼓励开展氢冶金等低碳技术研发和推广应用，有效降低燃煤比例。在建材行业推广电锅炉、电窑炉、电加热等技术，提升电力替代燃煤比例；鼓励水泥行业在符合相关标准前提下使用粉煤灰、电石渣等非碳酸盐原料制水泥，逐步减少熟料占比，进一步降低耗煤量。鼓励利用可再生能源制氢，优化煤化工、合成氨、甲醇等原料结构。推动炼钢、焦化、有色、建材提升余热回收利用水平，推动产品煤耗持续下降。（省工信厅、省能源局等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">20.</span><span style="font-family:仿宋_GB2312">提高原料用煤综合利用效能。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">积极发展煤基特种燃料、煤基生物可降解材料，拓展煤油气盐多元综合循环利用途径，培育碳基新材料产业集群，打造纤维新材料产品示范基地，推动煤炭转化向高端高固碳率产品发展。根据国家要求，稳妥推进山西晋北煤制油气战略基地建设。鼓励煤炭深加工与碳捕集利用和封存集成利用，开展高浓度二氧化碳捕集与封存（<span style="font-family:Times New Roman">CCS</span><span style="font-family:仿宋_GB2312">）利用试点，减少二氧化碳排放。（省发展改革委、省能源局、省工信厅、省科技厅等按职责分工负责）</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">21.</span><span style="font-family:仿宋_GB2312">因地制宜推进区域散煤治理。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">大力推广余压余热利用，深入实施燃煤锅炉和工业炉窑清洁能源替代，有效减少生产生活领域散煤利用，提高煤炭利用集中度。坚持先立后破，合理推进禁煤区划定。强化散煤加工、储运、销售、使用全链条监管。因地制宜实施“煤改电”“煤改气”“煤改生物质”，积极探索氢能源代煤，有序推进城乡结合部和农村地区民用散煤治理，力争实现全省平原地区散煤清零。（省生态环境厅、省能源局、省市场监督管理局、省工信厅等按职责分工负责）</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（八）强化煤炭领域低碳科技创新</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">22.</span><span style="font-family:仿宋_GB2312">开展煤炭技术创新攻关。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">鼓励开展深部竖井掘进机、智能采掘装备、智能探测装备、多场景矿用机器人、<span style="font-family:Times New Roman">5G+</span><span style="font-family:仿宋_GB2312">工业互联网管控平台及综合预警系统、井下煤矸分选装备、低透气性煤层瓦斯高效抽采、新型低浓度、超低浓度瓦斯高效利用关键技术装备、关键元器件及工业软件等核心装备自主研发。聚焦重点领域和关键环节，加快促进煤炭清洁高效利用技术深度开发。支持开展二氧化碳大规模低能耗捕集、矿化转化利用、高效催化还原、可靠封存等绿色低碳前沿技术研发。鼓励大型煤炭企业、能源领域国家级创新平台、国家级科研院所强强联合，对煤炭原料化、材料化关键技术进行集中攻关。（省科技厅、省能源局、省发展改革委等按职责分工负责）</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Times New Roman">23.</span><span style="font-family:仿宋_GB2312">全力推进煤矿智能化建设。</span></span></strong><span style="font-family: 仿宋_GB2312;font-size: 21px">加快完善矿井智能化建设技术规范、标准和验收办法。推进具备条件的生产煤矿加快实施智能化改造，引导一级标准化管理规范洗选企业或选煤厂积极开展智能化建设示范。对难以实现全过程、全时态智能化的煤矿和选煤厂，结合自身条件和经济效益，因地制宜开展智能化技术改造，积极推进局部智能化。新建（改扩建）煤矿应按照智能化要求，建成智能化矿井。到<span style="font-family:Times New Roman">2025</span><span style="font-family:仿宋_GB2312">年，</span><span style="font-family:Times New Roman">120</span><span style="font-family:仿宋_GB2312">万吨</span><span style="font-family:Times New Roman">/</span><span style="font-family:仿宋_GB2312">年及以上煤矿、灾害严重煤矿及其他具备条件煤矿基本实现智能化；</span><span style="font-family:Times New Roman">2027</span><span style="font-family:仿宋_GB2312">年，全省各类煤矿基本实现智能化。（省能源局、省应急厅、省市场监督管理局、国家矿山安全监察局山西局等按职责分工负责）</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 黑体;font-size: 21px">四、保障措施</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（一）加强组织实施</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">认真贯彻落实党中央、国务院和省委、省政府关于碳达峰碳中和的重大决策部署，强化部门协调，统筹谋划，系统推进煤炭行业碳达峰工作。相关部门需指导各市提高认识，结合发展实际，进一步细化目标任务和政策措施。各级政府要加强对煤炭行业碳达峰工作的组织领导，建立健全工作机制，压实煤炭企业责任，抓好组织实施，加强监督检查，确保重点任务及时落地见效。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（二）健全法规标准</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">推动《山西省煤炭管理条例》《山西省节约能源条例》等地方性法律法规的修订。完善绿色开采、煤矿智能化、煤矸石综合利用等领域省级标准和行业标准，积极参与国家、行业标准制修订，为煤炭行业低碳转型提供制度保障。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（三）强化金融支持</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">引导金融机构对符合条件的煤炭清洁高效利用、保供建设项目、绿色智能煤矿建设给予合理信贷支持，推动开发性、政策性银行对承担保供任务的煤炭企业给予融资支持。积极争取支持煤炭清洁高效利用专项再贷款，以精准直达方式为煤炭清洁高效利用项目提供优惠利率融资。鼓励以市场化方式依法设立煤炭绿色转型投资基金，扶持新兴技术研发和绿色转型发展项目。鼓励符合条件的企业发行可持续发展挂钩债券等，推动煤炭企业绿色低碳转型。</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（四）加大财政投入</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">积极争取国家低碳转型基金对我省煤炭产业转型和煤炭资源富集地区绿色转型的支持。积极争取煤矿安全改造中央预算内投资专项，加大煤矿重大灾害超前治理、智能化改造和瓦斯综合治理与利用支持力度，优先支持大型风电光伏基地周边煤矿安全设施和储煤设施建设。加大各级财政对煤炭原料化材料化高新技术、二氧化碳捕集利用与封存（<span style="font-family:Times New Roman">CCUS</span><span style="font-family:仿宋_GB2312">）等领域的支持力度。</span></span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 楷体_GB2312;font-size: 21px">（五）压实企业责任</span></p><p style="margin: 0px; text-align: justify; font-family: &quot;Times New Roman&quot;; font-size: 14px; white-space: normal; text-indent: 42px; line-height: 40px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">落实煤炭企业碳达峰碳中和主体责任，统筹兼顾发展和碳减排需要，制定企业碳达峰实施方案；推动重点企业全面梳理碳排放情况，根据国家要求完善碳排放统计核算制度，深入研究碳减排路径，加紧制定“一企一策”实施方案，明确时间表、路线图。</span></p><p style="text-indent: 32px;"><br/></p></div>
+
+										 
+									</div>
+								</div>
+								<div class="zfwjjd_right clearfix" id="unscramble" style="display: none;">
+									<ul>
+										<li>
+											<h6 class="bt11"
+												style="font-size: 16px; font-family: 宋体; line-height: 35px;">关联文件</h6>
+										</li>
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script>
+				
+			</script>
+			<!-- 底部 -->
+			<div class="nyjfoot clearfix">
+	<div class="foot_yqlj clearfix" style="display:none; background-color: #ececec">
+		<div class="content">
+			<h6><img src="../../../../images/sxsnyj52.png" />公共服务</h6>
+			<p><a href="">山西省煤炭经营监督管理系统</a></p>
+		</div>
+	</div>
+	<div class="nyfoot_ft clearfix" style="background-color: white;">
+<div style= "width:100%; line-height: 65px; background-color: #1f4e83; margin-top:-35px;"   >
+<div class="ftyqlj clearfix" >
+				<form method="post">
+					<ul>
+						<li>
+							<select onchange="window.open(this.options[this.selectedIndex].value)" id="select">
+								<option>各市能源局网站</option>
+								<option value="http://nyj.taiyuan.gov.cn/">太原市能源局网站</option>
+								<option value="http://www.dt.gov.cn/dtzww/bumdtgg/dept_xxgk_list.shtml">大同市能源局网站
+								</option>
+								<option value="http://mtj.shuozhou.gov.cn">朔州市能源局网站</option>
+								<option value="http://nyj.sxxz.gov.cn/">忻州市能源局网站</option>
+								<option value="http://nyj.yq.gov.cn/">阳泉市能源局网站</option>
+								<option value="http://nyj.sxjz.gov.cn/">晋中市能源局网站</option>
+								<option value="http://www.lvliang.gov.cn/zfjgzd/llmtgy/">吕梁市能源局网站</option>
+								<option
+									value="https://www.changzhi.gov.cn/xxgkml/zfxxgkml/szfgzbm/czsnyj/gkzn_201/index.shtml">
+									长治市能源局网站</option>
+								<option value="http://nyj.jcgov.gov.cn/">晋城市能源局网站</option>
+								<option value="http://nyj.linfen.gov.cn/">临汾市能源局网站</option>
+								<option value="https://www.yuncheng.gov.cn/bmzt/snyjzl/mhlist.shtml">运城市能源局网站</option>
+							</select>
+						</li>
+							<script>
+							    $(function(){
+							        $("#select").change(function(){
+							            var op=$("#select").find('option');
+							            op.get(0).selected=true;
+							        });
+							    })
+							</script>
+						<li>
+							<select onchange="window.open(this.options[this.selectedIndex].value)" id="select1">
+								<option>能源行业相关网站</option>
+								<option value="http://www.ndrc.gov.cn/">国家发改委</option>
+								<option value="http://www.nea.gov.cn/">国家能源局</option>
+								<option value="https://www.mem.gov.cn/">中华人民共和国应急管理部</option>
+								<option value="http://www.coalchina.org.cn/">国家煤炭工业网</option>
+								<!--<option value="http://www.chinacoal.gov.cn/">中国煤炭工业网</option>-->
+								<option value="http://www.sxsmtgyxh.com/">山西省煤炭工业协会</option>
+								<option value="https://sxepa.org/">山西省电力行业协会</option>
+							</select>
+						</li>
+							<script>
+							    $(function(){
+							        $("#select1").change(function(){
+							            var op1=$("#select1").find('option');
+							            op1.get(0).selected=true;
+							        });
+							    })
+							</script>
+					</ul>
+				</form>
+			</div>
+</div>
+		<div class="content">
+			
+			<div class="foot_foot clearfix" >
+				<div class="czwz_left clearfix">
+					<a href="http://bszs.conac.cn/sitename?method=show&id=86283A653758B39BE05310291AACDD87"><img src="../../../../images/sxsnyj53.png" alt="sxsnyj53.png" title="sxsnyj53.png" /></a>
+					<a href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=1400000063&url=https%3A%2F%2Fnyj.shanxi.gov.cn%2Findex.html"><img src="../../../../images/sxsnyj54.png" alt="sxsnyj54.png" title="sxsnyj54.png" style="margin-top: 12px;" /></a>
+				</div>
+				<div class="czwz_right clearfix" >
+
+					<P style="color:black" >
+						主办单位：山西省能源局<br/>© 山西省能源局版权所有,如需转载，请注明来源 <br/>地址：山西省太原市并州北路67号 &nbsp;&nbsp;&nbsp;邮编：030012 <br/> <a style="color:black" 
+							href="#">网站地图</a> &nbsp;&nbsp;&nbsp; 联系方式：4117512，4117555<br><a style="color:black" href= 
+							"https://beian.miit.gov.cn/">晋ICP备：12000773 号</a> &nbsp;&nbsp;&nbsp; <a href="#" style="color:black" ><img class="gx" src="../../../../images/sxsnyj55.png" />晋公网安备
+							14010602060577号</a><br>网站标识码：1400000063
+					</P>
+
+
+
+
+				</div>
+<img style = "height:150px; margin-left: 40px;" src="../../../../images/微信公众号.jpg" alt="微信公众号.jpg" title="微信公众号.jpg" />
+<div>
+
+</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script id="_trs_ta_js" src="//ta.trs.cn/c/js/ta.js?mpid=5387" async="async" defer="defer"></script>
+		</div>
+	</body>
+</html>

@@ -312,6 +312,7 @@ def build_index(text_limit: int) -> dict:
     source_set: set[str] = set()
     authority_set: set[str] = set()
     status_set: set[str] = set()
+    review_status_set: set[str] = set()
 
     for row in rows:
         full_text, text_path = read_text_file(row, limit=text_limit)
@@ -322,6 +323,7 @@ def build_index(text_limit: int) -> dict:
         source_type = row.get("来源类型", "").strip()
         authority = row.get("权威等级", "").strip()
         status = row.get("有效状态", "").strip()
+        review_status = row.get("审核状态", "").strip()
         snapshot = snapshot_entries.get(doc_id, {})
         snapshot_method = snapshot.get("method", "")
         snapshot_text, snapshot_kind = snapshot_label(snapshot_method)
@@ -336,6 +338,8 @@ def build_index(text_limit: int) -> dict:
             authority_set.add(authority)
         if status:
             status_set.add(status)
+        if review_status:
+            review_status_set.add(review_status)
 
         docs.append(
             {
@@ -363,10 +367,12 @@ def build_index(text_limit: int) -> dict:
                 "snapshot_label": snapshot_text,
                 "snapshot_kind": snapshot_kind,
                 "pdf_attachments": pdf_attachments,
+                "has_pdf": bool(pdf_attachments),
+                "has_text": bool(text_path),
                 "summary": row.get("摘要", ""),
                 "note": row.get("备注", ""),
                 "ingested_at": row.get("入库日期", ""),
-                "review_status": row.get("审核状态", ""),
+                "review_status": review_status,
                 "snippet": text_snippet(full_text),
                 "text": normalize_space(full_text),
             }
@@ -389,6 +395,7 @@ def build_index(text_limit: int) -> dict:
             "source_types": sorted(source_set),
             "authorities": sorted(authority_set),
             "statuses": sorted(status_set),
+            "review_statuses": sorted(review_status_set),
         },
         "documents": docs,
     }
@@ -505,6 +512,25 @@ def html_template(index: dict) -> str:
     }}
     .filter {{
       margin-bottom: 13px;
+    }}
+    .quick-filters {{
+      display: grid;
+      gap: 8px;
+      margin: 2px 0 14px;
+    }}
+    .check-row {{
+      display: grid;
+      grid-template-columns: 18px minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+      color: #334155;
+      font-size: 13px;
+    }}
+    .check-row input {{
+      width: 18px;
+      min-height: 18px;
+      margin: 0;
+      padding: 0;
     }}
     .counts {{
       display: flex;
@@ -723,6 +749,14 @@ def html_template(index: dict) -> str:
         <label for="sourceFilter">来源类型</label>
         <select id="sourceFilter"></select>
       </div>
+      <div class="quick-filters" aria-label="实用筛选">
+        <label class="check-row"><input id="hasPdfFilter" type="checkbox">有 PDF</label>
+        <label class="check-row"><input id="officialOnlyFilter" type="checkbox">官方政策</label>
+        <label class="check-row"><input id="regulatoryOnlyFilter" type="checkbox">监管规则</label>
+        <label class="check-row"><input id="tradingOnlyFilter" type="checkbox">交易规则</label>
+        <label class="check-row"><input id="hasTextFilter" type="checkbox">已抽文本</label>
+        <label class="check-row"><input id="reviewPendingFilter" type="checkbox">待人工复核</label>
+      </div>
       <div class="filter">
         <label for="authorityFilter">权威等级</label>
         <select id="authorityFilter"></select>
@@ -730,6 +764,10 @@ def html_template(index: dict) -> str:
       <div class="filter">
         <label for="statusFilter">有效状态</label>
         <select id="statusFilter"></select>
+      </div>
+      <div class="filter">
+        <label for="reviewFilter">复核状态</label>
+        <select id="reviewFilter"></select>
       </div>
       <button class="secondary" id="resetBtn" type="button">重置筛选</button>
     </aside>
@@ -763,14 +801,29 @@ def html_template(index: dict) -> str:
   <script>
     const data = JSON.parse(document.getElementById('searchData').textContent);
     const docs = data.documents || [];
+    const knownTerms = [
+      '全国', '四川', '山东', '浙江', '山西', '广东', '南方区域', '西北区域',
+      '华中区域', '华东区域', '电力市场', '交易规则', '实施细则', '市场规则',
+      '规则体系', '高质量发展', '电网', '新型电力系统', '源网荷储', '电力保供',
+      '电网规划', '输配电价', '新能源消纳', '新能源上网电价', '辅助服务', '现货',
+      '中长期', '绿电', '信息披露', '山东电力市场规则', '广东电力市场规则', '四川辅助服务',
+      '南方区域新能源', '跨电网经营区'
+    ];
 
     const els = {{
       query: document.getElementById('queryInput'),
       province: document.getElementById('provinceFilter'),
       topic: document.getElementById('topicFilter'),
       source: document.getElementById('sourceFilter'),
+      hasPdf: document.getElementById('hasPdfFilter'),
+      officialOnly: document.getElementById('officialOnlyFilter'),
+      regulatoryOnly: document.getElementById('regulatoryOnlyFilter'),
+      tradingOnly: document.getElementById('tradingOnlyFilter'),
+      hasText: document.getElementById('hasTextFilter'),
+      reviewPending: document.getElementById('reviewPendingFilter'),
       authority: document.getElementById('authorityFilter'),
       status: document.getElementById('statusFilter'),
+      review: document.getElementById('reviewFilter'),
       sort: document.getElementById('sortMode'),
       results: document.getElementById('results'),
       count: document.getElementById('resultCount'),
@@ -802,13 +855,25 @@ def html_template(index: dict) -> str:
     fillSelect(els.source, data.filters.source_types || [], '来源');
     fillSelect(els.authority, data.filters.authorities || [], '等级');
     fillSelect(els.status, data.filters.statuses || [], '状态');
+    fillSelect(els.review, data.filters.review_statuses || [], '复核状态');
 
     function norm(value) {{
       return String(value || '').toLowerCase().replace(/[\\s《》〈〉“”"'()（）\\[\\]【】,，。.;；:：、/\\\\_-]+/g, '');
     }}
 
     function terms(value) {{
-      return String(value || '').split(/[;；,，、\\s]+/).map(v => v.trim()).filter(Boolean);
+      const raw = String(value || '');
+      const parts = raw.split(/[;；,，、\\s]+/).map(v => v.trim()).filter(Boolean);
+      knownTerms.forEach(term => {{
+        if (norm(raw).includes(norm(term))) parts.push(term);
+      }});
+      const seen = new Set();
+      return parts.filter(item => {{
+        const key = norm(item);
+        if (!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      }});
     }}
 
     function containsAny(values, selected) {{
@@ -818,6 +883,25 @@ def html_template(index: dict) -> str:
         const v = norm(value);
         return v.includes(s) || s.includes(v);
       }});
+    }}
+
+    function isOfficialPolicy(doc) {{
+      const value = doc.source_type || '';
+      return value.includes('官方') && !value.includes('解读');
+    }}
+
+    function isRegulatoryRule(doc) {{
+      return (doc.source_type || '').includes('监管');
+    }}
+
+    function isTradingRule(doc) {{
+      const value = doc.source_type || '';
+      return value.includes('交易规则') || value.includes('交易中心') || value.includes('交易');
+    }}
+
+    function isPendingReview(doc) {{
+      const value = `${{doc.review_status || ''}} ${{doc.note || ''}} ${{doc.status || ''}}`;
+      return value.includes('待') || value.includes('复核') || value.includes('低分') || value.includes('征求');
     }}
 
     function dateScore(raw) {{
@@ -866,7 +950,9 @@ def html_template(index: dict) -> str:
 
     // 查询分在权威分之上叠加字段命中、出现次数和短语长度，用于减少大量同分结果。
     function scoreDoc(doc, queryTerms) {{
-      const base = authorityScore(doc) + recencyBoost(doc.publish_date);
+      const asksForInterpretation = queryTerms.some(term => term.includes('解读'));
+      const interpretationPenalty = !asksForInterpretation && ((doc.title || '').includes('解读') || (doc.source_type || '').includes('解读')) ? -20 : 0;
+      const base = authorityScore(doc) + recencyBoost(doc.publish_date) + interpretationPenalty;
       if (!queryTerms.length) return {{ score: base, hits: [], hitCount: 0 }};
       const fields = {{
         id: {{ label: '编号', value: doc.id, weight: 20 }},
@@ -1014,6 +1100,7 @@ def html_template(index: dict) -> str:
       const source = els.source.value;
       const authority = els.authority.value;
       const status = els.status.value;
+      const review = els.review.value;
 
       let rows = docs.map(doc => {{
           const match = scoreDoc(doc, queryTerms);
@@ -1023,8 +1110,15 @@ def html_template(index: dict) -> str:
         .filter(item => containsAny(item.doc.provinces || [], province))
         .filter(item => containsAny(item.doc.topics || [], topic))
         .filter(item => !source || item.doc.source_type === source)
+        .filter(item => !els.hasPdf.checked || item.doc.has_pdf)
+        .filter(item => !els.officialOnly.checked || isOfficialPolicy(item.doc))
+        .filter(item => !els.regulatoryOnly.checked || isRegulatoryRule(item.doc))
+        .filter(item => !els.tradingOnly.checked || isTradingRule(item.doc))
+        .filter(item => !els.hasText.checked || item.doc.has_text)
+        .filter(item => !els.reviewPending.checked || isPendingReview(item.doc))
         .filter(item => !authority || item.doc.authority === authority)
-        .filter(item => !status || item.doc.status === status);
+        .filter(item => !status || item.doc.status === status)
+        .filter(item => !review || item.doc.review_status === review);
 
       if (els.sort.value === 'date') {{
         rows.sort((a, b) => dateScore(b.doc.publish_date) - dateScore(a.doc.publish_date) || b.score - a.score || b.hitCount - a.hitCount);
@@ -1035,7 +1129,15 @@ def html_template(index: dict) -> str:
       }}
 
       els.count.textContent = `${{rows.length}} 条结果`;
-      const filters = [province, topic, source, authority, status].filter(Boolean);
+      const quickFilters = [
+        els.hasPdf.checked ? '有 PDF' : '',
+        els.officialOnly.checked ? '官方政策' : '',
+        els.regulatoryOnly.checked ? '监管规则' : '',
+        els.tradingOnly.checked ? '交易规则' : '',
+        els.hasText.checked ? '已抽文本' : '',
+        els.reviewPending.checked ? '待人工复核' : ''
+      ];
+      const filters = [province, topic, source, authority, status, review, ...quickFilters].filter(Boolean);
       els.hint.textContent = filters.length ? filters.join(' / ') : '';
 
       const limited = rows.slice(0, 80);
@@ -1050,6 +1152,9 @@ def html_template(index: dict) -> str:
       const sourceTag = `<span class="tag">${{escapeHtml(doc.source_type || '来源未知')}}</span>`;
       const authTag = `<span class="tag authority-a">等级 ${{escapeHtml(doc.authority || '未标')}}</span>`;
       const statusTag = `<span class="tag ${{statusClass(doc.status)}}">${{escapeHtml(doc.status || '状态未知')}}</span>`;
+      const pdfTag = doc.has_pdf ? '<span class="tag">有 PDF</span>' : '';
+      const textTag = doc.has_text ? '<span class="tag">已抽文本</span>' : '';
+      const reviewTag = doc.review_status ? `<span class="tag">复核：${{escapeHtml(doc.review_status)}}</span>` : '';
       const snapshotTitle = [doc.snapshot_path, doc.snapshot_label, doc.snapshot_method].filter(Boolean).join(' · ');
       const snapshotLink = doc.snapshot_path ? `<a href="${{escapeHtml(outputHref(doc.snapshot_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(snapshotTitle)}}">网页快照</a>` : '';
       const textFallback = !snapshotLink && doc.text_path ? `<a href="${{escapeHtml(rootFileHref(doc.text_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.text_path)}}">处理后文本</a>` : '';
@@ -1077,7 +1182,7 @@ def html_template(index: dict) -> str:
           </div>
           ${{hitDetail}}
           <div class="fields">
-            ${{provinceTags}}${{scopeTags}}${{topicTags}}${{sourceTag}}${{authTag}}${{statusTag}}${{snapshotTag}}${{note}}
+            ${{provinceTags}}${{scopeTags}}${{topicTags}}${{sourceTag}}${{authTag}}${{statusTag}}${{pdfTag}}${{textTag}}${{reviewTag}}${{snapshotTag}}${{note}}
           </div>
           <div class="snippet">${{highlight(doc.snippet || doc.summary || doc.department || '', queryTerms)}}</div>
           ${{relationBlock}}
@@ -1113,7 +1218,8 @@ def html_template(index: dict) -> str:
       return `<div class="relation-row"><span class="relation-label">${{escapeHtml(label)}}</span>${{links}}</div>`;
     }}
 
-    [els.province, els.topic, els.source, els.authority, els.status, els.sort].forEach(el => el.addEventListener('change', render));
+    [els.province, els.topic, els.source, els.authority, els.status, els.review, els.sort].forEach(el => el.addEventListener('change', render));
+    [els.hasPdf, els.officialOnly, els.regulatoryOnly, els.tradingOnly, els.hasText, els.reviewPending].forEach(el => el.addEventListener('change', render));
     els.search.addEventListener('click', render);
     els.ask.addEventListener('click', askQuestion);
     els.query.addEventListener('input', () => render());
@@ -1122,7 +1228,8 @@ def html_template(index: dict) -> str:
     }});
     els.reset.addEventListener('click', () => {{
       els.query.value = '';
-      [els.province, els.topic, els.source, els.authority, els.status].forEach(el => el.value = '');
+      [els.province, els.topic, els.source, els.authority, els.status, els.review].forEach(el => el.value = '');
+      [els.hasPdf, els.officialOnly, els.regulatoryOnly, els.tradingOnly, els.hasText, els.reviewPending].forEach(el => el.checked = false);
       els.sort.value = 'score';
       render();
     }});
@@ -1133,7 +1240,8 @@ def html_template(index: dict) -> str:
       const targetId = link.getAttribute('data-jump-doc') || '';
       if (!targetId) return;
       els.query.value = targetId;
-      [els.province, els.topic, els.source, els.authority, els.status].forEach(el => el.value = '');
+      [els.province, els.topic, els.source, els.authority, els.status, els.review].forEach(el => el.value = '');
+      [els.hasPdf, els.officialOnly, els.regulatoryOnly, els.tradingOnly, els.hasText, els.reviewPending].forEach(el => el.checked = false);
       els.sort.value = 'score';
       render();
       window.setTimeout(() => {{
@@ -1150,6 +1258,13 @@ def html_template(index: dict) -> str:
     if (params.has('source')) els.source.value = params.get('source') || '';
     if (params.has('authority')) els.authority.value = params.get('authority') || '';
     if (params.has('status')) els.status.value = params.get('status') || '';
+    if (params.has('review')) els.review.value = params.get('review') || '';
+    if (params.has('has_pdf')) els.hasPdf.checked = params.get('has_pdf') === '1';
+    if (params.has('official')) els.officialOnly.checked = params.get('official') === '1';
+    if (params.has('regulatory')) els.regulatoryOnly.checked = params.get('regulatory') === '1';
+    if (params.has('trading')) els.tradingOnly.checked = params.get('trading') === '1';
+    if (params.has('has_text')) els.hasText.checked = params.get('has_text') === '1';
+    if (params.has('pending_review')) els.reviewPending.checked = params.get('pending_review') === '1';
     if (params.has('sort')) els.sort.value = params.get('sort') || 'score';
 
     render();
@@ -1167,7 +1282,7 @@ def self_check(index: dict, html_path: Path, json_path: Path) -> list[str]:
     errors: list[str] = []
     if not index.get("documents"):
         errors.append("索引没有文档")
-    for field in ["provinces", "regions", "topics", "source_types", "authorities", "statuses"]:
+    for field in ["provinces", "regions", "topics", "source_types", "authorities", "statuses", "review_statuses"]:
         if field not in index.get("filters", {}):
             errors.append(f"索引缺少筛选字段：{field}")
     if not html_path.exists() or html_path.stat().st_size < 10000:
@@ -1177,6 +1292,10 @@ def self_check(index: dict, html_path: Path, json_path: Path) -> list[str]:
     probe = [doc for doc in index["documents"] if "辅助服务" in doc.get("title", "") or "辅助服务" in ";".join(doc.get("topics", []))]
     if not probe:
         errors.append("索引自检未找到辅助服务相关文档")
+    if not any(doc.get("has_pdf") for doc in index["documents"]):
+        errors.append("索引自检未找到带 PDF 的文档")
+    if not any(doc.get("has_text") for doc in index["documents"]):
+        errors.append("索引自检未找到已抽文本的文档")
     return errors
 
 

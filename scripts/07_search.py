@@ -17,6 +17,52 @@ ROOT = Path(__file__).resolve().parents[1]
 LEDGER_CSV = ROOT / "02_元数据" / "政策资料台账.csv"
 OUTPUT_DIR = ROOT / "05_输出成果"
 
+REGIONAL_PROVINCES = {
+    "南方区域": ["广东", "广西", "云南", "贵州", "海南"],
+    "华中区域": ["湖北", "湖南", "河南", "江西", "重庆", "四川", "西藏"],
+    "华北区域": ["北京", "天津", "河北", "山西", "内蒙古"],
+    "东北区域": ["辽宁", "吉林", "黑龙江", "内蒙古"],
+    "西北区域": ["陕西", "甘肃", "青海", "宁夏", "新疆"],
+    "华东区域": ["上海", "江苏", "浙江", "安徽", "福建", "山东"],
+}
+
+KNOWN_QUERY_TERMS = [
+    "全国",
+    "四川",
+    "山东",
+    "浙江",
+    "山西",
+    "广东",
+    "南方区域",
+    "西北区域",
+    "华中区域",
+    "华东区域",
+    "电力市场",
+    "交易规则",
+    "实施细则",
+    "市场规则",
+    "规则体系",
+    "高质量发展",
+    "电网",
+    "新型电力系统",
+    "源网荷储",
+    "电力保供",
+    "电网规划",
+    "输配电价",
+    "新能源消纳",
+    "新能源上网电价",
+    "辅助服务",
+    "现货",
+    "中长期",
+    "绿电",
+    "信息披露",
+    "山东电力市场规则",
+    "广东电力市场规则",
+    "四川辅助服务",
+    "南方区域新能源",
+    "跨电网经营区",
+]
+
 RESULT_FIELDS = [
     "检索时间",
     "查询词",
@@ -60,7 +106,7 @@ def split_terms(value: str) -> list[str]:
     parts = re.split(r"[;；,，、\s]+", value or "")
     terms: list[str] = []
     seen: set[str] = set()
-    for part in parts:
+    for part in [*parts, *(term for term in KNOWN_QUERY_TERMS if normalize(term) in normalize(value))]:
         term = part.strip()
         key = normalize(term)
         if not key or key in seen:
@@ -123,7 +169,20 @@ def authority_boost(row: dict[str, str]) -> float:
         score += 1.5
     if "现行有效" in row.get("有效状态", ""):
         score += 2.0
+    if "征求" in row.get("有效状态", ""):
+        score -= 4.0
+    elif "废止" in row.get("有效状态", ""):
+        score -= 8.0
     return score
+
+
+def core_title_phrases(title: str) -> list[str]:
+    phrases = re.findall(r"《([^》]{4,80})》", title or "")
+    if not phrases and title:
+        cleaned = re.sub(r"^关于(印发|修订|发布|审定|贯彻落实)", "", title)
+        cleaned = re.sub(r"的通知.*$|的复函.*$|意见的通知.*$", "", cleaned)
+        phrases.append(cleaned)
+    return phrases
 
 
 def time_boost(row: dict[str, str]) -> float:
@@ -152,8 +211,11 @@ def score_row(row: dict[str, str], query_terms: list[str], include_text: bool) -
     """按字段权重计算单条政策得分，并返回命中字段用于人工解释排序。"""
     fields = combined_text(row, include_text)
     normalized_fields = {name: normalize(value) for name, value in fields.items()}
+    query_text = normalize(" ".join(query_terms))
     score = authority_boost(row) + time_boost(row)
     hits: list[str] = []
+    if "解读" not in query_text and ("解读" in row.get("文件标题", "") or "解读" in row.get("来源类型", "")):
+        score -= 24.0
 
     weights = {
         "标题": 12.0,
@@ -167,6 +229,12 @@ def score_row(row: dict[str, str], query_terms: list[str], include_text: bool) -
         "正文": 1.2,
         "来源": 1.0,
     }
+
+    for phrase in core_title_phrases(row.get("文件标题", "")):
+        phrase_key = normalize(phrase)
+        if len(phrase_key) >= 6 and phrase_key in query_text:
+            score += 22.0
+            hits.append(f"{phrase}:标题")
 
     for term in query_terms:
         term_key = normalize(term)
@@ -188,8 +256,24 @@ def score_row(row: dict[str, str], query_terms: list[str], include_text: bool) -
 def field_contains(row: dict[str, str], field: str, expected: str) -> bool:
     if not expected:
         return True
+    if field == "适用地区":
+        return any(region_matches(row.get(field, ""), term) for term in split_terms(expected))
     field_text = normalize(row.get(field, ""))
     return any(normalize(term) in field_text for term in split_terms(expected))
+
+
+def region_matches(doc_region: str, term: str) -> bool:
+    doc_norm = normalize(doc_region)
+    term_norm = normalize(term)
+    if term_norm and doc_norm and (term_norm in doc_norm or doc_norm in term_norm):
+        return True
+    doc_regions = split_terms(doc_region)
+    for region, provinces in REGIONAL_PROVINCES.items():
+        if term in provinces and any(region == item for item in doc_regions):
+            return True
+        if term == region and any(province in doc_regions for province in provinces):
+            return True
+    return False
 
 
 def search(

@@ -217,6 +217,23 @@ def main() -> int:
     steps.append(run_step("重建搜索页面", ["scripts/09_build_search_page.py"], dry_run))
     steps.append(run_step("检索自检", ["scripts/07_search.py", "--self-check-only"], dry_run=False, execute_in_dry_run=True))
     steps.append(run_step("RAG自检", ["scripts/18_rag_query.py", "--self-check"], dry_run=False, execute_in_dry_run=True))
+    steps.append(
+        run_step(
+            "数据验收",
+            [
+                "scripts/23_validate_knowledge_base.py",
+                "--min-ledger-count",
+                str(args.target_count),
+                "--max-ledger-count",
+                "600",
+                "--write-report",
+                "--warn-only",
+            ],
+            dry_run=False,
+            execute_in_dry_run=True,
+            fatal=False,
+        )
+    )
 
     after_count = count_rows(LEDGER_CSV)
     report_path = write_report(started_at, before_count, after_count, candidate_path, steps, strict_score)
