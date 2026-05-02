@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-05-02T21:23:57",
+  "question_count": 50,
+  "top3_standard_hit_rate": 0.94,
+  "citation_complete_rate": 1.0,
+  "answer_section_complete_rate": 1.0,
+  "region_drift_count": 0,
+  "pass_rate": 0.94,
+  "target": {
+    "top3_standard_hit_rate": 0.9,
+    "citation_complete_rate": 1.0,
+    "region_drift_count": 0
+  }
+}

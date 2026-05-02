@@ -32,7 +32,7 @@ def load_rag_module():
 rag = load_rag_module()
 load_env_file()
 DEFAULT_MAX_CONTEXT_CHUNKS = max(1, int(os.getenv("LLM_MAX_CONTEXT_CHUNKS", "8") or "8"))
-app = FastAPI(title="电力政策知识库问答服务", version="0.1.0")
+app = FastAPI(title="电力政策知识库问答服务", version="0.2.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -50,6 +50,8 @@ class AskRequest(BaseModel):
     official_only: bool = True
     top_k: int = Field(default=DEFAULT_MAX_CONTEXT_CHUNKS, ge=1, le=20)
     candidate_pool: int = Field(default=300, ge=20, le=2000)
+    per_doc_limit: int = Field(default=2, ge=1, le=5)
+    use_llm: bool = False
 
 
 def load_payload() -> dict:
@@ -144,6 +146,7 @@ def health() -> dict[str, Any]:
         "chunk_count": len(payload.get("rows", [])),
         "document_count": len({row.get("资料编号", "") for row in payload.get("rows", [])}),
         "summary": summary,
+        "rag_mode": getattr(rag, "MODE", "no_llm_rag"),
         "llm_configured": bool(os.getenv("LLM_API_KEY")),
         "max_context_chunks": DEFAULT_MAX_CONTEXT_CHUNKS,
     }
@@ -152,32 +155,45 @@ def health() -> dict[str, Any]:
 @app.post("/api/ask")
 def ask(request: AskRequest) -> dict[str, Any]:
     payload = load_payload()
-    results = rag.search(
+    results, diagnostics = rag.search_with_diagnostics(
         payload,
-        request.query,
+        query=request.query,
         top_k=request.top_k,
         candidate_pool=request.candidate_pool,
         region=request.region,
         source_type=request.source_type,
         official_only=request.official_only,
+        per_doc_limit=request.per_doc_limit,
     )
     warnings: list[str] = []
+    no_llm_response = rag.build_no_llm_response(request.query, results, diagnostics)
     if not results:
         return {
-            "answer": "未找到足够依据。请尝试换用更具体的地区、主题、文号或政策名称。",
-            "citations": [],
+            "answer": no_llm_response["answer"],
+            "citations": no_llm_response["citations"],
             "retrieval_hits": [],
             "warnings": ["no_retrieval_results"],
+            "mode": no_llm_response["mode"],
+            "confidence": no_llm_response["confidence"],
+            "answer_sections": no_llm_response["answer_sections"],
+            "missing_evidence": no_llm_response["missing_evidence"],
+            "dedup_stats": no_llm_response["dedup_stats"],
         }
 
-    settings = LlmSettings.from_env()
-    answer_results = results[: settings.max_context_chunks]
-    citations = build_citations(answer_results)
-    try:
-        answer = chat_completion(build_prompt(request.query, answer_results), settings)
-    except Exception as exc:
-        warnings.append(f"llm_fallback: {type(exc).__name__}: {exc}")
-        answer = fallback_answer(request.query, answer_results, str(exc))
+    answer_results = results
+    citations = no_llm_response["citations"]
+    answer = no_llm_response["answer"]
+    mode = no_llm_response["mode"]
+    if request.use_llm:
+        settings = LlmSettings.from_env()
+        answer_results = results[: settings.max_context_chunks]
+        try:
+            answer = chat_completion(build_prompt(request.query, answer_results), settings)
+            mode = "llm_with_rag_v2"
+        except Exception as exc:
+            warnings.append(f"llm_fallback: {type(exc).__name__}: {exc}")
+            answer = no_llm_response["answer"]
+            mode = no_llm_response["mode"]
 
     return {
         "answer": answer,
@@ -193,6 +209,11 @@ def ask(request: AskRequest) -> dict[str, Any]:
             for item in results
         ],
         "warnings": warnings,
+        "mode": mode,
+        "confidence": no_llm_response["confidence"],
+        "answer_sections": no_llm_response["answer_sections"],
+        "missing_evidence": no_llm_response["missing_evidence"],
+        "dedup_stats": no_llm_response["dedup_stats"],
     }
 
 
