@@ -7,6 +7,7 @@ RAG v2 使用“切片召回 -> 文档级重排 -> 每份资料限量切片 -> �
 from __future__ import annotations
 
 import argparse
+import csv
 import datetime as dt
 import gzip
 import json
@@ -20,8 +21,11 @@ from log_action import append_log
 
 
 ROOT = Path(__file__).resolve().parents[1]
+META_DIR = ROOT / "02_元数据"
 OUTPUT_DIR = ROOT / "05_输出成果"
 INDEX_PATH = OUTPUT_DIR / "rag_index.pkl.gz"
+VARIABLES_CSV = META_DIR / "政策变量表.csv"
+EVOLUTION_CSV = META_DIR / "政策演化关系表.csv"
 MODE = "no_llm_rag_v2"
 
 REGIONAL_PROVINCES = {
@@ -159,6 +163,38 @@ CAUTION_HINTS = ["不得", "禁止", "未", "不予", "风险", "考核", "偏�
 def load_index(path: Path) -> dict[str, Any]:
     with gzip.open(path, "rb") as f:
         return pickle.load(f)
+
+
+_research_cache: dict[str, Any] = {"variables_mtime": None, "variables": {}, "evolution_mtime": None, "evolution": {}}
+
+
+def read_csv_rows(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def load_policy_variables() -> dict[str, dict[str, str]]:
+    mtime = VARIABLES_CSV.stat().st_mtime if VARIABLES_CSV.exists() else 0
+    if _research_cache["variables_mtime"] != mtime:
+        rows = read_csv_rows(VARIABLES_CSV)
+        _research_cache["variables"] = {row.get("资料编号", ""): row for row in rows if row.get("资料编号")}
+        _research_cache["variables_mtime"] = mtime
+    return _research_cache["variables"]
+
+
+def load_evolution_relations() -> dict[str, list[dict[str, str]]]:
+    mtime = EVOLUTION_CSV.stat().st_mtime if EVOLUTION_CSV.exists() else 0
+    if _research_cache["evolution_mtime"] != mtime:
+        grouped: dict[str, list[dict[str, str]]] = {}
+        for row in read_csv_rows(EVOLUTION_CSV):
+            for key in [row.get("源资料编号", ""), row.get("目标资料编号", "")]:
+                if key:
+                    grouped.setdefault(key, []).append(row)
+        _research_cache["evolution"] = grouped
+        _research_cache["evolution_mtime"] = mtime
+    return _research_cache["evolution"]
 
 
 def to_float(value: str, default: float = 0.0) -> float:
@@ -668,6 +704,7 @@ def citation(row: dict[str, str]) -> str:
 
 
 def citation_payload(row: dict[str, str], rank: int) -> dict[str, str | int]:
+    variable = load_policy_variables().get(row.get("资料编号", ""), {})
     return {
         "rank": rank,
         "doc_id": row.get("资料编号", ""),
@@ -678,6 +715,8 @@ def citation_payload(row: dict[str, str], rank: int) -> dict[str, str | int]:
         "document_number": row.get("文号", "") or "未标注",
         "source_type": row.get("来源类型", ""),
         "authority": row.get("权威等级", ""),
+        "status": row.get("有效状态", ""),
+        "quality_status": variable.get("质量状态", "未生成"),
         "url": row.get("原文链接", "") or "未标注",
         "snippet": compact_snippet(row.get("正文片段", ""), 260),
     }
@@ -791,10 +830,105 @@ def comparison_table(results: list[dict[str, Any]]) -> list[str]:
     return lines
 
 
+def doc_ids_from_results(results: list[dict[str, Any]], limit: int = 6) -> list[str]:
+    doc_ids: list[str] = []
+    seen: set[str] = set()
+    for item in results:
+        doc_id = item["row"].get("资料编号", "")
+        if doc_id and doc_id not in seen:
+            seen.add(doc_id)
+            doc_ids.append(doc_id)
+        if len(doc_ids) >= limit:
+            break
+    return doc_ids
+
+
+def variable_lines(doc_ids: list[str]) -> list[str]:
+    variables = load_policy_variables()
+    fields = ["政策工具", "适用主体", "市场环节", "价格机制", "交易品种", "规划场景", "投资影响", "商业模式影响", "风险约束"]
+    lines: list[str] = []
+    for doc_id in doc_ids[:5]:
+        row = variables.get(doc_id)
+        if not row:
+            continue
+        parts = [f"{field}：{row.get(field, '')}" for field in fields if row.get(field, "")]
+        if parts:
+            lines.append(f"[{doc_id}] " + "；".join(parts[:7]) + f"；质量状态：{row.get('质量状态', '未生成')}")
+    return lines
+
+
+def evolution_lines(doc_ids: list[str]) -> list[str]:
+    relations = load_evolution_relations()
+    lines: list[str] = []
+    seen: set[str] = set()
+    for doc_id in doc_ids[:6]:
+        for rel in relations.get(doc_id, [])[:4]:
+            if rel.get("源资料编号") == doc_id:
+                other_id = rel.get("目标资料编号", "")
+                other_title = rel.get("目标标题", "")
+                direction = "指向"
+            else:
+                other_id = rel.get("源资料编号", "")
+                other_title = rel.get("源标题", "")
+                direction = "来自"
+            key = f"{doc_id}-{other_id}-{rel.get('关系类型', '')}"
+            if key in seen:
+                continue
+            seen.add(key)
+            lines.append(
+                f"[{doc_id}] {rel.get('关系类型', '关联')}：{direction} [{other_id}] {compact_snippet(other_title, 80)}；"
+                f"区域路径：{rel.get('区域路径', '')}；置信度：{rel.get('置信度', '')}"
+            )
+            if len(lines) >= 8:
+                return lines
+    return lines
+
+
+def management_implications(doc_ids: list[str]) -> list[str]:
+    variables = load_policy_variables()
+    lines: list[str] = []
+    for doc_id in doc_ids[:5]:
+        row = variables.get(doc_id)
+        if not row:
+            continue
+        investment = row.get("投资影响", "")
+        business = row.get("商业模式影响", "")
+        risk = row.get("风险约束", "")
+        pricing = row.get("价格机制", "")
+        parts = []
+        if investment:
+            parts.append(f"投资决策：{investment}")
+        if business:
+            parts.append(f"商业模式：{business}")
+        if pricing:
+            parts.append(f"成本收益：{pricing}")
+        if risk:
+            parts.append(f"市场与合规风险：{risk}")
+        if parts:
+            lines.append(f"[{doc_id}] " + "；".join(parts))
+    return lines
+
+
+def quality_caution_lines(doc_ids: list[str]) -> list[str]:
+    variables = load_policy_variables()
+    lines: list[str] = []
+    for doc_id in doc_ids[:6]:
+        row = variables.get(doc_id)
+        if not row:
+            lines.append(f"[{doc_id}] 尚未生成政策变量和质量状态，引用前应复核。")
+            continue
+        quality = row.get("质量状态", "未生成")
+        review = row.get("人工复核状态", "")
+        if quality != "可引用":
+            lines.append(f"[{doc_id}] 质量状态为“{quality}”，人工复核状态为“{review or '未标'}”，不能等同人工校验结论。")
+    return lines
+
+
 def build_answer_sections(
     query: str,
     results: list[dict[str, Any]],
     diagnostics: dict[str, Any],
+    answer_mode: str = "research",
 ) -> dict[str, Any]:
     profile = diagnostics.get("profile", query_profile(query))
     confidence = diagnostics.get("confidence", confidence_level(results, profile))
@@ -806,16 +940,21 @@ def build_answer_sections(
             "direct_conclusion": "依据不足：当前知识库没有检索到足够稳定的官方、监管或交易规则证据，不能给出确定政策判断。",
             "applicable_scope": [],
             "rule_points": [],
+            "policy_variables": [],
+            "evolution_relations": [],
+            "management_implications": [],
             "cautions": miss,
+            "quality_cautions": miss,
             "comparison": [],
             "citations": [],
         }
 
     citations = build_citations(results, limit=6)
+    doc_ids = doc_ids_from_results(results, limit=6)
     scope = select_sentences(results, terms, SCOPE_HINTS, limit=3)
     points = select_sentences(results, terms, RULE_POINT_HINTS, limit=6)
     cautions = select_sentences(results, terms, CAUTION_HINTS, limit=3)
-    comparison = comparison_table(results) if profile.get("comparison") else []
+    comparison = comparison_table(results) if profile.get("comparison") or answer_mode == "comparison" else []
 
     if not points:
         points = [
@@ -828,7 +967,11 @@ def build_answer_sections(
         "direct_conclusion": f"根据当前命中的 {len(citations)} 份资料，优先依据 {doc_titles}。以下结论均来自本地知识库切片，未调用大模型自由生成。",
         "applicable_scope": scope,
         "rule_points": points,
+        "policy_variables": variable_lines(doc_ids),
+        "evolution_relations": evolution_lines(doc_ids),
+        "management_implications": management_implications(doc_ids),
         "cautions": cautions or ["未从命中证据中抽取到额外限制条件；仍应以引用文件原文为准。"],
+        "quality_cautions": quality_caution_lines(doc_ids),
         "comparison": comparison,
         "citations": citations,
     }
@@ -855,9 +998,22 @@ def format_answer_markdown(query: str, sections: dict[str, Any], diagnostics: di
     lines.extend(["", "## 规则要点"])
     points = sections.get("rule_points") or ["依据不足，未生成规则要点。"]
     lines.extend(f"- {item}" for item in points)
+    lines.extend(["", "## 政策变量"])
+    variables = sections.get("policy_variables") or ["尚未从命中资料中生成政策变量。"]
+    lines.extend(f"- {item}" for item in variables)
+    lines.extend(["", "## 政策演化关系"])
+    evolutions = sections.get("evolution_relations") or ["尚未识别到可展示的上位法、配套文件、地方承接或修订替代关系。"]
+    lines.extend(f"- {item}" for item in evolutions)
+    lines.extend(["", "## 管理学与技术经济含义"])
+    implications = sections.get("management_implications") or ["当前证据不足以形成投资、成本收益、商业模式或风险层面的结构化解释。"]
+    lines.extend(f"- {item}" for item in implications)
     lines.extend(["", "## 注意事项"])
     cautions = sections.get("cautions") or ["请以引用文件原文为准。"]
     lines.extend(f"- {item}" for item in cautions)
+    quality_cautions = sections.get("quality_cautions") or []
+    if quality_cautions:
+        lines.extend(["", "## 可信度提示"])
+        lines.extend(f"- {item}" for item in quality_cautions)
     lines.extend(["", "## 引用资料"])
     citations = sections.get("citations") or []
     if not citations:
@@ -865,7 +1021,8 @@ def format_answer_markdown(query: str, sections: dict[str, Any], diagnostics: di
     for item in citations:
         lines.append(
             f"- [{item['rank']}] 资料编号：{item['doc_id']}；标题：{item['title']}；"
-            f"日期：{item['publish_date']}；文号：{item['document_number']}；链接：{item['url']}"
+            f"日期：{item['publish_date']}；文号：{item['document_number']}；"
+            f"有效状态：{item.get('status', '')}；质量状态：{item.get('quality_status', '未生成')}；链接：{item['url']}"
         )
     return "\n".join(lines)
 
@@ -874,13 +1031,15 @@ def build_no_llm_response(
     query: str,
     results: list[dict[str, Any]],
     diagnostics: dict[str, Any] | None = None,
+    answer_mode: str = "research",
 ) -> dict[str, Any]:
     diagnostics = diagnostics or {"profile": query_profile(query), "confidence": confidence_level(results, query_profile(query)), "dedup_stats": {}}
-    sections = build_answer_sections(query, results, diagnostics)
+    sections = build_answer_sections(query, results, diagnostics, answer_mode=answer_mode)
     answer = format_answer_markdown(query, sections, diagnostics)
     miss = missing_evidence(results, diagnostics.get("profile", {}), diagnostics.get("confidence", "low"))
     return {
         "mode": MODE,
+        "answer_mode": answer_mode,
         "confidence": diagnostics.get("confidence", "low"),
         "answer": answer,
         "answer_sections": sections,
@@ -948,6 +1107,7 @@ def main() -> int:
     parser.add_argument("--per-doc-limit", type=int, default=2, help="Maximum chunks returned per document.")
     parser.add_argument("--region", default="", help="Optional region filter, e.g. 四川.")
     parser.add_argument("--source-type", default="", help="Optional source type filter.")
+    parser.add_argument("--answer-mode", default="research", choices=["research", "evidence", "comparison"], help="Structured answer mode.")
     parser.add_argument("--include-interpretation", action="store_true", help="Allow interpretation/news sources.")
     parser.add_argument("--json", action="store_true", help="Print JSON response instead of Markdown.")
     parser.add_argument("--write", action="store_true", help="Write markdown answer to 05_输出成果.")
@@ -972,7 +1132,7 @@ def main() -> int:
         official_only=not args.include_interpretation,
         per_doc_limit=args.per_doc_limit,
     )
-    response = build_no_llm_response(args.query, results, diagnostics)
+    response = build_no_llm_response(args.query, results, diagnostics, answer_mode=args.answer_mode)
     if args.json:
         print(json.dumps(response, ensure_ascii=False, indent=2))
     else:
@@ -989,7 +1149,7 @@ def main() -> int:
         files=str(output_path.relative_to(ROOT)) if output_path else str(index_path.relative_to(ROOT)),
         command=f"{Path(__file__).name} --query \"{args.query}\" --top-k {args.top_k}",
         result="完成" if results else "无结果",
-        note=f"返回切片={len(results)}; 模式={MODE}; 置信度={response['confidence']}; 未调用大模型",
+        note=f"返回切片={len(results)}; 模式={MODE}; answer_mode={args.answer_mode}; 置信度={response['confidence']}; 未调用大模型",
     )
     return 0
 

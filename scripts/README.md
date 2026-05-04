@@ -130,6 +130,23 @@ log_action.py
   评测无大模型 RAG v2 的答案质量
   检查 Top3 标准依据命中、引用字段完整、结构化答案、地区跑偏和重复资料比例
 
+26_extract_policy_variables.py
+  从台账和知识切片中抽取政策工具、适用主体、市场环节、价格机制、交易品种、规划场景、投资影响和风险约束
+  生成 政策变量表.csv 和 政策质量状态表.csv
+  默认规则词典抽取，不调用大模型，质量状态不会自动标成人工校验
+
+27_build_policy_evolution_graph.py
+  生成 政策演化关系表.csv 和 policy_evolution_graph.json
+  关系类型包括上位法、配套文件、修订替代、地方承接、试行转正式、征求意见到发布稿、引用依据和同主题延续
+
+28_generate_research_outputs.py
+  基于政策变量和演化关系生成研究导出
+  包括 政策工具分类表.csv、区域比较表.csv、政策强度时间趋势.csv、引用清单.csv 和 research_platform_index.json
+
+29_evaluate_research_platform.py
+  验收研究平台层
+  检查变量覆盖率、质量状态完整率、演化链重点主题覆盖和导出文件完整性
+
 domain_terms.py
   统一维护主题词、候选发现关键词、RAG 已知词和主题推断规则
 
@@ -164,8 +181,14 @@ D:\miniconda\envs\py311\python.exe .\scripts\21_run_update_cycle.py --full-auto 
 D:\miniconda\envs\py311\python.exe .\scripts\22_qa_service.py
 D:\miniconda\envs\py311\python.exe .\scripts\23_validate_knowledge_base.py --min-ledger-count 500 --max-ledger-count 600 --write-report
 D:\miniconda\envs\py311\python.exe .\scripts\24_prepare_candidate_review_queue.py --min-score 50 --max-score 54
+D:\miniconda\envs\py311\python.exe .\scripts\26_extract_policy_variables.py
+D:\miniconda\envs\py311\python.exe .\scripts\27_build_policy_evolution_graph.py
+D:\miniconda\envs\py311\python.exe .\scripts\28_generate_research_outputs.py
+D:\miniconda\envs\py311\python.exe .\scripts\29_evaluate_research_platform.py
 ```
 
 注意：不要在 `04_export_excel_workbook.py` 仍在生成工作簿时同时运行 `05_sync_excel_to_csv.py`，否则同步脚本可能读到未写完的 Excel 文件。
 
 问答服务启动后，打开 `05_输出成果/search.html`，右侧问答区会调用 `http://127.0.0.1:8000/api/ask`。大模型参数从 `.env` 或环境变量读取：`LLM_PROVIDER`、`LLM_BASE_URL`、`LLM_API_KEY`、`LLM_MODEL`、`LLM_TEMPERATURE`、`LLM_MAX_CONTEXT_CHUNKS`。
+
+研究平台 API 还提供 `GET /api/policy/{doc_id}`、`GET /api/policy/{doc_id}/variables`、`GET /api/policy/{doc_id}/evolution`、`POST /api/research/compare` 和 `POST /api/research/export`。这些接口默认使用本地 CSV/JSON 研究层，不依赖大模型。

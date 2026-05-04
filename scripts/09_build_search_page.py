@@ -18,6 +18,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_CSV = ROOT / "02_元数据" / "政策资料台账.csv"
 RELATION_CSV = ROOT / "02_元数据" / "政策关联关系表.csv"
+VARIABLES_CSV = ROOT / "02_元数据" / "政策变量表.csv"
+EVOLUTION_CSV = ROOT / "02_元数据" / "政策演化关系表.csv"
 OUTPUT_DIR = ROOT / "05_输出成果"
 INDEX_PATH = OUTPUT_DIR / "search_index.json"
 HTML_PATH = OUTPUT_DIR / "search.html"
@@ -301,8 +303,44 @@ def relation_maps(valid_ids: set[str]) -> tuple[dict[str, list[dict]], dict[str,
     return outgoing, incoming
 
 
+def variable_maps() -> dict[str, dict[str, str]]:
+    if not VARIABLES_CSV.exists():
+        return {}
+    return {row.get("资料编号", ""): row for row in read_csv(VARIABLES_CSV) if row.get("资料编号")}
+
+
+def evolution_maps(valid_ids: set[str]) -> dict[str, list[dict]]:
+    grouped: dict[str, list[dict]] = {}
+    if not EVOLUTION_CSV.exists():
+        return grouped
+    for row in read_csv(EVOLUTION_CSV):
+        source_id = row.get("源资料编号", "")
+        target_id = row.get("目标资料编号", "")
+        if source_id not in valid_ids and target_id not in valid_ids:
+            continue
+        relation = {
+            "source_id": source_id,
+            "source_title": row.get("源标题", ""),
+            "source_date": row.get("源发布日期", ""),
+            "target_id": target_id,
+            "target_title": row.get("目标标题", ""),
+            "target_date": row.get("目标发布日期", ""),
+            "relation_type": row.get("关系类型", ""),
+            "chain": row.get("主题链条", ""),
+            "region_path": row.get("区域路径", ""),
+            "basis": row.get("匹配依据", ""),
+            "confidence": row.get("置信度", ""),
+        }
+        if source_id in valid_ids:
+            grouped.setdefault(source_id, []).append(relation)
+        if target_id in valid_ids:
+            grouped.setdefault(target_id, []).append(relation)
+    return grouped
+
+
 def build_index(text_limit: int) -> dict:
     rows = read_csv(LEDGER_CSV)
+    variable_entries = variable_maps()
     snapshot_entries = read_snapshot_entries()
     pdf_attachment_entries = read_pdf_attachments()
     docs = []
@@ -313,10 +351,18 @@ def build_index(text_limit: int) -> dict:
     authority_set: set[str] = set()
     status_set: set[str] = set()
     review_status_set: set[str] = set()
+    quality_status_set: set[str] = set()
+    policy_tool_set: set[str] = set()
+    subject_set: set[str] = set()
+    market_segment_set: set[str] = set()
+    pricing_set: set[str] = set()
+    trading_product_set: set[str] = set()
+    planning_scenario_set: set[str] = set()
 
     for row in rows:
         full_text, text_path = read_text_file(row, limit=text_limit)
         doc_id = row.get("资料编号", "")
+        variable = variable_entries.get(doc_id, {})
         regions = split_values(row.get("适用地区", ""))
         provinces = derive_provinces(row, regions)
         topics = split_values(row.get("市场主题", ""))
@@ -328,10 +374,24 @@ def build_index(text_limit: int) -> dict:
         snapshot_method = snapshot.get("method", "")
         snapshot_text, snapshot_kind = snapshot_label(snapshot_method)
         pdf_attachments = merge_pdf_attachments(row, pdf_attachment_entries.get(doc_id, []))
+        quality_status = variable.get("质量状态", "未生成")
+        policy_tools = split_values(variable.get("政策工具", ""))
+        subjects = split_values(variable.get("适用主体", ""))
+        market_segments = split_values(variable.get("市场环节", ""))
+        pricing_mechanisms = split_values(variable.get("价格机制", ""))
+        trading_products = split_values(variable.get("交易品种", ""))
+        planning_scenarios = split_values(variable.get("规划场景", ""))
 
         region_set.update(regions)
         province_set.update(provinces)
         topic_set.update(topics)
+        quality_status_set.add(quality_status)
+        policy_tool_set.update(policy_tools)
+        subject_set.update(subjects)
+        market_segment_set.update(market_segments)
+        pricing_set.update(pricing_mechanisms)
+        trading_product_set.update(trading_products)
+        planning_scenario_set.update(planning_scenarios)
         if source_type:
             source_set.add(source_type)
         if authority:
@@ -373,6 +433,25 @@ def build_index(text_limit: int) -> dict:
                 "note": row.get("备注", ""),
                 "ingested_at": row.get("入库日期", ""),
                 "review_status": review_status,
+                "quality_status": quality_status,
+                "policy_variables": {
+                    "policy_tools": policy_tools,
+                    "constraints": split_values(variable.get("约束机制", "")),
+                    "incentives": split_values(variable.get("激励机制", "")),
+                    "subjects": subjects,
+                    "market_segments": market_segments,
+                    "pricing_mechanisms": pricing_mechanisms,
+                    "trading_products": trading_products,
+                    "settlement_mechanisms": split_values(variable.get("结算机制", "")),
+                    "assessment_mechanisms": split_values(variable.get("考核机制", "")),
+                    "low_carbon_targets": split_values(variable.get("低碳目标", "")),
+                    "planning_scenarios": planning_scenarios,
+                    "investment_impacts": split_values(variable.get("投资影响", "")),
+                    "business_model_impacts": split_values(variable.get("商业模式影响", "")),
+                    "risk_constraints": split_values(variable.get("风险约束", "")),
+                    "evidence": variable.get("证据摘录", ""),
+                    "review_status": variable.get("人工复核状态", ""),
+                },
                 "snippet": text_snippet(full_text),
                 "text": normalize_space(full_text),
             }
@@ -380,9 +459,11 @@ def build_index(text_limit: int) -> dict:
 
     valid_ids = {doc["id"] for doc in docs if doc.get("id")}
     outgoing, incoming = relation_maps(valid_ids)
+    evolutions = evolution_maps(valid_ids)
     for doc in docs:
         doc["outgoing_relations"] = outgoing.get(doc["id"], [])[:8]
         doc["incoming_relations"] = incoming.get(doc["id"], [])[:8]
+        doc["evolution_relations"] = evolutions.get(doc["id"], [])[:12]
 
     return {
         "generated_at": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -396,6 +477,13 @@ def build_index(text_limit: int) -> dict:
             "authorities": sorted(authority_set),
             "statuses": sorted(status_set),
             "review_statuses": sorted(review_status_set),
+            "quality_statuses": sorted(quality_status_set),
+            "policy_tools": sorted(policy_tool_set),
+            "subjects": sorted(subject_set),
+            "market_segments": sorted(market_segment_set),
+            "pricing_mechanisms": sorted(pricing_set),
+            "trading_products": sorted(trading_product_set),
+            "planning_scenarios": sorted(planning_scenario_set),
         },
         "documents": docs,
     }
@@ -415,7 +503,7 @@ def html_template(index: dict) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>电力政策知识库搜索</title>
+  <title>电力政策研究与决策分析平台</title>
   <style>
     :root {{
       color-scheme: light;
@@ -551,7 +639,7 @@ def html_template(index: dict) -> str:
     }}
     .qa-actions {{
       display: grid;
-      grid-template-columns: 120px minmax(0, 1fr);
+      grid-template-columns: 120px minmax(220px, 1fr) minmax(0, 1fr);
       gap: 10px;
       align-items: center;
       margin-top: 8px;
@@ -704,6 +792,59 @@ def html_template(index: dict) -> str:
       color: var(--muted);
       text-align: center;
     }}
+    .lens-bar, .research-panel, .export-links {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }}
+    .lens-btn {{
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 7px 10px;
+      cursor: pointer;
+      font-size: 13px;
+    }}
+    .lens-btn:hover {{
+      border-color: var(--blue);
+      color: var(--blue);
+    }}
+    .metric {{
+      min-width: 126px;
+      border-right: 1px solid var(--line);
+      padding-right: 12px;
+    }}
+    .metric:last-child {{
+      border-right: 0;
+    }}
+    .metric strong {{
+      display: block;
+      font-size: 18px;
+      color: var(--ink);
+    }}
+    .metric span {{
+      color: var(--muted);
+      font-size: 12px;
+    }}
+    .var-block, .evolution-block {{
+      border-top: 1px dashed var(--line);
+      padding-top: 8px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      display: grid;
+      gap: 6px;
+    }}
+    .var-line, .evolution-line {{
+      overflow-wrap: anywhere;
+    }}
     mark {{
       background: #fff0a6;
       padding: 0 1px;
@@ -732,7 +873,7 @@ def html_template(index: dict) -> str:
 </head>
 <body>
   <header>
-    <h1>电力政策知识库搜索</h1>
+    <h1>电力政策研究与决策分析平台</h1>
     <div class="meta">资料 {count} 条 · 生成时间 {generated}</div>
   </header>
   <main>
@@ -769,11 +910,57 @@ def html_template(index: dict) -> str:
         <label for="reviewFilter">复核状态</label>
         <select id="reviewFilter"></select>
       </div>
+      <div class="filter">
+        <label for="qualityFilter">质量状态</label>
+        <select id="qualityFilter"></select>
+      </div>
+      <div class="filter">
+        <label for="toolFilter">政策工具</label>
+        <select id="toolFilter"></select>
+      </div>
+      <div class="filter">
+        <label for="subjectFilter">适用主体</label>
+        <select id="subjectFilter"></select>
+      </div>
+      <div class="filter">
+        <label for="segmentFilter">市场环节</label>
+        <select id="segmentFilter"></select>
+      </div>
+      <div class="filter">
+        <label for="pricingFilter">价格机制</label>
+        <select id="pricingFilter"></select>
+      </div>
+      <div class="filter">
+        <label for="tradingProductFilter">交易品种</label>
+        <select id="tradingProductFilter"></select>
+      </div>
+      <div class="filter">
+        <label for="scenarioFilter">规划场景</label>
+        <select id="scenarioFilter"></select>
+      </div>
       <button class="secondary" id="resetBtn" type="button">重置筛选</button>
     </aside>
     <section class="content">
+      <div class="lens-bar" aria-label="研究视角">
+        <button class="lens-btn" data-lens="national" type="button">全国视角</button>
+        <button class="lens-btn" data-lens="regional" type="button">区域视角</button>
+        <button class="lens-btn" data-lens="province" type="button">省份视角</button>
+        <button class="lens-btn" data-lens="topic" type="button">专题视角</button>
+      </div>
+      <div class="research-panel">
+        <div class="metric"><strong>{count}</strong><span>政策资料</span></div>
+        <div class="metric"><strong>{index.get("relation_count", 0)}</strong><span>明文引用关系</span></div>
+        <div class="metric"><strong>{sum(1 for doc in index.get("documents", []) if doc.get("policy_variables", {}).get("policy_tools"))}</strong><span>已抽政策变量</span></div>
+        <div class="metric"><strong>{sum(1 for doc in index.get("documents", []) if doc.get("evolution_relations"))}</strong><span>有演化链资料</span></div>
+      </div>
+      <div class="export-links">
+        <a href="政策工具分类表.csv" target="_blank" rel="noreferrer">政策工具分类表</a>
+        <a href="区域比较表.csv" target="_blank" rel="noreferrer">区域比较表</a>
+        <a href="政策强度时间趋势.csv" target="_blank" rel="noreferrer">政策强度时间趋势</a>
+        <a href="引用清单.csv" target="_blank" rel="noreferrer">引用清单</a>
+      </div>
       <div class="toolbar">
-        <input id="queryInput" type="search" placeholder="输入关键词，例如：山东 辅助服务 结算" autocomplete="off">
+        <input id="queryInput" type="search" placeholder="输入关键词，例如：高质量发展 电网规划 新型电力系统" autocomplete="off">
         <select id="sortMode">
           <option value="score">综合排序</option>
           <option value="date">最新优先</option>
@@ -786,6 +973,7 @@ def html_template(index: dict) -> str:
         <textarea id="qaInput" placeholder="输入政策问题，例如：高质量发展相关电力政策有哪些？"></textarea>
         <div class="qa-actions">
           <button id="askBtn" type="button">问答</button>
+          <input id="apiBaseInput" type="url" value="http://127.0.0.1:8000" aria-label="问答 API 地址">
           <span class="qa-status" id="qaStatus">本地问答服务默认地址：http://127.0.0.1:8000</span>
         </div>
         <div class="qa-answer" id="qaAnswer"></div>
@@ -824,6 +1012,13 @@ def html_template(index: dict) -> str:
       authority: document.getElementById('authorityFilter'),
       status: document.getElementById('statusFilter'),
       review: document.getElementById('reviewFilter'),
+      quality: document.getElementById('qualityFilter'),
+      tool: document.getElementById('toolFilter'),
+      subject: document.getElementById('subjectFilter'),
+      segment: document.getElementById('segmentFilter'),
+      pricing: document.getElementById('pricingFilter'),
+      tradingProduct: document.getElementById('tradingProductFilter'),
+      scenario: document.getElementById('scenarioFilter'),
       sort: document.getElementById('sortMode'),
       results: document.getElementById('results'),
       count: document.getElementById('resultCount'),
@@ -832,6 +1027,7 @@ def html_template(index: dict) -> str:
       reset: document.getElementById('resetBtn'),
       qaInput: document.getElementById('qaInput'),
       ask: document.getElementById('askBtn'),
+      apiBase: document.getElementById('apiBaseInput'),
       qaStatus: document.getElementById('qaStatus'),
       qaAnswer: document.getElementById('qaAnswer')
     }};
@@ -850,12 +1046,19 @@ def html_template(index: dict) -> str:
       }});
     }}
 
-    fillSelect(els.province, data.filters.provinces || [], '省份');
+    fillSelect(els.province, Array.from(new Set([...(data.filters.provinces || []), ...(data.filters.regions || [])])), '省份/区域');
     fillSelect(els.topic, data.filters.topics || [], '主题');
     fillSelect(els.source, data.filters.source_types || [], '来源');
     fillSelect(els.authority, data.filters.authorities || [], '等级');
     fillSelect(els.status, data.filters.statuses || [], '状态');
     fillSelect(els.review, data.filters.review_statuses || [], '复核状态');
+    fillSelect(els.quality, data.filters.quality_statuses || [], '质量状态');
+    fillSelect(els.tool, data.filters.policy_tools || [], '政策工具');
+    fillSelect(els.subject, data.filters.subjects || [], '主体');
+    fillSelect(els.segment, data.filters.market_segments || [], '市场环节');
+    fillSelect(els.pricing, data.filters.pricing_mechanisms || [], '价格机制');
+    fillSelect(els.tradingProduct, data.filters.trading_products || [], '交易品种');
+    fillSelect(els.scenario, data.filters.planning_scenarios || [], '规划场景');
 
     function norm(value) {{
       return String(value || '').toLowerCase().replace(/[\\s《》〈〉“”"'()（）\\[\\]【】,，。.;；:：、/\\\\_-]+/g, '');
@@ -964,6 +1167,15 @@ def html_template(index: dict) -> str:
         regions: {{ label: '范围', value: (doc.regions || []).join(';'), weight: 3 }},
         department: {{ label: '发布部门', value: doc.department, weight: 4 }},
         collection_source: {{ label: '来源机构', value: doc.collection_source, weight: 4 }},
+        policy_tools: {{ label: '政策工具', value: (doc.policy_variables?.policy_tools || []).join(';'), weight: 8 }},
+        subjects: {{ label: '适用主体', value: (doc.policy_variables?.subjects || []).join(';'), weight: 7 }},
+        market_segments: {{ label: '市场环节', value: (doc.policy_variables?.market_segments || []).join(';'), weight: 7 }},
+        pricing: {{ label: '价格机制', value: (doc.policy_variables?.pricing_mechanisms || []).join(';'), weight: 7 }},
+        trading_products: {{ label: '交易品种', value: (doc.policy_variables?.trading_products || []).join(';'), weight: 7 }},
+        planning_scenarios: {{ label: '规划场景', value: (doc.policy_variables?.planning_scenarios || []).join(';'), weight: 7 }},
+        investment: {{ label: '投资影响', value: (doc.policy_variables?.investment_impacts || []).join(';'), weight: 5 }},
+        business: {{ label: '商业模式', value: (doc.policy_variables?.business_model_impacts || []).join(';'), weight: 5 }},
+        risks: {{ label: '风险约束', value: (doc.policy_variables?.risk_constraints || []).join(';'), weight: 5 }},
         pdf_attachments: {{ label: 'PDF附件', value: (doc.pdf_attachments || []).map(item => item.title || item.path || '').join(';'), weight: 4 }},
         note: {{ label: '备注', value: doc.note, weight: 4 }},
         snippet: {{ label: '摘要', value: doc.snippet, weight: 3 }},
@@ -1045,7 +1257,8 @@ def html_template(index: dict) -> str:
       els.qaAnswer.style.display = 'block';
       els.qaAnswer.textContent = '';
       try {{
-        const response = await fetch('http://127.0.0.1:8000/api/ask', {{
+        const apiBase = (els.apiBase.value || 'http://127.0.0.1:8000').replace(/\\/+$/, '');
+        const response = await fetch(`${{apiBase}}/api/ask`, {{
           method: 'POST',
           headers: {{ 'Content-Type': 'application/json' }},
           body: JSON.stringify({{
@@ -1053,7 +1266,8 @@ def html_template(index: dict) -> str:
             region: els.province.value,
             source_type: els.source.value,
             official_only: true,
-            top_k: 8
+            top_k: 8,
+            answer_mode: 'research'
           }})
         }});
         if (!response.ok) throw new Error(`HTTP ${{response.status}}`);
@@ -1061,7 +1275,7 @@ def html_template(index: dict) -> str:
         els.qaAnswer.textContent = renderQaPayload(payload);
         els.qaStatus.textContent = payload.warnings && payload.warnings.length ? '已返回检索草稿或降级答案' : '已返回问答结果';
       }} catch (error) {{
-        els.qaAnswer.textContent = `无法连接本地问答服务。请先运行：python scripts/22_qa_service.py\\n错误：${{error}}`;
+        els.qaAnswer.textContent = `无法连接问答服务：${{els.apiBase.value}}\\n错误：${{error}}`;
         els.qaStatus.textContent = '本地问答服务不可用';
       }}
     }}
@@ -1101,6 +1315,13 @@ def html_template(index: dict) -> str:
       const authority = els.authority.value;
       const status = els.status.value;
       const review = els.review.value;
+      const quality = els.quality.value;
+      const tool = els.tool.value;
+      const subject = els.subject.value;
+      const segment = els.segment.value;
+      const pricing = els.pricing.value;
+      const tradingProduct = els.tradingProduct.value;
+      const scenario = els.scenario.value;
 
       let rows = docs.map(doc => {{
           const match = scoreDoc(doc, queryTerms);
@@ -1118,7 +1339,14 @@ def html_template(index: dict) -> str:
         .filter(item => !els.reviewPending.checked || isPendingReview(item.doc))
         .filter(item => !authority || item.doc.authority === authority)
         .filter(item => !status || item.doc.status === status)
-        .filter(item => !review || item.doc.review_status === review);
+        .filter(item => !review || item.doc.review_status === review)
+        .filter(item => !quality || item.doc.quality_status === quality)
+        .filter(item => containsAny(item.doc.policy_variables?.policy_tools || [], tool))
+        .filter(item => containsAny(item.doc.policy_variables?.subjects || [], subject))
+        .filter(item => containsAny(item.doc.policy_variables?.market_segments || [], segment))
+        .filter(item => containsAny(item.doc.policy_variables?.pricing_mechanisms || [], pricing))
+        .filter(item => containsAny(item.doc.policy_variables?.trading_products || [], tradingProduct))
+        .filter(item => containsAny(item.doc.policy_variables?.planning_scenarios || [], scenario));
 
       if (els.sort.value === 'date') {{
         rows.sort((a, b) => dateScore(b.doc.publish_date) - dateScore(a.doc.publish_date) || b.score - a.score || b.hitCount - a.hitCount);
@@ -1137,7 +1365,7 @@ def html_template(index: dict) -> str:
         els.hasText.checked ? '已抽文本' : '',
         els.reviewPending.checked ? '待人工复核' : ''
       ];
-      const filters = [province, topic, source, authority, status, review, ...quickFilters].filter(Boolean);
+      const filters = [province, topic, source, authority, status, review, quality, tool, subject, segment, pricing, tradingProduct, scenario, ...quickFilters].filter(Boolean);
       els.hint.textContent = filters.length ? filters.join(' / ') : '';
 
       const limited = rows.slice(0, 80);
@@ -1155,6 +1383,7 @@ def html_template(index: dict) -> str:
       const pdfTag = doc.has_pdf ? '<span class="tag">有 PDF</span>' : '';
       const textTag = doc.has_text ? '<span class="tag">已抽文本</span>' : '';
       const reviewTag = doc.review_status ? `<span class="tag">复核：${{escapeHtml(doc.review_status)}}</span>` : '';
+      const qualityTag = doc.quality_status ? `<span class="tag">质量：${{escapeHtml(doc.quality_status)}}</span>` : '';
       const snapshotTitle = [doc.snapshot_path, doc.snapshot_label, doc.snapshot_method].filter(Boolean).join(' · ');
       const snapshotLink = doc.snapshot_path ? `<a href="${{escapeHtml(outputHref(doc.snapshot_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(snapshotTitle)}}">网页快照</a>` : '';
       const textFallback = !snapshotLink && doc.text_path ? `<a href="${{escapeHtml(rootFileHref(doc.text_path))}}" target="_blank" rel="noreferrer" title="${{escapeHtml(doc.text_path)}}">处理后文本</a>` : '';
@@ -1170,6 +1399,8 @@ def html_template(index: dict) -> str:
       const sourceLine = [doc.department, doc.collection_source].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i).join(' / ') || '发布部门未知';
       const docNo = doc.document_number ? `<span class="mini-action">文号：${{escapeHtml(doc.document_number)}}</span>` : '';
       const relationBlock = relationHtml(doc);
+      const variableBlock = variableHtml(doc);
+      const evolutionBlock = evolutionHtml(doc);
       const hitDetails = scoreDoc(doc, queryTerms).hits;
       const hitDetail = hitDetails && hitDetails.length
         ? `<div class="hit-detail">${{hitDetails.slice(0, 5).map(hit => `<span>${{escapeHtml(hit.label)}}：${{escapeHtml(hit.terms.join('、'))}}${{hit.count > 1 ? ' x' + hit.count : ''}}</span>`).join('')}}</div>`
@@ -1182,10 +1413,12 @@ def html_template(index: dict) -> str:
           </div>
           ${{hitDetail}}
           <div class="fields">
-            ${{provinceTags}}${{scopeTags}}${{topicTags}}${{sourceTag}}${{authTag}}${{statusTag}}${{pdfTag}}${{textTag}}${{reviewTag}}${{snapshotTag}}${{note}}
+            ${{provinceTags}}${{scopeTags}}${{topicTags}}${{sourceTag}}${{authTag}}${{statusTag}}${{qualityTag}}${{pdfTag}}${{textTag}}${{reviewTag}}${{snapshotTag}}${{note}}
           </div>
           <div class="snippet">${{highlight(doc.snippet || doc.summary || doc.department || '', queryTerms)}}</div>
+          ${{variableBlock}}
           ${{relationBlock}}
+          ${{evolutionBlock}}
           <div class="links">
             <a href="${{escapeHtml(doc.url)}}" target="_blank" rel="noreferrer">原文链接</a>
             ${{archiveLink}}
@@ -1195,6 +1428,38 @@ def html_template(index: dict) -> str:
           </div>
         </article>
       `;
+    }}
+
+    function line(label, values) {{
+      const items = (values || []).filter(Boolean).slice(0, 6);
+      return items.length ? `<div class="var-line"><strong>${{escapeHtml(label)}}：</strong>${{items.map(escapeHtml).join('；')}}</div>` : '';
+    }}
+
+    function variableHtml(doc) {{
+      const vars = doc.policy_variables || {{}};
+      const rows = [
+        line('政策工具', vars.policy_tools),
+        line('适用主体', vars.subjects),
+        line('市场环节', vars.market_segments),
+        line('价格机制', vars.pricing_mechanisms),
+        line('规划场景', vars.planning_scenarios),
+        line('投资影响', vars.investment_impacts),
+        line('商业模式', vars.business_model_impacts),
+        line('风险约束', vars.risk_constraints)
+      ].filter(Boolean);
+      if (!rows.length) return '';
+      return `<div class="var-block">${{rows.join('')}}</div>`;
+    }}
+
+    function evolutionHtml(doc) {{
+      const rows = (doc.evolution_relations || []).slice(0, 4).map(rel => {{
+        const otherId = rel.source_id === doc.id ? rel.target_id : rel.source_id;
+        const otherTitle = rel.source_id === doc.id ? rel.target_title : rel.source_title;
+        const text = `${{rel.relation_type || '关联'}}：${{otherTitle || otherId}}${{rel.region_path ? ' · ' + rel.region_path : ''}}`;
+        const title = [rel.chain, rel.basis, rel.confidence ? '置信度：' + rel.confidence : ''].filter(Boolean).join('；');
+        return `<div class="evolution-line"><a class="relation-link" href="#doc-${{escapeHtml(otherId)}}" data-jump-doc="${{escapeHtml(otherId)}}" title="${{escapeHtml(title)}}">${{escapeHtml(text)}}</a></div>`;
+      }});
+      return rows.length ? `<div class="evolution-block">${{rows.join('')}}</div>` : '';
     }}
 
     // 政策关联只展示已入库且能定位到资料编号的关系，点击后回到对应结果卡片。
@@ -1218,7 +1483,7 @@ def html_template(index: dict) -> str:
       return `<div class="relation-row"><span class="relation-label">${{escapeHtml(label)}}</span>${{links}}</div>`;
     }}
 
-    [els.province, els.topic, els.source, els.authority, els.status, els.review, els.sort].forEach(el => el.addEventListener('change', render));
+    [els.province, els.topic, els.source, els.authority, els.status, els.review, els.quality, els.tool, els.subject, els.segment, els.pricing, els.tradingProduct, els.scenario, els.sort].forEach(el => el.addEventListener('change', render));
     [els.hasPdf, els.officialOnly, els.regulatoryOnly, els.tradingOnly, els.hasText, els.reviewPending].forEach(el => el.addEventListener('change', render));
     els.search.addEventListener('click', render);
     els.ask.addEventListener('click', askQuestion);
@@ -1228,7 +1493,7 @@ def html_template(index: dict) -> str:
     }});
     els.reset.addEventListener('click', () => {{
       els.query.value = '';
-      [els.province, els.topic, els.source, els.authority, els.status, els.review].forEach(el => el.value = '');
+      [els.province, els.topic, els.source, els.authority, els.status, els.review, els.quality, els.tool, els.subject, els.segment, els.pricing, els.tradingProduct, els.scenario].forEach(el => el.value = '');
       [els.hasPdf, els.officialOnly, els.regulatoryOnly, els.tradingOnly, els.hasText, els.reviewPending].forEach(el => el.checked = false);
       els.sort.value = 'score';
       render();
@@ -1240,7 +1505,7 @@ def html_template(index: dict) -> str:
       const targetId = link.getAttribute('data-jump-doc') || '';
       if (!targetId) return;
       els.query.value = targetId;
-      [els.province, els.topic, els.source, els.authority, els.status, els.review].forEach(el => el.value = '');
+      [els.province, els.topic, els.source, els.authority, els.status, els.review, els.quality, els.tool, els.subject, els.segment, els.pricing, els.tradingProduct, els.scenario].forEach(el => el.value = '');
       [els.hasPdf, els.officialOnly, els.regulatoryOnly, els.tradingOnly, els.hasText, els.reviewPending].forEach(el => el.checked = false);
       els.sort.value = 'score';
       render();
@@ -1248,6 +1513,25 @@ def html_template(index: dict) -> str:
         const target = document.getElementById(`doc-${{targetId}}`);
         if (target) target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
       }}, 0);
+    }});
+    document.querySelectorAll('[data-lens]').forEach(button => {{
+      button.addEventListener('click', () => {{
+        const lens = button.getAttribute('data-lens');
+        [els.province, els.topic, els.source, els.authority, els.status, els.review, els.quality, els.tool, els.subject, els.segment, els.pricing, els.tradingProduct, els.scenario].forEach(el => el.value = '');
+        if (lens === 'national') {{
+          els.province.value = '全国';
+          els.query.value = els.query.value || '高质量发展 新型电力系统 电网规划';
+        }} else if (lens === 'regional') {{
+          els.province.value = '南方区域';
+          els.query.value = els.query.value || '区域市场 中长期 结算';
+        }} else if (lens === 'province') {{
+          els.query.value = els.query.value || '电力市场 分布式光伏 储能';
+        }} else if (lens === 'topic') {{
+          els.scenario.value = els.scenario.value || '新型电力系统';
+          els.query.value = els.query.value || '源网荷储 微电网 储能';
+        }}
+        render();
+      }});
     }});
 
     const params = new URLSearchParams(window.location.search);
@@ -1259,6 +1543,14 @@ def html_template(index: dict) -> str:
     if (params.has('authority')) els.authority.value = params.get('authority') || '';
     if (params.has('status')) els.status.value = params.get('status') || '';
     if (params.has('review')) els.review.value = params.get('review') || '';
+    if (params.has('api')) els.apiBase.value = params.get('api') || els.apiBase.value;
+    if (params.has('quality')) els.quality.value = params.get('quality') || '';
+    if (params.has('tool')) els.tool.value = params.get('tool') || '';
+    if (params.has('subject')) els.subject.value = params.get('subject') || '';
+    if (params.has('segment')) els.segment.value = params.get('segment') || '';
+    if (params.has('pricing')) els.pricing.value = params.get('pricing') || '';
+    if (params.has('trading_product')) els.tradingProduct.value = params.get('trading_product') || '';
+    if (params.has('scenario')) els.scenario.value = params.get('scenario') || '';
     if (params.has('has_pdf')) els.hasPdf.checked = params.get('has_pdf') === '1';
     if (params.has('official')) els.officialOnly.checked = params.get('official') === '1';
     if (params.has('regulatory')) els.regulatoryOnly.checked = params.get('regulatory') === '1';
@@ -1282,7 +1574,22 @@ def self_check(index: dict, html_path: Path, json_path: Path) -> list[str]:
     errors: list[str] = []
     if not index.get("documents"):
         errors.append("索引没有文档")
-    for field in ["provinces", "regions", "topics", "source_types", "authorities", "statuses", "review_statuses"]:
+    for field in [
+        "provinces",
+        "regions",
+        "topics",
+        "source_types",
+        "authorities",
+        "statuses",
+        "review_statuses",
+        "quality_statuses",
+        "policy_tools",
+        "subjects",
+        "market_segments",
+        "pricing_mechanisms",
+        "trading_products",
+        "planning_scenarios",
+    ]:
         if field not in index.get("filters", {}):
             errors.append(f"索引缺少筛选字段：{field}")
     if not html_path.exists() or html_path.stat().st_size < 10000:
@@ -1296,6 +1603,10 @@ def self_check(index: dict, html_path: Path, json_path: Path) -> list[str]:
         errors.append("索引自检未找到带 PDF 的文档")
     if not any(doc.get("has_text") for doc in index["documents"]):
         errors.append("索引自检未找到已抽文本的文档")
+    if VARIABLES_CSV.exists() and not any(doc.get("policy_variables", {}).get("policy_tools") for doc in index["documents"]):
+        errors.append("索引自检未找到政策变量")
+    if EVOLUTION_CSV.exists() and not any(doc.get("evolution_relations") for doc in index["documents"]):
+        errors.append("索引自检未找到政策演化关系")
     return errors
 
 

@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-05-05 01:24:21",
+  "document_count": 419,
+  "quality_counts": {
+    "机器抽取": 418,
+    "需复核": 1
+  },
+  "core_variable_coverage": 0.957,
+  "output_csv": "02_元数据\\政策变量表.csv",
+  "quality_csv": "02_元数据\\政策质量状态表.csv"
+}

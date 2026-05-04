@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-05-05 01:24:22",
+  "variable_count": 419,
+  "evolution_relation_count": 782,
+  "field_coverage": {
+    "政策工具": 1.0,
+    "适用主体": 0.9594,
+    "市场环节": 0.9905,
+    "质量状态": 1.0
+  },
+  "core_variable_coverage": 0.957,
+  "quality_complete_rate": 1.0,
+  "citation_ready_count": 0,
+  "relation_types": [
+    "修订替代",
+    "同主题延续",
+    "地方承接",
+    "引用依据",
+    "试行转正式",
+    "配套文件"
+  ],
+  "focus_topic_relation_counts": {
+    "电力市场": 313,
+    "辅助服务": 158,
+    "绿电": 28,
+    "新能源上网电价": 11,
+    "储能": 31,
+    "微电网": 0,
+    "新型电力系统": 2,
+    "电网规划": 1
+  },
+  "research_index_ok": true,
+  "pass": true
+}
